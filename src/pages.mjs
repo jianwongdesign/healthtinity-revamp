@@ -4,6 +4,13 @@ import {
 } from './data.mjs';
 import { terms, privacy } from './legal.mjs';
 import { esc, icon, initials, pageHero, ctaBand } from './layout.mjs';
+import { readFileSync } from 'node:fs';
+
+// Official Lianhe Zaobao logo (Wikipedia: File:Lianhe_Zaobao_new_logo.svg); mono by default, brand colours on hover
+const zaobaoLogo = readFileSync(new URL('./assets/img/press/zaobao.svg', import.meta.url), 'utf8')
+  .replace('<svg ', '<svg class="press__svg" role="img" aria-label="Lianhe Zaobao 联合早报" ')
+  .replace(/fill="black"/g, 'fill="currentColor"')
+  .replace(/fill="(#A80034|#E90044)"/g, 'class="zb-brand" style="--c:$1" fill="currentColor"');
 
 const money = (n) => n.toLocaleString('en-SG');
 const avatar = (m, r, cls = '') =>
@@ -83,8 +90,7 @@ function home() {
       <div class="press">
         <p class="press__label">Featured in</p>
         <a class="press__logo press__logo--zb" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/" aria-label="Read our Lianhe Zaobao feature">
-          <span class="zb__cn" lang="zh">联合早报</span>
-          <span class="zb__en">Lianhe Zaobao</span>
+          ${zaobaoLogo}
         </a>
         <a class="press__more" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">Read the feature ${icon.arrow}</a>
       </div>

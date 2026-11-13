@@ -76,7 +76,6 @@ export function layout({ path = '', title, description, body, active = '', schem
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  ${path === '' ? '<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&text=%E8%81%94%E5%90%88%E6%97%A9%E6%8A%A5&display=swap" rel="stylesheet">' : ''}
   <link rel="stylesheet" href="${r}assets/css/styles.css">
   ${schema}
 </head>

@@ -73,5 +73,6 @@ docs/             # built site (served by GitHub Pages)
 - [ ] **Privacy Policy section 23** had no contact details; studio email, phone and address were added. Please confirm the DPO contact.
 - [ ] **Promo prices** (Holiday promo, 15 Class Pack) are still valid
 - [ ] **Contact form** currently sends through WhatsApp or email. Connect a form service if they'd prefer submissions in an inbox.
+- [ ] **Press logos:** the Featured-in strip uses the official Lianhe Zaobao logo. Confirm the studio is OK using it, and send any other press features to add
 - [ ] Testimonials / Google reviews, more studio photography, an SVG logo
 - [ ] Opening hours (not on the current site)
