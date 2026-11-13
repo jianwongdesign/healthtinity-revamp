@@ -37,7 +37,7 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 | Sand | `#F4EADD` | Alternate sections, footer |
 | Apricot | `#F0A878` | Warm accent: badges, underlines, therapy tags |
 
-**Type:** Fraunces (soft serif display with italic accents) + Plus Jakarta Sans (body).
+**Type:** Outfit Bold (clean, bold sans-serif headings) + Plus Jakarta Sans (body).
 
 ## Editing & building
 
