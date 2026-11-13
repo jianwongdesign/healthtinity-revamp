@@ -26,18 +26,17 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 
 ## Design direction
 
-**Warm and professional.** The logo blue leads on warm white and linen sections, with real studio photography doing the warm work. No decorative glows, floating gimmicks or icon tiles.
+**The sunny neighbourhood studio.** Logo blue owns whole panels (the home hero and every page header), sunshine yellow is the warm second colour, and deep navy carries the words. Rounded, friendly forms and real people in daylight. The home hero is a grid of the real coaches with hand-written name tags. A Starter Pack "stamp card" and a live "Today at the studio" list (from the real schedule) make the first visit concrete.
 
 | Token | Hex | Use |
 |---|---|---|
-| Logo Blue | `#0088AE` | Primary buttons, links, highlights (sampled from the logo) |
-| Deep Blue | `#005F7C` | Hover states, gradients |
-| Ink | `#12323D` | Headings, text, dark panels |
-| Cream | `#FBF6EF` | Page background |
-| Sand | `#F4EADD` | Alternate sections, footer |
-| Apricot | `#F0A878` | Warm accent: badges, underlines, therapy tags |
+| Logo Blue | `#0088AE` / panel `#007EA1` | Hero and page-header panels, primary buttons |
+| Sunshine | `#FFCD57` | Class strip, offer buttons, tags, ticks |
+| Navy | `#0F2B46` | Headings, text, Top Up and visit panels |
+| Sky | `#EAF6FA` | Alternate sections, footer, schedule rows |
+| Butter | `#FFF5D9` | Pricing section, soft callouts |
 
-**Type:** Hanken Grotesk throughout (bold, clean headings; easy-reading body).
+**Type:** Nunito (rounded, bold headings), Nunito Sans (body), Caveat (coach name tags only).
 
 ## Editing & building
 
@@ -74,6 +73,6 @@ docs/             # built site (served by GitHub Pages)
 - [ ] **Promo prices** (Holiday promo, 15 Class Pack) are still valid
 - [ ] **Contact form** currently sends through WhatsApp or email. Connect a form service if they'd prefer submissions in an inbox.
 - [ ] **Press logos:** the Featured-in strip uses the official Lianhe Zaobao logo. Confirm the studio is OK using it, and send any other press features to add
-- [ ] **Home hero photo** is AI-generated (Higgsfield) as a stand-in. Swap in a real studio photo of a coach with a client when available
+- [ ] **Class photos** for Yoga, Mat Pilates and Tone & Sculpt (`src/assets/img/class-*.jpg`) are AI-generated stand-ins. Swap in real class photos when available
 - [ ] Testimonials / Google reviews, more studio photography, an SVG logo
 - [ ] Opening hours (not on the current site)

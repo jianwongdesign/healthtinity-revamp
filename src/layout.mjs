@@ -26,7 +26,6 @@ export const pageHero = ({ eyebrow, title, lead, crumbs = [], r, extra = '' }) =
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="${r || './'}">Home</a>${crumbs.map(([label, href]) => ` <span>/</span> ${href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`}`).join('')}
     </nav>
-    ${eyebrow ? `<p class="eyebrow"><span class="dot"></span> ${eyebrow}</p>` : ''}
     <h1>${title}</h1>
     ${lead ? `<p class="lead">${lead}</p>` : ''}
     ${extra}
@@ -39,8 +38,7 @@ export const ctaBand = (r) => `
   <div class="container">
     <div class="cta-band reveal">
       <div>
-        <p class="eyebrow eyebrow--light">New to Healthtinity?</p>
-        <h2>Your first 5 classes for <em>$60</em>.</h2>
+        <h2>New here? Your first 5 classes are $60.</h2>
         <p>Download the HT Life app, grab the New Members Starter Pack and get <strong>$22 credit</strong> in your Healthtinity Wallet to use on your next purchase or a drop-in class.</p>
       </div>
       <div class="cta-band__actions">
@@ -65,7 +63,7 @@ export function layout({ path = '', title, description, body, active = '', schem
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(fullTitle)}</title>
   <meta name="description" content="${esc(description)}">
-  <meta name="theme-color" content="#0088AE">
+  <meta name="theme-color" content="#007EA1">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Healthtinity">
   <meta property="og:title" content="${esc(fullTitle)}">
@@ -75,8 +73,9 @@ export function layout({ path = '', title, description, body, active = '', schem
   <link rel="apple-touch-icon" href="${r}assets/img/logo-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@700;800;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${r}assets/css/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
   ${schema}
 </head>
 <body>

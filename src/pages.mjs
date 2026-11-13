@@ -44,8 +44,7 @@ const priceCard = (p, href, cta = 'Buy now') => `
 const topupBlock = () => `
 <div class="topup reveal" id="topup">
   <div>
-    <p class="eyebrow eyebrow--light">New at Healthtinity · Top Up &amp; Flow</p>
-    <h3>More flexibility, more freedom, more you.</h3>
+    <h3>Top Up &amp; Flow: more flexibility, more you.</h3>
     <p>Not everyone wants to commit to a package, and now you don't have to. Top up your HT Wallet, receive bonus credits and use them however you like.</p>
   </div>
   <ul class="topup__tiers">
@@ -59,7 +58,9 @@ const topupBlock = () => `
 // =====================================================================
 function home() {
   const r = '';
-  const featured = team.filter((m) => m.photo).slice(0, 8);
+  const pick = ['kai', 'mary-low', 'sam-chen', 'jade-lim', 'zenn-lim', 'daniel-ding'];
+  const faces = pick.map((slug) => team.find((m) => m.slug === slug)).filter((m) => m && m.photo)
+    .map((m) => ({ ...m, short: m.slug === 'kai' ? 'Dr Kai' : m.name.split(' ')[0] }));
   return {
     path: '',
     active: 'home',
@@ -73,83 +74,78 @@ function home() {
     })}</script>`,
     body: `
 <section class="hero">
-  <div class="container hero__grid">
-    <div class="hero__copy reveal">
-      <p class="eyebrow"><span class="dot"></span> Upper Thomson · Since 2019</p>
-      <h1>Move well.<br><em>Heal</em> well.<br>Live well.</h1>
-      <p class="lead">Singapore's first boutique Yoga, Pilates &amp; Rehab Therapy studio. Expert-led classes, private coaching and rehabilitation programmes that relieve back, neck and shoulder pain, improve posture, build strength and support injury recovery, for all ages.</p>
+  <div class="container hero__panel">
+    <div class="hero__copy">
+      <h1>Coaches who know your name.</h1>
+      <p class="hero__lead">Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, taught in English and 华语 and led by Dr Kai, Doctor of Osteopathy.</p>
       <div class="actions">
-        <a class="btn btn--primary" href="${site.links.packages}">Start with 5 classes · $60</a>
-        <a class="btn btn--ghost" href="${wa("Hi Healthtinity! I'd like to speak to someone about my pain or mobility concerns. Could you help me choose the right programme?")}" target="_blank" rel="noopener">Talk to a therapist</a>
+        <a class="btn btn--sun" href="${site.links.packages}">Start with 5 classes for $60 ${icon.arrow}</a>
+        <a class="wa-link" href="${wa("Hi Healthtinity! I'm new and would like to find out which class suits me.")}" target="_blank" rel="noopener">${icon.wa} WhatsApp us</a>
       </div>
-      <ul class="hero__trust">
-        <li><strong>Thousands</strong><span>of members helped</span></li>
-        <li><strong>${team.length}+</strong><span>certified coaches</span></li>
-        <li><strong>1 min</strong><span>from Upper Thomson MRT</span></li>
-      </ul>
       <div class="press">
         <p class="press__label">Featured in</p>
-        <a class="press__logo press__logo--zb" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/" aria-label="Read our Lianhe Zaobao feature">
-          ${zaobaoLogo}
-        </a>
-        <a class="press__more" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">Read the feature ${icon.arrow}</a>
+        <a class="press__logo" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/" aria-label="Read our Lianhe Zaobao feature">${zaobaoLogo}</a>
+        <a class="press__more" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">Read the feature</a>
       </div>
     </div>
-    <div class="hero__media reveal">
-      <div class="hero__img">
-        <img src="assets/img/hero-coach.jpg" srcset="assets/img/hero-coach-800.jpg 640w, assets/img/hero-coach.jpg 1120w" sizes="(min-width: 960px) 46vw, 92vw" alt="A Healthtinity coach gently guiding a client through a seated side stretch" width="1120" height="1400" fetchpriority="high">
-      </div>
-      <div class="float-card float-card--a">
-        <span class="float-card__icon">$60</span>
-        <div><strong>New Members Starter Pack</strong><span>5 classes + $22 wallet credit</span></div>
-      </div>
+    <div class="faces">
+      ${faces.map((m) => `<a class="face" href="team/${m.slug}/"><img src="assets/img/team/${m.photo}" alt="${esc(m.name)}, ${esc(m.role)}" width="560" height="560"${m.slug === 'kai' ? ' fetchpriority="high"' : ''}><span class="face__name">${esc(m.short)}</span></a>`).join('')}
     </div>
   </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    ${Array(2).fill('<span>Yoga</span><span>·</span><span>Mat Pilates</span><span>·</span><span>Yoga Rehab Therapy</span><span>·</span><span>Barre</span><span>·</span><span>Hot Yoga</span><span>·</span><span>Private 1:1</span><span>·</span><span>Osteopathy-informed</span><span>·</span>').join('')}
+    ${Array(2).fill(['Yoga', 'Mat Pilates', 'Yoga Rehab Therapy', 'Therapy &amp; Stretch', 'Hot Yoga', 'Tone &amp; Sculpt', 'Private 1:1', 'Osteopathy-informed'].map((x) => `<span>${x}</span><i></i>`).join('')).join('')}
   </div>
 </div>
 
-<section class="section" id="story">
-  <div class="container split">
-    <div class="reveal">
-      <p class="eyebrow">About Healthtinity · Our story</p>
-      <h2>Where fitness meets <em>healing</em>.</h2>
+<section class="section" id="start">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2>Your first week, sorted.</h2>
+      <p class="lead">Five classes to try anything on the schedule, from gentle therapy stretches to Hot Vinyasa. Beginners are always welcome.</p>
     </div>
-    <div class="reveal">
-      <p class="lead">Founded in 2019, Healthtinity was created with a simple mission: to bridge the gap between traditional fitness and rehabilitation. By combining Yoga, Mat Pilates and therapeutic movement, we've helped thousands of people reduce pain, improve mobility and build strength in a safe, supportive environment.</p>
-      <a class="arrow-link" href="team/">Meet the people behind it ${icon.arrow}</a>
+    <div class="welcome">
+      <div class="stamp reveal">
+        <p class="stamp__kind">New Members Starter Pack</p>
+        <p class="stamp__offer">5 classes · $60</p>
+        <ol class="stamp__dots" aria-label="Five classes">
+          <li class="is-stamped"><img src="assets/img/logo-180.png" alt="" width="40" height="40"></li><li>2</li><li>3</li><li>4</li><li>5</li>
+        </ol>
+        <ul class="stamp__perks">
+          <li>${icon.check} <span>Any group class: Yoga, Mat Pilates, Therapy, Tone &amp; Sculpt</span></li>
+          <li>${icon.check} <span>Plus <strong>$22 credit</strong> in your Healthtinity Wallet</span></li>
+          <li>${icon.check} <span>Book in the HT Life app, up to 7 days ahead</span></li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn--primary" href="${site.links.packages}">Get the Starter Pack ${icon.arrow}</a>
+          <a class="arrow-link" href="package/">All packages</a>
+        </div>
+      </div>
+      <div class="today reveal" data-today>
+        <div class="today__head">
+          <h3 data-today-title>Today at the studio</h3>
+          <span>${site.room} · 246J Upper Thomson Rd</span>
+        </div>
+        ${schedule.map((d, i) => `<ol class="today__list" data-today-day="${d.day}"${i ? ' hidden' : ''}>
+          ${d.classes.map((c) => `<li class="today__row" data-time="${c.time}"><span class="today__time">${c.time}</span><span class="today__class">${esc(c.name.replace(/\s*·\s*Off Peak$/, '').replace(/\s+[一-鿿].*$/, ''))}<small>with ${esc(c.coach)}</small></span><a href="${site.links.schedule}">Book</a></li>`).join('')}
+        </ol>`).join('')}
+        <a class="arrow-link" href="timetable/">See the full week ${icon.arrow}</a>
+      </div>
     </div>
-  </div>
-  <div class="container pillars">
-    <article class="pillar reveal">
-      <h3>Relieve pain</h3>
-      <p>Programmes for back, neck and shoulder pain, sciatica and posture-related issues, guided by coaches who understand the body.</p>
-    </article>
-    <article class="pillar reveal">
-      <h3>Restore mobility</h3>
-      <p>Improve your posture, regain your range of motion and move through daily life with ease.</p>
-    </article>
-    <article class="pillar reveal">
-      <h3>Build strength</h3>
-      <p>Mindful, progressive training for a strong, resilient body at every age and stage.</p>
-    </article>
   </div>
 </section>
 
-<section class="section section--sand">
-  <div class="container rehab">
-    <div class="rehab__media reveal">
+<section class="section section--sand" id="story">
+  <div class="container founder">
+    <div class="founder__card reveal">
       <img src="assets/img/team/kai.jpg" alt="Dr Kai, founder and Master Therapist at Healthtinity" loading="lazy" width="560" height="560">
-      <div class="rehab__badge"><strong>Dr Kai</strong><span>Doctor of Osteopathy · Founder</span></div>
+      <p><strong>Dr Kai</strong><span>Doctor of Osteopathy · Founder</span></p>
     </div>
     <div class="reveal">
-      <p class="eyebrow">Signature programme</p>
-      <h2>Yoga Rehab <em>Therapy</em>.</h2>
-      <p class="lead">Healthtinity pioneered one of Singapore's earliest Yoga Rehab Therapy approaches. It integrates Osteopathy, Yoga and Mat Pilates to support the body's natural healing process, relieve pain, restore mobility and improve overall well-being.</p>
+      <h2>Where fitness meets healing.</h2>
+      <p class="lead">Since 2019, Healthtinity has bridged fitness and rehabilitation. Our signature Yoga Rehab Therapy brings Osteopathy, Yoga and Mat Pilates together to relieve pain, restore mobility and build strength, for every age.</p>
       <ul class="checklist">
         <li>${icon.check} Chronic neck &amp; back pain, sciatica, scoliosis</li>
         <li>${icon.check} Sports injuries &amp; post-surgical rehabilitation</li>
@@ -157,8 +153,8 @@ function home() {
         <li>${icon.check} Personalised 1:1 plans that target the root cause</li>
       </ul>
       <div class="actions">
-        <a class="btn btn--primary" href="${wa("Hi Healthtinity! I'd like to speak to someone about my pain or mobility concerns. Could you help me choose the right programme?")}" target="_blank" rel="noopener">Book your appointment</a>
-        <a class="btn btn--ghost" href="team/kai/">About Dr Kai</a>
+        <a class="btn btn--primary" href="${wa("Hi Healthtinity! I'd like to speak to someone about my pain or mobility concerns. Could you help me choose the right programme?")}" target="_blank" rel="noopener">Talk to a therapist ${icon.arrow}</a>
+        <a class="arrow-link" href="team/kai/">About Dr Kai</a>
       </div>
     </div>
   </div>
@@ -166,34 +162,35 @@ function home() {
 
 <section class="section" id="classes">
   <div class="container">
-    <div class="section__head reveal">
-      <p class="eyebrow">Group classes</p>
-      <h2>Find the practice that fits <em>you</em>.</h2>
-      <p class="muted">More than 50 classes a week, from Hot Vinyasa to gentle therapy stretches. Beginners are always welcome.</p>
+    <div class="section__head section__head--row reveal">
+      <div>
+        <h2>Find what moves you.</h2>
+        <p class="lead" style="margin:0">More than 50 classes a week across four kinds of practice.</p>
+      </div>
+      <a class="arrow-link" href="timetable/">View the weekly schedule ${icon.arrow}</a>
     </div>
-    <div class="cards">
-      <a class="card card--feature reveal" href="timetable/?c=therapy">
-        <span class="tag">Most loved</span>
-        <h3>Therapy &amp; Stretch</h3>
-        <p>Mobility, Full Body Stretch, Myofascial Release and Upper Body Stretch: therapeutic group classes that ease tension and restore movement.</p>
-        <span class="arrow-link">See therapy classes ${icon.arrow}</span>
-      </a>
-      <a class="card reveal" href="timetable/?c=yoga"><div class="card__num">01</div><h3>Yoga</h3><p>Hatha, Vinyasa, Ashtanga, Wheel Yoga, Yin &amp; Restore, and Hot &amp; Warm flows.</p></a>
-      <a class="card reveal" href="timetable/?c=pilates"><div class="card__num">02</div><h3>Mat Pilates</h3><p>Foundation, Dynamic and Warm Mat Pilates for core, posture and stability.</p></a>
-      <a class="card reveal" href="timetable/?c=sculpt"><div class="card__num">03</div><h3>Tone &amp; Sculpt</h3><p>Low-impact, high-energy sculpting and Barre-inspired strength sessions.</p></a>
-      <a class="card reveal" href="${wa("Hi Healthtinity! I'm interested in private 1:1 sessions.")}" target="_blank" rel="noopener"><div class="card__num">04</div><h3>Private 1:1</h3><p>Personalised coaching and therapy built around your body and goals.</p></a>
+    <div class="tiles">
+      ${[
+        ['yoga', 'Yoga', 'Hatha, Vinyasa, Ashtanga, Wheel Yoga, Yin &amp; Restore, and Hot &amp; Warm flows.', 'class-yoga.jpg', 'A small group class holding warrior two pose'],
+        ['pilates', 'Mat Pilates', 'Foundation, Dynamic and Warm Mat Pilates for core, posture and stability.', 'class-pilates.jpg', 'A Mat Pilates class doing single-leg lifts while a coach gives a cue'],
+        ['therapy', 'Therapy &amp; Stretch', 'Mobility, Full Body Stretch, Myofascial Release and Upper Body Stretch.', 'hero.jpg', 'A Healthtinity therapy and stretch group class'],
+        ['sculpt', 'Tone &amp; Sculpt', 'Low-impact, high-energy sculpting and Barre-inspired strength.', 'class-sculpt.jpg', 'A Tone and Sculpt class squatting with light dumbbells'],
+      ].map(([c, t, d, img, alt]) => `<a class="tile reveal" href="timetable/?c=${c}">
+        <div class="tile__img"><img src="assets/img/${img}" alt="${alt}" loading="lazy" width="1200" height="900">${c === 'therapy' ? '<span class="tag">Most loved</span>' : ''}</div>
+        <div class="tile__body"><h3>${t} ${icon.arrow}</h3><p>${d}</p></div>
+      </a>`).join('')}
     </div>
-    <div class="center reveal"><a class="btn btn--ghost" href="timetable/">View the weekly schedule</a></div>
+    <div class="private reveal">
+      <div><h3>Prefer one-to-one?</h3><p>Private coaching and therapy built around your body and goals.</p></div>
+      <a class="btn btn--ghost" href="${wa("Hi Healthtinity! I'm interested in private 1:1 sessions.")}" target="_blank" rel="noopener">Ask about Private 1:1</a>
+    </div>
   </div>
 </section>
 
-<section class="section section--sand" id="pricing">
+<section class="section section--sun" id="pricing">
   <div class="container">
     <div class="section__head section__head--row reveal">
-      <div>
-        <p class="eyebrow">Pricing</p>
-        <h2>Flexible ways to <em>flow</em>.</h2>
-      </div>
+      <h2>Flexible ways to flow.</h2>
       <a class="arrow-link" href="package/">Compare all options ${icon.arrow}</a>
     </div>
     <div class="pricing">
@@ -205,25 +202,10 @@ function home() {
   </div>
 </section>
 
-<section class="section" id="team">
+<section class="section">
   <div class="container">
     <div class="section__head section__head--row reveal">
-      <div>
-        <p class="eyebrow">Our team</p>
-        <h2>Coaches who <em>care</em>.</h2>
-      </div>
-      <a class="arrow-link" href="team/">Meet all ${team.length} coaches ${icon.arrow}</a>
-    </div>
-    <div class="team-strip reveal">
-      ${featured.map((m) => `<a class="coach" href="team/${m.slug}/">${avatar(m, r, 'coach__img')}<strong>${esc(m.name)}</strong><span>${esc(m.role)}</span></a>`).join('')}
-    </div>
-  </div>
-</section>
-
-<section class="section section--sand">
-  <div class="container">
-    <div class="section__head section__head--row reveal">
-      <div><p class="eyebrow">What's new</p><h2>From the <em>journal</em>.</h2></div>
+      <h2>From the studio.</h2>
       <a class="arrow-link" href="blog/">See all articles ${icon.arrow}</a>
     </div>
     <div class="posts">
@@ -250,7 +232,6 @@ const visitBlock = (r, withMap = true) => `
   <div class="container">
     <div class="visit reveal">
       <div class="visit__copy">
-        <p class="eyebrow eyebrow--light">Conveniently located at Upper Thomson</p>
         <h2>Your first class is <em>closer</em> than you think.</h2>
         <address>${site.address.join('<br>')}</address>
         <ul class="visit__how">
@@ -293,7 +274,6 @@ ${pageHero({ r, eyebrow: "What's new", title: 'Stories, news &amp; <em>gentle wi
     <div class="posts posts--spaced">
       ${rest.map((p) => postCard(p, r)).join('')}
       <div class="press-card reveal">
-        <p class="eyebrow">As featured on</p>
         <h3>Lianhe Zaobao 联合早报</h3>
         <p class="muted">Healthtinity shared gentle yoga practices for better sleep and relaxation in a September 2026 feature.</p>
       </div>
@@ -332,7 +312,7 @@ function blogPost(p) {
 </article>
 <section class="section section--sand">
   <div class="container">
-    <div class="section__head reveal"><p class="eyebrow">Related articles</p><h2>Keep <em>reading</em>.</h2></div>
+    <div class="section__head reveal"><h2>Keep <em>reading</em>.</h2></div>
     <div class="posts">${related.map((x) => postCard(x, r)).join('')}</div>
   </div>
 </section>`,
@@ -360,14 +340,14 @@ ${pageHero({ r, eyebrow: 'Our instructors', title: 'Coaches who <em>care</em>.',
       <a class="lead-card reveal" href="${m.slug}/">
         ${avatar(m, r, 'lead-card__img')}
         <div class="lead-card__copy">
-          <p class="eyebrow">${esc(m.role)}</p>
+          <p class="role">${esc(m.role)}</p>
           <h2>${esc(m.name)}</h2>
           <p class="muted">${esc(m.bio[0].slice(0, 210))}…</p>
           <span class="arrow-link">Read full bio ${icon.arrow}</span>
         </div>
       </a>`).join('')}
     </div>
-    <div class="section__head reveal" style="margin-top:96px"><p class="eyebrow">Instructors</p><h2>The <em>team</em>.</h2></div>
+    <div class="section__head reveal" style="margin-top:96px"><h2>The <em>team</em>.</h2></div>
     <div class="team-grid">
       ${rest.map((m) => `
       <a class="coach reveal" href="${m.slug}/">
@@ -398,7 +378,7 @@ function teamMember(m) {
     <div class="profile">
       <div class="profile__photo reveal">${avatar(m, r, 'profile__img')}</div>
       <div class="profile__copy reveal">
-        <p class="eyebrow"><span class="dot"></span> ${esc(m.role)}</p>
+        <p class="role">${esc(m.role)}</p>
         <h1>${esc(m.name)}</h1>
         ${m.headline ? `<p class="lead">${esc(m.headline)}</p>` : `<p class="lead">${esc(m.skills)}</p>`}
         <p class="profile__skills"><strong>Skilled in</strong> ${esc(m.skills)}</p>
@@ -426,7 +406,7 @@ function teamMember(m) {
 </section>
 <section class="section section--sand">
   <div class="container">
-    <div class="section__head section__head--row reveal"><div><p class="eyebrow">Our team</p><h2>Meet more <em>coaches</em>.</h2></div><a class="arrow-link" href="${r}team/">All coaches ${icon.arrow}</a></div>
+    <div class="section__head section__head--row reveal"><div><h2>Meet more <em>coaches</em>.</h2></div><a class="arrow-link" href="${r}team/">All coaches ${icon.arrow}</a></div>
     <div class="team-grid team-grid--4">
       ${others.map((o) => `<a class="coach reveal" href="${r}team/${o.slug}/">${avatar(o, r, 'coach__img')}<strong>${esc(o.name)}</strong><span>${esc(o.role)}</span></a>`).join('')}
     </div>
@@ -505,7 +485,6 @@ const faqSection = (r, items) => `
 <section class="section section--sand">
   <div class="container split split--faq">
     <div class="reveal">
-      <p class="eyebrow">FAQ</p>
       <h2>Good to <em>know</em>.</h2>
       <p class="muted">More answers on our <a href="${r}faqs/">FAQ page</a>, or <a href="${site.whatsapp}" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
     </div>
@@ -756,7 +735,6 @@ function notFound() {
     body: `
 <section class="section">
   <div class="container center-block">
-    <p class="eyebrow">404</p>
     <h1>Let's find your <em>flow</em> again.</h1>
     <p class="lead">The page you're looking for has moved or doesn't exist.</p>
     <div class="actions actions--center"><a class="btn btn--primary" href="./">Back to home</a><a class="btn btn--ghost" href="timetable/">View schedule</a></div>

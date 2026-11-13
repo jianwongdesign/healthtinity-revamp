@@ -83,6 +83,28 @@
     });
   }
 
+  // ---- Home: "Today at the studio" shows today's classes, past ones dimmed
+  const today = $('[data-today]');
+  if (today) {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const full = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const now = new Date();
+    const mins = (t) => { const m = t.match(/(\d+):(\d+)(am|pm)/); let h = +m[1] % 12; if (m[3] === 'pm') h += 12; return h * 60 + +m[2]; };
+    const nowMin = now.getHours() * 60 + now.getMinutes();
+    let d = now.getDay();
+    let list = $(`[data-today-day="${days[d]}"]`, today);
+    const rows = list ? $$('.today__row', list) : [];
+    const allPast = rows.length > 0 && rows.every((r) => mins(r.dataset.time) < nowMin);
+    if (allPast) { d = (d + 1) % 7; list = $(`[data-today-day="${days[d]}"]`, today); }
+    $$('.today__list', today).forEach((l) => (l.hidden = l !== list));
+    $('[data-today-title]', today).textContent = `${allPast ? 'Tomorrow' : 'Today'}, ${full[d]}`;
+    // Show the next five classes only
+    if (list) {
+      const upcoming = $$('.today__row', list).filter((r) => allPast || mins(r.dataset.time) >= nowMin);
+      $$('.today__row', list).forEach((r) => (r.hidden = !upcoming.slice(0, 5).includes(r)));
+    }
+  }
+
   // ---- Footer year
   const y = $('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
