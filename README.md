@@ -74,5 +74,6 @@ docs/             # built site (served by GitHub Pages)
 - [ ] **Promo prices** (Holiday promo, 15 Class Pack) are still valid
 - [ ] **Contact form** currently sends through WhatsApp or email. Connect a form service if they'd prefer submissions in an inbox.
 - [ ] **Press logos:** the Featured-in strip uses the official Lianhe Zaobao logo. Confirm the studio is OK using it, and send any other press features to add
+- [ ] **Home hero photo** is AI-generated (Higgsfield) as a stand-in. Swap in a real studio photo of a coach with a client when available
 - [ ] Testimonials / Google reviews, more studio photography, an SVG logo
 - [ ] Opening hours (not on the current site)
