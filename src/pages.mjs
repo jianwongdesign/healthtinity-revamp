@@ -80,6 +80,14 @@ function home() {
         <li><strong>${team.length}+</strong><span>certified coaches</span></li>
         <li><strong>1 min</strong><span>from Upper Thomson MRT</span></li>
       </ul>
+      <div class="press">
+        <p class="press__label">Featured in</p>
+        <a class="press__logo press__logo--zb" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/" aria-label="Read our Lianhe Zaobao feature">
+          <span class="zb__cn" lang="zh">联合早报</span>
+          <span class="zb__en">Lianhe Zaobao</span>
+        </a>
+        <a class="press__more" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">Read the feature ${icon.arrow}</a>
+      </div>
     </div>
     <div class="hero__media reveal">
       <div class="hero__img">
@@ -89,10 +97,6 @@ function home() {
         <span class="float-card__icon">✦</span>
         <div><strong>New Members Starter Pack</strong><span>5 classes + $22 wallet credit</span></div>
       </div>
-      <a class="float-card float-card--b" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">
-        <span class="float-card__badge">As featured on</span>
-        <strong>Lianhe Zaobao 联合早报</strong>
-      </a>
     </div>
   </div>
 </section>
