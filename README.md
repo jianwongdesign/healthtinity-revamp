@@ -26,7 +26,7 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 
 ## Design direction
 
-**Modern, warm, calm.** The logo blue leads, set on warm cream and sand tones with a soft apricot accent. It should feel clinical enough to trust and warm enough to feel welcome.
+**Warm and professional.** The logo blue leads on warm white and linen sections, with real studio photography doing the warm work. No decorative glows, floating gimmicks or icon tiles.
 
 | Token | Hex | Use |
 |---|---|---|
@@ -37,7 +37,7 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 | Sand | `#F4EADD` | Alternate sections, footer |
 | Apricot | `#F0A878` | Warm accent: badges, underlines, therapy tags |
 
-**Type:** Outfit Bold (clean, bold sans-serif headings) + Plus Jakarta Sans (body).
+**Type:** Hanken Grotesk throughout (bold, clean headings; easy-reading body).
 
 ## Editing & building
 
