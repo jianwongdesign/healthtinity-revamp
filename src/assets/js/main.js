@@ -1,5 +1,6 @@
 // Healthtinity: progressive enhancements (all content works without JS)
 (() => {
+  const zh = document.documentElement.lang.startsWith('zh');
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
@@ -16,7 +17,7 @@
     toggle.addEventListener('click', () => {
       const open = menu.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.setAttribute('aria-label', zh ? (open ? '关闭菜单' : '打开菜单') : (open ? 'Close menu' : 'Open menu'));
     });
   }
 
@@ -58,7 +59,7 @@
       $$('.sched__row').forEach((row) => (row.hidden = cat !== 'all' && row.dataset.cat !== cat));
       dayTabs.forEach((t) => {
         const n = $$(`[data-day-panel="${t.dataset.day}"] .sched__row`).filter((r) => !r.hidden).length;
-        t.querySelector('small').textContent = `${n} class${n === 1 ? '' : 'es'}`;
+        t.querySelector('small').textContent = zh ? `${n} 堂课` : `${n} class${n === 1 ? '' : 'es'}`;
       });
     };
     dayTabs.forEach((t) => t.addEventListener('click', () => showDay(t.dataset.day)));
@@ -75,10 +76,12 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const f = new FormData(form);
-      const text = `Hi Healthtinity! 👋\n\nName: ${f.get('name')}\nEmail: ${f.get('email')}\nMobile: ${f.get('mobile') || '-'}\nSubject: ${f.get('subject')}\n\n${f.get('message')}`;
+      const text = zh
+        ? `您好 Healthtinity！👋\n\n姓名：${f.get('name')}\n电邮：${f.get('email')}\n手机：${f.get('mobile') || '-'}\n主题：${f.get('subject')}\n\n${f.get('message')}`
+        : `Hi Healthtinity! 👋\n\nName: ${f.get('name')}\nEmail: ${f.get('email')}\nMobile: ${f.get('mobile') || '-'}\nSubject: ${f.get('subject')}\n\n${f.get('message')}`;
       const url = via === 'wa'
         ? `${form.dataset.wa}?text=${encodeURIComponent(text)}`
-        : `mailto:${form.dataset.email}?subject=${encodeURIComponent(`[Website] ${f.get('subject')}`)}&body=${encodeURIComponent(text)}`;
+        : `mailto:${form.dataset.email}?subject=${encodeURIComponent(`${zh ? '[网站]' : '[Website]'} ${f.get('subject')}`)}&body=${encodeURIComponent(text)}`;
       window.open(url, via === 'wa' ? '_blank' : '_self');
     });
   }
@@ -87,7 +90,9 @@
   const today = $('[data-today]');
   if (today) {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const full = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const full = zh
+      ? ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+      : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const now = new Date();
     const mins = (t) => { const m = t.match(/(\d+):(\d+)(am|pm)/); let h = +m[1] % 12; if (m[3] === 'pm') h += 12; return h * 60 + +m[2]; };
     const nowMin = now.getHours() * 60 + now.getMinutes();
@@ -97,7 +102,9 @@
     const allPast = rows.length > 0 && rows.every((r) => mins(r.dataset.time) < nowMin);
     if (allPast) { d = (d + 1) % 7; list = $(`[data-today-day="${days[d]}"]`, today); }
     $$('.today__list', today).forEach((l) => (l.hidden = l !== list));
-    $('[data-today-title]', today).textContent = `${allPast ? 'Tomorrow' : 'Today'}, ${full[d]}`;
+    $('[data-today-title]', today).textContent = zh
+      ? `${allPast ? '明天' : '今天'}，${full[d]}`
+      : `${allPast ? 'Tomorrow' : 'Today'}, ${full[d]}`;
     // Show the next five classes only
     if (list) {
       const upcoming = $$('.today__row', list).filter((r) => allPast || mins(r.dataset.time) >= nowMin);

@@ -731,7 +731,7 @@ html:not(.js) .today__row:nth-child(n+6) { display: none; }
 /* Touch targets: at least 44px tall on touch screens, without shifting layout */
 @media (pointer: coarse), (max-width: 959px) {
   .arrow-link { min-height: 44px; }
-  .crumbs a, .announce a { display: inline-block; padding: 10px 4px; margin: -10px -4px; }
+  .crumbs a, .announce a { display: inline-block; padding: 10px 8px; margin: -10px -8px; }
   .today__row a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; margin: -10px -10px; }
   .footer__grid > div > a:not(.brand) { padding: 10px 0; }
   .info-list a { display: inline-block; padding: 9px 0; margin: -9px 0; }
@@ -742,3 +742,40 @@ html:not(.js) .today__row:nth-child(n+6) { display: none; }
 body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 input, textarea, select, [contenteditable="true"] { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
 img { -webkit-user-drag: none; }
+
+/* =========================================================
+   Language switch (EN | 中文) and Chinese typography
+   ========================================================= */
+.lang { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border-radius: 999px; background: var(--sky); flex: none; }
+.lang a {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 36px; min-width: 44px; padding: 0 11px;
+  border-radius: 999px; color: var(--navy); font-family: var(--font-display); font-weight: 800; font-size: .88rem; line-height: 1;
+}
+.lang a:hover { color: var(--blue-deep); background: #fff; }
+.lang a[aria-current] { background: var(--navy); color: #fff; }
+.nav__cta { align-items: center; gap: 14px; }
+.lang--bar { margin-left: auto; }
+.lang--bar a { min-height: 40px; }
+@media (min-width: 1000px) { .lang--bar { display: none; } }
+@media (max-width: 999px) {
+  .nav__inner { gap: 10px; }
+  .nav__toggle { margin-left: 4px; flex: none; }
+  .brand { min-width: 0; }
+}
+@media (max-width: 380px) {
+  .brand { font-size: 1.2rem; gap: 8px; min-height: 44px; }
+  .brand img { width: 34px; height: 34px; }
+  .lang--bar a { min-width: 40px; padding: 0 8px; font-size: .82rem; }
+}
+
+/* Chinese: CJK fonts, no negative tracking, roomier line height */
+:lang(zh-Hans) {
+  --font-display: "Nunito", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", ui-rounded, system-ui, sans-serif;
+  --font-body: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+html:lang(zh-Hans) h1, html:lang(zh-Hans) h2, html:lang(zh-Hans) h3, html:lang(zh-Hans) h4 { letter-spacing: 0; line-height: 1.22; }
+html:lang(zh-Hans) body { line-height: 1.75; }
+html:lang(zh-Hans) .hero h1 { max-width: 12em; }
+html:lang(zh-Hans) .reel__name { font-family: var(--font-display); font-size: 1rem; font-weight: 800; padding: 3px 9px 4px; }
+html:lang(zh-Hans) .marquee__track { letter-spacing: .04em; }
+.legal__note { background: var(--sun-soft); border-radius: var(--r-sm); padding: 14px 18px; font-size: .95rem; }

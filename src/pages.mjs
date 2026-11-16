@@ -1,21 +1,20 @@
-import {
-  site, wa, packages, membershipsUpfront, membershipsRecurring, topups,
-  team, schedule, classCategory, categories, posts, faqs,
-} from './data.mjs';
+import { site as siteEn, wa, topups, schedule, classCategory } from './data.mjs';
 import { terms, privacy } from './legal.mjs';
 import { esc, icon, initials, pageHero, ctaBand } from './layout.mjs';
+import { t, ar, isZh, L, className } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 
 // Official Lianhe Zaobao logo (Wikipedia: File:Lianhe_Zaobao_new_logo.svg); mono by default, brand colours on hover
 const zaobaoLogo = readFileSync(new URL('./assets/img/press/zaobao.svg', import.meta.url), 'utf8')
-  .replace('<svg ', '<svg class="press__svg" role="img" aria-label="Lianhe Zaobao 联合早报" ')
+  .replace('<svg ', '<svg class="press__svg" role="img" aria-label="Lianhe Zaobao" ')
   .replace(/fill="black"/g, 'fill="currentColor"')
   .replace(/fill="(#A80034|#E90044)"/g, 'class="zb-brand" style="--c:$1" fill="currentColor"');
 
+const site = siteEn; // links, phone, address: same in both languages
 const money = (n) => n.toLocaleString('en-SG');
 const avatar = (m, r, cls = '') =>
   m.photo
-    ? `<img class="${cls}" src="${r}assets/img/team/${m.photo}" alt="${esc(m.name)}" loading="lazy" width="560" height="560">`
+    ? `<img class="${cls}" src="${ar(r)}assets/img/team/${m.photo}" alt="${esc(m.name)}" loading="lazy" width="560" height="560">`
     : `<div class="${cls} avatar-fallback" aria-hidden="true">${initials(m.name)}</div>`;
 
 const faqList = (items) => `
@@ -23,16 +22,18 @@ const faqList = (items) => `
   ${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n  ')}
 </div>`;
 
+const getting = () => L.site().getting;
+
 // ---------------------------------------------------------------------
 // Pricing cards
 // ---------------------------------------------------------------------
-const priceCard = (p, href, cta = 'Buy now') => `
+const priceCard = (p, href, cta = t('Buy now', '立即购买')) => `
 <article class="price${p.featured ? ' price--hot' : ''} reveal">
   ${p.badge ? `<span class="ribbon">${esc(p.badge)}</span>` : ''}
   <h3>${esc(p.name)}</h3>
   ${p.sub ? `<p class="price__sub">${esc(p.sub)}</p>` : ''}
   <p class="price__amt"><sup>S$</sup>${money(p.price)}${p.per ? `<small>/ ${p.per}</small>` : ''}</p>
-  <p class="price__meta">${esc(p.credits || p.billing || 'One-time payment')}${p.credits ? ' · One-time payment' : ''}</p>
+  <p class="price__meta">${esc(p.credits || p.billing || t('One-time payment', '一次性付款'))}${p.credits ? t(' · One-time payment', ' · 一次性付款') : ''}</p>
   <ul>
     <li>${esc(p.validity)}</li>
     ${(p.perks || []).map((x) => `<li>${esc(x)}</li>`).join('')}
@@ -44,34 +45,46 @@ const priceCard = (p, href, cta = 'Buy now') => `
 const topupBlock = () => `
 <div class="topup reveal" id="topup">
   <div>
-    <h3>Top Up &amp; Flow: more flexibility, more you.</h3>
-    <p>Not everyone wants to commit to a package, and now you don't have to. Top up your HT Wallet, receive bonus credits and use them however you like.</p>
+    <h3>${t('Top Up &amp; Flow: more flexibility, more you.', '储值随心练：更灵活，更自在。')}</h3>
+    <p>${t("Not everyone wants to commit to a package, and now you don't have to. Top up your HT Wallet, receive bonus credits and use them however you like.", '不是每个人都想绑定课程配套，现在您不必了。为 HT 钱包储值，获得额外赠送额度，随心使用。')}</p>
   </div>
   <ul class="topup__tiers">
-    ${topups.map((t) => `<li><strong>$${t.pay}</strong><span>+ $${t.bonus} bonus</span></li>`).join('')}
+    ${topups.map((x) => `<li><strong>$${x.pay}</strong><span>${t(`+ $${x.bonus} bonus`, `额外送 $${x.bonus}`)}</span></li>`).join('')}
   </ul>
-  <a class="btn btn--light" href="${wa("Hi Healthtinity! 👋 I saw the Top Up & Flow offer on your website and would like to find out more about the HT Wallet Top Up options")}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+  <a class="btn btn--light" href="${wa(t("Hi Healthtinity! 👋 I saw the Top Up & Flow offer on your website and would like to find out more about the HT Wallet Top Up options", '您好 Healthtinity！👋 我在网站上看到储值随心练（Top Up & Flow）优惠，想了解 HT 钱包储值的详情。'))}" target="_blank" rel="noopener">${t('Enquire on WhatsApp', 'WhatsApp 咨询')}</a>
 </div>`;
+
+const classTypes = () => [
+  ['yoga', t('Yoga', '瑜伽'), t('Hatha, Vinyasa, Ashtanga, Wheel Yoga, Yin &amp; Restore, and Hot &amp; Warm flows.', '哈他、流瑜伽、阿斯汤加、瑜伽轮、阴瑜伽与修复，以及热瑜伽与温热流瑜伽。'), 'class-yoga.jpg', t('A small group class holding warrior two pose', '小班瑜伽课正在练习战士二式')],
+  ['pilates', t('Mat Pilates', '垫上普拉提'), t('Foundation, Dynamic and Warm Mat Pilates for core, posture and stability.', '基础、动态与温热垫上普拉提，强化核心、改善体态与稳定性。'), 'class-pilates.jpg', t('A Mat Pilates class doing single-leg lifts while a coach gives a cue', '垫上普拉提课，导师正在指导单腿抬举')],
+  ['therapy', t('Therapy &amp; Stretch', '理疗伸展'), t('Mobility, Full Body Stretch, Myofascial Release and Upper Body Stretch.', '关节灵活、全身伸展、筋膜放松与上半身伸展。'), 'hero.jpg', t('A Healthtinity therapy and stretch group class', 'Healthtinity 理疗伸展团体课')],
+  ['sculpt', t('Tone &amp; Sculpt', '紧致塑形'), t('Low-impact, high-energy sculpting and Barre-inspired strength.', '低冲击、高能量的塑形训练，融合芭蕾式力量练习。'), 'class-sculpt.jpg', t('A Tone and Sculpt class squatting with light dumbbells', '紧致塑形课学员手持轻哑铃深蹲')],
+];
 
 // =====================================================================
 // HOME
 // =====================================================================
 function home() {
   const r = '';
+  const A = ar(r);
+  const packages = L.packages();
+  const membershipsRecurring = L.membershipsRecurring();
   // Class photos for the hero reel. Repeated so the loop is wide enough on large screens.
   const reelBase = [
-    ['pilates', 'Mat Pilates', 'class-pilates.jpg', 'A Mat Pilates class doing single-leg lifts while a coach gives a cue'],
-    ['therapy', 'Therapy &amp; Stretch', 'hero.jpg', 'A therapy and stretch class easing into a knee hug'],
-    ['yoga', 'Yoga', 'class-yoga.jpg', 'A small group yoga class holding warrior two'],
-    ['therapy', 'Yoga Rehab', 'hero-coach.jpg', 'A coach guiding a seated side stretch'],
-    ['sculpt', 'Tone &amp; Sculpt', 'class-sculpt.jpg', 'A Tone and Sculpt class squatting with light dumbbells'],
+    ['pilates', t('Mat Pilates', '垫上普拉提'), 'class-pilates.jpg', t('A Mat Pilates class doing single-leg lifts while a coach gives a cue', '垫上普拉提课，导师正在指导单腿抬举')],
+    ['therapy', t('Therapy &amp; Stretch', '理疗伸展'), 'hero.jpg', t('A therapy and stretch class easing into a knee hug', '理疗伸展课学员抱膝放松')],
+    ['yoga', t('Yoga', '瑜伽'), 'class-yoga.jpg', t('A small group yoga class holding warrior two', '小班瑜伽课正在练习战士二式')],
+    ['therapy', t('Yoga Rehab', '瑜伽康复'), 'hero-coach.jpg', t('A coach guiding a seated side stretch', '导师指导坐姿侧伸展')],
+    ['sculpt', t('Tone &amp; Sculpt', '紧致塑形'), 'class-sculpt.jpg', t('A Tone and Sculpt class squatting with light dumbbells', '紧致塑形课学员手持轻哑铃深蹲')],
   ];
   const reel = [...reelBase, ...reelBase];
+  // Headline split into words (EN) or phrases (ZH) for the staggered rise
+  const words = t('Coaches who know your name.', '叫得出|你名字的|教练。').split(t(' ', '|'));
   return {
     path: '',
     active: 'home',
-    title: 'Home',
-    description: "Singapore's first boutique Yoga, Pilates & Rehab Therapy studio at Upper Thomson. Expert-led yoga, Mat Pilates, private coaching, yoga therapy and rehabilitation for back, neck and shoulder pain.",
+    title: t('Home', '首页'),
+    description: t("Singapore's first boutique Yoga, Pilates & Rehab Therapy studio at Upper Thomson. Expert-led yoga, Mat Pilates, private coaching, yoga therapy and rehabilitation for back, neck and shoulder pain.", '新加坡首家精品瑜伽、普拉提与康复疗法工作室，位于 Upper Thomson。专业导师带领瑜伽、垫上普拉提、私人教练、瑜伽疗法，以及针对腰背、颈部和肩膀疼痛的康复课程。'),
     schema: `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'HealthClub', name: 'Healthtinity', url: 'https://healthtinity.com',
       telephone: site.phone, email: site.email, foundingDate: '2019',
@@ -80,22 +93,22 @@ function home() {
     })}</script>`,
     body: `
 <section class="hero">
-  <img class="hero__bg" src="assets/img/hero-studio.jpg" srcset="assets/img/hero-studio-1200.jpg 1200w, assets/img/hero-studio.jpg 2400w" sizes="100vw" alt="" width="2400" height="1350" fetchpriority="high">
+  <img class="hero__bg" src="${A}assets/img/hero-studio.jpg" srcset="${A}assets/img/hero-studio-1200.jpg 1200w, ${A}assets/img/hero-studio.jpg 2400w" sizes="100vw" alt="" width="2400" height="1350" fetchpriority="high">
   <div class="hero__panel">
     <div class="hero__copy">
-      <a class="hero__tag" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">
-        <span>Featured in</span><span class="hero__tag-logo">${zaobaoLogo}</span><span class="hero__tag-more">Read the feature ${icon.arrow}</span>
+      <a class="hero__tag" href="${r}blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">
+        <span>${t('Featured in', '媒体报道')}</span><span class="hero__tag-logo">${zaobaoLogo}</span><span class="hero__tag-more">${t('Read the feature', '阅读报道')} ${icon.arrow}</span>
       </a>
-      <h1>${'Coaches who know your name.'.split(' ').map((w, i) => `<span class="hero__word" style="--i:${i}">${w}</span>`).join(' ')}</h1>
-      <p class="hero__lead">Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, taught in English and <span class="nowrap">华语</span> and led by Dr Kai, Doctor of Osteopathy.</p>
+      <h1>${words.map((w, i) => `<span class="hero__word" style="--i:${i}">${w}</span>`).join(t(' ', ''))}</h1>
+      <p class="hero__lead">${t('Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, taught in English and Mandarin and led by Dr Kai, Doctor of Osteopathy.', '位于 Upper Thomson 的瑜伽、垫上普拉提与瑜伽康复疗法工作室，提供英语及华语教学，由整骨医学博士 Dr Kai 带领。')}</p>
       <div class="actions">
-        <a class="btn btn--primary" href="${site.links.packages}">Start with 5 classes for $60 ${icon.arrow}</a>
-        <a class="wa-link" href="${wa("Hi Healthtinity! I'm new and would like to find out which class suits me.")}" target="_blank" rel="noopener">${icon.wa} WhatsApp us</a>
+        <a class="btn btn--primary" href="${site.links.packages}">${t('Start with 5 classes for $60', '$60 体验 5 堂课')} ${icon.arrow}</a>
+        <a class="wa-link" href="${wa(t("Hi Healthtinity! I'm new and would like to find out which class suits me.", '您好 Healthtinity！我是新朋友，想了解哪一堂课适合我。'))}" target="_blank" rel="noopener">${icon.wa} ${t('WhatsApp us', 'WhatsApp 我们')}</a>
       </div>
     </div>
     <div class="reel">
       <div class="reel__track">
-        ${[...reel, ...reel].map(([c, t, img, alt], i) => { const dup = i >= reelBase.length; return `<a class="reel__card" href="timetable/?c=${c}"${dup ? ' aria-hidden="true" tabindex="-1"' : ''}><img src="assets/img/hero-reel/${img}" alt="${dup ? '' : alt}" width="480" height="640"${i < 3 ? ' fetchpriority="high"' : ''}><span class="reel__name">${t}</span></a>`; }).join('')}
+        ${[...reel, ...reel].map(([c, label, img, alt], i) => { const dup = i >= reelBase.length; return `<a class="reel__card" href="${r}timetable/?c=${c}"${dup ? ' aria-hidden="true" tabindex="-1"' : ''}><img src="${A}assets/img/hero-reel/${img}" alt="${dup ? '' : alt}" width="480" height="640"${i < 3 ? ' fetchpriority="high"' : ''}><span class="reel__name">${label}</span></a>`; }).join('')}
       </div>
     </div>
   </div>
@@ -103,42 +116,42 @@ function home() {
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    ${Array(2).fill(['Yoga', 'Mat Pilates', 'Yoga Rehab Therapy', 'Therapy &amp; Stretch', 'Hot Yoga', 'Tone &amp; Sculpt', 'Private 1:1', 'Osteopathy-informed'].map((x) => `<span>${x}</span><i></i>`).join('')).join('')}
+    ${Array(2).fill(t(['Yoga', 'Mat Pilates', 'Yoga Rehab Therapy', 'Therapy &amp; Stretch', 'Hot Yoga', 'Tone &amp; Sculpt', 'Private 1:1', 'Osteopathy-informed'], ['瑜伽', '垫上普拉提', '瑜伽康复疗法', '理疗伸展', '热瑜伽', '紧致塑形', '私人一对一', '整骨医学理念']).map((x) => `<span>${x}</span><i></i>`).join('')).join('')}
   </div>
 </div>
 
 <section class="section" id="start">
   <div class="container">
     <div class="section__head reveal">
-      <h2>Your first week, sorted.</h2>
-      <p class="lead">Five classes to try anything on the schedule, from gentle therapy stretches to Hot Vinyasa. Beginners are always welcome.</p>
+      <h2>${t('Your first week, sorted.', '第一周，帮你安排好。')}</h2>
+      <p class="lead">${t('Five classes to try anything on the schedule, from gentle therapy stretches to Hot Vinyasa. Beginners are always welcome.', '五堂课，课表上的课程任你体验，从温和的理疗伸展到热流瑜伽。我们永远欢迎初学者。')}</p>
     </div>
     <div class="welcome">
       <div class="stamp reveal">
-        <p class="stamp__kind">New Members Starter Pack</p>
-        <p class="stamp__offer">5 classes · $60</p>
-        <ol class="stamp__dots" aria-label="Five classes">
-          <li class="is-stamped"><img src="assets/img/logo-180.png" alt="" width="40" height="40"></li><li>2</li><li>3</li><li>4</li><li>5</li>
+        <p class="stamp__kind">${t('New Members Starter Pack', '新会员体验配套')}</p>
+        <p class="stamp__offer">${t('5 classes · $60', '5 堂课 · $60')}</p>
+        <ol class="stamp__dots" aria-label="${t('Five classes', '五堂课')}">
+          <li class="is-stamped"><img src="${A}assets/img/logo-180.png" alt="" width="40" height="40"></li><li>2</li><li>3</li><li>4</li><li>5</li>
         </ol>
         <ul class="stamp__perks">
-          <li>${icon.check} <span>Any group class: Yoga, Mat Pilates, Therapy, Tone &amp; Sculpt</span></li>
-          <li>${icon.check} <span>Plus <strong>$22 credit</strong> in your Healthtinity Wallet</span></li>
-          <li>${icon.check} <span>Book in the HT Life app, up to 7 days ahead</span></li>
+          <li>${icon.check} <span>${t('Any group class: Yoga, Mat Pilates, Therapy, Tone &amp; Sculpt', '任何团体课：瑜伽、垫上普拉提、理疗、紧致塑形')}</span></li>
+          <li>${icon.check} <span>${t('Plus <strong>$22 credit</strong> in your Healthtinity Wallet', '另送 <strong>$22 额度</strong>存入 Healthtinity 钱包')}</span></li>
+          <li>${icon.check} <span>${t('Book in the HT Life app, up to 7 days ahead', '在 HT Life 应用程序预约，最多可提前 7 天')}</span></li>
         </ul>
         <div class="actions">
-          <a class="btn btn--primary" href="${site.links.packages}">Get the Starter Pack ${icon.arrow}</a>
-          <a class="arrow-link" href="package/">All packages</a>
+          <a class="btn btn--primary" href="${site.links.packages}">${t('Get the Starter Pack', '购买体验配套')} ${icon.arrow}</a>
+          <a class="arrow-link" href="${r}package/">${t('All packages', '所有配套')}</a>
         </div>
       </div>
       <div class="today reveal" data-today>
         <div class="today__head">
-          <h3 data-today-title>Today at the studio</h3>
+          <h3 data-today-title>${t('Today at the studio', '今日课程')}</h3>
           <span>${site.room} · 246J Upper Thomson Rd</span>
         </div>
         ${schedule.map((d, i) => `<ol class="today__list" data-today-day="${d.day}"${i ? ' hidden' : ''}>
-          ${d.classes.map((c) => `<li class="today__row" data-time="${c.time}"><span class="today__time">${c.time}</span><span class="today__class">${esc(c.name.replace(/\s*·\s*Off Peak$/, '').replace(/\s+[一-鿿].*$/, ''))}<small>with ${esc(c.coach)}</small></span><a href="${site.links.schedule}">Book</a></li>`).join('')}
+          ${d.classes.map((c) => `<li class="today__row" data-time="${c.time}"><span class="today__time">${c.time}</span><span class="today__class">${esc(className(c.name).name)}<small>${t('with', '导师：')} ${esc(c.coach)}</small></span><a href="${site.links.schedule}">${t('Book', '预约')}</a></li>`).join('')}
         </ol>`).join('')}
-        <a class="arrow-link" href="timetable/">See the full week ${icon.arrow}</a>
+        <a class="arrow-link" href="${r}timetable/">${t('See the full week', '查看整周课表')} ${icon.arrow}</a>
       </div>
     </div>
   </div>
@@ -147,21 +160,21 @@ function home() {
 <section class="section section--sand" id="story">
   <div class="container founder">
     <div class="founder__card reveal">
-      <img src="assets/img/team/kai.jpg" alt="Dr Kai, founder and Master Therapist at Healthtinity" loading="lazy" width="560" height="560">
-      <p><strong>Dr Kai</strong><span>Doctor of Osteopathy · Founder</span></p>
+      <img src="${A}assets/img/team/kai.jpg" alt="${t('Dr Kai, founder and Master Therapist at Healthtinity', 'Healthtinity 创始人兼首席治疗师 Dr Kai')}" loading="lazy" width="560" height="560">
+      <p><strong>Dr Kai</strong><span>${t('Doctor of Osteopathy · Founder', '整骨医学博士 · 创始人')}</span></p>
     </div>
     <div class="reveal">
-      <h2>Where fitness meets healing.</h2>
-      <p class="lead">Since 2019, Healthtinity has bridged fitness and rehabilitation. Our signature Yoga Rehab Therapy brings Osteopathy, Yoga and Mat Pilates together to relieve pain, restore mobility and build strength, for every age.</p>
+      <h2>${t('Where fitness meets healing.', '运动与康复，在这里相遇。')}</h2>
+      <p class="lead">${t('Since 2019, Healthtinity has bridged fitness and rehabilitation. Our signature Yoga Rehab Therapy brings Osteopathy, Yoga and Mat Pilates together to relieve pain, restore mobility and build strength, for every age.', '自 2019 年起，Healthtinity 致力于连结运动与康复。我们的招牌瑜伽康复疗法结合整骨医学、瑜伽与垫上普拉提，帮助各年龄层舒缓疼痛、恢复活动能力并增强力量。')}</p>
       <ul class="checklist">
-        <li>${icon.check} Chronic neck &amp; back pain, sciatica, scoliosis</li>
-        <li>${icon.check} Sports injuries &amp; post-surgical rehabilitation</li>
-        <li>${icon.check} Postural dysfunction &amp; joint mobility</li>
-        <li>${icon.check} Personalised 1:1 plans that target the root cause</li>
+        <li>${icon.check} ${t('Chronic neck &amp; back pain, sciatica, scoliosis', '慢性颈部与腰背痛、坐骨神经痛、脊柱侧弯')}</li>
+        <li>${icon.check} ${t('Sports injuries &amp; post-surgical rehabilitation', '运动损伤与术后康复')}</li>
+        <li>${icon.check} ${t('Postural dysfunction &amp; joint mobility', '姿势不良与关节活动受限')}</li>
+        <li>${icon.check} ${t('Personalised 1:1 plans that target the root cause', '针对根本原因的个性化一对一计划')}</li>
       </ul>
       <div class="actions">
-        <a class="btn btn--primary" href="${wa("Hi Healthtinity! I'd like to speak to someone about my pain or mobility concerns. Could you help me choose the right programme?")}" target="_blank" rel="noopener">Talk to a therapist ${icon.arrow}</a>
-        <a class="arrow-link" href="team/kai/">About Dr Kai</a>
+        <a class="btn btn--primary" href="${wa(t("Hi Healthtinity! I'd like to speak to someone about my pain or mobility concerns. Could you help me choose the right programme?", '您好 Healthtinity！我想咨询关于疼痛或活动能力的问题，能帮我选择合适的课程吗？'))}" target="_blank" rel="noopener">${t('Talk to a therapist', '咨询治疗师')} ${icon.arrow}</a>
+        <a class="arrow-link" href="${r}team/kai/">${t('About Dr Kai', '认识 Dr Kai')}</a>
       </div>
     </div>
   </div>
@@ -171,25 +184,20 @@ function home() {
   <div class="container">
     <div class="section__head section__head--row reveal">
       <div>
-        <h2>Find what moves you.</h2>
-        <p class="lead" style="margin:0">More than 50 classes a week across four kinds of practice.</p>
+        <h2>${t('Find what moves you.', '找到让你心动的课程。')}</h2>
+        <p class="lead" style="margin:0">${t('More than 50 classes a week across four kinds of practice.', '每周超过 50 堂课，涵盖四大类练习。')}</p>
       </div>
-      <a class="arrow-link" href="timetable/">View the weekly schedule ${icon.arrow}</a>
+      <a class="arrow-link" href="${r}timetable/">${t('View the weekly schedule', '查看每周课表')} ${icon.arrow}</a>
     </div>
     <div class="tiles">
-      ${[
-        ['yoga', 'Yoga', 'Hatha, Vinyasa, Ashtanga, Wheel Yoga, Yin &amp; Restore, and Hot &amp; Warm flows.', 'class-yoga.jpg', 'A small group class holding warrior two pose'],
-        ['pilates', 'Mat Pilates', 'Foundation, Dynamic and Warm Mat Pilates for core, posture and stability.', 'class-pilates.jpg', 'A Mat Pilates class doing single-leg lifts while a coach gives a cue'],
-        ['therapy', 'Therapy &amp; Stretch', 'Mobility, Full Body Stretch, Myofascial Release and Upper Body Stretch.', 'hero.jpg', 'A Healthtinity therapy and stretch group class'],
-        ['sculpt', 'Tone &amp; Sculpt', 'Low-impact, high-energy sculpting and Barre-inspired strength.', 'class-sculpt.jpg', 'A Tone and Sculpt class squatting with light dumbbells'],
-      ].map(([c, t, d, img, alt]) => `<a class="tile reveal" href="timetable/?c=${c}">
-        <div class="tile__img"><img src="assets/img/${img}" alt="${alt}" loading="lazy" width="1200" height="900">${c === 'therapy' ? '<span class="tag">Most loved</span>' : ''}</div>
-        <div class="tile__body"><h3>${t} ${icon.arrow}</h3><p>${d}</p></div>
+      ${classTypes().map(([c, title, d, img, alt]) => `<a class="tile reveal" href="${r}timetable/?c=${c}">
+        <div class="tile__img"><img src="${A}assets/img/${img}" alt="${alt}" loading="lazy" width="1200" height="900">${c === 'therapy' ? `<span class="tag">${t('Most loved', '最受欢迎')}</span>` : ''}</div>
+        <div class="tile__body"><h3>${title} ${icon.arrow}</h3><p>${d}</p></div>
       </a>`).join('')}
     </div>
     <div class="private reveal">
-      <div><h3>Prefer one-to-one?</h3><p>Private coaching and therapy built around your body and goals.</p></div>
-      <a class="btn btn--ghost" href="${wa("Hi Healthtinity! I'm interested in private 1:1 sessions.")}" target="_blank" rel="noopener">Ask about Private 1:1</a>
+      <div><h3>${t('Prefer one-to-one?', '想要一对一？')}</h3><p>${t('Private coaching and therapy built around your body and goals.', '根据您的身体状况和目标量身定制的私人教练与理疗。')}</p></div>
+      <a class="btn btn--ghost" href="${wa(t("Hi Healthtinity! I'm interested in private 1:1 sessions.", '您好 Healthtinity！我对私人一对一课程有兴趣。'))}" target="_blank" rel="noopener">${t('Ask about Private 1:1', '咨询私人一对一')}</a>
     </div>
   </div>
 </section>
@@ -197,13 +205,13 @@ function home() {
 <section class="section section--sun" id="pricing">
   <div class="container">
     <div class="section__head section__head--row reveal">
-      <h2>Flexible ways to flow.</h2>
-      <a class="arrow-link" href="package/">Compare all options ${icon.arrow}</a>
+      <h2>${t('Flexible ways to flow.', '灵活的练习方式。')}</h2>
+      <a class="arrow-link" href="${r}package/">${t('Compare all options', '比较所有方案')} ${icon.arrow}</a>
     </div>
     <div class="pricing">
-      ${priceCard(packages[0], site.links.packages, 'Get started')}
-      ${priceCard(packages[3], site.links.packages, 'Choose pack')}
-      ${priceCard({ ...membershipsRecurring[2], featured: false, badge: null }, site.links.memberships, 'See memberships')}
+      ${priceCard(packages[0], site.links.packages, t('Get started', '立即开始'))}
+      ${priceCard(packages[3], site.links.packages, t('Choose pack', '选择配套'))}
+      ${priceCard({ ...membershipsRecurring[2], featured: false, badge: null }, site.links.memberships, t('See memberships', '查看会员方案'))}
     </div>
     ${topupBlock()}
   </div>
@@ -212,11 +220,11 @@ function home() {
 <section class="section">
   <div class="container">
     <div class="section__head section__head--row reveal">
-      <h2>From the studio.</h2>
-      <a class="arrow-link" href="blog/">See all articles ${icon.arrow}</a>
+      <h2>${t('From the studio.', '工作室动态。')}</h2>
+      <a class="arrow-link" href="${r}blog/">${t('See all articles', '查看所有文章')} ${icon.arrow}</a>
     </div>
     <div class="posts">
-      ${posts.map((p) => postCard(p, r)).join('')}
+      ${L.posts().map((p) => postCard(p, r)).join('')}
     </div>
   </div>
 </section>
@@ -228,28 +236,30 @@ ${ctaBand(r)}`,
 
 const postCard = (p, r) => `
 <a class="post reveal" href="${r}blog/${p.slug}/">
-  <div class="post__img"><img src="${r}assets/img/${p.image}" alt="" loading="lazy" width="640" height="360"></div>
+  <div class="post__img"><img src="${ar(r)}assets/img/${p.image}" alt="" loading="lazy" width="640" height="360"></div>
   <div class="post__meta"><span class="tag tag--soft">${esc(p.category)}</span><span>${esc(p.date)}</span></div>
   <h3>${esc(p.title)}</h3>
   <p class="muted">${esc(p.excerpt)}</p>
 </a>`;
+
+const directions = 'https://www.google.com/maps/dir/?api=1&amp;destination=246J+Upper+Thomson+Road+Singapore+574370';
 
 const visitBlock = (r, withMap = true) => `
 <section class="section">
   <div class="container">
     <div class="visit reveal">
       <div class="visit__copy">
-        <h2>Your first class is <em>closer</em> than you think.</h2>
+        <h2>${t('Your first class is <em>closer</em> than you think.', '你的第一堂课，<em>比你想象的更近</em>。')}</h2>
         <address>${site.address.join('<br>')}</address>
         <ul class="visit__how">
-          ${site.getting.map(([e, t]) => `<li><span>${e}</span>${esc(t)}</li>`).join('')}
+          ${getting().map(([e, x]) => `<li><span>${e}</span>${esc(x)}</li>`).join('')}
         </ul>
         <div class="actions">
-          <a class="btn btn--light" href="https://www.google.com/maps/dir/?api=1&amp;destination=246J+Upper+Thomson+Road+Singapore+574370" target="_blank" rel="noopener">Get directions</a>
+          <a class="btn btn--light" href="${directions}" target="_blank" rel="noopener">${t('Get directions', '获取路线')}</a>
           <a class="btn btn--outline-light" href="${site.phoneHref}">${site.phone}</a>
         </div>
       </div>
-      ${withMap ? `<div class="visit__map"><iframe title="Map of Healthtinity, 246J Upper Thomson Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed"></iframe></div>` : ''}
+      ${withMap ? `<div class="visit__map"><iframe title="${t('Map of Healthtinity, 246J Upper Thomson Road', 'Healthtinity 地图，246J Upper Thomson Road')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed${isZh() ? '&amp;hl=zh-CN' : ''}"></iframe></div>` : ''}
     </div>
   </div>
 </section>`;
@@ -259,30 +269,30 @@ const visitBlock = (r, withMap = true) => `
 // =====================================================================
 function blogIndex() {
   const r = '../';
-  const [first, ...rest] = posts;
+  const [first, ...rest] = L.posts();
   return {
     path: 'blog/',
     active: 'blog',
-    title: "What's new",
-    description: 'News, features and wellness tips from Healthtinity, the Yoga, Pilates & Rehab Therapy studio at Upper Thomson, Singapore.',
+    title: t("What's new", '最新动态'),
+    description: t('News, features and wellness tips from Healthtinity, the Yoga, Pilates & Rehab Therapy studio at Upper Thomson, Singapore.', '来自 Healthtinity 的新闻、媒体报道与健康小贴士。我们是位于新加坡 Upper Thomson 的瑜伽、普拉提与康复疗法工作室。'),
     body: `
-${pageHero({ r, eyebrow: "What's new", title: 'Stories, news &amp; <em>gentle wisdom</em>.', lead: 'Studio news, press features and practical tips to help you move better, feel stronger and live brighter.', crumbs: [["What's new"]] })}
+${pageHero({ r, title: t('Stories, news &amp; <em>gentle wisdom</em>.', '故事、新闻与<em>温柔的智慧</em>。'), lead: t('Studio news, press features and practical tips to help you move better, feel stronger and live brighter.', '工作室新闻、媒体报道和实用小贴士，帮助您动得更好、感觉更强壮、活得更精彩。'), crumbs: [[t("What's new", '最新动态')]] })}
 <section class="section section--flush">
   <div class="container">
     <a class="post-feature reveal" href="${first.slug}/">
-      <div class="post-feature__img"><img src="${r}assets/img/${first.image}" alt="" width="640" height="360"></div>
+      <div class="post-feature__img"><img src="${ar(r)}assets/img/${first.image}" alt="" width="640" height="360"></div>
       <div class="post-feature__copy">
         <div class="post__meta"><span class="tag tag--soft">${esc(first.category)}</span><span>${esc(first.date)}</span></div>
         <h2>${esc(first.title)}</h2>
         <p class="muted">${esc(first.excerpt)}</p>
-        <span class="arrow-link">Read article ${icon.arrow}</span>
+        <span class="arrow-link">${t('Read article', '阅读文章')} ${icon.arrow}</span>
       </div>
     </a>
     <div class="posts posts--spaced">
       ${rest.map((p) => postCard(p, r)).join('')}
       <div class="press-card reveal">
-        <h3>Lianhe Zaobao 联合早报</h3>
-        <p class="muted">Healthtinity shared gentle yoga practices for better sleep and relaxation in a September 2026 feature.</p>
+        <h3>${t('Lianhe Zaobao', '《联合早报》')}</h3>
+        <p class="muted">${t('Healthtinity shared gentle yoga practices for better sleep and relaxation in a September 2026 feature.', 'Healthtinity 在 2026 年 9 月的专题报道中，分享了有助睡眠与放松的温和瑜伽练习。')}</p>
       </div>
     </div>
   </div>
@@ -293,7 +303,7 @@ ${ctaBand(r)}`,
 
 function blogPost(p) {
   const r = '../../';
-  const related = posts.filter((x) => x !== p);
+  const related = L.posts().filter((x) => x.slug !== p.slug);
   return {
     path: `blog/${p.slug}/`,
     active: 'blog',
@@ -303,23 +313,23 @@ function blogPost(p) {
 <article>
   <section class="page-hero page-hero--post">
     <div class="container container--narrow">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="${r}">Home</a> <span>/</span> <a href="${r}blog/">What's new</a> <span>/</span> <span aria-current="page">${esc(p.category)}</span></nav>
-      <div class="post__meta"><span class="tag tag--soft">${esc(p.category)}</span><span>By ${esc(p.author)} · ${esc(p.date)}</span></div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="${r}">${t('Home', '首页')}</a> <span>/</span> <a href="${r}blog/">${t("What's new", '最新动态')}</a> <span>/</span> <span aria-current="page">${esc(p.category)}</span></nav>
+      <div class="post__meta"><span class="tag tag--soft">${esc(p.category)}</span><span>${t('By', '作者：')} ${esc(p.author)} · ${esc(p.date)}</span></div>
       <h1>${esc(p.title)}</h1>
     </div>
   </section>
   <div class="container container--narrow">
-    <div class="post-cover reveal"><img src="${r}assets/img/${p.image}" alt="" width="640" height="360"></div>
-    <div class="prose">${p.body}</div>
+    <div class="post-cover reveal"><img src="${ar(r)}assets/img/${p.image}" alt="" width="640" height="360"></div>
+    <div class="prose">${isZh() ? p.body : p.body.replace(/\s*\(联合早报\)/g, '')}</div>
     <div class="post-cta">
-      <div><strong>Ready to try a class?</strong><span>New members: 5 classes for $60.</span></div>
-      <a class="btn btn--primary" href="${site.links.packages}">Get the Starter Pack</a>
+      <div><strong>${t('Ready to try a class?', '准备好来上课了吗？')}</strong><span>${t('New members: 5 classes for $60.', '新会员：$60 体验 5 堂课。')}</span></div>
+      <a class="btn btn--primary" href="${site.links.packages}">${t('Get the Starter Pack', '购买体验配套')}</a>
     </div>
   </div>
 </article>
 <section class="section section--sand">
   <div class="container">
-    <div class="section__head reveal"><h2>Keep <em>reading</em>.</h2></div>
+    <div class="section__head reveal"><h2>${t('Keep <em>reading</em>.', '<em>继续阅读</em>。')}</h2></div>
     <div class="posts">${related.map((x) => postCard(x, r)).join('')}</div>
   </div>
 </section>`,
@@ -331,15 +341,16 @@ function blogPost(p) {
 // =====================================================================
 function teamIndex() {
   const r = '../';
+  const team = L.team();
   const leads = team.filter((m) => m.lead);
   const rest = team.filter((m) => !m.lead);
   return {
     path: 'team/',
     active: 'team',
-    title: 'Our Team',
-    description: 'Meet the Healthtinity team: Doctor of Osteopathy, rehab therapists and certified Yoga, Mat Pilates and Barre instructors in Singapore.',
+    title: t('Our Team', '我们的团队'),
+    description: t('Meet the Healthtinity team: Doctor of Osteopathy, rehab therapists and certified Yoga, Mat Pilates and Barre instructors in Singapore.', '认识 Healthtinity 团队：整骨医学博士、康复治疗师，以及持证的瑜伽、垫上普拉提与芭蕾导师。'),
     body: `
-${pageHero({ r, eyebrow: 'Our instructors', title: 'Coaches who <em>care</em>.', lead: `Led by a Doctor of Osteopathy and our senior rehab coach, our ${team.length} instructors teach in English and Mandarin. All of them are passionate about helping you move with confidence.`, crumbs: [['Team']] })}
+${pageHero({ r, title: t('Coaches who <em>care</em>.', '<em>用心</em>的教练团队。'), lead: t(`Led by a Doctor of Osteopathy and our senior rehab coach, our ${team.length} instructors teach in English and Mandarin. All of them are passionate about helping you move with confidence.`, `由整骨医学博士与资深康复教练带领，我们的 ${team.length} 位导师提供英语及华语教学，热衷于帮助您自信地活动身体。`), crumbs: [[t('Team', '团队')]] })}
 <section class="section section--flush">
   <div class="container">
     <div class="leads">
@@ -349,12 +360,12 @@ ${pageHero({ r, eyebrow: 'Our instructors', title: 'Coaches who <em>care</em>.',
         <div class="lead-card__copy">
           <p class="role">${esc(m.role)}</p>
           <h2>${esc(m.name)}</h2>
-          <p class="muted">${esc(m.bio[0].slice(0, 210))}…</p>
-          <span class="arrow-link">Read full bio ${icon.arrow}</span>
+          <p class="muted">${esc(m.bio[0].slice(0, isZh() ? 90 : 210))}…</p>
+          <span class="arrow-link">${t('Read full bio', '阅读完整简介')} ${icon.arrow}</span>
         </div>
       </a>`).join('')}
     </div>
-    <div class="section__head reveal" style="margin-top:96px"><h2>The <em>team</em>.</h2></div>
+    <div class="section__head reveal" style="margin-top:96px"><h2>${t('The <em>team</em>.', '<em>团队</em>成员。')}</h2></div>
     <div class="team-grid">
       ${rest.map((m) => `
       <a class="coach reveal" href="${m.slug}/">
@@ -371,27 +382,28 @@ ${ctaBand(r)}`,
 
 function teamMember(m) {
   const r = '../../';
-  const others = team.filter((x) => x !== m && x.photo).slice(0, 4);
-  const coachClasses = schedule.flatMap((d) => d.classes.filter((c) => c.coach === m.name.replace(/^Dr /, '')).map((c) => ({ ...c, day: d.day })));
+  const others = L.team().filter((x) => x.slug !== m.slug && x.photo).slice(0, 4);
+  const coachClasses = schedule.flatMap((d) => d.classes.filter((c) => c.coach === m.name.replace(/^Dr /, '')).map((c) => ({ ...c, d })));
+  const first = m.name.split(' ')[0];
   return {
     path: `team/${m.slug}/`,
     active: 'team',
     title: `${m.name}, ${m.role}`,
-    description: `${m.name}, ${m.role} at Healthtinity Singapore. ${m.bio[0].slice(0, 120)}`,
+    description: t(`${m.name}, ${m.role} at Healthtinity Singapore. ${m.bio[0].slice(0, 120)}`, `${m.name}，Healthtinity 新加坡${m.role}。${m.bio[0].slice(0, 60)}`),
     body: `
 <section class="page-hero">
   <div class="container">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="${r}">Home</a> <span>/</span> <a href="${r}team/">Team</a> <span>/</span> <span aria-current="page">${esc(m.name)}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="${r}">${t('Home', '首页')}</a> <span>/</span> <a href="${r}team/">${t('Team', '团队')}</a> <span>/</span> <span aria-current="page">${esc(m.name)}</span></nav>
     <div class="profile">
       <div class="profile__photo reveal">${avatar(m, r, 'profile__img')}</div>
       <div class="profile__copy reveal">
         <p class="role">${esc(m.role)}</p>
         <h1>${esc(m.name)}</h1>
         ${m.headline ? `<p class="lead">${esc(m.headline)}</p>` : `<p class="lead">${esc(m.skills)}</p>`}
-        <p class="profile__skills"><strong>Skilled in</strong> ${esc(m.skills)}</p>
+        <p class="profile__skills"><strong>${t('Skilled in', '专长')}</strong> ${esc(m.skills)}</p>
         <div class="actions">
-          <a class="btn btn--primary" href="${site.links.schedule}">Book a class</a>
-          <a class="btn btn--ghost" href="${wa(`Hi Healthtinity! I'd like to enquire about a private session with ${m.name}.`)}" target="_blank" rel="noopener">Enquire about 1:1</a>
+          <a class="btn btn--primary" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
+          <a class="btn btn--ghost" href="${wa(t(`Hi Healthtinity! I'd like to enquire about a private session with ${m.name}.`, `您好 Healthtinity！我想咨询与 ${m.name} 的私人课程。`))}" target="_blank" rel="noopener">${t('Enquire about 1:1', '咨询一对一课程')}</a>
         </div>
       </div>
     </div>
@@ -400,20 +412,19 @@ function teamMember(m) {
 <section class="section section--flush">
   <div class="container profile-body">
     <div class="prose">
-      <h2>Bio</h2>
+      <h2>${t('Bio', '简介')}</h2>
       ${m.bio.map((p) => `<p>${esc(p)}</p>`).join('\n')}
-      ${m.quote ? `<blockquote>“${esc(m.quote)}”<cite>— ${esc(m.name.split(' ')[0])}</cite></blockquote>` : ''}
-      ${m.zh ? `<details class="zh"><summary>中文简介</summary>${m.zh.map((p) => `<p>${esc(p)}</p>`).join('')}</details>` : ''}
+      ${m.quote ? `<blockquote>${t('“', '「')}${esc(m.quote)}${t('”', '」')}<cite>— ${esc(first)}</cite></blockquote>` : ''}
     </div>
     <aside class="profile-aside">
-      ${m.specialties ? `<div class="aside-card"><h3>Specialties</h3><ul class="checklist checklist--sm">${m.specialties.map((s) => `<li>${icon.check} ${esc(s)}</li>`).join('')}</ul></div>` : ''}
-      ${coachClasses.length ? `<div class="aside-card"><h3>Weekly classes</h3><ul class="mini-sched">${coachClasses.map((c) => `<li><span>${c.day} · ${c.time}</span>${esc(c.name.split(' · ')[0].replace(/[一-鿿（）]+.*$/, '').trim())}</li>`).join('')}</ul><a class="arrow-link" href="${r}timetable/">Full schedule ${icon.arrow}</a></div>` : ''}
+      ${m.specialties ? `<div class="aside-card"><h3>${t('Specialties', '专长领域')}</h3><ul class="checklist checklist--sm">${m.specialties.map((s) => `<li>${icon.check} ${esc(s)}</li>`).join('')}</ul></div>` : ''}
+      ${coachClasses.length ? `<div class="aside-card"><h3>${t('Weekly classes', '每周课程')}</h3><ul class="mini-sched">${coachClasses.map((c) => `<li><span>${L.day(c.d)} · ${c.time}</span>${esc(className(c.name).name.replace(/^Therapy:\s*/, t('Therapy: ', '')))}</li>`).join('')}</ul><a class="arrow-link" href="${r}timetable/">${t('Full schedule', '完整课表')} ${icon.arrow}</a></div>` : ''}
     </aside>
   </div>
 </section>
 <section class="section section--sand">
   <div class="container">
-    <div class="section__head section__head--row reveal"><div><h2>Meet more <em>coaches</em>.</h2></div><a class="arrow-link" href="${r}team/">All coaches ${icon.arrow}</a></div>
+    <div class="section__head section__head--row reveal"><div><h2>${t('Meet more <em>coaches</em>.', '认识更多<em>导师</em>。')}</h2></div><a class="arrow-link" href="${r}team/">${t('All coaches', '所有导师')} ${icon.arrow}</a></div>
     <div class="team-grid team-grid--4">
       ${others.map((o) => `<a class="coach reveal" href="${r}team/${o.slug}/">${avatar(o, r, 'coach__img')}<strong>${esc(o.name)}</strong><span>${esc(o.role)}</span></a>`).join('')}
     </div>
@@ -430,28 +441,28 @@ function packagePage() {
   return {
     path: 'package/',
     active: 'pricing',
-    title: 'Class Packages',
-    description: 'Healthtinity class packages: New Members Starter Pack (5 classes for $60), shareable class packs with bonus classes, and HT Wallet Top Up & Flow.',
+    title: t('Class Packages', '课程配套'),
+    description: t('Healthtinity class packages: New Members Starter Pack (5 classes for $60), shareable class packs with bonus classes, and HT Wallet Top Up & Flow.', 'Healthtinity 课程配套：新会员体验配套（$60 体验 5 堂课）、可共享并附赠课程的课程配套，以及 HT 钱包储值随心练。'),
     body: `
-${pageHero({ r, eyebrow: 'Pricing', title: 'Class <em>packages</em>.', lead: 'Practise at your own pace. Larger packs come with bonus classes, and many are shareable with family and friends.', crumbs: [['Pricing'], ['Packages']], extra: pricingTabs('package') })}
+${pageHero({ r, title: t('Class <em>packages</em>.', '课程<em>配套</em>。'), lead: t('Practise at your own pace. Larger packs come with bonus classes, and many are shareable with family and friends.', '按自己的节奏练习。较大的配套附赠更多课程，而且多数可与家人朋友共享。'), crumbs: [[t('Pricing', '价格')], [t('Packages', '课程配套')]], extra: pricingTabs('package') })}
 <section class="section section--flush">
   <div class="container">
     <div class="pricing pricing--packs">
-      ${packages.map((p) => priceCard(p, site.links.packages)).join('')}
+      ${L.packages().map((p) => priceCard(p, site.links.packages)).join('')}
     </div>
     ${topupBlock()}
     <div class="compare reveal">
-      <h2>Which option is right for <em>me</em>?</h2>
+      <h2>${t('Which option is right for <em>me</em>?', '哪个方案<em>适合我</em>？')}</h2>
       <div class="compare__grid">
-        <div><h3>Just starting out</h3><p>Try the <strong>Starter Pack</strong>: 5 classes in 30 days for $60, plus $22 wallet credit in the HT Life app.</p></div>
-        <div><h3>Coming 1–2× a week</h3><p>A <strong>class pack</strong> gives you bonus classes and flexible validity from your first booking.</p></div>
-        <div><h3>Coming 3×+ a week</h3><p>Go <strong>unlimited</strong> with a <a href="${r}membership/">membership</a>, from $162/month.</p></div>
-        <div><h3>Prefer no commitment</h3><p><strong>Top Up &amp; Flow</strong>: load your wallet, get bonus credit and book as you go.</p></div>
+        <div><h3>${t('Just starting out', '刚开始练习')}</h3><p>${t('Try the <strong>Starter Pack</strong>: 5 classes in 30 days for $60, plus $22 wallet credit in the HT Life app.', '试试<strong>新会员体验配套</strong>：30 天内 5 堂课只需 $60，另送 $22 HT Life 钱包额度。')}</p></div>
+        <div><h3>${t('Coming 1–2× a week', '每周来 1–2 次')}</h3><p>${t('A <strong>class pack</strong> gives you bonus classes and flexible validity from your first booking.', '<strong>课程配套</strong>附赠额外课程，有效期从首次预约起计算，更灵活。')}</p></div>
+        <div><h3>${t('Coming 3×+ a week', '每周来 3 次以上')}</h3><p>${t(`Go <strong>unlimited</strong> with a <a href="${r}membership/">membership</a>, from $162/month.`, `选择<a href="${r}membership/">会员方案</a>，<strong>无限上课</strong>，每月 $162 起。`)}</p></div>
+        <div><h3>${t('Prefer no commitment', '不想有任何承诺')}</h3><p>${t('<strong>Top Up &amp; Flow</strong>: load your wallet, get bonus credit and book as you go.', '<strong>储值随心练</strong>：为钱包储值，获赠额外额度，想上就预约。')}</p></div>
       </div>
     </div>
   </div>
 </section>
-${faqSection(r, faqs.slice(1, 4))}`,
+${faqSection(r, L.faqs().slice(1, 4))}`,
   };
 }
 
@@ -460,21 +471,21 @@ function membershipPage() {
   return {
     path: 'membership/',
     active: 'pricing',
-    title: 'Memberships',
-    description: 'Unlimited group class memberships at Healthtinity Singapore, from $162/month. Upfront and recurring options.',
+    title: t('Memberships', '会员方案'),
+    description: t('Unlimited group class memberships at Healthtinity Singapore, from $162/month. Upfront and recurring options.', 'Healthtinity 新加坡团体课无限上会员方案，每月 $162 起，提供一次性付款及自动续费选项。'),
     body: `
-${pageHero({ r, eyebrow: 'Pricing', title: 'Unlimited <em>memberships</em>.', lead: 'Build a consistent practice with unlimited group classes: Yoga, Mat Pilates, Therapy and more.', crumbs: [['Pricing'], ['Memberships']], extra: pricingTabs('membership') })}
+${pageHero({ r, title: t('Unlimited <em>memberships</em>.', '无限上课<em>会员</em>。'), lead: t('Build a consistent practice with unlimited group classes: Yoga, Mat Pilates, Therapy and more.', '团体课无限上：瑜伽、垫上普拉提、理疗等，帮助您建立持续的练习习惯。'), crumbs: [[t('Pricing', '价格')], [t('Memberships', '会员')]], extra: pricingTabs('membership') })}
 <section class="section section--flush">
   <div class="container">
-    <div class="group-head reveal"><h2>Upfront payment</h2><p class="muted">Pay once, practise unlimited.</p></div>
+    <div class="group-head reveal"><h2>${t('Upfront payment', '一次性付款')}</h2><p class="muted">${t('Pay once, practise unlimited.', '付款一次，无限练习。')}</p></div>
     <div class="pricing pricing--2">
-      ${membershipsUpfront.map((p) => priceCard(p, site.links.memberships)).join('')}
+      ${L.membershipsUpfront().map((p) => priceCard(p, site.links.memberships)).join('')}
     </div>
-    <div class="group-head reveal"><h2>Recurring membership</h2><p class="muted">Auto-renewing. The longer the commitment, the lower the monthly rate.</p></div>
+    <div class="group-head reveal"><h2>${t('Recurring membership', '自动续费会员')}</h2><p class="muted">${t('Auto-renewing. The longer the commitment, the lower the monthly rate.', '自动续费。承诺期越长，月费越低。')}</p></div>
     <div class="pricing pricing--4">
-      ${membershipsRecurring.map((p) => priceCard(p, site.links.memberships)).join('')}
+      ${L.membershipsRecurring().map((p) => priceCard(p, site.links.memberships)).join('')}
     </div>
-    <p class="fineprint reveal">Recurring memberships renew automatically at the billing interval shown. A S$350 cancellation fee applies before the minimum commitment ends. See our <a href="${r}terms/terms-and-conditions/">Terms &amp; Conditions</a>.</p>
+    <p class="fineprint reveal">${t(`Recurring memberships renew automatically at the billing interval shown. A S$350 cancellation fee applies before the minimum commitment ends. See our <a href="${r}terms/terms-and-conditions/">Terms &amp; Conditions</a>.`, `自动续费会员将按所示的计费周期自动续费。在最低承诺期结束前取消，须缴付 S$350 手续费。详情请参阅<a href="${r}terms/terms-and-conditions/">条款与细则</a>。`)}</p>
   </div>
 </section>
 ${ctaBand(r)}`,
@@ -483,17 +494,17 @@ ${ctaBand(r)}`,
 
 const pricingTabs = (active) => `
 <div class="tabs" role="tablist">
-  <a href="../package/" class="tab${active === 'package' ? ' is-active' : ''}">Packages</a>
-  <a href="../membership/" class="tab${active === 'membership' ? ' is-active' : ''}">Memberships</a>
-  <a href="../package/#topup" class="tab">Top Up &amp; Flow</a>
+  <a href="../package/" class="tab${active === 'package' ? ' is-active' : ''}">${t('Packages', '课程配套')}</a>
+  <a href="../membership/" class="tab${active === 'membership' ? ' is-active' : ''}">${t('Memberships', '会员')}</a>
+  <a href="../package/#topup" class="tab">${t('Top Up &amp; Flow', '储值随心练')}</a>
 </div>`;
 
 const faqSection = (r, items) => `
 <section class="section section--sand">
   <div class="container split split--faq">
     <div class="reveal">
-      <h2>Good to <em>know</em>.</h2>
-      <p class="muted">More answers on our <a href="${r}faqs/">FAQ page</a>, or <a href="${site.whatsapp}" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
+      <h2>${t('Good to <em>know</em>.', '<em>须知</em>。')}</h2>
+      <p class="muted">${t(`More answers on our <a href="${r}faqs/">FAQ page</a>, or <a href="${site.whatsapp}" target="_blank" rel="noopener">message us on WhatsApp</a>.`, `更多解答请看<a href="${r}faqs/">常见问题</a>，或<a href="${site.whatsapp}" target="_blank" rel="noopener">通过 WhatsApp 联系我们</a>。`)}</p>
     </div>
     <div class="reveal">${faqList(items)}</div>
   </div>
@@ -504,48 +515,49 @@ const faqSection = (r, items) => `
 // =====================================================================
 function timetable() {
   const r = '../';
-  const coachSlug = Object.fromEntries(team.map((m) => [m.name.replace(/^Dr /, ''), m.slug]));
+  const coachSlug = Object.fromEntries(L.team().map((m) => [m.name.replace(/^Dr /, ''), m.slug]));
   const total = schedule.reduce((n, d) => n + d.classes.length, 0);
+  const categories = L.categories();
+  const faqs = L.faqs();
   return {
     path: 'timetable/',
     active: 'timetable',
-    title: 'Group Class Schedule',
-    description: `Weekly Yoga, Mat Pilates and Therapy class schedule at Healthtinity, Upper Thomson. ${total} classes a week.`,
+    title: t('Group Class Schedule', '团体课课表'),
+    description: t(`Weekly Yoga, Mat Pilates and Therapy class schedule at Healthtinity, Upper Thomson. ${total} classes a week.`, `Healthtinity（Upper Thomson）每周瑜伽、垫上普拉提与理疗课表，每周 ${total} 堂课。`),
     body: `
-${pageHero({ r, eyebrow: 'Group class schedule', title: 'This week at <em>the studio</em>.', lead: `${total} classes a week across Yoga, Mat Pilates, Therapy &amp; Stretch and Tone &amp; Sculpt. Bookings open 7 days ahead and close 1 hour before class.`, crumbs: [['Schedule']], extra: `<div class="actions"><a class="btn btn--primary" href="${site.links.schedule}">Book on live schedule</a><a class="btn btn--ghost" href="${site.apps.ios}" target="_blank" rel="noopener">Get the HT Life app</a></div>` })}
+${pageHero({ r, title: t('This week at <em>the studio</em>.', '本周<em>课表</em>。'), lead: t(`${total} classes a week across Yoga, Mat Pilates, Therapy &amp; Stretch and Tone &amp; Sculpt. Bookings open 7 days ahead and close 1 hour before class.`, `每周 ${total} 堂课，涵盖瑜伽、垫上普拉提、理疗伸展与紧致塑形。预约于 7 天前开放，课程开始前 1 小时截止。`), crumbs: [[t('Schedule', '课表')]], extra: `<div class="actions"><a class="btn btn--primary" href="${site.links.schedule}">${t('Book on live schedule', '在线预约')}</a><a class="btn btn--ghost" href="${site.apps.ios}" target="_blank" rel="noopener">${t('Get the HT Life app', '下载 HT Life 应用程序')}</a></div>` })}
 <section class="section section--flush">
   <div class="container">
     <div class="sched-controls">
-      <div class="day-tabs" role="tablist" aria-label="Day">
-        ${schedule.map((d, i) => `<button role="tab" class="day-tab" data-day="${d.day}" aria-selected="${i === 0}"><span>${d.day}</span><small>${d.classes.length} classes</small></button>`).join('')}
+      <div class="day-tabs" role="tablist" aria-label="${t('Day', '日期')}">
+        ${schedule.map((d, i) => `<button role="tab" class="day-tab" data-day="${d.day}" aria-selected="${i === 0}"><span>${L.day(d)}</span><small>${t(`${d.classes.length} classes`, `${d.classes.length} 堂课`)}</small></button>`).join('')}
       </div>
-      <div class="chips" aria-label="Filter by category">
+      <div class="chips" aria-label="${t('Filter by category', '按类别筛选')}">
         ${categories.map(([k, label], i) => `<button class="chip${i === 0 ? ' is-active' : ''}" data-cat="${k}">${label}</button>`).join('')}
       </div>
     </div>
     ${schedule.map((d, i) => `
     <div class="day" data-day-panel="${d.day}"${i === 0 ? '' : ' hidden'}>
-      <h2 class="day__title">${d.full}</h2>
+      <h2 class="day__title">${L.dayFull(d)}</h2>
       <ul class="sched">
         ${d.classes.map((c) => {
           const cat = classCategory(c.name);
-          const [title, flag] = c.name.split(' · ');
-          const m = title.match(/^(.*?)\s*([一-鿿].*)?$/);
+          const n = className(c.name);
           const slug = coachSlug[c.coach];
           return `
         <li class="sched__row" data-cat="${cat}">
-          <div class="sched__time"><strong>${c.time}</strong><span>${c.mins} mins</span></div>
+          <div class="sched__time"><strong>${c.time}</strong><span>${t(`${c.mins} mins`, `${c.mins} 分钟`)}</span></div>
           <div class="sched__info">
-            <span class="sched__cat sched__cat--${cat}">${categories.find(([k]) => k === cat)[1]}</span>${flag ? `<span class="sched__flag">${flag}</span>` : ''}
-            <h3>${esc(m[1])}${m[2] ? ` <span class="zh-name">${esc(m[2])}</span>` : ''}</h3>
-            <p>with ${slug ? `<a href="${r}team/${slug}/">${esc(c.coach)}</a>` : esc(c.coach)} · ${site.room}</p>
+            <span class="sched__cat sched__cat--${cat}">${categories.find(([k]) => k === cat)[1]}</span>${n.flag ? `<span class="sched__flag">${n.flag}</span>` : ''}
+            <h3>${esc(n.name)}</h3>
+            <p>${t('with', '导师：')} ${slug ? `<a href="${r}team/${slug}/">${esc(c.coach)}</a>` : esc(c.coach)} · ${site.room}</p>
           </div>
-          <a class="btn btn--ghost btn--sm" href="${site.links.schedule}">Book</a>
+          <a class="btn btn--ghost btn--sm" href="${site.links.schedule}">${t('Book', '预约')}</a>
         </li>`;
         }).join('')}
       </ul>
     </div>`).join('')}
-    <p class="fineprint">This is our typical weekly schedule. Instructors and classes can change; see the <a href="${site.links.schedule}">live schedule</a> for real-time availability and waitlists.</p>
+    <p class="fineprint">${t(`This is our typical weekly schedule. Instructors and classes can change; see the <a href="${site.links.schedule}">live schedule</a> for real-time availability and waitlists.`, `以上为一般每周课表，导师和课程可能有所变动。实时名额及候补情况请查看<a href="${site.links.schedule}">在线课表</a>。`)}</p>
   </div>
 </section>
 ${faqSection(r, [faqs[0], faqs[1], faqs[2]])}`,
@@ -557,55 +569,54 @@ ${faqSection(r, [faqs[0], faqs[1], faqs[2]])}`,
 // =====================================================================
 function contact() {
   const r = '../';
+  const subjects = t(
+    ['General', 'Group classes', 'Yoga Rehab Therapy', 'Private 1:1 sessions', 'Packages &amp; memberships', 'My account / booking'],
+    ['一般咨询', '团体课', '瑜伽康复疗法', '私人一对一课程', '配套与会员', '我的账户／预约'],
+  );
   return {
     path: 'contact-us/',
     active: 'contact',
-    title: 'Contact Us',
-    description: 'Contact Healthtinity: WhatsApp +65 8282 9515, email ask@healthtinity.com, or visit us at 246J Upper Thomson Road, Singapore 574370.',
+    title: t('Contact Us', '联系我们'),
+    description: t('Contact Healthtinity: WhatsApp +65 8282 9515, email ask@healthtinity.com, or visit us at 246J Upper Thomson Road, Singapore 574370.', '联系 Healthtinity：WhatsApp +65 8282 9515，电邮 ask@healthtinity.com，或亲临 246J Upper Thomson Road, Singapore 574370。'),
     body: `
-${pageHero({ r, eyebrow: 'Contact us', title: "We're here to <em>help</em>.", lead: 'Questions about classes, therapy or your account? Reach out and our team will get back to you.', crumbs: [['Contact us']] })}
+${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>服务</em>。'), lead: t('Questions about classes, therapy or your account? Reach out and our team will get back to you.', '对课程、理疗或您的账户有疑问？欢迎联系我们，团队会尽快回复您。'), crumbs: [[t('Contact us', '联系我们')]] })}
 <section class="section section--flush">
   <div class="container contact">
     <div class="contact__cards">
-      <a class="info-card reveal" href="${site.whatsapp}" target="_blank" rel="noopener"><span class="info-card__icon info-card__icon--wa">${icon.wa}</span><div><strong>WhatsApp</strong><span>Fastest reply · ${site.phone}</span></div></a>
-      <a class="info-card reveal" href="${site.phoneHref}"><span class="info-card__icon">${icon.phone}</span><div><strong>Call us</strong><span>${site.phone}</span></div></a>
-      <a class="info-card reveal" href="mailto:${site.email}"><span class="info-card__icon">${icon.mail}</span><div><strong>Email</strong><span>${site.email}</span></div></a>
-      <a class="info-card reveal" href="${r}location/"><span class="info-card__icon">${icon.pin}</span><div><strong>Visit</strong><span>${site.address.join(', ')}</span></div></a>
+      <a class="info-card reveal" href="${site.whatsapp}" target="_blank" rel="noopener"><span class="info-card__icon info-card__icon--wa">${icon.wa}</span><div><strong>WhatsApp</strong><span>${t('Fastest reply', '回复最快')} · ${site.phone}</span></div></a>
+      <a class="info-card reveal" href="${site.phoneHref}"><span class="info-card__icon">${icon.phone}</span><div><strong>${t('Call us', '致电我们')}</strong><span>${site.phone}</span></div></a>
+      <a class="info-card reveal" href="mailto:${site.email}"><span class="info-card__icon">${icon.mail}</span><div><strong>${t('Email', '电邮')}</strong><span>${site.email}</span></div></a>
+      <a class="info-card reveal" href="${r}location/"><span class="info-card__icon">${icon.pin}</span><div><strong>${t('Visit', '到访')}</strong><span>${site.address.join(', ')}</span></div></a>
       <div class="info-card info-card--plain reveal">
-        <div><strong>New to Healthtinity?</strong><span>Check out our <a href="${r}faqs/">FAQ</a> for booking, arrival and cancellation info.</span></div>
+        <div><strong>${t('New to Healthtinity?', '第一次来 Healthtinity？')}</strong><span>${t(`Check out our <a href="${r}faqs/">FAQ</a> for booking, arrival and cancellation info.`, `请查看<a href="${r}faqs/">常见问题</a>，了解预约、到达及取消须知。`)}</span></div>
       </div>
     </div>
     <form class="form reveal" data-contact-form data-wa="${site.whatsapp}" data-email="${site.email}">
-      <h2>What can we help you with?</h2>
+      <h2>${t('What can we help you with?', '有什么可以帮您？')}</h2>
       <div class="form__row">
-        <label>Name<input name="name" required autocomplete="name"></label>
-        <label>Email address<input name="email" type="email" required autocomplete="email"></label>
+        <label>${t('Name', '姓名')}<input name="name" required autocomplete="name"></label>
+        <label>${t('Email address', '电邮地址')}<input name="email" type="email" required autocomplete="email"></label>
       </div>
       <div class="form__row">
-        <label>Mobile number<input name="mobile" type="tel" autocomplete="tel" placeholder="+65"></label>
-        <label>Subject
+        <label>${t('Mobile number', '手机号码')}<input name="mobile" type="tel" autocomplete="tel" placeholder="+65"></label>
+        <label>${t('Subject', '主题')}
           <select name="subject">
-            <option>General</option>
-            <option>Group classes</option>
-            <option>Yoga Rehab Therapy</option>
-            <option>Private 1:1 sessions</option>
-            <option>Packages &amp; memberships</option>
-            <option>My account / booking</option>
+            ${subjects.map((x) => `<option>${x}</option>`).join('\n            ')}
           </select>
         </label>
       </div>
-      <label>Description<textarea name="message" rows="5" required placeholder="Tell us a little about what you're looking for…"></textarea></label>
+      <label>${t('Description', '详情')}<textarea name="message" rows="5" required placeholder="${t("Tell us a little about what you're looking for…", '请简单告诉我们您的需求……')}"></textarea></label>
       <div class="form__actions">
-        <button class="btn btn--primary" type="submit" data-via="wa">${icon.wa} Send via WhatsApp</button>
-        <button class="btn btn--ghost" type="submit" data-via="email">Send via email</button>
+        <button class="btn btn--primary" type="submit" data-via="wa">${icon.wa} ${t('Send via WhatsApp', '通过 WhatsApp 发送')}</button>
+        <button class="btn btn--ghost" type="submit" data-via="email">${t('Send via email', '通过电邮发送')}</button>
       </div>
-      <p class="fineprint">By contacting us you agree to our <a href="${r}terms/private-policy/">Privacy Policy</a>.</p>
+      <p class="fineprint">${t(`By contacting us you agree to our <a href="${r}terms/private-policy/">Privacy Policy</a>.`, `联系我们即表示您同意我们的<a href="${r}terms/private-policy/">隐私政策</a>。`)}</p>
     </form>
   </div>
 </section>
 <section class="section section--sand section--tight">
   <div class="container social-band reveal">
-    <h2>Connect with us on <em>social</em>.</h2>
+    <h2>${t('Connect with us on <em>social</em>.', '在<em>社交媒体</em>关注我们。')}</h2>
     <div class="social social--lg">
       <a href="${site.social.instagram}" target="_blank" rel="noopener">${icon.ig}<span>Instagram</span></a>
       <a href="${site.social.facebook}" target="_blank" rel="noopener">${icon.fb}<span>Facebook</span></a>
@@ -624,17 +635,17 @@ function location() {
   return {
     path: 'location/',
     active: 'location',
-    title: 'Locate Us',
-    description: 'Find Healthtinity at 246J Upper Thomson Road, Singapore 574370. 1 min walk from Upper Thomson MRT (Exit 3), with free roadside parking nearby.',
+    title: t('Locate Us', '交通位置'),
+    description: t('Find Healthtinity at 246J Upper Thomson Road, Singapore 574370. 1 min walk from Upper Thomson MRT (Exit 3), with free roadside parking nearby.', 'Healthtinity 位于 246J Upper Thomson Road, Singapore 574370，距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近有免费路边停车位。'),
     body: `
-${pageHero({ r, eyebrow: 'Locate us', title: 'Find us at <em>Upper Thomson</em>.', lead: 'A 1-minute walk from Upper Thomson MRT (Exit 3), with plenty of buses and free roadside parking nearby.', crumbs: [['Locate us']] })}
+${pageHero({ r, title: t('Find us at <em>Upper Thomson</em>.', '我们在 <em>Upper Thomson</em>。'), lead: t('A 1-minute walk from Upper Thomson MRT (Exit 3), with plenty of buses and free roadside parking nearby.', '距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近巴士路线众多，并设有免费路边停车位。'), crumbs: [[t('Locate us', '交通位置')]] })}
 <section class="section section--flush">
   <div class="container location">
     <div class="location__map reveal">
-      <iframe title="Map of Healthtinity" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed"></iframe>
+      <iframe title="${t('Map of Healthtinity', 'Healthtinity 地图')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed${isZh() ? '&amp;hl=zh-CN' : ''}"></iframe>
     </div>
     <div class="location__card reveal">
-      <img class="location__logo" src="${r}assets/img/logo-180.png" alt="" width="56" height="56">
+      <img class="location__logo" src="${ar(r)}assets/img/logo-180.png" alt="" width="56" height="56">
       <h2>Healthtinity</h2>
       <p class="muted">${site.room}</p>
       <ul class="info-list">
@@ -642,13 +653,13 @@ ${pageHero({ r, eyebrow: 'Locate us', title: 'Find us at <em>Upper Thomson</em>.
         <li>${icon.phone}<a href="${site.phoneHref}">${site.phone}</a></li>
         <li>${icon.mail}<a href="mailto:${site.email}">${site.email}</a></li>
       </ul>
-      <h3>Getting here</h3>
+      <h3>${t('Getting here', '如何前往')}</h3>
       <ul class="visit__how visit__how--dark">
-        ${site.getting.map(([e, t]) => `<li><span>${e}</span>${esc(t)}</li>`).join('')}
+        ${getting().map(([e, x]) => `<li><span>${e}</span>${esc(x)}</li>`).join('')}
       </ul>
       <div class="actions">
-        <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=246J+Upper+Thomson+Road+Singapore+574370" target="_blank" rel="noopener">Get directions</a>
-        <a class="btn btn--ghost" href="${site.whatsapp}" target="_blank" rel="noopener">WhatsApp us</a>
+        <a class="btn btn--primary" href="${directions}" target="_blank" rel="noopener">${t('Get directions', '获取路线')}</a>
+        <a class="btn btn--ghost" href="${site.whatsapp}" target="_blank" rel="noopener">${t('WhatsApp us', 'WhatsApp 我们')}</a>
       </div>
     </div>
   </div>
@@ -662,26 +673,27 @@ ${ctaBand(r)}`,
 // =====================================================================
 function faqPage() {
   const r = '../';
+  const faqs = L.faqs();
   return {
     path: 'faqs/',
     active: '',
-    title: 'Frequently Asked Questions',
-    description: 'Answers to common questions about booking, arrival, cancellations, equipment and beginner classes at Healthtinity.',
+    title: t('Frequently Asked Questions', '常见问题'),
+    description: t('Answers to common questions about booking, arrival, cancellations, equipment and beginner classes at Healthtinity.', '关于 Healthtinity 预约、到达、取消、器材及初学者课程的常见问题解答。'),
     schema: `<script type="application/ld+json">${JSON.stringify({
-      '@context': 'https://schema.org', '@type': 'FAQPage',
+      '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: t('en', 'zh-Hans'),
       mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
     })}</script>`,
     body: `
-${pageHero({ r, eyebrow: 'FAQ', title: 'Frequently asked <em>questions</em>.', lead: "Everything you need to know before your first class. Can't find your answer? We're a WhatsApp away.", crumbs: [['FAQ']] })}
+${pageHero({ r, title: t('Frequently asked <em>questions</em>.', '常见<em>问题</em>。'), lead: t("Everything you need to know before your first class. Can't find your answer? We're a WhatsApp away.", '第一堂课前需要知道的一切。找不到答案？WhatsApp 我们就好。'), crumbs: [[t('FAQ', '常见问题')]] })}
 <section class="section section--flush">
   <div class="container split split--faq">
     <div class="reveal">
       <div class="aside-card aside-card--sticky">
-        <h3>Still have questions?</h3>
-        <p class="muted">Our team is happy to help you choose the right class or programme.</p>
+        <h3>${t('Still have questions?', '还有疑问？')}</h3>
+        <p class="muted">${t('Our team is happy to help you choose the right class or programme.', '我们的团队很乐意帮您选择合适的课程或方案。')}</p>
         <div class="actions actions--stack">
-          <a class="btn btn--primary btn--block" href="${site.whatsapp}" target="_blank" rel="noopener">${icon.wa} WhatsApp us</a>
-          <a class="btn btn--ghost btn--block" href="${r}contact-us/">Contact form</a>
+          <a class="btn btn--primary btn--block" href="${site.whatsapp}" target="_blank" rel="noopener">${icon.wa} ${t('WhatsApp us', 'WhatsApp 我们')}</a>
+          <a class="btn btn--ghost btn--block" href="${r}contact-us/">${t('Contact form', '联系表格')}</a>
         </div>
       </div>
     </div>
@@ -693,30 +705,32 @@ ${ctaBand(r)}`,
 }
 
 // =====================================================================
-// LEGAL
+// LEGAL (English only; the Chinese site shows the English text with a note)
 // =====================================================================
 const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-function legal(doc, path, other) {
+function legal(doc, path, other, zhTitle, otherZh) {
   const r = '../../';
   const numbered = !doc.intro;
+  const title = t(doc.title, zhTitle);
   return {
     path,
     active: '',
-    title: doc.title,
-    description: `${doc.title} for Healthtinity classes, packages, memberships, website and booking application.`,
+    title,
+    description: t(`${doc.title} for Healthtinity classes, packages, memberships, website and booking application.`, `Healthtinity 课程、配套、会员、网站及预约应用程序的${zhTitle}。`),
     body: `
-${pageHero({ r, eyebrow: 'Legal', title: doc.title, lead: doc.effective ? `Effective date: ${doc.effective}` : `${site.legalName} · Reg. ${site.reg}`, crumbs: [[doc.title]] })}
+${pageHero({ r, title, lead: doc.effective ? t(`Effective date: ${doc.effective}`, `生效日期：${doc.effective}`) : `${site.legalName} · ${t('Reg.', '注册号')} ${site.reg}`, crumbs: [[title]] })}
 <section class="section section--flush">
   <div class="container legal">
     <aside class="legal__toc">
       <div class="aside-card aside-card--sticky">
-        <h3>Contents</h3>
+        <h3>${t('Contents', '目录')}</h3>
         <ol>${doc.sections.map(([h]) => `<li><a href="#${slugify(h)}">${esc(h)}</a></li>`).join('')}</ol>
-        <a class="arrow-link" href="${r}${other[1]}">${other[0]} ${icon.arrow}</a>
+        <a class="arrow-link" href="${r}${other[1]}">${t(other[0], otherZh)} ${icon.arrow}</a>
       </div>
     </aside>
-    <div class="prose prose--legal">
+    <div class="prose prose--legal" lang="en">
+      ${isZh() ? `<p class="legal__note" lang="zh-Hans">本${zhTitle}仅提供英文版本，并以英文版本为准。如有疑问，欢迎<a href="${site.whatsapp}" target="_blank" rel="noopener">通过 WhatsApp 联系我们</a>。</p>` : ''}
       ${doc.intro ? `<p class="lead">${esc(doc.intro)}</p>` : ''}
       ${doc.sections.map(([h, ps], i) => `
       <section id="${slugify(h)}">
@@ -743,8 +757,8 @@ function notFound() {
 <section class="section">
   <div class="container center-block">
     <h1>Let's find your <em>flow</em> again.</h1>
-    <p class="lead">The page you're looking for has moved or doesn't exist.</p>
-    <div class="actions actions--center"><a class="btn btn--primary" href="./">Back to home</a><a class="btn btn--ghost" href="timetable/">View schedule</a></div>
+    <p class="lead">The page you're looking for has moved or doesn't exist. <span lang="zh-Hans">您要找的页面已移动或不存在。</span></p>
+    <div class="actions actions--center"><a class="btn btn--primary" href="./">Back to home</a><a class="btn btn--ghost" href="zh/">返回中文首页</a></div>
   </div>
 </section>`,
   };
@@ -754,17 +768,17 @@ export function allPages() {
   return [
     home(),
     blogIndex(),
-    ...posts.map(blogPost),
+    ...L.posts().map(blogPost),
     teamIndex(),
-    ...team.map(teamMember),
+    ...L.team().map(teamMember),
     packagePage(),
     membershipPage(),
     timetable(),
     contact(),
     location(),
     faqPage(),
-    legal(terms, 'terms/terms-and-conditions/', ['Privacy Policy', 'terms/private-policy/']),
-    legal(privacy, 'terms/private-policy/', ['Terms & Conditions', 'terms/terms-and-conditions/']),
-    notFound(),
+    legal(terms, 'terms/terms-and-conditions/', ['Privacy Policy', 'terms/private-policy/'], '条款与细则', '隐私政策'),
+    legal(privacy, 'terms/private-policy/', ['Terms & Conditions', 'terms/terms-and-conditions/'], '隐私政策', '条款与细则'),
+    ...(isZh() ? [] : [notFound()]),
   ];
 }

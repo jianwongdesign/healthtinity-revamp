@@ -42,6 +42,13 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 
 All content lives in `src/data.mjs` (prices, team, schedule, posts, FAQ) and `src/legal.mjs`. There are no dependencies; you only need Node 18+.
 
+**Two languages.** Every page is built twice: English at the site root and Simplified Chinese under `/zh/`, with an EN | 中文 switch in the header that jumps to the same page in the other language.
+- English text: `src/data.mjs` and the `t('English', '中文')` pairs in `src/pages.mjs` / `src/layout.mjs`.
+- Chinese text: `src/zh.mjs` (prices, team bios, FAQ, posts) plus those `t()` pairs. Anything missing from `zh.mjs` falls back to English.
+- Timetable class names keep both languages in one string (`'Hatha Yoga 哈他瑜伽'`); the build splits them.
+- Terms and Privacy are English-only on both sites (the Chinese pages say the English version applies).
+- The Chinese translation is machine-assisted. Have a native speaker proofread before launch.
+
 ```bash
 npm run build   # renders src/ → docs/
 npm run dev     # build + preview at http://localhost:4321
@@ -51,7 +58,9 @@ Commit the rebuilt `docs/` folder and GitHub Pages updates automatically.
 
 ```
 src/
-  data.mjs        # all site content
+  data.mjs        # all site content (English)
+  zh.mjs          # Chinese translations
+  i18n.mjs        # language switch helpers
   legal.mjs       # T&C and Privacy Policy text
   layout.mjs      # header, footer, shared blocks
   pages.mjs       # page templates

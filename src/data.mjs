@@ -1,6 +1,7 @@
 // =====================================================================
 // Healthtinity: site content
 // All copy below is taken from the current healthtinity.com (Nov 2026).
+// English only. Chinese lives in zh.mjs; schedule names carry both (split at build).
 // Edit here, then run `npm run build`.
 // =====================================================================
 
@@ -48,7 +49,7 @@ export const wa = (text) => `${site.whatsapp}?text=${encodeURIComponent(text)}`;
 export const packages = [
   {
     name: 'Starter Pack',
-    sub: 'Trial: 5 Group Classes · 试课：5 堂团课',
+    sub: 'Trial: 5 Group Classes',
     price: 60,
     credits: '5 class credits',
     validity: 'Valid for 30 days from date of purchase',
@@ -173,13 +174,6 @@ export const team = [
       "As the pioneer behind Healthtinity's signature Yoga Rehab Therapy methodology, Kai has helped thousands of individuals—from office professionals and athletes to seniors and stroke survivors—regain strength, mobility, and quality of life. His sessions seamlessly blend clinical expertise with compassionate coaching, making rehabilitation both effective and sustainable.",
       "Whether you're recovering from an injury, managing chronic pain, or striving to perform at your best, Kai is dedicated to helping you unlock your body's full potential.",
     ],
-    zh: [
-      'Kai｜首席治疗师 · 总教练 · 整骨医学博士（Doctor of Osteopathy）',
-      'Kai 是 Healthtinity 首席治疗师及总教练，拥有超过十年的康复治疗与功能性训练经验。作为整骨医学博士（Doctor of Osteopathy），他结合整骨医学、瑜伽疗法、普拉提、功能性训练及徒手治疗，为学员提供全面且科学的康复与身体优化方案。',
-      'Kai 擅长处理慢性颈肩腰背痛、坐骨神经痛、脊柱侧弯、运动损伤、姿势不良、关节活动受限及术后康复等问题。他坚持从根本原因着手，而非只缓解症状，并根据每位学员的身体状况制定个性化治疗与训练计划，帮助他们恢复健康、提升功能与改善生活品质。',
-      '作为 Healthtinity「瑜伽康复疗法（Yoga Rehab Therapy）」的创始人之一，Kai 已帮助数千位学员，包括上班族、运动员、长者及中风康复人士，重新找回力量、灵活度与无痛生活。他将临床知识与丰富的教学经验结合，让康复过程更安全、更有效，也更容易长期坚持。',
-      '无论您的目标是摆脱疼痛、改善体态、运动表现提升，还是恢复日常活动能力，Kai 都将以专业、细心及个性化的方式，陪伴您迈向更健康、更强壮的自己。',
-    ],
   },
   {
     slug: 'mary-low',
@@ -225,7 +219,7 @@ export const team = [
     slug: 'pei-qing-yeo',
     name: 'Pei Qing Yeo',
     role: 'Yoga & Mat Pilates Instructor',
-    skills: 'Yoga & Mat Pilates Teacher 瑜伽与垫上普拉提导师',
+    skills: 'Yoga & Mat Pilates Teacher',
     photo: 'pei-qing-yeo.jpg',
     bio: [
       'Pei Qing is a dedicated Yoga and Mat Pilates instructor who believes movement should be accessible, enjoyable, and empowering for everyone. Fluent in both English and Mandarin, she creates a warm and welcoming environment where students of all backgrounds can practise with confidence.',
@@ -233,18 +227,12 @@ export const team = [
       'In addition to group classes, Pei Qing also offers personalised 1-to-1 sessions tailored to individual goals, including improving flexibility, building strength, enhancing mobility, refining technique, and supporting overall wellness. Her patient and encouraging teaching style makes her a favourite among beginners and experienced practitioners alike.',
       'With a passion for helping others move and feel better, Pei Qing is committed to inspiring every student to build confidence, develop healthy movement habits, and enjoy a lifelong journey of wellness.',
     ],
-    zh: [
-      'Pei Qing 是一位充满热忱的瑜伽与垫上普拉提导师，精通英语及华语教学，致力于让每一位学员都能在轻松、友善的环境中享受运动，建立健康的生活方式。',
-      '她的课程着重于正确动作、身体排列、核心稳定、柔软度、平衡及身体觉察，帮助学员循序渐进地提升力量与活动能力。无论您是初学者还是已有练习经验，Pei Qing 都会根据个人程度提供适合的动作调整，让每位学员都能安全、自信地练习。',
-      '除了团体课程，她也提供一对一个人指导，根据学员的目标量身设计训练计划，包括提升柔软度、增强核心力量、改善体态、增加身体活动能力及整体健康表现。',
-      'Pei Qing 以耐心、细心及亲切的教学风格深受学员喜爱，希望陪伴每位学员在瑜伽与普拉提的旅程中建立自信、享受运动，并培养终身受益的健康习惯。',
-    ],
   },
   {
     slug: 'pin-yi-chiang',
     name: 'Pin Yi Chiang',
     role: 'Yoga Instructor',
-    skills: 'Yoga Instructor 瑜伽导师',
+    skills: 'Yoga Instructor',
     photo: 'pin-yi-chiang.jpg',
     bio: [
       'Pin Yi is a passionate Yoga Coach dedicated to helping students build strength, flexibility, and confidence through mindful movement. Fluent in both English and Mandarin, she creates an encouraging and inclusive environment where students of all levels can feel comfortable and supported throughout their practice.',
@@ -252,45 +240,29 @@ export const team = [
       "In addition to group classes, Pin Yi also offers personalised 1-to-1 private yoga sessions tailored to individual goals. Whether you're looking to improve flexibility, build strength, deepen your yoga practice, enhance mobility, or simply move with greater confidence, she will create a programme designed specifically for your needs.",
       'Pin Yi believes yoga is a lifelong journey of self-discovery and wellness, and she is committed to helping every student move better, feel stronger, and live healthier.',
     ],
-    zh: [
-      'Pin Yi 是一位充满热忱的瑜伽导师，精通英语及华语教学，致力于帮助每位学员透过瑜伽建立更健康、更有力量的身体，并培养自信与身心平衡。',
-      '她的课程着重于正确体位排列、呼吸控制、身体觉察、柔软度、平衡及活动能力，帮助学员循序渐进地提升身体素质，改善体态，并建立稳固的瑜伽基础。Pin Yi 教学风格细心、温和且富有耐心，会根据不同程度提供适当的动作调整，让每位学员都能安心、安全地练习。',
-      '除了团体课程外，Pin Yi 也提供一对一私人瑜伽课程，根据学员的身体状况及个人目标量身设计练习计划，无论是提升柔软度、增强力量、改善身体活动能力、深化瑜伽练习，或舒缓日常压力，都能获得专业且贴心的指导。',
-      '她相信瑜伽不仅是一项运动，更是一种生活方式，希望陪伴每位学员在练习过程中发现身体的潜能，享受健康、平衡且充满活力的生活。',
-    ],
   },
   {
     slug: 'hasita-j',
     name: 'Hasita J',
     role: 'Yoga, Mat Pilates & Barre Instructor',
-    skills: 'Yoga, Mat Pilates & Barre 瑜伽垫上普拉提与芭蕾导师',
+    skills: 'Yoga, Mat Pilates & Barre',
     photo: 'hasita-j.jpg',
     bio: [
       'Hasita is an energetic and passionate instructor specialising in Yoga, Mat Pilates, and Barre. She believes that movement should be both effective and enjoyable, creating classes that help students build strength, flexibility, balance, and confidence while having fun.',
       "Her teaching combines mindful movement with functional training, focusing on proper alignment, core stability, posture, and body awareness. Whether it's the graceful flow of yoga, the precision of Mat Pilates, or the dynamic energy of Barre, Hasita encourages every student to challenge themselves safely and progress at their own pace.",
       'Suitable for students of all fitness levels, her classes are welcoming, motivating, and thoughtfully designed with modifications for beginners and progressions for more experienced practitioners. With her positive energy and supportive coaching style, Hasita inspires students to move better, feel stronger, and enjoy every step of their wellness journey.',
     ],
-    zh: [
-      'Hasita 是一位充满活力与热忱的导师，专注教授瑜伽、垫上普拉提及 Barre 课程。她相信运动不仅能够锻炼身体，更应该充满乐趣，让每位学员都能在愉快的氛围中建立力量、自信与健康。',
-      '她的课程结合瑜伽的流动性、普拉提的精准控制及 Barre 的肌力与耐力训练，着重于核心稳定、正确体位排列、身体控制、平衡及柔软度，帮助学员全面提升身体素质与日常活动能力。',
-      '无论您是初学者还是已有运动基础，Hasita 都会根据个人能力提供不同难度的动作调整与进阶选择，让每位学员都能安全、有效地练习。她以充满感染力的教学风格及细心的指导，鼓励每位学员突破自己，在每一次练习中感受身体的成长，并享受健康、积极、充满活力的生活方式。',
-    ],
   },
   {
     slug: 'daniel-ding',
     name: 'Daniel Ding',
     role: 'Yoga & Mat Pilates Instructor',
-    skills: 'Yoga & Mat Pilates 瑜伽与垫上普拉提',
+    skills: 'Yoga & Mat Pilates',
     photo: 'daniel-ding.jpg',
     bio: [
       'Daniel is a dedicated Yoga and Mat Pilates instructor who is passionate about helping students build strength, mobility, and confidence through purposeful movement. With a calm, encouraging teaching style, he creates a supportive environment where students of all experience levels can learn safely and progress with confidence.',
       'His classes focus on proper alignment, core strength, flexibility, balance, and functional movement, helping students improve posture, body awareness, and overall physical well-being. Daniel believes that consistent practice and mindful movement are the foundation of a healthy and active lifestyle, and he encourages every student to move with control, intention, and confidence.',
       "In addition to group classes, Daniel also offers personalised 1-to-1 private sessions tailored to individual goals. Whether you're looking to improve flexibility, build strength, recover from an injury, refine your technique, or deepen your yoga or Pilates practice, he will develop a programme that supports your unique needs and helps you achieve lasting results.",
-    ],
-    zh: [
-      'Daniel 是一位充满热忱的瑜伽与垫上普拉提导师，致力于透过科学且有意识的训练方式，帮助学员建立力量、提升活动能力，并培养健康的生活习惯。他以耐心、细心及鼓励式的教学风格，为每位学员营造轻松、安全且充满支持的学习环境，让不同程度的学员都能安心练习并持续进步。',
-      '他的课程着重于正确体位排列、核心稳定、柔软度、平衡能力及身体控制，帮助学员改善姿势、增强身体觉察，并提升整体运动表现与日常生活功能。Daniel 相信，每一次练习都是迈向更健康身体的重要一步，并鼓励学员透过稳定且持续的练习，建立自信与良好的运动基础。',
-      '除了团体课程外，Daniel 亦提供一对一私人课程，根据学员的身体状况及个人目标量身设计训练计划，无论是提升柔软度、增强力量、改善活动能力、运动康复，或深化瑜伽与普拉提练习，都能获得专业且细致的指导，帮助您安全、有效地达成目标。',
     ],
   },
   {
@@ -303,11 +275,6 @@ export const team = [
       'Ben is a passionate Yoga Instructor dedicated to helping students build strength, mobility, and confidence through mindful movement. Known for his energetic yet approachable teaching style, he creates an encouraging environment where students of all levels can challenge themselves safely while enjoying their practice.',
       "His classes focus on proper alignment, flexibility, balance, functional strength, and breath awareness, helping students develop a strong foundation while improving overall movement quality and physical well-being. Whether you're new to yoga or looking to deepen your practice, Ben provides clear guidance and personalised modifications to support your progress.",
       "In addition to leading group classes, Ben also offers personalised 1-to-1 private yoga sessions tailored to individual goals, including improving flexibility, building strength, enhancing mobility, and refining yoga techniques. As an Assistant Trainer in Healthtinity's Yoga Teacher Training (YTT) Programme, he also mentors aspiring yoga teachers, sharing his knowledge, practical experience, and passion for teaching. Ben believes that yoga is a lifelong journey of growth, and he is committed to helping every student move with confidence and purpose.",
-    ],
-    zh: [
-      'Ben 是一位充满热忱的瑜伽导师，致力于透过专业且富有启发性的教学，帮助学员建立力量、提升柔软度及培养身体觉察。他的教学风格充满活力且亲切，营造积极、友善的学习氛围，让不同程度的学员都能安心练习，并不断突破自己。',
-      '他的课程着重于正确体位排列、呼吸控制、核心稳定、柔软度、平衡及功能性力量训练，帮助学员建立扎实的瑜伽基础，改善身体姿势及整体活动能力。无论是初学者还是已有经验的练习者，Ben 都会根据个人程度提供适当的指导与动作调整，让每位学员都能安全、有效地成长。',
-      '除了团体课程外，Ben 也提供一对一私人瑜伽课程，根据个人目标量身设计训练计划，包括提升柔软度、增强力量、改善活动能力及精进瑜伽技巧。同时，他也是 Healthtinity 瑜伽师资培训课程（Yoga Teacher Training, YTT）的助教，协助培养未来的瑜伽导师，分享教学经验与专业知识，陪伴学员在瑜伽旅程中不断成长，迈向更健康、更自信的自己。',
     ],
   },
   {
@@ -513,13 +480,13 @@ export const posts = [
     slug: 'yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao',
     legacy: 'yoga-for-better-sleep-in-singapore--healthtinity-featured-in-lianhe-zaobao',
     title: 'Yoga for Better Sleep in Singapore | Healthtinity Featured in Lianhe Zaobao',
-    excerpt: 'Healthtinity was featured in Lianhe Zaobao (联合早报) on 8 September 2026, sharing gentle yoga practices for better sleep and relaxation.',
+    excerpt: 'Healthtinity was featured in Lianhe Zaobao on 8 September 2026, sharing gentle yoga practices for better sleep and relaxation.',
     category: 'Therapy',
     author: 'Robin',
     date: '10 Sep 2026',
     image: 'blog-sleep.jpg',
     body: `
-<p class="lead">We're delighted to share that Healthtinity Yoga &amp; Therapy was featured in <strong>Lianhe Zaobao (联合早报)</strong> on 8 September 2026, as part of a feature exploring ways to improve sleep and relaxation.</p>
+<p class="lead">We're delighted to share that Healthtinity Yoga &amp; Therapy was featured in <strong>Lianhe Zaobao</strong> on 8 September 2026, as part of a feature exploring ways to improve sleep and relaxation.</p>
 <p>In the feature, Healthtinity shared how gentle yoga practices, mindful breathing and relaxation techniques can be incorporated into our daily routine to help the body unwind and prepare for better rest.</p>
 <h2>Why Can It Be So Difficult to Wind Down?</h2>
 <p>For many of us, going to bed doesn't necessarily mean our body and mind are ready to rest.</p>

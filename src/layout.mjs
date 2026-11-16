@@ -1,4 +1,5 @@
-import { site, wa } from './data.mjs';
+import { site as siteEn, wa } from './data.mjs';
+import { t, ar, isZh, L } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
@@ -30,7 +31,7 @@ export const pageHero = ({ eyebrow, title, lead, crumbs = [], r, extra = '' }) =
 <section class="page-hero">
   <div class="container">
     <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="${r || './'}">Home</a>${crumbs.map(([label, href]) => ` <span>/</span> ${href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`}`).join('')}
+      <a href="${r || './'}">${t('Home', '首页')}</a>${crumbs.map(([label, href]) => ` <span>/</span> ${href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`}`).join('')}
     </nav>
     <h1>${title}</h1>
     ${lead ? `<p class="lead">${lead}</p>` : ''}
@@ -39,31 +40,40 @@ export const pageHero = ({ eyebrow, title, lead, crumbs = [], r, extra = '' }) =
 </section>`;
 
 /** Closing call-to-action band */
-export const ctaBand = (r) => `
+export const ctaBand = (r) => { const site = siteEn; return `
 <section class="section section--tight">
   <div class="container">
     <div class="cta-band reveal">
       <div>
-        <h2>New here? Your first 5 classes are $60.</h2>
-        <p>Download the HT Life app, grab the New Members Starter Pack and get <strong>$22 credit</strong> in your Healthtinity Wallet to use on your next purchase or a drop-in class.</p>
+        <h2>${t('New here? Your first 5 classes are $60.', '新朋友？前 5 堂课只需 $60。')}</h2>
+        <p>${t('Download the HT Life app, grab the New Members Starter Pack and get <strong>$22 credit</strong> in your Healthtinity Wallet to use on your next purchase or a drop-in class.', '下载 HT Life 应用程序，购买新会员体验配套，即可获得 <strong>$22 额度</strong>存入 Healthtinity 钱包，可用于下次购买或单堂课程。')}</p>
       </div>
       <div class="cta-band__actions">
-        <a class="btn btn--light" href="${site.links.packages}">Get the Starter Pack</a>
-        <a class="btn btn--outline-light" href="${r}timetable/">View schedule</a>
+        <a class="btn btn--light" href="${site.links.packages}">${t('Get the Starter Pack', '购买体验配套')}</a>
+        <a class="btn btn--outline-light" href="${r}timetable/">${t('View schedule', '查看课表')}</a>
       </div>
     </div>
   </div>
-</section>`;
+</section>`; };
 
-export function layout({ path = '', title, description, body, active = '', schema = '' }) {
+export function layout({ path = '', title, description, body, active = '', schema = '', file }) {
+  const site = L.site();
   const depth = path.split('/').filter(Boolean).length;
   const r = '../'.repeat(depth);
+  const A = ar(r); // asset root
   const home = r || './';
   const a = (key) => (active === key ? ' aria-current="page"' : '');
-  const fullTitle = path === '' ? `Healthtinity | Yoga, Pilates & Rehab Therapy Studio in Singapore` : `${title} | Healthtinity`;
+  const fullTitle = path === '' ? t('Healthtinity | Yoga, Pilates & Rehab Therapy Studio in Singapore', 'Healthtinity | 新加坡瑜伽、普拉提与康复疗法工作室') : `${title} | Healthtinity`;
+  // Same page in the other language
+  const enHref = isZh() ? `${r}../${path}` : `${r}${path}`;
+  const zhHref = isZh() ? `${r}${path}` : `${r}zh/${path}`;
+  const langSwitch = (cls = '') => `<div class="lang${cls}" role="group" aria-label="Language / 语言">
+        <a href="${enHref || './'}" lang="en" hreflang="en"${isZh() ? '' : ' aria-current="true"'}>EN</a>
+        <a href="${zhHref || './'}" lang="zh-Hans" hreflang="zh-Hans"${isZh() ? ' aria-current="true"' : ''}>中文</a>
+      </div>`;
 
   return `<!doctype html>
-<html lang="en">
+<html lang="${t('en', 'zh-Hans')}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,66 +84,70 @@ export function layout({ path = '', title, description, body, active = '', schem
   <meta property="og:site_name" content="Healthtinity">
   <meta property="og:title" content="${esc(fullTitle)}">
   <meta property="og:description" content="${esc(description)}">
-  <meta property="og:image" content="${r}assets/img/hero.jpg">
-  <link rel="icon" type="image/png" href="${r}assets/img/logo-64.png">
-  <link rel="apple-touch-icon" href="${r}assets/img/logo-180.png">
+  <meta property="og:image" content="${A}assets/img/hero.jpg">
+  <link rel="icon" type="image/png" href="${A}assets/img/logo-64.png">
+  <link rel="apple-touch-icon" href="${A}assets/img/logo-180.png">
+  <link rel="alternate" hreflang="en" href="${enHref || './'}">
+  <link rel="alternate" hreflang="zh-Hans" href="${zhHref || './'}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@700;800;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="${r}assets/css/styles.css?v=${ver.css}">
+  <link rel="stylesheet" href="${A}assets/css/styles.css?v=${ver.css}">
   <script>document.documentElement.classList.add('js')</script>
   ${schema}
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">${t('Skip to content', '跳至内容')}</a>
 
   <div class="announce">
     <div class="container announce__inner">
-      <span><strong>New:</strong> Top Up &amp; Flow. Top up $90, get $10 bonus credit.</span>
-      <a href="${r}package/#topup">Learn more →</a>
+      <span><strong>${t('New:', '新推出：')}</strong> ${t('Top Up &amp; Flow. Top up $90, get $10 bonus credit.', '储值随心练：储值 $90，额外获赠 $10。')}</span>
+      <a href="${r}package/#topup">${t('Learn more', '了解更多')} →</a>
     </div>
   </div>
 
   <header class="nav" data-nav>
     <div class="container nav__inner">
-      <a href="${home}" class="brand" aria-label="Healthtinity home">
-        <img src="${r}assets/img/logo-180.png" alt="" width="40" height="40">
+      <a href="${home}" class="brand" aria-label="${t('Healthtinity home', 'Healthtinity 首页')}">
+        <img src="${A}assets/img/logo-180.png" alt="" width="40" height="40">
         <span>Healthtinity</span>
       </a>
-      <nav class="nav__links" aria-label="Main">
-        <a href="${home}"${a('home')}>Home</a>
-        <a href="${r}blog/"${a('blog')}>What's new</a>
-        <a href="${r}team/"${a('team')}>Team</a>
+      <nav class="nav__links" aria-label="${t('Main', '主菜单')}">
+        <a href="${home}"${a('home')}>${t('Home', '首页')}</a>
+        <a href="${r}blog/"${a('blog')}>${t("What's new", '最新动态')}</a>
+        <a href="${r}team/"${a('team')}>${t('Team', '团队')}</a>
         <div class="dropdown">
-          <button class="dropdown__btn${active === 'pricing' ? ' is-active' : ''}" aria-expanded="false" data-dropdown>Pricing ${icon.chev}</button>
+          <button class="dropdown__btn${active === 'pricing' ? ' is-active' : ''}" aria-expanded="false" data-dropdown>${t('Pricing', '价格')} ${icon.chev}</button>
           <div class="dropdown__menu">
-            <a href="${r}package/"><strong>Packages</strong><span>Class packs &amp; Starter Pack</span></a>
-            <a href="${r}membership/"><strong>Memberships</strong><span>Unlimited group classes</span></a>
-            <a href="${r}package/#topup"><strong>Top Up &amp; Flow</strong><span>Wallet credits with bonus</span></a>
+            <a href="${r}package/"><strong>${t('Packages', '课程配套')}</strong><span>${t('Class packs &amp; Starter Pack', '课程配套与体验配套')}</span></a>
+            <a href="${r}membership/"><strong>${t('Memberships', '会员')}</strong><span>${t('Unlimited group classes', '团体课无限上')}</span></a>
+            <a href="${r}package/#topup"><strong>${t('Top Up &amp; Flow', '储值随心练')}</strong><span>${t('Wallet credits with bonus', '钱包储值送额度')}</span></a>
           </div>
         </div>
-        <a href="${r}timetable/"${a('timetable')}>Schedule</a>
-        <a href="${r}contact-us/"${a('contact')}>Contact</a>
-        <a href="${r}location/"${a('location')}>Locate us</a>
+        <a href="${r}timetable/"${a('timetable')}>${t('Schedule', '课表')}</a>
+        <a href="${r}contact-us/"${a('contact')}>${t('Contact', '联系我们')}</a>
+        <a href="${r}location/"${a('location')}>${t('Locate us', '交通位置')}</a>
       </nav>
       <div class="nav__cta">
-        <a class="btn btn--primary btn--sm" href="${site.links.schedule}">Book a class</a>
+        ${langSwitch()}
+        <a class="btn btn--primary btn--sm" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
       </div>
-      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+      ${langSwitch(' lang--bar')}
+      <button class="nav__toggle" aria-label="${t('Open menu', '打开菜单')}" aria-expanded="false" data-menu-toggle>
         <span></span><span></span>
       </button>
     </div>
     <div class="mobile-menu" data-menu>
-      <a href="${home}">Home</a>
-      <a href="${r}blog/">What's new</a>
-      <a href="${r}team/">Team</a>
-      <a href="${r}package/">Packages</a>
-      <a href="${r}membership/">Memberships</a>
-      <a href="${r}timetable/">Group class schedule</a>
-      <a href="${r}contact-us/">Contact us</a>
-      <a href="${r}location/">Locate us</a>
-      <a href="${r}faqs/">FAQ</a>
-      <a class="btn btn--primary" href="${site.links.schedule}">Book a class</a>
+      <a href="${home}">${t('Home', '首页')}</a>
+      <a href="${r}blog/">${t("What's new", '最新动态')}</a>
+      <a href="${r}team/">${t('Team', '团队')}</a>
+      <a href="${r}package/">${t('Packages', '课程配套')}</a>
+      <a href="${r}membership/">${t('Memberships', '会员')}</a>
+      <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
+      <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
+      <a href="${r}location/">${t('Locate us', '交通位置')}</a>
+      <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
+      <a class="btn btn--primary" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
     </div>
   </header>
 
@@ -145,10 +159,10 @@ ${body}
     <div class="container footer__grid">
       <div class="footer__about">
         <a href="${home}" class="brand">
-          <img src="${r}assets/img/logo-180.png" alt="" width="40" height="40">
+          <img src="${A}assets/img/logo-180.png" alt="" width="40" height="40">
           <span>Healthtinity</span>
         </a>
-        <p class="muted">${esc(site.tagline)}. Helping people move better since 2019.</p>
+        <p class="muted">${esc(site.tagline)}${t('. Helping people move better since 2019.', '。自 2019 年起，帮助大家动得更好。')}</p>
         <div class="social">
           <a href="${site.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${icon.ig}</a>
           <a href="${site.social.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${icon.fb}</a>
@@ -157,21 +171,21 @@ ${body}
         </div>
       </div>
       <div>
-        <h4>Studio</h4>
-        <a href="${r}team/">Our team</a>
-        <a href="${r}blog/">What's new</a>
-        <a href="${r}location/">Locate us</a>
-        <a href="${r}contact-us/">Contact us</a>
+        <h4>${t('Studio', '工作室')}</h4>
+        <a href="${r}team/">${t('Our team', '我们的团队')}</a>
+        <a href="${r}blog/">${t("What's new", '最新动态')}</a>
+        <a href="${r}location/">${t('Locate us', '交通位置')}</a>
+        <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
       </div>
       <div>
-        <h4>Classes</h4>
-        <a href="${r}timetable/">Group class schedule</a>
-        <a href="${r}package/">Packages</a>
-        <a href="${r}membership/">Memberships</a>
-        <a href="${r}faqs/">FAQ</a>
+        <h4>${t('Classes', '课程')}</h4>
+        <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
+        <a href="${r}package/">${t('Packages', '课程配套')}</a>
+        <a href="${r}membership/">${t('Memberships', '会员')}</a>
+        <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
       </div>
       <div>
-        <h4>Visit</h4>
+        <h4>${t('Visit', '到访')}</h4>
         <p class="footer__addr">${site.address.join('<br>')}</p>
         <a href="${site.phoneHref}">${site.phone}</a>
         <a href="mailto:${site.email}">${site.email}</a>
@@ -182,16 +196,16 @@ ${body}
       </div>
     </div>
     <div class="container footer__base">
-      <span>© <span data-year>2026</span> ${site.legalName} · Reg. ${site.reg}</span>
-      <span><a href="${r}terms/terms-and-conditions/">Terms &amp; Conditions</a> · <a href="${r}terms/private-policy/">Privacy Policy</a> · <a href="${r}faqs/">FAQ</a></span>
+      <span>© <span data-year>2026</span> ${site.legalName} · ${t('Reg.', '注册号')} ${site.reg}</span>
+      <span><a href="${r}terms/terms-and-conditions/">${t('Terms &amp; Conditions', '条款与细则')}</a> · <a href="${r}terms/private-policy/">${t('Privacy Policy', '隐私政策')}</a> · <a href="${r}faqs/">${t('FAQ', '常见问题')}</a></span>
     </div>
   </footer>
 
-  <a class="wa-fab" href="${wa('Hi Healthtinity! 👋 I have a question.')}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
-    ${icon.wa}<span>Chat with us</span>
+  <a class="wa-fab" href="${wa(t('Hi Healthtinity! 👋 I have a question.', '您好 Healthtinity！👋 我想咨询一下。'))}" target="_blank" rel="noopener" aria-label="${t('Chat with us on WhatsApp', '通过 WhatsApp 联系我们')}">
+    ${icon.wa}<span>${t('Chat with us', '联系我们')}</span>
   </a>
 
-  <script src="${r}assets/js/main.js?v=${ver.js}" defer></script>
+  <script src="${A}assets/js/main.js?v=${ver.js}" defer></script>
 </body>
 </html>
 `;
