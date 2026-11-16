@@ -80,15 +80,16 @@ function home() {
     })}</script>`,
     body: `
 <section class="hero">
-  <div class="container hero__panel">
+  <img class="hero__bg" src="assets/img/hero-studio.jpg" srcset="assets/img/hero-studio-1200.jpg 1200w, assets/img/hero-studio.jpg 2400w" sizes="100vw" alt="" width="2400" height="1350" fetchpriority="high">
+  <div class="hero__panel">
     <div class="hero__copy">
       <a class="hero__tag" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">
         <span>Featured in</span><span class="hero__tag-logo">${zaobaoLogo}</span><span class="hero__tag-more">Read the feature ${icon.arrow}</span>
       </a>
       <h1>${'Coaches who know your name.'.split(' ').map((w, i) => `<span class="hero__word" style="--i:${i}">${w}</span>`).join(' ')}</h1>
-      <p class="hero__lead">Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, taught in English and 华语 and led by Dr Kai, Doctor of Osteopathy.</p>
+      <p class="hero__lead">Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, taught in English and <span class="nowrap">华语</span> and led by Dr Kai, Doctor of Osteopathy.</p>
       <div class="actions">
-        <a class="btn btn--sun" href="${site.links.packages}">Start with 5 classes for $60 ${icon.arrow}</a>
+        <a class="btn btn--primary" href="${site.links.packages}">Start with 5 classes for $60 ${icon.arrow}</a>
         <a class="wa-link" href="${wa("Hi Healthtinity! I'm new and would like to find out which class suits me.")}" target="_blank" rel="noopener">${icon.wa} WhatsApp us</a>
       </div>
     </div>
