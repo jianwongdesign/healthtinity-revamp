@@ -58,9 +58,15 @@ const topupBlock = () => `
 // =====================================================================
 function home() {
   const r = '';
-  const pick = ['kai', 'mary-low', 'sam-chen', 'jade-lim', 'zenn-lim', 'daniel-ding'];
-  const faces = pick.map((slug) => team.find((m) => m.slug === slug)).filter((m) => m && m.photo)
-    .map((m) => ({ ...m, short: m.slug === 'kai' ? 'Dr Kai' : m.name.split(' ')[0] }));
+  // Class photos for the hero reel. Repeated so the loop is wide enough on large screens.
+  const reelBase = [
+    ['pilates', 'Mat Pilates', 'class-pilates.jpg', 'A Mat Pilates class doing single-leg lifts while a coach gives a cue'],
+    ['therapy', 'Therapy &amp; Stretch', 'hero.jpg', 'A therapy and stretch class easing into a knee hug'],
+    ['yoga', 'Yoga', 'class-yoga.jpg', 'A small group yoga class holding warrior two'],
+    ['therapy', 'Yoga Rehab', 'hero-coach.jpg', 'A coach guiding a seated side stretch'],
+    ['sculpt', 'Tone &amp; Sculpt', 'class-sculpt.jpg', 'A Tone and Sculpt class squatting with light dumbbells'],
+  ];
+  const reel = [...reelBase, ...reelBase];
   return {
     path: '',
     active: 'home',
@@ -76,20 +82,20 @@ function home() {
 <section class="hero">
   <div class="container hero__panel">
     <div class="hero__copy">
-      <h1>Coaches who know your name.</h1>
+      <a class="hero__tag" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">
+        <span>Featured in</span><span class="hero__tag-logo">${zaobaoLogo}</span><span class="hero__tag-more">Read the feature ${icon.arrow}</span>
+      </a>
+      <h1>${'Coaches who know your name.'.split(' ').map((w, i) => `<span class="hero__word" style="--i:${i}">${w}</span>`).join(' ')}</h1>
       <p class="hero__lead">Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, taught in English and 华语 and led by Dr Kai, Doctor of Osteopathy.</p>
       <div class="actions">
         <a class="btn btn--sun" href="${site.links.packages}">Start with 5 classes for $60 ${icon.arrow}</a>
         <a class="wa-link" href="${wa("Hi Healthtinity! I'm new and would like to find out which class suits me.")}" target="_blank" rel="noopener">${icon.wa} WhatsApp us</a>
       </div>
-      <div class="press">
-        <p class="press__label">Featured in</p>
-        <a class="press__logo" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/" aria-label="Read our Lianhe Zaobao feature">${zaobaoLogo}</a>
-        <a class="press__more" href="blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/">Read the feature</a>
-      </div>
     </div>
-    <div class="faces">
-      ${faces.map((m) => `<a class="face" href="team/${m.slug}/"><img src="assets/img/team/${m.photo}" alt="${esc(m.name)}, ${esc(m.role)}" width="560" height="560"${m.slug === 'kai' ? ' fetchpriority="high"' : ''}><span class="face__name">${esc(m.short)}</span></a>`).join('')}
+    <div class="reel">
+      <div class="reel__track">
+        ${[...reel, ...reel].map(([c, t, img, alt], i) => { const dup = i >= reelBase.length; return `<a class="reel__card" href="timetable/?c=${c}"${dup ? ' aria-hidden="true" tabindex="-1"' : ''}><img src="assets/img/hero-reel/${img}" alt="${dup ? '' : alt}" width="480" height="640"${i < 3 ? ' fetchpriority="high"' : ''}><span class="reel__name">${t}</span></a>`; }).join('')}
+      </div>
     </div>
   </div>
 </section>
