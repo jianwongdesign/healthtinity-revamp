@@ -1,4 +1,10 @@
 import { site, wa } from './data.mjs';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+
+// Content hash per asset, so each deploy busts browser/CDN caches when a file changes
+const v = (f) => createHash('md5').update(readFileSync(new URL(`./assets/${f}`, import.meta.url))).digest('hex').slice(0, 8);
+const ver = { css: v('css/styles.css'), js: v('js/main.js') };
 
 export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -74,7 +80,7 @@ export function layout({ path = '', title, description, body, active = '', schem
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@700;800;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="${r}assets/css/styles.css">
+  <link rel="stylesheet" href="${r}assets/css/styles.css?v=${ver.css}">
   <script>document.documentElement.classList.add('js')</script>
   ${schema}
 </head>
@@ -185,7 +191,7 @@ ${body}
     ${icon.wa}<span>Chat with us</span>
   </a>
 
-  <script src="${r}assets/js/main.js" defer></script>
+  <script src="${r}assets/js/main.js?v=${ver.js}" defer></script>
 </body>
 </html>
 `;
