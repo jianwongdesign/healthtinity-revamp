@@ -702,3 +702,38 @@ a.info-card:hover { color: var(--navy); background: var(--sun-soft); }
 .today__row[hidden] { display: none; }
 html:not(.js) .today__row:nth-child(n+6) { display: none; }
 .nowrap { white-space: nowrap; }
+
+/* =========================================================
+   Mobile & touch fixes
+   ========================================================= */
+/* Coach profile hero: role + skills were blue/navy on the blue panel */
+.page-hero .role { color: var(--sun); }
+.page-hero .profile__skills { color: rgba(255,255,255,.88); }
+.page-hero .profile__skills strong { color: #fff; }
+
+/* Pricing switcher: one row, never wraps inside the pill */
+.tabs { flex-wrap: nowrap; max-width: 100%; }
+.tab { white-space: nowrap; }
+@media (max-width: 520px) {
+  .tabs { display: flex; width: 100%; }
+  .tab { flex: 1 1 auto; text-align: center; padding: 10px 10px; font-size: .88rem; }
+}
+@media (max-width: 380px) {
+  .tabs { gap: 2px; padding: 4px; }
+  .tab { padding: 10px 7px; font-size: .84rem; }
+}
+
+/* Timetable labels readable on a phone */
+.day-tab small { font-size: .84rem; }
+.sched__cat { font-size: .82rem; }
+.sched__flag { font-size: .84rem; }
+
+/* Touch targets: at least 44px tall on touch screens, without shifting layout */
+@media (pointer: coarse), (max-width: 959px) {
+  .arrow-link { min-height: 44px; }
+  .crumbs a, .announce a { display: inline-block; padding: 10px 4px; margin: -10px -4px; }
+  .today__row a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; margin: -10px -10px; }
+  .footer__grid > div > a:not(.brand) { padding: 10px 0; }
+  .info-list a { display: inline-block; padding: 9px 0; margin: -9px 0; }
+}
+@media (max-width: 340px) { .tabs { flex-wrap: wrap; border-radius: 22px; } }
