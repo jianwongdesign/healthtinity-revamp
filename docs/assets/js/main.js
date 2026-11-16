@@ -105,6 +105,12 @@
     }
   }
 
+  // ---- Content protection: no right-click, copy, cut or image dragging.
+  // Form fields stay usable so people can still type, paste and fix their details.
+  const editable = (el) => el && el.closest && el.closest('input, textarea, select, [contenteditable="true"]');
+  ['contextmenu', 'copy', 'cut', 'dragstart'].forEach((type) =>
+    document.addEventListener(type, (e) => { if (!editable(e.target)) e.preventDefault(); }));
+
   // ---- Footer year
   const y = $('[data-year]');
   if (y) y.textContent = new Date().getFullYear();

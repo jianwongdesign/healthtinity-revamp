@@ -737,3 +737,8 @@ html:not(.js) .today__row:nth-child(n+6) { display: none; }
   .info-list a { display: inline-block; padding: 9px 0; margin: -9px 0; }
 }
 @media (max-width: 340px) { .tabs { flex-wrap: wrap; border-radius: 22px; } }
+
+/* Content protection: no text selection or image callouts (form fields excluded) */
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, select, [contenteditable="true"] { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
+img { -webkit-user-drag: none; }
