@@ -1,4 +1,4 @@
-import { site as siteEn, wa } from './data.mjs';
+import { site as siteEn, wa, SITE_URL } from './data.mjs';
 import { t, ar, isZh, L } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -56,7 +56,7 @@ export const ctaBand = (r) => { const site = siteEn; return `
   </div>
 </section>`; };
 
-export function layout({ path = '', title, description, body, active = '', schema = '', file }) {
+export function layout({ path = '', title, description, body, active = '', schema = '', file, og = {} }) {
   const site = L.site();
   const depth = path.split('/').filter(Boolean).length;
   const r = '../'.repeat(depth);
@@ -67,6 +67,20 @@ export function layout({ path = '', title, description, body, active = '', schem
   // Same page in the other language
   const enHref = isZh() ? `${r}../${path}` : `${r}${path}`;
   const zhHref = isZh() ? `${r}${path}` : `${r}zh/${path}`;
+  // Absolute URLs for share previews (Open Graph / X) and search engines
+  const abs = (p) => SITE_URL + p;
+  const pageUrl = abs((isZh() ? 'zh/' : '') + (file || path));
+  const enUrl = abs(path);
+  const zhUrl = abs('zh/' + path);
+  const share = {
+    title: og.title || fullTitle,
+    description: og.description || description,
+    image: abs(og.image || `assets/img/og/share-${t('en', 'zh')}.jpg`),
+    width: og.width || 1200,
+    height: og.height || 630,
+    alt: og.alt || t('Healthtinity: coaches who know your name. Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, Singapore.', 'Healthtinity：叫得出你名字的教练。新加坡 Upper Thomson 的瑜伽、垫上普拉提与瑜伽康复疗法。'),
+    type: og.type || 'website',
+  };
   const langSwitch = (cls = '') => `<div class="lang${cls}" role="group" aria-label="Language / 语言">
         <a href="${enHref || './'}" lang="en" hreflang="en"${isZh() ? '' : ' aria-current="true"'}>EN</a>
         <a href="${zhHref || './'}" lang="zh-Hans" hreflang="zh-Hans"${isZh() ? ' aria-current="true"' : ''}>中文</a>
@@ -80,15 +94,29 @@ export function layout({ path = '', title, description, body, active = '', schem
   <title>${esc(fullTitle)}</title>
   <meta name="description" content="${esc(description)}">
   <meta name="theme-color" content="#007EA1">
-  <meta property="og:type" content="website">
+  <link rel="canonical" href="${pageUrl}">
+  <meta property="og:type" content="${share.type}">
   <meta property="og:site_name" content="Healthtinity">
-  <meta property="og:title" content="${esc(fullTitle)}">
-  <meta property="og:description" content="${esc(description)}">
-  <meta property="og:image" content="${A}assets/img/hero.jpg">
+  <meta property="og:url" content="${pageUrl}">
+  <meta property="og:title" content="${esc(share.title)}">
+  <meta property="og:description" content="${esc(share.description)}">
+  <meta property="og:image" content="${share.image}">
+  <meta property="og:image:width" content="${share.width}">
+  <meta property="og:image:height" content="${share.height}">
+  <meta property="og:image:alt" content="${esc(share.alt)}">
+  <meta property="og:locale" content="${t('en_SG', 'zh_SG')}">
+  <meta property="og:locale:alternate" content="${t('zh_SG', 'en_SG')}">
+  ${(og.meta || []).map(([k, v]) => `<meta property="${k}" content="${esc(v)}">`).join('\n  ')}
+  <meta name="twitter:card" content="${share.width === share.height ? 'summary' : 'summary_large_image'}">
+  <meta name="twitter:title" content="${esc(share.title)}">
+  <meta name="twitter:description" content="${esc(share.description)}">
+  <meta name="twitter:image" content="${share.image}">
+  <meta name="twitter:image:alt" content="${esc(share.alt)}">
   <link rel="icon" type="image/png" href="${A}assets/img/logo-64.png">
   <link rel="apple-touch-icon" href="${A}assets/img/logo-180.png">
-  <link rel="alternate" hreflang="en" href="${enHref || './'}">
-  <link rel="alternate" hreflang="zh-Hans" href="${zhHref || './'}">
+  <link rel="alternate" hreflang="en" href="${enUrl}">
+  <link rel="alternate" hreflang="zh-Hans" href="${zhUrl}">
+  <link rel="alternate" hreflang="x-default" href="${enUrl}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@700;800;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">

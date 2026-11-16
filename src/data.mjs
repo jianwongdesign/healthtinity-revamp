@@ -9,6 +9,10 @@
 // (e.g. https://book.healthtinity.com), change it here only.
 export const BOOK = 'https://healthtinity.com';
 
+// Public address of this website, used for share links (Open Graph) and canonical URLs.
+// Build with SITE_URL=https://healthtinity.com/ at launch.
+export const SITE_URL = (process.env.SITE_URL || 'https://jianwongdesign.github.io/healthtinity-revamp/').replace(/\/?$/, '/');
+
 export const site = {
   name: 'Healthtinity',
   legalName: 'Healthtinity Adventures Pte Ltd',
@@ -462,6 +466,7 @@ export const posts = [
     category: 'Yoga',
     author: 'Robin',
     date: '10 Sep 2026',
+    iso: '2026-09-10',
     image: 'blog-package.jpg',
     body: `
 <h2>No Class Package? No Problem. A More Flexible Way to Enjoy Yoga &amp; Pilates in Singapore</h2>
@@ -484,6 +489,7 @@ export const posts = [
     category: 'Therapy',
     author: 'Robin',
     date: '10 Sep 2026',
+    iso: '2026-09-10',
     image: 'blog-sleep.jpg',
     body: `
 <p class="lead">We're delighted to share that Healthtinity Yoga &amp; Therapy was featured in <strong>Lianhe Zaobao</strong> on 8 September 2026, as part of a feature exploring ways to improve sleep and relaxation.</p>

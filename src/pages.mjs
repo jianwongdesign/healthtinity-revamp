@@ -24,6 +24,15 @@ const faqList = (items) => `
 
 const getting = () => L.site().getting;
 
+/** First sentence(s) of a bio, trimmed to fit a share preview (~160 chars EN, ~80 ZH) */
+const snippet = (text) => {
+  const max = isZh() ? 80 : 160;
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const stop = Math.max(cut.lastIndexOf(isZh() ? '。' : '. '), cut.lastIndexOf(isZh() ? '，' : ', '));
+  return (stop > max * 0.5 ? cut.slice(0, stop) : cut.replace(/\s+\S*$/, '')) + '…';
+};
+
 // ---------------------------------------------------------------------
 // Pricing cards
 // ---------------------------------------------------------------------
@@ -83,6 +92,10 @@ function home() {
   return {
     path: '',
     active: 'home',
+    og: {
+      title: t('Healthtinity · Coaches who know your name', 'Healthtinity · 叫得出你名字的教练'),
+      description: t('Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, led by a Doctor of Osteopathy and taught in English and Mandarin. New here? Your first 5 classes are $60.', 'Upper Thomson 的瑜伽、垫上普拉提与瑜伽康复疗法工作室，由整骨医学博士带领，提供英语及华语教学。新朋友前 5 堂课只需 $60。'),
+    },
     title: t('Home', '首页'),
     description: t("Singapore's first boutique Yoga, Pilates & Rehab Therapy studio at Upper Thomson. Expert-led yoga, Mat Pilates, private coaching, yoga therapy and rehabilitation for back, neck and shoulder pain.", '新加坡首家精品瑜伽、普拉提与康复疗法工作室，位于 Upper Thomson。专业导师带领瑜伽、垫上普拉提、私人教练、瑜伽疗法，以及针对腰背、颈部和肩膀疼痛的康复课程。'),
     schema: `<script type="application/ld+json">${JSON.stringify({
@@ -273,6 +286,10 @@ function blogIndex() {
   return {
     path: 'blog/',
     active: 'blog',
+    og: {
+      title: t("What's new at Healthtinity", 'Healthtinity 最新动态'),
+      description: t('Studio news, our Lianhe Zaobao feature and practical tips to help you move better, feel stronger and live brighter.', '工作室新闻、《联合早报》报道，以及帮助您动得更好、感觉更强壮的实用小贴士。'),
+    },
     title: t("What's new", '最新动态'),
     description: t('News, features and wellness tips from Healthtinity, the Yoga, Pilates & Rehab Therapy studio at Upper Thomson, Singapore.', '来自 Healthtinity 的新闻、媒体报道与健康小贴士。我们是位于新加坡 Upper Thomson 的瑜伽、普拉提与康复疗法工作室。'),
     body: `
@@ -307,6 +324,12 @@ function blogPost(p) {
   return {
     path: `blog/${p.slug}/`,
     active: 'blog',
+    og: {
+      title: p.title,
+      description: p.excerpt,
+      type: 'article',
+      meta: [['article:published_time', p.iso], ['article:author', p.author], ['article:section', p.category]],
+    },
     title: p.title,
     description: p.excerpt,
     body: `
@@ -347,6 +370,10 @@ function teamIndex() {
   return {
     path: 'team/',
     active: 'team',
+    og: {
+      title: t('Meet the Healthtinity coaches', '认识 Healthtinity 导师团队'),
+      description: t(`${team.length} instructors led by a Doctor of Osteopathy and a senior rehab coach, teaching Yoga, Mat Pilates and Barre in English and Mandarin at Upper Thomson.`, `${team.length} 位导师，由整骨医学博士与资深康复教练带领，在 Upper Thomson 以英语及华语教授瑜伽、垫上普拉提与芭蕾。`),
+    },
     title: t('Our Team', '我们的团队'),
     description: t('Meet the Healthtinity team: Doctor of Osteopathy, rehab therapists and certified Yoga, Mat Pilates and Barre instructors in Singapore.', '认识 Healthtinity 团队：整骨医学博士、康复治疗师，以及持证的瑜伽、垫上普拉提与芭蕾导师。'),
     body: `
@@ -388,6 +415,15 @@ function teamMember(m) {
   return {
     path: `team/${m.slug}/`,
     active: 'team',
+    og: {
+      title: t(`${m.name} · ${m.role} at Healthtinity`, `${m.name} · Healthtinity ${m.role}`),
+      description: snippet(m.bio[0]),
+      image: m.photo ? `assets/img/team/${m.photo}` : null,
+      width: m.photo ? 560 : null,
+      height: m.photo ? 560 : null,
+      alt: m.photo ? t(`${m.name}, ${m.role} at Healthtinity`, `Healthtinity ${m.role} ${m.name}`) : null,
+      type: 'profile',
+    },
     title: `${m.name}, ${m.role}`,
     description: t(`${m.name}, ${m.role} at Healthtinity Singapore. ${m.bio[0].slice(0, 120)}`, `${m.name}，Healthtinity 新加坡${m.role}。${m.bio[0].slice(0, 60)}`),
     body: `
@@ -441,6 +477,10 @@ function packagePage() {
   return {
     path: 'package/',
     active: 'pricing',
+    og: {
+      title: t('Class packs from $60 · Healthtinity', '课程配套 $60 起 · Healthtinity'),
+      description: t('Start with 5 classes for $60, or save with shareable class packs that come with up to 20 bonus classes. Yoga, Mat Pilates and Therapy at Upper Thomson.', '$60 体验 5 堂课，或选择可共享的课程配套，最多赠送 20 堂课。Upper Thomson 的瑜伽、垫上普拉提与理疗课程。'),
+    },
     title: t('Class Packages', '课程配套'),
     description: t('Healthtinity class packages: New Members Starter Pack (5 classes for $60), shareable class packs with bonus classes, and HT Wallet Top Up & Flow.', 'Healthtinity 课程配套：新会员体验配套（$60 体验 5 堂课）、可共享并附赠课程的课程配套，以及 HT 钱包储值随心练。'),
     body: `
@@ -471,6 +511,10 @@ function membershipPage() {
   return {
     path: 'membership/',
     active: 'pricing',
+    og: {
+      title: t('Unlimited classes from $162/month · Healthtinity', '团体课无限上，每月 $162 起 · Healthtinity'),
+      description: t('Unlimited Yoga, Mat Pilates and Therapy group classes at Upper Thomson. Pay upfront or monthly; the longer you commit, the lower the rate.', 'Upper Thomson 瑜伽、垫上普拉提与理疗团体课无限上。可一次性付款或按月付款，承诺期越长，月费越低。'),
+    },
     title: t('Memberships', '会员方案'),
     description: t('Unlimited group class memberships at Healthtinity Singapore, from $162/month. Upfront and recurring options.', 'Healthtinity 新加坡团体课无限上会员方案，每月 $162 起，提供一次性付款及自动续费选项。'),
     body: `
@@ -522,6 +566,10 @@ function timetable() {
   return {
     path: 'timetable/',
     active: 'timetable',
+    og: {
+      title: t(`This week at Healthtinity: ${total} classes`, `Healthtinity 本周课表：${total} 堂课`),
+      description: t('Yoga, Mat Pilates, Therapy & Stretch and Tone & Sculpt, morning to evening, 7 days a week at Upper Thomson. Book up to 7 days ahead in the HT Life app.', '瑜伽、垫上普拉提、理疗伸展与紧致塑形，每周 7 天从早到晚在 Upper Thomson 开课。可在 HT Life 应用程序提前 7 天预约。'),
+    },
     title: t('Group Class Schedule', '团体课课表'),
     description: t(`Weekly Yoga, Mat Pilates and Therapy class schedule at Healthtinity, Upper Thomson. ${total} classes a week.`, `Healthtinity（Upper Thomson）每周瑜伽、垫上普拉提与理疗课表，每周 ${total} 堂课。`),
     body: `
@@ -576,6 +624,10 @@ function contact() {
   return {
     path: 'contact-us/',
     active: 'contact',
+    og: {
+      title: t('Contact Healthtinity', '联系 Healthtinity'),
+      description: t('WhatsApp +65 8282 9515 for the fastest reply, email ask@healthtinity.com, or drop by 246J Upper Thomson Road.', 'WhatsApp +65 8282 9515 回复最快，或电邮 ask@healthtinity.com，也欢迎亲临 246J Upper Thomson Road。'),
+    },
     title: t('Contact Us', '联系我们'),
     description: t('Contact Healthtinity: WhatsApp +65 8282 9515, email ask@healthtinity.com, or visit us at 246J Upper Thomson Road, Singapore 574370.', '联系 Healthtinity：WhatsApp +65 8282 9515，电邮 ask@healthtinity.com，或亲临 246J Upper Thomson Road, Singapore 574370。'),
     body: `
@@ -635,6 +687,10 @@ function location() {
   return {
     path: 'location/',
     active: 'location',
+    og: {
+      title: t('Find Healthtinity at Upper Thomson', 'Healthtinity 交通位置：Upper Thomson'),
+      description: t('246J Upper Thomson Road, a 1-minute walk from Upper Thomson MRT (Exit 3). Plenty of buses and free roadside parking nearby.', '246J Upper Thomson Road，距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近巴士众多，并设有免费路边停车位。'),
+    },
     title: t('Locate Us', '交通位置'),
     description: t('Find Healthtinity at 246J Upper Thomson Road, Singapore 574370. 1 min walk from Upper Thomson MRT (Exit 3), with free roadside parking nearby.', 'Healthtinity 位于 246J Upper Thomson Road, Singapore 574370，距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近有免费路边停车位。'),
     body: `
@@ -677,6 +733,10 @@ function faqPage() {
   return {
     path: 'faqs/',
     active: '',
+    og: {
+      title: t('Before your first class · Healthtinity FAQ', '第一堂课前须知 · Healthtinity 常见问题'),
+      description: t('How to book, when to arrive, cancellations, what to bring and which class suits beginners, answered.', '如何预约、何时到达、取消政策、需要带什么，以及初学者适合哪一堂课，一次解答。'),
+    },
     title: t('Frequently Asked Questions', '常见问题'),
     description: t('Answers to common questions about booking, arrival, cancellations, equipment and beginner classes at Healthtinity.', '关于 Healthtinity 预约、到达、取消、器材及初学者课程的常见问题解答。'),
     schema: `<script type="application/ld+json">${JSON.stringify({

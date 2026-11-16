@@ -69,7 +69,9 @@ scripts/build.mjs # static site generator
 docs/             # built site (served by GitHub Pages)
 ```
 
-**At launch on healthtinity.com:** change `BOOK` in `src/data.mjs` to the booking subdomain (e.g. `https://book.healthtinity.com`) and build with `BASE=/ npm run build`.
+**At launch on healthtinity.com:** change `BOOK` in `src/data.mjs` to the booking subdomain (e.g. `https://book.healthtinity.com`) and build with `BASE=/ SITE_URL=https://healthtinity.com/ npm run build`. `SITE_URL` sets the full addresses used in link previews (Open Graph) and canonical tags.
+
+**Link previews:** share text lives in each page's `og` field in `src/pages.mjs` (both languages). Default share cards are `src/assets/img/og/share-en.jpg` and `share-zh.jpg` (1200×630); coach pages use the coach photo.
 
 ## To confirm with the client
 
