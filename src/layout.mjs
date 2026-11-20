@@ -5,7 +5,8 @@ import { createHash } from 'node:crypto';
 
 // Content hash per asset, so each deploy busts browser/CDN caches when a file changes
 const v = (f) => createHash('md5').update(readFileSync(new URL(`./assets/${f}`, import.meta.url))).digest('hex').slice(0, 8);
-const ver = { css: v('css/styles.css'), js: v('js/main.js') };
+const ver = { css: v('css/styles.css'), js: v('js/main.js'), promos: v('js/promotions.js') };
+const promotionsApi = process.env.PROMOTIONS_API || (process.env.STAGING === '1' ? '/index.php?rest_route=/healthtinity/v1/promotions' : '');
 
 export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -40,7 +41,9 @@ export const pageHero = ({ eyebrow, title, lead, crumbs = [], r, extra = '' }) =
 </section>`;
 
 /** Closing call-to-action band */
-export const ctaBand = (r) => { const site = siteEn; return `
+export const ctaBand = (r) => {
+  if (promotionsApi) return `<section class="promotions" data-promotions-api="${esc(promotionsApi)}" aria-label="${t('Studio promotions', '工作室优惠')}" hidden></section>`;
+  const site = siteEn; return `
 <section class="section section--tight">
   <div class="container">
     <div class="cta-band reveal">
@@ -119,7 +122,7 @@ export function layout({ path = '', title, description, body, active = '', schem
   <link rel="alternate" hreflang="x-default" href="${enUrl}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@700;800;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${A}assets/css/styles.css?v=${ver.css}">
   <script>document.documentElement.classList.add('js')</script>
   ${schema}
@@ -142,7 +145,6 @@ export function layout({ path = '', title, description, body, active = '', schem
       </a>
       <nav class="nav__links" aria-label="${t('Main', '主菜单')}">
         <a href="${home}"${a('home')}>${t('Home', '首页')}</a>
-        <a href="${r}blog/"${a('blog')}>${t("What's new", '最新动态')}</a>
         <a href="${r}team/"${a('team')}>${t('Team', '团队')}</a>
         <div class="dropdown">
           <button class="dropdown__btn${active === 'pricing' ? ' is-active' : ''}" aria-expanded="false" data-dropdown>${t('Pricing', '价格')} ${icon.chev}</button>
@@ -167,7 +169,6 @@ export function layout({ path = '', title, description, body, active = '', schem
     </div>
     <div class="mobile-menu" data-menu>
       <a href="${home}">${t('Home', '首页')}</a>
-      <a href="${r}blog/">${t("What's new", '最新动态')}</a>
       <a href="${r}team/">${t('Team', '团队')}</a>
       <a href="${r}package/">${t('Packages', '课程配套')}</a>
       <a href="${r}membership/">${t('Memberships', '会员')}</a>
@@ -181,6 +182,7 @@ export function layout({ path = '', title, description, body, active = '', schem
 
   <main id="main">
 ${body}
+${ctaBand(r)}
   </main>
 
   <footer class="footer">
@@ -201,7 +203,6 @@ ${body}
       <div>
         <h4>${t('Studio', '工作室')}</h4>
         <a href="${r}team/">${t('Our team', '我们的团队')}</a>
-        <a href="${r}blog/">${t("What's new", '最新动态')}</a>
         <a href="${r}location/">${t('Locate us', '交通位置')}</a>
         <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
       </div>
@@ -234,6 +235,7 @@ ${body}
   </a>
 
   <script src="${A}assets/js/main.js?v=${ver.js}" defer></script>
+${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" defer></script>` : ''}
 </body>
 </html>
 `;

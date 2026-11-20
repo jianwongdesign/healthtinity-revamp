@@ -35,6 +35,7 @@ Lead with **community and warmth**: a friendly neighbourhood studio where biling
 - Name: Healthtinity. Logo: circular blue mark (`src/assets/img/logo-*.png`), logo blue #0088AE is the brand colour.
 - Owner direction: modern and warm; bold sans-serif headings (no serif "tails"); not generic / AI-looking.
 - Chosen look (Nov 2026): "neighbourhood warm", a friendly local studio: logo-blue panels, sunshine yellow, real coach faces up front, rounder softer forms. Owner rejected experimental concept directions; stay within this familiar, warm register.
+- Client typography feedback (20 November 2026): rounded fonts are not wanted. Use IBM Plex Sans headings and Source Sans 3 body copy, with restrained 600/700 weights and clear sans-serif coach labels.
 - Bilingual touches (Chinese class names, Chinese coach bios) are real and should stay.
 
 ## Evidence on Hand

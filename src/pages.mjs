@@ -1,6 +1,6 @@
 import { site as siteEn, wa, topups, schedule, classCategory } from './data.mjs';
 import { terms, privacy } from './legal.mjs';
-import { esc, icon, initials, pageHero, ctaBand } from './layout.mjs';
+import { esc, icon, initials, pageHero } from './layout.mjs';
 import { t, ar, isZh, L, className } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 
@@ -243,7 +243,7 @@ function home() {
 </section>
 
 ${visitBlock(r)}
-${ctaBand(r)}`,
+`,
   };
 }
 
@@ -314,7 +314,7 @@ ${pageHero({ r, title: t('Stories, news &amp; <em>gentle wisdom</em>.', '故事�
     </div>
   </div>
 </section>
-${ctaBand(r)}`,
+`,
   };
 }
 
@@ -403,7 +403,7 @@ ${pageHero({ r, title: t('Coaches who <em>care</em>.', '<em>用心</em>的教练
     </div>
   </div>
 </section>
-${ctaBand(r)}`,
+`,
   };
 }
 
@@ -532,7 +532,7 @@ ${pageHero({ r, title: t('Unlimited <em>memberships</em>.', '无限上课<em>会
     <p class="fineprint reveal">${t(`Recurring memberships renew automatically at the billing interval shown. A S$350 cancellation fee applies before the minimum commitment ends. See our <a href="${r}terms/terms-and-conditions/">Terms &amp; Conditions</a>.`, `自动续费会员将按所示的计费周期自动续费。在最低承诺期结束前取消，须缴付 S$350 手续费。详情请参阅<a href="${r}terms/terms-and-conditions/">条款与细则</a>。`)}</p>
   </div>
 </section>
-${ctaBand(r)}`,
+`,
   };
 }
 
@@ -720,7 +720,7 @@ ${pageHero({ r, title: t('Find us at <em>Upper Thomson</em>.', '我们在 <em>Up
     </div>
   </div>
 </section>
-${ctaBand(r)}`,
+`,
   };
 }
 
@@ -760,7 +760,7 @@ ${pageHero({ r, title: t('Frequently asked <em>questions</em>.', '常见<em>问�
     <div class="reveal">${faqList(faqs)}</div>
   </div>
 </section>
-${ctaBand(r)}`,
+`,
   };
 }
 

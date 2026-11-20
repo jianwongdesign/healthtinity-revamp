@@ -26,7 +26,7 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 
 ## Design direction
 
-**The sunny neighbourhood studio.** Logo blue owns whole panels (the home hero and every page header), sunshine yellow is the warm second colour, and deep navy carries the words. Rounded, friendly forms and real people in daylight. The home hero is a grid of the real coaches with hand-written name tags. A Starter Pack "stamp card" and a live "Today at the studio" list (from the real schedule) make the first visit concrete.
+**The sunny neighbourhood studio.** Logo blue owns whole panels (the home hero and every page header), sunshine yellow is the warm second colour, and deep navy carries the words. Rounded, friendly forms and real people in daylight. The home hero is a grid of the real coaches with clear name labels. A Starter Pack "stamp card" and a live "Today at the studio" list (from the real schedule) make the first visit concrete.
 
 | Token | Hex | Use |
 |---|---|---|
@@ -36,7 +36,7 @@ All **Book / Buy now** buttons go to the existing Rezerv booking system, so purc
 | Sky | `#EAF6FA` | Alternate sections, footer, schedule rows |
 | Butter | `#FFF5D9` | Pricing section, soft callouts |
 
-**Type:** Nunito (rounded, bold headings), Nunito Sans (body), Caveat (coach name tags only).
+**Type:** IBM Plex Sans (headings, navigation and coach labels), Source Sans 3 (body). Updated on 20 November 2026 after client feedback requesting professional typography instead of rounded fonts.
 
 ## Editing & building
 
@@ -87,3 +87,7 @@ docs/             # built site (served by GitHub Pages)
 - [ ] **Class photos** for Yoga, Mat Pilates and Tone & Sculpt (`src/assets/img/class-*.jpg`) are AI-generated stand-ins. Swap in real class photos when available
 - [ ] Testimonials / Google reviews, more studio photography, an SVG logo
 - [ ] Opening hours (not on the current site)
+
+## WordPress-managed promotions
+
+Hostinger staging now has **WP Admin → Promotions** for images, scheduling, bilingual copy, buttons, page-area cards and pop-ups. See [PROMOTIONS.md](PROMOTIONS.md) for the editor guide and [HANDOFF.md](HANDOFF.md) for deployment status. The What's new navigation item is removed; existing articles remain.
