@@ -208,6 +208,9 @@ function htp_feed($request) {
             $text = function ($key) use ($meta, $zh) { return $zh && !empty($meta[$key . '_zh']) ? $meta[$key . '_zh'] : $meta[$key]; };
             $items[] = ['id' => $post->ID, 'title' => $zh && $meta['title_zh'] ? $meta['title_zh'] : $post->post_title,
                 'summary' => $text('summary'), 'badge' => $text('badge'), 'alt' => $text('alt'),
+                // Hostinger's preview proxy rewrites absolute URLs in JSON responses.
+                // Encoded companions preserve the original booking destination.
+                'urlEncoded' => base64_encode($meta['url']), 'secondaryUrlEncoded' => base64_encode($meta['secondary_url']),
                 'button' => $text('button'), 'url' => $meta['url'], 'secondaryButton' => $text('secondary_button'), 'secondaryUrl' => $meta['secondary_url'],
                 'image' => htp_image((int)$meta['image']), 'mobileImage' => htp_image((int)$meta['mobile_image']), 'imageFit' => $meta['image_fit'] === 'cover' ? 'cover' : 'contain',
                 'banner' => $banner, 'popup' => $popup, 'order' => (int)$meta['order'], 'endsAt' => htp_timestamp($meta['end'])];

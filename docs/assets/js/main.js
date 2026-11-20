@@ -4,6 +4,15 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  // Preserve external booking links when Hostinger rewrites preview-domain HTML.
+  $$('[data-booking-href]').forEach(link => {
+    try {
+      const original = new TextDecoder().decode(Uint8Array.from(atob(link.dataset.bookingHref), c => c.charCodeAt(0)));
+      const url = new URL(original);
+      if (url.protocol === 'https:') link.href = url.href;
+    } catch { /* Leave the rendered link intact if a value is invalid. */ }
+  });
+
   // ---- Sticky nav state
   const nav = $('[data-nav]');
   const onScroll = () => nav && nav.classList.toggle('is-scrolled', window.scrollY > 8);

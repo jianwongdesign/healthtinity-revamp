@@ -11,11 +11,16 @@
     if (text) node.textContent = text;
     return node;
   };
-  const safeUrl = (value) => {
+  const safeUrl = (value, base = location.origin) => {
     if (!value) return null;
-    try { const url = new URL(value, location.origin); return ['http:', 'https:'].includes(url.protocol) ? url.href : null; } catch { return null; }
+    try { const url = new URL(value, base); return ['http:', 'https:'].includes(url.protocol) ? url.href : null; } catch { return null; }
+  };
+  const bookingUrl = (promo, key) => {
+    try { return promo[key + 'Encoded'] ? new TextDecoder().decode(Uint8Array.from(atob(promo[key + 'Encoded']), c => c.charCodeAt(0))) : promo[key]; } catch { return promo[key]; }
   };
   const storageKey = 'healthtinity-promotion-last-shown';
+  // A review link can show eligible promotions immediately without clearing storage.
+  const previewPopup = new URLSearchParams(location.search).get('promo') === '1';
   let shownAt = 0;
   try { shownAt = Number(localStorage.getItem(storageKey)) || 0; } catch { /* Storage is optional. */ }
   let popupShown = false;
@@ -32,14 +37,14 @@
   function card(promo, popup) {
     const article = el('article', 'promo-card' + (promo.image || promo.mobileImage ? ' promo-card--image' : ''));
     const imageData = promo.image || promo.mobileImage;
-    if (imageData && safeUrl(imageData.src)) {
+    if (imageData && safeUrl(imageData.src, endpoint.origin)) {
       const picture = el('picture', 'promo-card__picture');
-      if (promo.mobileImage && safeUrl(promo.mobileImage.src)) {
+      if (promo.mobileImage && safeUrl(promo.mobileImage.src, endpoint.origin)) {
         const source = document.createElement('source');
-        source.media = '(max-width: 600px)'; source.srcset = safeUrl(promo.mobileImage.src); picture.append(source);
+        source.media = '(max-width: 600px)'; source.srcset = safeUrl(promo.mobileImage.src, endpoint.origin); picture.append(source);
       }
       const img = el('img');
-      img.src = safeUrl(imageData.src); img.alt = promo.alt || promo.title;
+      img.src = safeUrl(imageData.src, endpoint.origin); img.alt = promo.alt || promo.title;
       img.width = imageData.width || 1200; img.height = imageData.height || 800;
       img.loading = popup ? 'eager' : 'lazy'; img.style.objectFit = promo.imageFit === 'cover' ? 'cover' : 'contain';
       picture.append(img); article.append(picture);
@@ -49,7 +54,7 @@
     copy.append(el(popup ? 'h3' : 'h2', 'promo-card__title', promo.title));
     if (promo.summary) copy.append(el('p', 'promo-card__summary', promo.summary));
     const actions = el('div', 'promo-card__actions');
-    for (const [label, url, secondary] of [[promo.button, promo.url, false], [promo.secondaryButton, promo.secondaryUrl, true]]) {
+    for (const [label, url, secondary] of [[promo.button, bookingUrl(promo, 'url'), false], [promo.secondaryButton, bookingUrl(promo, 'secondaryUrl'), true]]) {
       if (!label || !safeUrl(url)) continue;
       const link = el('a', 'btn ' + (secondary ? 'promo-card__secondary' : 'promo-card__primary'), label);
       link.href = safeUrl(url); actions.append(link);
@@ -140,12 +145,13 @@
       host.hidden = !banners.length;
       const popups = data.settings.enabled && data.settings.popup ? promos.filter(p => p.popup) : [];
       if (dialog?.open && dialog.dataset.items !== JSON.stringify(popups)) removePopup();
-      if (!popupShown && popups.length && Date.now() - shownAt >= Math.max(1, Number(data.settings.cooldown) || 24) * 3600000) {
+      if (!popupShown && popups.length && (previewPopup || Date.now() - shownAt >= Math.max(1, Number(data.settings.cooldown) || 24) * 3600000)) {
+        const delay = previewPopup ? 0 : Math.max(0, Math.min(60, Number(data.settings.delay) || 0));
         popupTimer = setTimeout(() => {
           // Revalidate the dates after the delay using elapsed server time.
-          const valid = popups.filter(p => !p.endsAt || p.endsAt > data.serverTime + Math.max(0, Number(data.settings.delay) || 0));
+          const valid = popups.filter(p => !p.endsAt || p.endsAt > data.serverTime + delay);
           openPopup(valid); if (dialog) dialog.dataset.items = JSON.stringify(popups);
-        }, Math.max(0, Math.min(60, Number(data.settings.delay) || 0)) * 1000);
+        }, delay * 1000);
       }
     } catch {
       // Never retain a potentially expired promotion after a failed refresh.

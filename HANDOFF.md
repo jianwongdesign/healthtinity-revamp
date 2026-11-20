@@ -1,5 +1,26 @@
 # Healthtinity Hostinger staging
 
+## Current preview — 21 November 2026
+
+- Public Hostinger URL found in Opera's logged-in Healthtinity dashboard:
+  `https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/`.
+- Add `?promo=1` to show the eligible promotion pop-up immediately for review.
+  Normal visits use the WordPress delay and cooldown. EN and ZH pop-ups verified
+  over public HTTPS without DNS overrides.
+- Staging SITE_URL now uses the HTTPS preview URL. Both Hostinger staging and
+  GitHub Pages use the same live WordPress promotion feed; no saved promo snapshot.
+- The Hostinger preview proxy rewrites URLs even in static HTML and JSON responses.
+  Booking links now carry encoded original destinations, restored and validated
+  in the browser. Media URLs resolve against the feed origin for GitHub Pages.
+  Actual HTTPS checks confirmed booking CTAs still point to healthtinity.com.
+- The previous statements below about an unknown preview URL / static-only
+  GitHub CTA are historical and superseded by this update.
+- Backup before this change:
+  `/home/u146877548/healthtinity-backups/before-preview-popup-20261120-161413/files.tar.gz`.
+- Domain cutover remains unperformed. Preview provider may expire the temporary
+  domain; update the default preview feed URL when switching to production.
+
+
 21 November correction: renamed remaining article-index titles, share titles and
 article breadcrumbs from "What's new" / 最新动态 to "Articles" / 文章. The homepage
 navigation was already clear. All 59 English/Chinese HTML outputs were scanned
@@ -36,7 +57,7 @@ domain cutover waits for design approval.
 Staging output is ignored by Git and separate from GitHub Pages `docs/`:
 
 ```sh
-STAGING=1 BASE=/staging/ SITE_URL=http://healthtinity.com/staging/ node scripts/build.mjs
+STAGING=1 BASE=/staging/ SITE_URL=https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/ node scripts/build.mjs
 rsync -az -e 'ssh -o BatchMode=yes -o ConnectTimeout=12' .staging-build/ adcendes-hostinger:/home/u146877548/domains/healthtinity.com/public_html/staging/
 ```
 

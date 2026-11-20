@@ -1,4 +1,4 @@
-import { site as siteEn, wa, SITE_URL } from './data.mjs';
+import { site as siteEn, wa, SITE_URL, BOOK } from './data.mjs';
 import { t, ar, isZh, L } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -6,7 +6,9 @@ import { createHash } from 'node:crypto';
 // Content hash per asset, so each deploy busts browser/CDN caches when a file changes
 const v = (f) => createHash('md5').update(readFileSync(new URL(`./assets/${f}`, import.meta.url))).digest('hex').slice(0, 8);
 const ver = { css: v('css/styles.css'), js: v('js/main.js'), promos: v('js/promotions.js') };
-const promotionsApi = process.env.PROMOTIONS_API || (process.env.STAGING === '1' ? '/index.php?rest_route=/healthtinity/v1/promotions' : '');
+const promotionsApi = process.env.PROMOTIONS_API ?? (process.env.STAGING === '1'
+  ? '/index.php?rest_route=/healthtinity/v1/promotions'
+  : 'https://welcome-lightsteelblue-mosquito-41.hostingersite.com/index.php?rest_route=/healthtinity/v1/promotions');
 
 export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -238,5 +240,12 @@ ${ctaBand(r)}
 ${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" defer></script>` : ''}
 </body>
 </html>
-`;
+`.replace(/<a\b[^>]*>/g, (tag) => {
+  const href = tag.match(/\bhref="([^"]+)"/);
+  if (!href || !(href[1] === BOOK || href[1].startsWith(BOOK + '/'))) return tag;
+  // The Hostinger preview proxy rewrites absolute hrefs. Keep the intended
+  // external booking destination separately for the browser to restore.
+  const original = href[1].replace(/&amp;/g, '&');
+  return tag.replace('<a ', `<a data-booking-href="${Buffer.from(original).toString('base64')}" `);
+});
 }

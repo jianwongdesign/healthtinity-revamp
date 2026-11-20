@@ -1,8 +1,14 @@
 # Managing Healthtinity promotions
 
 Open the new Healthtinity installation through Hostinger **WP Admin**, then choose
-**Promotions** in the left menu. This controls the Hostinger staging design.
-The existing production domain and GitHub Pages preview have not been updated.
+**Promotions** in the left menu. This controls both the Hostinger staging design and the GitHub Pages preview.
+The existing production domain has not been changed.
+
+Hostinger preview: https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/?promo=1
+
+The `promo=1` review link opens eligible pop-ups immediately, even if previously
+dismissed. Normal visits retain the configured delay and frequency. It never
+bypasses enable switches, draft status or schedule dates.
 
 ## Add or change a promotion
 
@@ -54,7 +60,10 @@ Only this promotion is saved; additional QA cards were browser test fixtures.
 - Staging builds automatically use `/index.php?rest_route=/healthtinity/v1/promotions`.
 - A production static build must explicitly set
   `PROMOTIONS_API=/index.php?rest_route=/healthtinity/v1/promotions` when building.
-  Default GitHub Pages builds retain a static CTA; they do not call WordPress.
+  Default GitHub Pages builds use the public HTTPS Hostinger promotion feed.
+  `PROMOTIONS_API=` explicitly selects the static CTA fallback for offline builds.
+  The temporary Hostinger domain must be replaced in the preview configuration
+  when that domain expires or the production site launches.
 - Read-only public feed returns only published, enabled, date-eligible promotions.
   Editing remains in WordPress with capability and nonce checks.
 - User content is rendered as text; URLs are restricted to HTTP/HTTPS; media

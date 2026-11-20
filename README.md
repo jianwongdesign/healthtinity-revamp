@@ -2,7 +2,11 @@
 
 A full redesign of [healthtinity.com](https://healthtinity.com), Singapore's first boutique Yoga, Pilates & Rehab Therapy studio at Upper Thomson.
 
-**Live preview:** https://jianwongdesign.github.io/healthtinity-revamp/
+**GitHub preview:** https://jianwongdesign.github.io/healthtinity-revamp/
+
+**Hostinger staging:** https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/?promo=1
+
+Both previews load promotions from WordPress. The Hostinger review link opens the active pop-up immediately.
 
 ## Pages
 
