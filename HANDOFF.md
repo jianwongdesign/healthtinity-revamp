@@ -1,5 +1,22 @@
 # Healthtinity Hostinger staging
 
+## Classes navigation and editable pages — 21 November 2026
+
+- Added Classes immediately after Home: Yoga, Mat Pilates, Therapy & Stretch,
+  Tone & Sculpt and Private 1:1. Each has an EN/ZH introduction page and editable
+  class types; the site now builds 69 HTML pages.
+- Homepage cards, Private 1:1 panel, footer and mobile navigation link to the
+  pages. Category switch links, filtered schedules and enquiries connect them.
+- Installed `healthtinity-classes`. WordPress admin → Classes edits introductions,
+  optional expectations/photos, and ordered type names/descriptions/levels/durations.
+  See `CLASSES.md` for client steps and the static fallback limitation.
+- 20 integration checks passed; authorized save/read and Chinese fallback verified.
+  Browser checked 69 pages at seven widths with no text-width failures. Editor
+  add/reorder/remove tested against a private rendered admin fixture; menu keyboard
+  and short-screen scrolling checked. Media picker uses WordPress's native library.
+- Backup: `/home/u146877548/healthtinity-backups/before-classes-20261120-172223/`.
+  Production DNS and the root WordPress theme remain unchanged.
+
 ## Text width review — 21 November 2026
 
 - Fixed narrow-screen header crowding, coach-card overflow, membership heading

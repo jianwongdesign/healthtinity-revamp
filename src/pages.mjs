@@ -3,6 +3,7 @@ import { terms, privacy } from './legal.mjs';
 import { esc, icon, initials, pageHero } from './layout.mjs';
 import { t, ar, isZh, L, className } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
+import { classPages, classPage } from './classes.mjs';
 
 // Official Lianhe Zaobao logo (Wikipedia: File:Lianhe_Zaobao_new_logo.svg); mono by default, brand colours on hover
 const zaobaoLogo = readFileSync(new URL('./assets/img/press/zaobao.svg', import.meta.url), 'utf8')
@@ -203,14 +204,14 @@ function home() {
       <a class="arrow-link" href="${r}timetable/">${t('View the weekly schedule', '查看每周课表')} ${icon.arrow}</a>
     </div>
     <div class="tiles">
-      ${classTypes().map(([c, title, d, img, alt]) => `<a class="tile reveal" href="${r}timetable/?c=${c}">
+      ${classTypes().map(([c, title, d, img, alt]) => `<a class="tile reveal" href="${r}classes/${classPages.find(item => item.category === c).slug}/">
         <div class="tile__img"><img src="${A}assets/img/${img}" alt="${alt}" loading="lazy" width="1200" height="900">${c === 'therapy' ? `<span class="tag">${t('Most loved', '最受欢迎')}</span>` : ''}</div>
         <div class="tile__body"><h3>${title} ${icon.arrow}</h3><p>${d}</p></div>
       </a>`).join('')}
     </div>
     <div class="private reveal">
       <div><h3>${t('Prefer one-to-one?', '想要一对一？')}</h3><p>${t('Private coaching and therapy built around your body and goals.', '根据您的身体状况和目标量身定制的私人教练与理疗。')}</p></div>
-      <a class="btn btn--ghost" href="${wa(t("Hi Healthtinity! I'm interested in private 1:1 sessions.", '您好 Healthtinity！我对私人一对一课程有兴趣。'))}" target="_blank" rel="noopener">${t('Ask about Private 1:1', '咨询私人一对一')}</a>
+      <a class="btn btn--ghost" href="${r}classes/private-1-to-1/">${t('Explore Private 1:1', '了解私人一对一')}</a>
     </div>
   </div>
 </section>
@@ -827,6 +828,7 @@ function notFound() {
 export function allPages() {
   return [
     home(),
+    ...classPages.map(classPage),
     blogIndex(),
     ...L.posts().map(blogPost),
     teamIndex(),

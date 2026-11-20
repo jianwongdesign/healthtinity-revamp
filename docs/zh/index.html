@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=a8519ed3">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=21df1516">
   <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"HealthClub","name":"Healthtinity","url":"https://healthtinity.com","telephone":"+65 8282 9515","email":"ask@healthtinity.com","foundingDate":"2019","address":{"@type":"PostalAddress","streetAddress":"246J Upper Thomson Road","addressLocality":"Singapore","postalCode":"574370","addressCountry":"SG"},"sameAs":["https://www.instagram.com/healthtinity/","https://www.facebook.com/healthtinity","https://www.tiktok.com/@healthtinity"]}</script>
 </head>
@@ -54,6 +54,12 @@
       </a>
       <nav class="nav__links" aria-label="主菜单">
         <a href="./" aria-current="page">首页</a>
+        <div class="dropdown">
+          <button class="dropdown__btn" aria-expanded="false" aria-controls="classes-menu" data-dropdown>课程 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="dropdown__menu" id="classes-menu">
+            <a href="classes/yoga/">瑜伽</a><a href="classes/mat-pilates/">垫上普拉提</a><a href="classes/therapy-stretch/">理疗伸展</a><a href="classes/tone-sculpt/">紧致塑形</a><a href="classes/private-1-to-1/">私人一对一</a>
+          </div>
+        </div>
         <a href="team/">团队</a>
         <div class="dropdown">
           <button class="dropdown__btn" aria-expanded="false" data-dropdown>价格 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
@@ -78,12 +84,16 @@
         <a href="../" lang="en" hreflang="en">EN</a>
         <a href="./" lang="zh-Hans" hreflang="zh-Hans" aria-current="true">中文</a>
       </div>
-      <button class="nav__toggle" aria-label="打开菜单" aria-expanded="false" data-menu-toggle>
+      <button class="nav__toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle>
         <span></span><span></span>
       </button>
     </div>
-    <div class="mobile-menu" data-menu>
+    <div class="mobile-menu" id="mobile-navigation" data-menu inert>
       <a href="./">首页</a>
+      <details class="mobile-classes">
+        <summary>课程</summary>
+        <div><a href="classes/yoga/">瑜伽</a><a href="classes/mat-pilates/">垫上普拉提</a><a href="classes/therapy-stretch/">理疗伸展</a><a href="classes/tone-sculpt/">紧致塑形</a><a href="classes/private-1-to-1/">私人一对一</a></div>
+      </details>
       <a href="team/">团队</a>
       <a href="package/">课程配套</a>
       <a href="membership/">会员</a>
@@ -207,23 +217,23 @@
       <a class="arrow-link" href="timetable/">查看每周课表 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="tiles">
-      <a class="tile reveal" href="timetable/?c=yoga">
+      <a class="tile reveal" href="classes/yoga/">
         <div class="tile__img"><img src="../assets/img/class-yoga.jpg" alt="小班瑜伽课正在练习战士二式" loading="lazy" width="1200" height="900"></div>
         <div class="tile__body"><h3>瑜伽 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3><p>哈他、流瑜伽、阿斯汤加、瑜伽轮、阴瑜伽与修复，以及热瑜伽与温热流瑜伽。</p></div>
-      </a><a class="tile reveal" href="timetable/?c=pilates">
+      </a><a class="tile reveal" href="classes/mat-pilates/">
         <div class="tile__img"><img src="../assets/img/class-pilates.jpg" alt="垫上普拉提课，导师正在指导单腿抬举" loading="lazy" width="1200" height="900"></div>
         <div class="tile__body"><h3>垫上普拉提 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3><p>基础、动态与温热垫上普拉提，强化核心、改善体态与稳定性。</p></div>
-      </a><a class="tile reveal" href="timetable/?c=therapy">
+      </a><a class="tile reveal" href="classes/therapy-stretch/">
         <div class="tile__img"><img src="../assets/img/hero.jpg" alt="Healthtinity 理疗伸展团体课" loading="lazy" width="1200" height="900"><span class="tag">最受欢迎</span></div>
         <div class="tile__body"><h3>理疗伸展 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3><p>关节灵活、全身伸展、筋膜放松与上半身伸展。</p></div>
-      </a><a class="tile reveal" href="timetable/?c=sculpt">
+      </a><a class="tile reveal" href="classes/tone-sculpt/">
         <div class="tile__img"><img src="../assets/img/class-sculpt.jpg" alt="紧致塑形课学员手持轻哑铃深蹲" loading="lazy" width="1200" height="900"></div>
         <div class="tile__body"><h3>紧致塑形 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3><p>低冲击、高能量的塑形训练，融合芭蕾式力量练习。</p></div>
       </a>
     </div>
     <div class="private reveal">
       <div><h3>想要一对一？</h3><p>根据您的身体状况和目标量身定制的私人教练与理疗。</p></div>
-      <a class="btn btn--ghost" href="https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E5%AF%B9%E7%A7%81%E4%BA%BA%E4%B8%80%E5%AF%B9%E4%B8%80%E8%AF%BE%E7%A8%8B%E6%9C%89%E5%85%B4%E8%B6%A3%E3%80%82" target="_blank" rel="noopener">咨询私人一对一</a>
+      <a class="btn btn--ghost" href="classes/private-1-to-1/">了解私人一对一</a>
     </div>
   </div>
 </section>
@@ -362,6 +372,7 @@
       </div>
       <div>
         <h4>课程</h4>
+        <a href="classes/yoga/">瑜伽</a><a href="classes/mat-pilates/">垫上普拉提</a><a href="classes/therapy-stretch/">理疗伸展</a><a href="classes/tone-sculpt/">紧致塑形</a><a href="classes/private-1-to-1/">私人一对一</a>
         <a href="timetable/">团体课课表</a>
         <a href="package/">课程配套</a>
         <a href="membership/">会员</a>
@@ -388,7 +399,8 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg><span>联系我们</span>
   </a>
 
-  <script src="../assets/js/main.js?v=81a0a383" defer></script>
+  <script src="../assets/js/main.js?v=e0f40e86" defer></script>
+
   <script src="../assets/js/promotions.js?v=ca1d6b69" defer></script>
 </body>
 </html>

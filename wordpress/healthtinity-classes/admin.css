@@ -1,0 +1,9 @@
+.htc-admin { max-width: 1100px; }
+.htc-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.htc-field { display: grid; gap: 8px; min-width: 0; }
+.htc-field input, .htc-field textarea { width: 100%; }
+.htc-type { border: 1px solid #c3c4c7; padding: 20px; margin: 24px 0; background: #fff; }
+.htc-type legend { font-size: 16px; font-weight: 600; }
+[data-htc-preview] img { max-width: 300px; height: auto; }
+.htc-admin .submit { position: sticky; bottom: 0; background: #f0f0f1; padding: 16px 0; margin-bottom: 0; }
+@media (max-width: 782px) { .htc-columns { grid-template-columns: 1fr; } }

@@ -25,21 +25,39 @@
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
       const open = menu.classList.toggle('is-open');
+      menu.inert = !open;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', zh ? (open ? '关闭菜单' : '打开菜单') : (open ? 'Close menu' : 'Open menu'));
     });
   }
 
-  // ---- Pricing dropdown (click / keyboard support; hover handled in CSS)
+  // ---- Navigation dropdowns (click / keyboard support; hover handled in CSS)
+  const closeDropdowns = (except) => $$('.dropdown').forEach(d => {
+    if (d === except) return;
+    d.classList.remove('is-open');
+    d.querySelector('[data-dropdown]').setAttribute('aria-expanded', 'false');
+  });
   $$('[data-dropdown]').forEach((btn) => {
     const wrap = btn.parentElement;
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      closeDropdowns(wrap);
       const open = wrap.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', String(open));
     });
   });
-  document.addEventListener('click', () => $$('.dropdown.is-open').forEach((d) => d.classList.remove('is-open')));
+  document.addEventListener('click', () => closeDropdowns());
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const open = $('.dropdown.is-open [data-dropdown]');
+    closeDropdowns();
+    if (open) open.focus();
+    if (menu?.classList.contains('is-open')) {
+      menu.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false');
+      menu.inert = true;
+      toggle.setAttribute('aria-label', zh ? '打开菜单' : 'Open menu'); toggle.focus();
+    }
+  });
 
   // ---- Reveal on scroll
   const items = $$('.reveal');

@@ -2,10 +2,11 @@ import { site as siteEn, wa, SITE_URL, BOOK } from './data.mjs';
 import { t, ar, isZh, L } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { classPages, classLabel } from './classes.mjs';
 
 // Content hash per asset, so each deploy busts browser/CDN caches when a file changes
 const v = (f) => createHash('md5').update(readFileSync(new URL(`./assets/${f}`, import.meta.url))).digest('hex').slice(0, 8);
-const ver = { css: v('css/styles.css'), js: v('js/main.js'), promos: v('js/promotions.js') };
+const ver = { css: v('css/styles.css'), js: v('js/main.js'), promos: v('js/promotions.js'), classes: v('js/classes.js') };
 const promotionsApi = process.env.PROMOTIONS_API ?? (process.env.STAGING === '1'
   ? '/index.php?rest_route=/healthtinity/v1/promotions'
   : 'https://welcome-lightsteelblue-mosquito-41.hostingersite.com/index.php?rest_route=/healthtinity/v1/promotions');
@@ -147,6 +148,12 @@ export function layout({ path = '', title, description, body, active = '', schem
       </a>
       <nav class="nav__links" aria-label="${t('Main', '主菜单')}">
         <a href="${home}"${a('home')}>${t('Home', '首页')}</a>
+        <div class="dropdown">
+          <button class="dropdown__btn${active === 'classes' ? ' is-active' : ''}" aria-expanded="false" aria-controls="classes-menu" data-dropdown>${t('Classes', '课程')} ${icon.chev}</button>
+          <div class="dropdown__menu" id="classes-menu">
+            ${classPages.map(c => `<a href="${r}classes/${c.slug}/"${path === `classes/${c.slug}/` ? ' aria-current="page"' : ''}>${esc(classLabel(c))}</a>`).join('')}
+          </div>
+        </div>
         <a href="${r}team/"${a('team')}>${t('Team', '团队')}</a>
         <div class="dropdown">
           <button class="dropdown__btn${active === 'pricing' ? ' is-active' : ''}" aria-expanded="false" data-dropdown>${t('Pricing', '价格')} ${icon.chev}</button>
@@ -165,12 +172,16 @@ export function layout({ path = '', title, description, body, active = '', schem
         <a class="btn btn--primary btn--sm" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
       </div>
       ${langSwitch(' lang--bar')}
-      <button class="nav__toggle" aria-label="${t('Open menu', '打开菜单')}" aria-expanded="false" data-menu-toggle>
+      <button class="nav__toggle" aria-label="${t('Open menu', '打开菜单')}" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle>
         <span></span><span></span>
       </button>
     </div>
-    <div class="mobile-menu" data-menu>
+    <div class="mobile-menu" id="mobile-navigation" data-menu inert>
       <a href="${home}">${t('Home', '首页')}</a>
+      <details class="mobile-classes"${active === 'classes' ? ' open' : ''}>
+        <summary>${t('Classes', '课程')}</summary>
+        <div>${classPages.map(c => `<a href="${r}classes/${c.slug}/"${path === `classes/${c.slug}/` ? ' aria-current="page"' : ''}>${esc(classLabel(c))}</a>`).join('')}</div>
+      </details>
       <a href="${r}team/">${t('Team', '团队')}</a>
       <a href="${r}package/">${t('Packages', '课程配套')}</a>
       <a href="${r}membership/">${t('Memberships', '会员')}</a>
@@ -210,6 +221,7 @@ ${ctaBand(r)}
       </div>
       <div>
         <h4>${t('Classes', '课程')}</h4>
+        ${classPages.map(c => `<a href="${r}classes/${c.slug}/">${esc(classLabel(c))}</a>`).join('')}
         <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
         <a href="${r}package/">${t('Packages', '课程配套')}</a>
         <a href="${r}membership/">${t('Memberships', '会员')}</a>
@@ -237,6 +249,7 @@ ${ctaBand(r)}
   </a>
 
   <script src="${A}assets/js/main.js?v=${ver.js}" defer></script>
+${active === 'classes' ? `  <script src="${A}assets/js/classes.js?v=${ver.classes}" defer></script>` : ''}
 ${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" defer></script>` : ''}
 </body>
 </html>

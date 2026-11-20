@@ -1,0 +1,362 @@
+[
+  {
+    "slug": "yoga",
+    "title": "Yoga",
+    "title_zh": "瑜伽",
+    "category": "yoga",
+    "image": "class-yoga.jpg",
+    "intro": "A guided practice combining movement, breath and mindful attention. Explore Hatha, Vinyasa, Ashtanga, Wheel Yoga, Yin & Restore, and Hot & Warm flows at our studio.",
+    "intro_zh": "在导师引导下，结合动作、呼吸与专注的瑜伽练习。探索哈他、流瑜伽、阿斯汤加、瑜伽轮、阴瑜伽与修复，以及热瑜伽与温热流瑜伽。",
+    "expect": "",
+    "expect_zh": "",
+    "image_id": 0,
+    "image_alt": "",
+    "image_alt_zh": "",
+    "types": [
+      {
+        "name": "Vinyasa Dynamic",
+        "name_zh": "动态流瑜伽",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Hatha Yoga",
+        "name_zh": "哈他瑜伽",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Split & Balance",
+        "name_zh": "劈叉与平衡",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Yin & Restore",
+        "name_zh": "阴瑜伽与修复",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Yoga Foundation",
+        "name_zh": "瑜伽基础",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Warm Hatha",
+        "name_zh": "温热哈达",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Hot Detox",
+        "name_zh": "热排毒",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Wheel Yoga",
+        "name_zh": "瑜伽轮",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Hot Vinyasa",
+        "name_zh": "热流瑜伽",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Hot Core Flow",
+        "name_zh": "热核心流动",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Gentle Flow",
+        "name_zh": "温和流瑜伽",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Inversion & Arm Balance",
+        "name_zh": "倒立手臂平衡瑜伽",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Ashtanga Primary Series",
+        "name_zh": "阿斯汤加瑜伽初级序列",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Core Flow",
+        "name_zh": "核心流动",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      }
+    ]
+  },
+  {
+    "slug": "mat-pilates",
+    "title": "Mat Pilates",
+    "title_zh": "垫上普拉提",
+    "category": "pilates",
+    "image": "class-pilates.jpg",
+    "intro": "Mat-based movement with a focus on core strength, posture and controlled technique. Choose from Foundation, Dynamic and Warm Mat Pilates.",
+    "intro_zh": "以垫上动作为基础，专注核心力量、体态与动作控制。您可以选择基础、动态或温热垫上普拉提。",
+    "expect": "",
+    "expect_zh": "",
+    "image_id": 0,
+    "image_alt": "",
+    "image_alt_zh": "",
+    "types": [
+      {
+        "name": "Warm Mat Pilates",
+        "name_zh": "温热垫上普拉提",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Mat Pilates",
+        "name_zh": "垫上普拉提",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Mat Pilates Foundation",
+        "name_zh": "基础垫上普拉提",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Mat Pilates Dynamic",
+        "name_zh": "动态垫上普拉提",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      }
+    ]
+  },
+  {
+    "slug": "therapy-stretch",
+    "title": "Therapy & Stretch",
+    "title_zh": "理疗伸展",
+    "category": "therapy",
+    "image": "hero.jpg",
+    "intro": "Guided group classes focused on mobility, stretching and release. Explore full-body and upper-body stretches, alongside myofascial release sessions.",
+    "intro_zh": "在导师引导下进行关节灵活、伸展与放松练习。探索全身伸展、上半身伸展与筋膜放松课程。",
+    "expect": "",
+    "expect_zh": "",
+    "image_id": 0,
+    "image_alt": "",
+    "image_alt_zh": "",
+    "types": [
+      {
+        "name": "Therapy: Mobility",
+        "name_zh": "关节灵活与伸展",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Therapy: Myofascial Release & Stretch",
+        "name_zh": "筋膜放松与伸展",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Therapy: Upper Body Stretch",
+        "name_zh": "上半身舒缓伸展",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Therapy: Full Body Stretch",
+        "name_zh": "全身舒缓伸展",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      }
+    ]
+  },
+  {
+    "slug": "tone-sculpt",
+    "title": "Tone & Sculpt",
+    "title_zh": "紧致塑形",
+    "category": "sculpt",
+    "image": "class-sculpt.jpg",
+    "intro": "Low-impact, high-energy movement combining sculpting exercises with Barre-inspired strength. Explore regular, Warm and Hot Tone & Sculpt sessions.",
+    "intro_zh": "低冲击、高能量的塑形运动，融合芭蕾式力量练习。探索常温、温热与热紧致塑形课程。",
+    "expect": "",
+    "expect_zh": "",
+    "image_id": 0,
+    "image_alt": "",
+    "image_alt_zh": "",
+    "types": [
+      {
+        "name": "Tone & Sculpt",
+        "name_zh": "紧致塑形",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Warm Tone & Sculpt",
+        "name_zh": "温热紧致塑形",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Hot Tone & Sculpt",
+        "name_zh": "热紧致塑形",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      }
+    ]
+  },
+  {
+    "slug": "private-1-to-1",
+    "title": "Private 1:1",
+    "title_zh": "私人一对一",
+    "category": "private",
+    "image": "hero-coach.jpg",
+    "intro": "One-to-one coaching and therapy centred on your body and goals. Explore private Yoga, Mat Pilates or Rehab Therapy, and speak with our team to find the right session.",
+    "intro_zh": "以您的身体状况与目标为中心，提供一对一指导与理疗。探索私人瑜伽、垫上普拉提或康复理疗，并与团队讨论适合您的课程。",
+    "expect": "",
+    "expect_zh": "",
+    "image_id": 0,
+    "image_alt": "",
+    "image_alt_zh": "",
+    "types": [
+      {
+        "name": "Private Yoga",
+        "name_zh": "私人瑜伽",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Private Mat Pilates",
+        "name_zh": "私人垫上普拉提",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      },
+      {
+        "name": "Rehab Therapy",
+        "name_zh": "康复理疗",
+        "description": "",
+        "description_zh": "",
+        "level": "",
+        "level_zh": "",
+        "duration": "",
+        "duration_zh": ""
+      }
+    ]
+  }
+]
