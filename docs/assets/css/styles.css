@@ -558,8 +558,8 @@ details.zh summary { cursor: pointer; font-family: var(--font-display); font-wei
 /* ---------- Inner page hero: the same blue panel ---------- */
 .page-hero { padding: 8px 0 0; }
 .page-hero > .container { background: var(--blue-panel); color: #fff; border-radius: var(--r-lg); padding: 32px 22px 40px; }
-.page-hero h1 { color: #fff; font-size: clamp(2.4rem, 5.4vw, 4.2rem); max-width: 18ch; }
-.page-hero .lead { color: #fff; max-width: 60ch; margin-bottom: 0; }
+.page-hero h1 { color: #fff; font-size: clamp(2.4rem, 5.4vw, 4.2rem); max-width: none; text-wrap: wrap; }
+.page-hero .lead { color: #fff; max-width: none; margin-bottom: 0; }
 .page-hero--post h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); max-width: none; }
 .page-hero .post__meta { color: #fff; }
 .page-hero .tag--soft { background: #fff; }
@@ -803,7 +803,7 @@ html:lang(zh-Hans) .marquee__track { letter-spacing: .04em; }
 .class-hero { display: grid; overflow: hidden; border-radius: var(--r-lg); background: var(--blue-panel); color: #fff; margin-top: 8px; }
 .class-hero__copy { padding: 32px 24px 40px; min-width: 0; }
 .class-hero h1 { color: #fff; font-size: clamp(2.4rem, 4.4vw, 4.2rem); }
-.class-hero .lead { color: #fff; max-width: 48ch; white-space: pre-line; }
+.class-hero .lead { color: #fff; max-width: none; white-space: pre-line; }
 .class-hero__image { width: 100%; height: 100%; min-height: 260px; max-height: 520px; object-fit: cover; aspect-ratio: 4 / 3; }
 .class-nav { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 24px; border-bottom: 1px solid var(--line); }
 .class-nav a { padding: 10px 16px; border-radius: 999px; font-family: var(--font-display); font-weight: 600; color: var(--navy); }

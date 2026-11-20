@@ -1,5 +1,16 @@
 # Healthtinity Hostinger staging
 
+## Header text width correction — 21 November 2026
+
+- User clarified that premature wrapping meant unused width inside the blue
+  headers, not merely overflow. Removed the 18ch heading / 60ch introduction caps
+  from shared page heroes and the 48ch introduction cap from class heroes.
+  Page-hero headings now use normal wrapping instead of balanced short lines.
+- Measured five representative EN/ZH routes at 320, 390, 820, 1327 and 1440 px:
+  introductions use the entire parent content width, with no page overflow.
+  Team intro now spans 1112 px on desktop, matching the panel's inner width.
+- Backup: `/home/u146877548/healthtinity-backups/before-hero-width-20261120-173108/staging.tar.gz`.
+
 ## Classes navigation and editable pages — 21 November 2026
 
 - Added Classes immediately after Home: Yoga, Mat Pilates, Therapy & Stretch,
