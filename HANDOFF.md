@@ -1,5 +1,22 @@
 # Healthtinity Hostinger staging
 
+## Text width review — 21 November 2026
+
+- Fixed narrow-screen header crowding, coach-card overflow, membership heading
+  punctuation, pricing tabs and timetable time columns. Buttons can wrap within
+  their available width; grid/form children can shrink without stretching cards.
+- Checked all 59 English/Chinese pages in Chromium at 320, 390, 768, 900, 1024,
+  1180 and 1440 px with fonts loaded. Opened FAQ answers and exposed all schedule
+  days for measurement: no text/container or page-width overflow detected.
+  Intentional horizontal carousels and decorative rotations are excluded.
+- Visually checked phone header/coaches/memberships/timetable, tablet Chinese
+  content, desktop contact form and promotion placement. Physical devices and
+  other browser engines were not tested in this pass.
+- Pre-upload backup:
+  `/home/u146877548/healthtinity-backups/before-text-width-20261120-171057/staging.tar.gz`.
+- Deployment target remains the Hostinger `/staging/` preview; production DNS and
+  the WordPress root are unchanged.
+
 ## Current preview — 21 November 2026
 
 - Public Hostinger URL found in Opera's logged-in Healthtinity dashboard:
