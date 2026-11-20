@@ -1,5 +1,11 @@
 # Healthtinity Hostinger staging
 
+21 November correction: renamed remaining article-index titles, share titles and
+article breadcrumbs from "What's new" / 最新动态 to "Articles" / 文章. The homepage
+navigation was already clear. All 59 English/Chinese HTML outputs were scanned
+with zero remaining old labels. Rebuilt and uploaded Hostinger staging; publish
+the matching `docs/` correction to GitHub Pages. Articles remain at their URLs.
+
 Latest action: user requested Git publication on 20 November 2026. Publish the
 current `main` branch and rebuilt `docs/` to the existing GitHub Pages preview.
 GitHub Pages shows the updated typography/navigation and static promotion CTA;

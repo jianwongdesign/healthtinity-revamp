@@ -287,13 +287,13 @@ function blogIndex() {
     path: 'blog/',
     active: 'blog',
     og: {
-      title: t("What's new at Healthtinity", 'Healthtinity 最新动态'),
+      title: t('Articles from Healthtinity', 'Healthtinity 文章'),
       description: t('Studio news, our Lianhe Zaobao feature and practical tips to help you move better, feel stronger and live brighter.', '工作室新闻、《联合早报》报道，以及帮助您动得更好、感觉更强壮的实用小贴士。'),
     },
-    title: t("What's new", '最新动态'),
+    title: t('Articles', '文章'),
     description: t('News, features and wellness tips from Healthtinity, the Yoga, Pilates & Rehab Therapy studio at Upper Thomson, Singapore.', '来自 Healthtinity 的新闻、媒体报道与健康小贴士。我们是位于新加坡 Upper Thomson 的瑜伽、普拉提与康复疗法工作室。'),
     body: `
-${pageHero({ r, title: t('Stories, news &amp; <em>gentle wisdom</em>.', '故事、新闻与<em>温柔的智慧</em>。'), lead: t('Studio news, press features and practical tips to help you move better, feel stronger and live brighter.', '工作室新闻、媒体报道和实用小贴士，帮助您动得更好、感觉更强壮、活得更精彩。'), crumbs: [[t("What's new", '最新动态')]] })}
+${pageHero({ r, title: t('Stories, news &amp; <em>gentle wisdom</em>.', '故事、新闻与<em>温柔的智慧</em>。'), lead: t('Studio news, press features and practical tips to help you move better, feel stronger and live brighter.', '工作室新闻、媒体报道和实用小贴士，帮助您动得更好、感觉更强壮、活得更精彩。'), crumbs: [[t('Articles', '文章')]] })}
 <section class="section section--flush">
   <div class="container">
     <a class="post-feature reveal" href="${first.slug}/">
@@ -336,7 +336,7 @@ function blogPost(p) {
 <article>
   <section class="page-hero page-hero--post">
     <div class="container container--narrow">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="${r}">${t('Home', '首页')}</a> <span>/</span> <a href="${r}blog/">${t("What's new", '最新动态')}</a> <span>/</span> <span aria-current="page">${esc(p.category)}</span></nav>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="${r}">${t('Home', '首页')}</a> <span>/</span> <a href="${r}blog/">${t('Articles', '文章')}</a> <span>/</span> <span aria-current="page">${esc(p.category)}</span></nav>
       <div class="post__meta"><span class="tag tag--soft">${esc(p.category)}</span><span>${t('By', '作者：')} ${esc(p.author)} · ${esc(p.date)}</span></div>
       <h1>${esc(p.title)}</h1>
     </div>
