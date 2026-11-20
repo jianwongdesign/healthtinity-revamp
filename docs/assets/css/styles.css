@@ -341,6 +341,23 @@ svg.fill { fill: currentColor; stroke: none; }
 .founder__card strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; }
 .founder__card span { color: var(--navy-soft); }
 
+.team-intro .section__head { margin-bottom: 28px; }
+.team-intro .section__head h2 { text-wrap: wrap; }
+.team-intro .section__head p { margin-top: 16px; }
+.team-group { margin: 0; }
+.team-group__portraits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.team-group__portraits > * { width: 100%; min-width: 0; aspect-ratio: 4 / 5; border-radius: 12px; }
+.team-group__portraits img { height: 100%; object-fit: cover; object-position: center 25%; }
+.team-group__placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--sky-2); color: var(--navy); text-align: center; padding: 8px; }
+.team-group__placeholder span { font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 2.5rem); font-weight: 600; }
+.team-group__placeholder small { font-size: .78rem; }
+.team-group figcaption { margin-top: 14px; color: var(--navy-soft); font-size: .9rem; text-align: center; }
+.about-story { display: grid; gap: 24px; }
+.about-story h2 { text-wrap: wrap; }
+.about-visit .lead { margin-bottom: 0; }
+@media (min-width: 800px) { .team-group__portraits { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px; } }
+@media (min-width: 960px) { .about-story { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; } }
+
 .checklist { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
 .checklist li { display: flex; gap: 12px; align-items: flex-start; }
 .checklist svg { width: 26px; height: 26px; padding: 5px; border-radius: 50%; background: var(--sun); color: var(--navy); stroke-width: 3; }

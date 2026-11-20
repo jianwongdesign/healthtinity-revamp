@@ -215,6 +215,7 @@ ${ctaBand(r)}
       </div>
       <div>
         <h4>${t('Studio', '工作室')}</h4>
+        <a href="${r}about-us/">${t('About Us', '关于我们')}</a>
         <a href="${r}team/">${t('Our team', '我们的团队')}</a>
         <a href="${r}location/">${t('Locate us', '交通位置')}</a>
         <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>

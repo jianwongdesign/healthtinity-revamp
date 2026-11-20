@@ -1,5 +1,19 @@
 # Healthtinity Hostinger staging
 
+## Homepage team section and About Us — 21 November 2026
+
+- Removed the homepage founder portrait, rehabilitation checklist and therapist
+  buttons. Replaced them with a group collage of the existing 15 instructor
+  portraits, plus Xenia Na's named initials placeholder (no photo on file).
+- Added About Us and Meet the Instructors buttons. Created bilingual `about-us/`
+  pages using existing studio facts and added the About Us footer link.
+- An official instructor group photograph can replace the portrait collage later;
+  no synthetic instructor faces were generated. The group visual is HTML/CSS.
+- Built 71 pages. Checked EN/ZH homepage and About Us at 320/390/820/1440 px,
+  all portraits loaded and no text overflow. The earlier header-width correction
+  remains included in this deployment.
+- Backup: `/home/u146877548/healthtinity-backups/before-team-section-20261120-173322/staging.tar.gz`.
+
 ## Header text width correction — 21 November 2026
 
 - User clarified that premature wrapping meant unused width inside the blue

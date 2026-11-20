@@ -18,6 +18,16 @@ const avatar = (m, r, cls = '') =>
     ? `<img class="${cls}" src="${ar(r)}assets/img/team/${m.photo}" alt="${esc(m.name)}" loading="lazy" width="560" height="560">`
     : `<div class="${cls} avatar-fallback" aria-hidden="true">${initials(m.name)}</div>`;
 
+// Use the actual instructor portraits until an official group photograph is supplied.
+const teamGroup = r => `<figure class="team-group">
+  <div class="team-group__portraits">
+    ${L.team().map(m => m.photo
+      ? `<img src="${ar(r)}assets/img/team/${m.photo}" alt="${esc(m.name)}" loading="lazy" width="560" height="700">`
+      : `<div class="team-group__placeholder" role="img" aria-label="${esc(m.name)}"><span aria-hidden="true">${initials(m.name)}</span><small>${esc(m.name)}</small></div>`).join('')}
+  </div>
+  <figcaption>${t('The Healthtinity instructor team', 'Healthtinity 导师团队')}</figcaption>
+</figure>`;
+
 const faqList = (items) => `
 <div class="faq">
   ${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n  ')}
@@ -172,24 +182,15 @@ function home() {
 </section>
 
 <section class="section section--sand" id="story">
-  <div class="container founder">
-    <div class="founder__card reveal">
-      <img src="${A}assets/img/team/kai.jpg" alt="${t('Dr Kai, founder and Master Therapist at Healthtinity', 'Healthtinity 创始人兼首席治疗师 Dr Kai')}" loading="lazy" width="560" height="560">
-      <p><strong>Dr Kai</strong><span>${t('Doctor of Osteopathy · Founder', '整骨医学博士 · 创始人')}</span></p>
+  <div class="container team-intro">
+    <div class="section__head section__head--row">
+      <div><h2>${t('Meet the people behind your practice.', '认识陪伴您练习的团队。')}</h2>
+      <p class="lead">${t('Get to know our studio and the instructors who guide every class.', '了解我们的工作室，以及每堂课背后用心指导的导师。')}</p></div>
     </div>
-    <div class="reveal">
-      <h2>${t('Where fitness meets healing.', '运动与康复，在这里相遇。')}</h2>
-      <p class="lead">${t('Since 2019, Healthtinity has bridged fitness and rehabilitation. Our signature Yoga Rehab Therapy brings Osteopathy, Yoga and Mat Pilates together to relieve pain, restore mobility and build strength, for every age.', '自 2019 年起，Healthtinity 致力于连结运动与康复。我们的招牌瑜伽康复疗法结合整骨医学、瑜伽与垫上普拉提，帮助各年龄层舒缓疼痛、恢复活动能力并增强力量。')}</p>
-      <ul class="checklist">
-        <li>${icon.check} ${t('Chronic neck &amp; back pain, sciatica, scoliosis', '慢性颈部与腰背痛、坐骨神经痛、脊柱侧弯')}</li>
-        <li>${icon.check} ${t('Sports injuries &amp; post-surgical rehabilitation', '运动损伤与术后康复')}</li>
-        <li>${icon.check} ${t('Postural dysfunction &amp; joint mobility', '姿势不良与关节活动受限')}</li>
-        <li>${icon.check} ${t('Personalised 1:1 plans that target the root cause', '针对根本原因的个性化一对一计划')}</li>
-      </ul>
-      <div class="actions">
-        <a class="btn btn--primary" href="${wa(t("Hi Healthtinity! I'd like to speak to someone about my pain or mobility concerns. Could you help me choose the right programme?", '您好 Healthtinity！我想咨询关于疼痛或活动能力的问题，能帮我选择合适的课程吗？'))}" target="_blank" rel="noopener">${t('Talk to a therapist', '咨询治疗师')} ${icon.arrow}</a>
-        <a class="arrow-link" href="${r}team/kai/">${t('About Dr Kai', '认识 Dr Kai')}</a>
-      </div>
+    ${teamGroup(r)}
+    <div class="actions actions--center">
+      <a class="btn btn--primary" href="${r}about-us/">${t('About Us', '关于我们')} ${icon.arrow}</a>
+      <a class="btn btn--ghost" href="${r}team/">${t('Meet the Instructors', '认识导师团队')} ${icon.arrow}</a>
     </div>
   </div>
 </section>
@@ -363,6 +364,34 @@ function blogPost(p) {
 // =====================================================================
 // TEAM
 // =====================================================================
+function aboutPage() {
+  const r = '../';
+  return {
+    path: 'about-us/', active: 'about', title: t('About Us', '关于我们'),
+    description: t('Get to know Healthtinity, our Upper Thomson studio and the instructors behind our Yoga, Mat Pilates and Rehab Therapy classes.', '认识 Healthtinity、我们的 Upper Thomson 工作室，以及瑜伽、垫上普拉提与康复疗法导师。'),
+    body: `
+${pageHero({ r, title: t('A neighbourhood studio. A team that knows you.', '邻里工作室，懂您的导师团队。'), lead: t('Yoga, Mat Pilates and Rehab Therapy at Upper Thomson, Singapore. Helping people move better since 2019.', '位于新加坡 Upper Thomson，提供瑜伽、垫上普拉提与康复疗法。自 2019 年起，陪伴大家动得更好。'), crumbs: [[t('About Us', '关于我们')]] })}
+<section class="section">
+  <div class="container about-story">
+    <div><h2>${t('Movement, with people at its heart.', '以人为本，用心练习。')}</h2></div>
+    <div>
+      <p class="lead">${t('Healthtinity is a boutique Yoga, Pilates and Rehab Therapy studio at 246J Upper Thomson Road. We bring group classes and personalised one-to-one sessions together in a welcoming neighbourhood space.', 'Healthtinity 是位于 246J Upper Thomson Road 的精品瑜伽、普拉提与康复疗法工作室。我们在温暖的邻里空间里，提供团体课程与个性化一对一练习。')}</p>
+      <p>${t('Our instructors teach in English and Mandarin, across Yoga, Mat Pilates, Therapy & Stretch, and Tone & Sculpt. The team is led by Dr Kai, a Doctor of Osteopathy, alongside our senior rehab coach and instructors.', '我们的导师以英语及华语授课，涵盖瑜伽、垫上普拉提、理疗伸展与紧致塑形。团队由整骨医学博士 Dr Kai 带领，与资深康复教练及导师共同为学员提供指导。')}</p>
+      <div class="actions"><a class="arrow-link" href="${r}classes/yoga/">${t('Explore our classes', '浏览我们的课程')} ${icon.arrow}</a><a class="arrow-link" href="${r}classes/private-1-to-1/">${t('Discover Private 1:1', '了解私人一对一')} ${icon.arrow}</a></div>
+    </div>
+  </div>
+</section>
+<section class="section section--sand">
+  <div class="container team-intro">
+    <div class="section__head section__head--row"><div><h2>${t('The people you will meet.', '即将与您相遇的导师。')}</h2><p class="lead">${t('Get to know their teaching styles, backgrounds and classes.', '了解导师的教学风格、专业背景与课程。')}</p></div></div>
+    ${teamGroup(r)}
+    <div class="actions actions--center"><a class="btn btn--primary" href="${r}team/">${t('Meet the Instructors', '认识导师团队')} ${icon.arrow}</a></div>
+  </div>
+</section>
+<section class="section"><div class="container about-visit"><div><h2>${t('Come say hello.', '欢迎来认识我们。')}</h2><p class="lead">${t('246J Upper Thomson Road, Singapore 574370. A 1-minute walk from Upper Thomson MRT, Exit 3.', '246J Upper Thomson Road，Singapore 574370。距 Upper Thomson 地铁站 3 号出口步行约 1 分钟。')}</p></div><div class="actions"><a class="btn btn--primary" href="${r}location/">${t('Find the studio', '查看交通位置')} ${icon.arrow}</a><a class="btn btn--ghost" href="${r}contact-us/">${t('Contact us', '联系我们')}</a></div></div></section>`,
+  };
+}
+
 function teamIndex() {
   const r = '../';
   const team = L.team();
@@ -828,6 +857,7 @@ function notFound() {
 export function allPages() {
   return [
     home(),
+    aboutPage(),
     ...classPages.map(classPage),
     blogIndex(),
     ...L.posts().map(blogPost),
