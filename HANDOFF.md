@@ -1,5 +1,18 @@
 # Healthtinity Hostinger staging
 
+## Combined Contact Us page — 21 November 2026
+
+- Merged the location map, address, MRT/bus/parking information and directions
+  into `contact-us/#visit`, below the existing enquiry form. Hero shortcuts jump
+  to the form or map. English and Chinese versions share the same structure.
+- Desktop/mobile/footer navigation now has one Contact Us link. Old `location/`
+  and `zh/location/` paths are lightweight static redirects to the matching
+  language's Contact Us map section (with canonical links and a no-JS fallback).
+- Site still builds 71 HTML files: 69 content pages and two redirect aliases.
+  Checked form/map presence, anchor targets and legacy redirects; EN/ZH text fits
+  at 320/390/820/1440 px. The Google Maps embed loaded successfully in Chromium.
+- Backup: `/home/u146877548/healthtinity-backups/before-contact-merge-20261121-013510/staging.tar.gz`.
+
 ## Homepage team section and About Us — 21 November 2026
 
 - Removed the homepage founder portrait, rehabilitation checklist and therapist

@@ -71,7 +71,6 @@
         </div>
         <a href="../timetable/">课表</a>
         <a href="../contact-us/" aria-current="page">联系我们</a>
-        <a href="../location/">交通位置</a>
       </nav>
       <div class="nav__cta">
         <div class="lang" role="group" aria-label="Language / 语言">
@@ -99,7 +98,6 @@
       <a href="../membership/">会员</a>
       <a href="../timetable/">团体课课表</a>
       <a href="../contact-us/">联系我们</a>
-      <a href="../location/">交通位置</a>
       <a href="../faqs/">常见问题</a>
       <a data-booking-href="aHR0cHM6Ly9oZWFsdGh0aW5pdHkuY29tL3RpbWV0YWJsZQ==" class="btn btn--primary" href="https://healthtinity.com/timetable">预约课程</a>
     </div>
@@ -114,8 +112,8 @@
       <a href="../">首页</a> <span>/</span> <span aria-current="page">联系我们</span>
     </nav>
     <h1>我们随时为您<em>服务</em>。</h1>
-    <p class="lead">对课程、理疗或您的账户有疑问？欢迎联系我们，团队会尽快回复您。</p>
-    
+    <p class="lead">对课程有疑问，或计划来访？联系我们、发送咨询，或查看前往 Upper Thomson 工作室的路线。</p>
+    <div class="actions"><a class="btn btn--primary" href="#enquiry">发送咨询</a><a class="btn btn--ghost" href="#visit">地图与路线</a></div>
   </div>
 </section>
 <section class="section section--flush">
@@ -124,12 +122,12 @@
       <a class="info-card reveal" href="https://wa.me/6582829515" target="_blank" rel="noopener"><span class="info-card__icon info-card__icon--wa"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg></span><div><strong>WhatsApp</strong><span>回复最快 · +65 8282 9515</span></div></a>
       <a class="info-card reveal" href="tel:+6582829515"><span class="info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span><div><strong>致电我们</strong><span>+65 8282 9515</span></div></a>
       <a class="info-card reveal" href="mailto:ask@healthtinity.com"><span class="info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><strong>电邮</strong><span>ask@healthtinity.com</span></div></a>
-      <a class="info-card reveal" href="../location/"><span class="info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><strong>到访</strong><span>246J Upper Thomson Road, Singapore 574370</span></div></a>
+      <a class="info-card reveal" href="#visit"><span class="info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><strong>到访</strong><span>246J Upper Thomson Road, Singapore 574370</span></div></a>
       <div class="info-card info-card--plain reveal">
         <div><strong>第一次来 Healthtinity？</strong><span>请查看<a href="../faqs/">常见问题</a>，了解预约、到达及取消须知。</span></div>
       </div>
     </div>
-    <form class="form reveal" data-contact-form data-wa="https://wa.me/6582829515" data-email="ask@healthtinity.com">
+    <form id="enquiry" class="form reveal" data-contact-form data-wa="https://wa.me/6582829515" data-email="ask@healthtinity.com">
       <h2>有什么可以帮您？</h2>
       <div class="form__row">
         <label>姓名<input name="name" required autocomplete="name"></label>
@@ -157,7 +155,33 @@
     </form>
   </div>
 </section>
-<section class="section section--sand section--tight">
+<section class="section section--sand" id="visit">
+  <div class="container section__head section__head--row"><div><h2>欢迎来到我们的工作室。</h2><p class="lead">我们位于 Upper Thomson，距地铁站 3 号出口步行约 1 分钟。</p></div></div>
+  <div class="container location">
+    <div class="location__map reveal">
+      <iframe title="Healthtinity 地图" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed&amp;hl=zh-CN"></iframe>
+    </div>
+    <div class="location__card reveal">
+      <img class="location__logo" src="../../assets/img/logo-180.png" alt="" width="56" height="56">
+      <h2>Healthtinity</h2>
+      <p class="muted">Courage Studio</p>
+      <ul class="info-list">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>246J Upper Thomson Road, Singapore 574370</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><a href="tel:+6582829515">+65 8282 9515</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:ask@healthtinity.com">ask@healthtinity.com</a></li>
+      </ul>
+      <h3>如何前往</h3>
+      <ul class="visit__how visit__how--dark">
+        <li><span>🚆</span>步行 1 分钟即可抵达 Upper Thomson 地铁站（3 号出口）</li><li><span>🚌</span>附近有巴士 52、130、132、162、163、165、166、167、410G、855 及 980 号</li><li><span>🚗</span>Upper Thomson Road 沿路设有免费路边停车位（视空位而定）</li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=246J+Upper+Thomson+Road+Singapore+574370" target="_blank" rel="noopener">获取路线</a>
+        <a class="btn btn--ghost" href="https://wa.me/6582829515" target="_blank" rel="noopener">WhatsApp 我们</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--tight">
   <div class="container social-band reveal">
     <h2>在<em>社交媒体</em>关注我们。</h2>
     <div class="social social--lg">
@@ -189,7 +213,6 @@
         <h4>工作室</h4>
         <a href="../about-us/">关于我们</a>
         <a href="../team/">我们的团队</a>
-        <a href="../location/">交通位置</a>
         <a href="../contact-us/">联系我们</a>
       </div>
       <div>

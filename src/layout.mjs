@@ -164,8 +164,7 @@ export function layout({ path = '', title, description, body, active = '', schem
           </div>
         </div>
         <a href="${r}timetable/"${a('timetable')}>${t('Schedule', '课表')}</a>
-        <a href="${r}contact-us/"${a('contact')}>${t('Contact', '联系我们')}</a>
-        <a href="${r}location/"${a('location')}>${t('Locate us', '交通位置')}</a>
+        <a href="${r}contact-us/"${a('contact')}>${t('Contact Us', '联系我们')}</a>
       </nav>
       <div class="nav__cta">
         ${langSwitch()}
@@ -187,7 +186,6 @@ export function layout({ path = '', title, description, body, active = '', schem
       <a href="${r}membership/">${t('Memberships', '会员')}</a>
       <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
       <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
-      <a href="${r}location/">${t('Locate us', '交通位置')}</a>
       <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
       <a class="btn btn--primary" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
     </div>
@@ -217,7 +215,6 @@ ${ctaBand(r)}
         <h4>${t('Studio', '工作室')}</h4>
         <a href="${r}about-us/">${t('About Us', '关于我们')}</a>
         <a href="${r}team/">${t('Our team', '我们的团队')}</a>
-        <a href="${r}location/">${t('Locate us', '交通位置')}</a>
         <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
       </div>
       <div>

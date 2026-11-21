@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { allPages } from '../src/pages.mjs';
 import { layout } from '../src/layout.mjs';
 import { setLang } from '../src/i18n.mjs';
+import { SITE_URL } from '../src/data.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const staging = process.env.STAGING === '1';
@@ -28,7 +29,16 @@ let count = 0;
 for (const [lang, prefix] of [['en', ''], ['zh', 'zh']]) {
   setLang(lang);
   for (const page of allPages()) {
-    let html = layout(page);
+    // Preserve old location links after consolidating them into Contact Us.
+    const destination = page.redirect ? new URL(page.redirect, SITE_URL + (prefix ? prefix + '/' : '') + page.path) : null;
+    let html = destination ? `<!doctype html>
+<html lang="${lang === 'zh' ? 'zh-Hans' : 'en'}"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${lang === 'zh' ? '联系我们' : 'Contact Us'} | Healthtinity</title>
+  <link rel="canonical" href="${destination.href.split('#')[0]}">
+  <meta http-equiv="refresh" content="0;url=${page.redirect}">
+  <script>location.replace(${JSON.stringify(page.redirect)})</script>
+</head><body><a href="${page.redirect}">${lang === 'zh' ? '查看联系方式、地图与路线' : 'View contact details, map and directions'}</a></body></html>` : layout(page);
     if (staging) html = html.replace('<head>', '<head>\n  <meta name="robots" content="noindex, nofollow, noarchive">');
     if (page.file === '404.html') html = html.replace('<head>', `<head>\n  <base href="${BASE}">`);
     const file = join(out, prefix, page.file || join(page.path, 'index.html'));

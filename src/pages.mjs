@@ -388,7 +388,7 @@ ${pageHero({ r, title: t('A neighbourhood studio. A team that knows you.', '邻�
     <div class="actions actions--center"><a class="btn btn--primary" href="${r}team/">${t('Meet the Instructors', '认识导师团队')} ${icon.arrow}</a></div>
   </div>
 </section>
-<section class="section"><div class="container about-visit"><div><h2>${t('Come say hello.', '欢迎来认识我们。')}</h2><p class="lead">${t('246J Upper Thomson Road, Singapore 574370. A 1-minute walk from Upper Thomson MRT, Exit 3.', '246J Upper Thomson Road，Singapore 574370。距 Upper Thomson 地铁站 3 号出口步行约 1 分钟。')}</p></div><div class="actions"><a class="btn btn--primary" href="${r}location/">${t('Find the studio', '查看交通位置')} ${icon.arrow}</a><a class="btn btn--ghost" href="${r}contact-us/">${t('Contact us', '联系我们')}</a></div></div></section>`,
+<section class="section"><div class="container about-visit"><div><h2>${t('Come say hello.', '欢迎来认识我们。')}</h2><p class="lead">${t('246J Upper Thomson Road, Singapore 574370. A 1-minute walk from Upper Thomson MRT, Exit 3.', '246J Upper Thomson Road，Singapore 574370。距 Upper Thomson 地铁站 3 号出口步行约 1 分钟。')}</p></div><div class="actions"><a class="btn btn--primary" href="${r}contact-us/#visit">${t('Find the studio', '查看交通位置')} ${icon.arrow}</a><a class="btn btn--ghost" href="${r}contact-us/">${t('Contact us', '联系我们')}</a></div></div></section>`,
   };
 }
 
@@ -661,19 +661,19 @@ function contact() {
     title: t('Contact Us', '联系我们'),
     description: t('Contact Healthtinity: WhatsApp +65 8282 9515, email ask@healthtinity.com, or visit us at 246J Upper Thomson Road, Singapore 574370.', '联系 Healthtinity：WhatsApp +65 8282 9515，电邮 ask@healthtinity.com，或亲临 246J Upper Thomson Road, Singapore 574370。'),
     body: `
-${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>服务</em>。'), lead: t('Questions about classes, therapy or your account? Reach out and our team will get back to you.', '对课程、理疗或您的账户有疑问？欢迎联系我们，团队会尽快回复您。'), crumbs: [[t('Contact us', '联系我们')]] })}
+${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>服务</em>。'), lead: t('Questions about classes or planning a visit? Contact our team, send an enquiry or find your way to our Upper Thomson studio.', '对课程有疑问，或计划来访？联系我们、发送咨询，或查看前往 Upper Thomson 工作室的路线。'), crumbs: [[t('Contact us', '联系我们')]], extra: `<div class="actions"><a class="btn btn--primary" href="#enquiry">${t('Send an enquiry', '发送咨询')}</a><a class="btn btn--ghost" href="#visit">${t('Map & directions', '地图与路线')}</a></div>` })}
 <section class="section section--flush">
   <div class="container contact">
     <div class="contact__cards">
       <a class="info-card reveal" href="${site.whatsapp}" target="_blank" rel="noopener"><span class="info-card__icon info-card__icon--wa">${icon.wa}</span><div><strong>WhatsApp</strong><span>${t('Fastest reply', '回复最快')} · ${site.phone}</span></div></a>
       <a class="info-card reveal" href="${site.phoneHref}"><span class="info-card__icon">${icon.phone}</span><div><strong>${t('Call us', '致电我们')}</strong><span>${site.phone}</span></div></a>
       <a class="info-card reveal" href="mailto:${site.email}"><span class="info-card__icon">${icon.mail}</span><div><strong>${t('Email', '电邮')}</strong><span>${site.email}</span></div></a>
-      <a class="info-card reveal" href="${r}location/"><span class="info-card__icon">${icon.pin}</span><div><strong>${t('Visit', '到访')}</strong><span>${site.address.join(', ')}</span></div></a>
+      <a class="info-card reveal" href="#visit"><span class="info-card__icon">${icon.pin}</span><div><strong>${t('Visit', '到访')}</strong><span>${site.address.join(', ')}</span></div></a>
       <div class="info-card info-card--plain reveal">
         <div><strong>${t('New to Healthtinity?', '第一次来 Healthtinity？')}</strong><span>${t(`Check out our <a href="${r}faqs/">FAQ</a> for booking, arrival and cancellation info.`, `请查看<a href="${r}faqs/">常见问题</a>，了解预约、到达及取消须知。`)}</span></div>
       </div>
     </div>
-    <form class="form reveal" data-contact-form data-wa="${site.whatsapp}" data-email="${site.email}">
+    <form id="enquiry" class="form reveal" data-contact-form data-wa="${site.whatsapp}" data-email="${site.email}">
       <h2>${t('What can we help you with?', '有什么可以帮您？')}</h2>
       <div class="form__row">
         <label>${t('Name', '姓名')}<input name="name" required autocomplete="name"></label>
@@ -696,7 +696,8 @@ ${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>
     </form>
   </div>
 </section>
-<section class="section section--sand section--tight">
+${visitSection(r)}
+<section class="section section--tight">
   <div class="container social-band reveal">
     <h2>${t('Connect with us on <em>social</em>.', '在<em>社交媒体</em>关注我们。')}</h2>
     <div class="social social--lg">
@@ -712,20 +713,8 @@ ${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>
 // =====================================================================
 // LOCATION
 // =====================================================================
-function location() {
-  const r = '../';
-  return {
-    path: 'location/',
-    active: 'location',
-    og: {
-      title: t('Find Healthtinity at Upper Thomson', 'Healthtinity 交通位置：Upper Thomson'),
-      description: t('246J Upper Thomson Road, a 1-minute walk from Upper Thomson MRT (Exit 3). Plenty of buses and free roadside parking nearby.', '246J Upper Thomson Road，距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近巴士众多，并设有免费路边停车位。'),
-    },
-    title: t('Locate Us', '交通位置'),
-    description: t('Find Healthtinity at 246J Upper Thomson Road, Singapore 574370. 1 min walk from Upper Thomson MRT (Exit 3), with free roadside parking nearby.', 'Healthtinity 位于 246J Upper Thomson Road, Singapore 574370，距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近有免费路边停车位。'),
-    body: `
-${pageHero({ r, title: t('Find us at <em>Upper Thomson</em>.', '我们在 <em>Upper Thomson</em>。'), lead: t('A 1-minute walk from Upper Thomson MRT (Exit 3), with plenty of buses and free roadside parking nearby.', '距 Upper Thomson 地铁站（3 号出口）步行 1 分钟，附近巴士路线众多，并设有免费路边停车位。'), crumbs: [[t('Locate us', '交通位置')]] })}
-<section class="section section--flush">
+const visitSection = (r) => `<section class="section section--sand" id="visit">
+  <div class="container section__head section__head--row"><div><h2>${t('Visit our studio.', '欢迎来到我们的工作室。')}</h2><p class="lead">${t('Find us at Upper Thomson, a 1-minute walk from the MRT, Exit 3.', '我们位于 Upper Thomson，距地铁站 3 号出口步行约 1 分钟。')}</p></div></div>
   <div class="container location">
     <div class="location__map reveal">
       <iframe title="${t('Map of Healthtinity', 'Healthtinity 地图')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed${isZh() ? '&amp;hl=zh-CN' : ''}"></iframe>
@@ -749,10 +738,7 @@ ${pageHero({ r, title: t('Find us at <em>Upper Thomson</em>.', '我们在 <em>Up
       </div>
     </div>
   </div>
-</section>
-`,
-  };
-}
+</section>`;
 
 // =====================================================================
 // FAQ
@@ -867,7 +853,7 @@ export function allPages() {
     membershipPage(),
     timetable(),
     contact(),
-    location(),
+    { path: 'location/', redirect: '../contact-us/#visit' },
     faqPage(),
     legal(terms, 'terms/terms-and-conditions/', ['Privacy Policy', 'terms/private-policy/'], '条款与细则', '隐私政策'),
     legal(privacy, 'terms/private-policy/', ['Terms & Conditions', 'terms/terms-and-conditions/'], '隐私政策', '条款与细则'),
