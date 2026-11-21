@@ -98,6 +98,10 @@
   // ---- Contact form → WhatsApp or email (no backend needed)
   const form = $('[data-contact-form]');
   if (form) {
+    $$('[data-course-enquiry]').forEach(link => link.addEventListener('click', () => {
+      form.elements.namedItem('subject').value = link.dataset.courseEnquiry;
+      form.elements.namedItem('name').focus({ preventScroll: true });
+    }));
     let via = 'wa';
     $$('button[data-via]', form).forEach((b) => b.addEventListener('click', () => (via = b.dataset.via)));
     form.addEventListener('submit', (e) => {

@@ -1,5 +1,18 @@
 # Healthtinity Hostinger staging
 
+## Academy course content and enquiry form — 21 November 2026
+
+- Replaced the Academy placeholder with the user-supplied Wix course content:
+  200-hour Hatha/Vinyasa, 300-hour Multi-style, Reiki Levels 1 and 2. Added original
+  yoga programme images, expandable curriculum/assessments and EN/ZH copy.
+- Added an Academy form with course preselection and WhatsApp/email handoff;
+  validation and both destinations checked without sending messages.
+- Source intakes are from 2023. Fees/durations are explicitly historical reference
+  values; expired dates/offers/seats and unconfirmed accreditation are omitted.
+  See `ACADEMY.md` for source provenance, pending confirmation and form behaviour.
+- Responsive checks passed at 320/390/820/1440px. Still 73 HTML pages.
+- Backup: `/home/u146877548/healthtinity-backups/before-academy-content-URZ2o2/staging.tar.gz`.
+
 ## Consistent navigation weight — 21 November 2026
 
 - Removed the dropdown button's `font: inherit` reset, which was overriding
