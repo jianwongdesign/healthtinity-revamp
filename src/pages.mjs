@@ -422,7 +422,7 @@ ${pageHero({ r, title: t('Coaches who <em>care</em>.', '<em>用心</em>的教练
         </div>
       </a>`).join('')}
     </div>
-    <div class="section__head reveal" style="margin-top:96px"><h2>${t('The <em>team</em>.', '<em>团队</em>成员。')}</h2></div>
+    <div class="section__head reveal" style="margin-top:48px"><h2>${t('The <em>team</em>.', '<em>团队</em>成员。')}</h2></div>
     <div class="team-grid">
       ${rest.map((m) => `
       <a class="coach reveal" href="${m.slug}/">

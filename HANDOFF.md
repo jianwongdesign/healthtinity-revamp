@@ -1,5 +1,27 @@
 # Healthtinity Hostinger staging
 
+## Spacing, contact icons and preview email — 21 November 2026
+
+- Tightened shared section padding to 56px mobile / 72px desktop; compact sections
+  use 40px and sections immediately below page heroes use 32px. Fixed the cascade
+  that previously replaced compact desktop spacing with 112px padding.
+- Reduced page-header padding, large column gaps, team/pricing/article spacing,
+  form padding, promotion spacing and footer gaps. Full-width hero text stays
+  uncapped as requested. Contact header height fell from about 387px to 311px
+  at 1440px; the following gap fell from 112px to 32px.
+- Scoped contact-card subtitle colour so it no longer overrides icon colours.
+  WhatsApp now displays white on green; contact icons use 24px SVGs.
+- Hostinger was rewriting displayed emails, mailto URLs and the form recipient
+  to the temporary domain. Build output now encodes the actual email in HTML
+  entities and JSON Unicode escapes, preserving `ask@healthtinity.com` without
+  relying on client-side JavaScript. Live EN/ZH contact links, form recipients
+  and homepage structured data verified. Form handoff tested with window.open
+  intercepted; no messages sent.
+- Checked all 69 content pages at 320/390/820/1440px: no text overflow or section
+  padding beyond the intended scale. Visually checked home, contact, classes,
+  pricing, team and About Us layouts.
+- Backup: `/home/u146877548/healthtinity-backups/before-spacing-icons-20261121-044835/staging.tar.gz`.
+
 ## Combined Contact Us page — 21 November 2026
 
 - Merged the location map, address, MRT/bus/parking information and directions

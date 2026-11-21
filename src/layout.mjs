@@ -258,5 +258,12 @@ ${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" d
   // external booking destination separately for the browser to restore.
   const original = href[1].replace(/&amp;/g, '&');
   return tag.replace('<a ', `<a data-booking-href="${Buffer.from(original).toString('base64')}" `);
-});
+}).split(/(<script\b[^>]*>[\s\S]*?<\/script>)/gi).map((part, index) => {
+  // Hostinger's preview proxy also rewrites email domains. HTML entities preserve
+  // text, mailto links and form data without JavaScript; JSON uses Unicode escapes.
+  const protectedEmail = index % 2
+    ? site.email.replace('@', '\\u0040').replaceAll('.', '\\u002e')
+    : [...site.email].map(char => `&#${char.codePointAt(0)};`).join('');
+  return part.replaceAll(site.email, protectedEmail);
+}).join('');
 }
