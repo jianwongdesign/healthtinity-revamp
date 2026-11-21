@@ -1,5 +1,18 @@
 # Healthtinity Hostinger staging
 
+## Live Rezerv booking widgets — 21 November 2026
+
+- Added EN/ZH `/book/` with official live timetable, packages and memberships.
+  Generic Book/Buy and promotion links now use this page. Rezerv retains member
+  accounts, booking and hosted checkout. 75 HTML pages built.
+- Public Hostinger preview verified on desktop, tablet and phone; real catalogue
+  loads and Starter Pack Buy Now reaches the existing member-login page. No
+  login/payment/booking was completed. No DNS or payment settings changed.
+- `BOOKING_URL` configures the external Rezerv origin. Before moving the main
+  domain, give Rezerv a verified booking address and test login/checkout there.
+  See `REZERV-INTEGRATION.md` for account observations, launch sequence and limits.
+- Backup: `/home/u146877548/healthtinity-backups/before-rezerv-uf97iJ/staging.tar.gz`.
+
 ## Academy course content and enquiry form — 21 November 2026
 
 - Replaced the Academy placeholder with the user-supplied Wix course content:

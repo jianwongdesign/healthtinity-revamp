@@ -928,3 +928,24 @@ html:lang(zh-Hans) .marquee__track { letter-spacing: .04em; }
   .academy-workshops { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
   .academy-workshops article + article { border-top: 0; padding-top: 0; }
 }
+
+/* Live Rezerv booking: one catalogue at a time; checkout stays hosted. */
+.booking__intro { display: flex; align-items: baseline; justify-content: space-between; gap: 16px 32px; margin-bottom: 24px; }
+.booking__intro p { margin: 0; }
+.booking__intro > a { flex-shrink: 0; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.booking__intro > a svg { display: inline-block; width: 18px; height: 18px; vertical-align: middle; stroke: currentColor; stroke-width: 2; fill: none; transform: rotate(-45deg); }
+body[data-booking-active] .wa-fab { display: none; }
+.booking__tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--line); }
+.booking__tabs[hidden], #booking-panel[hidden] { display: none; }
+.booking__tabs button { flex: 1; max-width: 240px; padding: 14px 12px; border: 0; border-bottom: 3px solid transparent; border-radius: 8px 8px 0 0; background: transparent; color: var(--navy-soft); font: 600 1rem/1.35 var(--font-display); cursor: pointer; }
+.booking__tabs button:hover { background: var(--sky); color: var(--navy); }
+.booking__tabs button[aria-selected="true"] { background: var(--sky); border-bottom-color: var(--blue-panel); color: var(--navy); }
+.booking__status { min-height: 28px; margin: 12px 0 4px; color: var(--navy-soft); font-size: 15px; }
+.booking__frame { display: block; width: 100%; height: 1080px; border: 0; background: var(--white); }
+.booking__help { margin: 20px 0 0; color: var(--navy-soft); font-size: 15px; }
+@media (max-width: 700px) {
+  .booking__intro { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .booking__tabs { gap: 0; }
+  .booking__tabs button { padding: 12px 8px; font-size: 15px; }
+  .booking__frame { height: 880px; }
+}

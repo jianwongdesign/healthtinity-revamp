@@ -27,8 +27,10 @@ Lead with **community and warmth**: a friendly neighbourhood studio where biling
 ## Capabilities and Constraints
 - Static HTML/CSS/JS, no dependencies; Node build (`npm run build`) renders `src/` to `docs/`, hosted on GitHub Pages for review.
 - URLs must match the current healthtinity.com pages (SEO carry-over).
-- All Book / Buy buttons link to the Rezerv booking pages; no on-site checkout.
-- Schedule shown is a typical week; live seats only on the booking system.
+- Generic Book / Buy buttons open the local `/book/` page with official Rezerv
+  live schedule, package and membership widgets. Sign-in/payment continue on
+  Rezerv in a new tab; no separate on-site payment processing.
+- The `/timetable/` page shows a typical week; `/book/` shows live Rezerv data.
 - Undecided: booking subdomain at launch, opening hours, form service for contact form.
 
 ## Brand Commitments

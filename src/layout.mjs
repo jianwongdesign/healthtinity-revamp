@@ -6,7 +6,7 @@ import { classPages, classLabel } from './classes.mjs';
 
 // Content hash per asset, so each deploy busts browser/CDN caches when a file changes
 const v = (f) => createHash('md5').update(readFileSync(new URL(`./assets/${f}`, import.meta.url))).digest('hex').slice(0, 8);
-const ver = { css: v('css/styles.css'), js: v('js/main.js'), promos: v('js/promotions.js'), classes: v('js/classes.js') };
+const ver = { css: v('css/styles.css'), js: v('js/main.js'), promos: v('js/promotions.js'), classes: v('js/classes.js'), booking: v('js/booking.js') };
 const promotionsApi = process.env.PROMOTIONS_API ?? (process.env.STAGING === '1'
   ? '/index.php?rest_route=/healthtinity/v1/promotions'
   : 'https://welcome-lightsteelblue-mosquito-41.hostingersite.com/index.php?rest_route=/healthtinity/v1/promotions');
@@ -130,7 +130,7 @@ export function layout({ path = '', title, description, body, active = '', schem
   <script>document.documentElement.classList.add('js')</script>
   ${schema}
 </head>
-<body>
+<body data-booking-page="${r}book/" data-booking-origin="${Buffer.from(BOOK).toString('base64')}"${active === 'book' ? ' data-booking-active="true"' : ''}>
   <a class="skip" href="#main">${t('Skip to content', '跳至内容')}</a>
 
   <div class="announce">
@@ -250,6 +250,7 @@ ${ctaBand(r)}
   </a>
 
   <script src="${A}assets/js/main.js?v=${ver.js}" defer></script>
+${active === 'book' ? `  <script src="${A}assets/js/booking.js?v=${ver.booking}" defer></script>` : ''}
 ${active === 'classes' ? `  <script src="${A}assets/js/classes.js?v=${ver.classes}" defer></script>` : ''}
 ${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" defer></script>` : ''}
 </body>
@@ -257,6 +258,11 @@ ${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" d
 `.replace(/<a\b[^>]*>/g, (tag) => {
   const href = tag.match(/\bhref="([^"]+)"/);
   if (!href || !(href[1] === BOOK || href[1].startsWith(BOOK + '/'))) return tag;
+  const bookingPath = new URL(href[1].replace(/&amp;/g, '&'));
+  const view = { '/timetable': 'timetable', '/package': 'packages', '/membership': 'memberships' }[bookingPath.pathname.replace(/\/$/, '')];
+  if (view && !bookingPath.search && !bookingPath.hash && !tag.includes('data-rezerv-direct')) {
+    return tag.replace(href[0], `href="${r}book/?view=${view}"`);
+  }
   // The Hostinger preview proxy rewrites absolute hrefs. Keep the intended
   // external booking destination separately for the browser to restore.
   const original = href[1].replace(/&amp;/g, '&');

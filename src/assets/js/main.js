@@ -4,6 +4,24 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  // Send generic booking CTAs (including WordPress promotions) to the live widget.
+  // Preserve deep links and links with checkout/query details exactly as supplied.
+  const bookingOrigins = new Set(['https://healthtinity.com', 'https://www.healthtinity.com']);
+  try { bookingOrigins.add(atob(document.body.dataset.bookingOrigin)); } catch { /* Optional config. */ }
+  window.healthtinityBookingUrl = value => {
+    if (!value) return value;
+    try {
+      const url = new URL(value, location.href);
+      const view = { '/timetable': 'timetable', '/package': 'packages', '/membership': 'memberships' }[url.pathname.replace(/\/$/, '')];
+      if (bookingOrigins.has(url.origin) && view && !url.search && !url.hash) {
+        const local = new URL(document.body.dataset.bookingPage, location.href);
+        local.searchParams.set('view', view);
+        return local.href;
+      }
+    } catch { /* Keep the supplied value for the caller to validate. */ }
+    return value;
+  };
+
   // Preserve external booking links when Hostinger rewrites preview-domain HTML.
   $$('[data-booking-href]').forEach(link => {
     try {

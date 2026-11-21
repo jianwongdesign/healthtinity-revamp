@@ -16,7 +16,9 @@
     try { const url = new URL(value, base); return ['http:', 'https:'].includes(url.protocol) ? url.href : null; } catch { return null; }
   };
   const bookingUrl = (promo, key) => {
-    try { return promo[key + 'Encoded'] ? new TextDecoder().decode(Uint8Array.from(atob(promo[key + 'Encoded']), c => c.charCodeAt(0))) : promo[key]; } catch { return promo[key]; }
+    let value = promo[key];
+    try { if (promo[key + 'Encoded']) value = new TextDecoder().decode(Uint8Array.from(atob(promo[key + 'Encoded']), c => c.charCodeAt(0))); } catch { /* Use the plain URL. */ }
+    return window.healthtinityBookingUrl ? window.healthtinityBookingUrl(value) : value;
   };
   const storageKey = 'healthtinity-promotion-last-shown';
   // A review link can show eligible promotions immediately without clearing storage.
@@ -145,7 +147,7 @@
       host.hidden = !banners.length;
       const popups = data.settings.enabled && data.settings.popup ? promos.filter(p => p.popup) : [];
       if (dialog?.open && dialog.dataset.items !== JSON.stringify(popups)) removePopup();
-      if (!popupShown && popups.length && (previewPopup || Date.now() - shownAt >= Math.max(1, Number(data.settings.cooldown) || 24) * 3600000)) {
+      if (!document.body.dataset.bookingActive && !popupShown && popups.length && (previewPopup || Date.now() - shownAt >= Math.max(1, Number(data.settings.cooldown) || 24) * 3600000)) {
         const delay = previewPopup ? 0 : Math.max(0, Math.min(60, Number(data.settings.delay) || 0));
         popupTimer = setTimeout(() => {
           // Revalidate the dates after the delay using elapsed server time.

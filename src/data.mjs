@@ -7,7 +7,8 @@
 
 // Booking engine (Rezerv). If booking moves to a subdomain at launch
 // (e.g. https://book.healthtinity.com), change it here only.
-export const BOOK = 'https://healthtinity.com';
+export const BOOK = (process.env.BOOKING_URL || 'https://healthtinity.com').replace(/\/+$/, '');
+if (!/^https:\/\/[^/?#]+$/.test(BOOK)) throw new Error('BOOKING_URL must be an HTTPS origin, without a path or query.');
 
 // Public address of this website, used for share links (Open Graph) and canonical URLs.
 // Build with SITE_URL=https://healthtinity.com/ at launch.

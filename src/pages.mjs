@@ -5,6 +5,7 @@ import { t, ar, isZh, L, className } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { classPages, classPage } from './classes.mjs';
 import { academyPage } from './academy.mjs';
+import { bookingPage } from './booking.mjs';
 
 // Official Lianhe Zaobao logo (Wikipedia: File:Lianhe_Zaobao_new_logo.svg); mono by default, brand colours on hover
 const zaobaoLogo = readFileSync(new URL('./assets/img/press/zaobao.svg', import.meta.url), 'utf8')
@@ -846,6 +847,7 @@ export function allPages() {
     home(),
     aboutPage(),
     academyPage(),
+    bookingPage(),
     ...classPages.map(classPage),
     blogIndex(),
     ...L.posts().map(blogPost),
