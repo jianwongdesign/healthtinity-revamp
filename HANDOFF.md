@@ -1,5 +1,20 @@
 # Healthtinity Hostinger staging
 
+## Academy page — 21 November 2026
+
+- Added Academy immediately after Classes in desktop/mobile navigation and in
+  the footer. English `/academy/` and Chinese `/zh/academy/` introduce yoga
+  instructor training with a clear course-details-coming-soon state.
+- Client content is pending. `src/academy.mjs` owns the page and records the
+  content to request: overview, syllabus, requirements, trainers, dates/duration,
+  fees, confirmed accreditation, application process and FAQs. This page is
+  currently a static template, not a WordPress admin editor.
+- Training-specific WhatsApp enquiry and Contact Us buttons work now; no course
+  hours, fees, certification or intake dates have been invented.
+- Built 73 HTML files. Checked EN/ZH at 320/390/820/1180/1280/1440px with no page
+  overflow or header overlap, including the active mobile Academy link.
+- Backup: `/home/u146877548/healthtinity-backups/before-academy-20261121/staging.tar.gz`.
+
 ## Spacing, contact icons and preview email — 21 November 2026
 
 - Tightened shared section padding to 56px mobile / 72px desktop; compact sections
