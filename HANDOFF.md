@@ -1,5 +1,17 @@
 # Healthtinity Hostinger staging
 
+## Chinese homepage wording — 21 November 2026
+
+- Replaced the literal hero headline with “用心指导，陪您一起进步。” and
+  smoothed the supporting introduction, enquiry message and homepage section
+  headings. Used “WhatsApp 咨询” consistently for enquiry buttons.
+- Updated Chinese share metadata and the shared visit/FAQ wording. English copy,
+  class names, prices and programme facts are unchanged. This is a homepage and
+  related UI copy pass, not a complete review of all Chinese articles or bios.
+- Checked the revised hero at 320/390/820/1440px with no horizontal overflow;
+  visually reviewed phone and desktop. Both languages retain five class options.
+- Backup: `/home/u146877548/healthtinity-backups/before-zh-copy-i9DPJM/staging.tar.gz`.
+
 ## Homepage hero class labels — 21 November 2026
 
 - Hero photo reel and yellow scrolling strip now use only the five main options:

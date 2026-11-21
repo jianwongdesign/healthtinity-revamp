@@ -84,7 +84,7 @@ export function layout({ path = '', title, description, body, active = '', schem
     image: abs(og.image || `assets/img/og/share-${t('en', 'zh')}.jpg`),
     width: og.width || 1200,
     height: og.height || 630,
-    alt: og.alt || t('Healthtinity: coaches who know your name. Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, Singapore.', 'Healthtinity：叫得出你名字的教练。新加坡 Upper Thomson 的瑜伽、垫上普拉提与瑜伽康复疗法。'),
+    alt: og.alt || t('Healthtinity: coaches who know your name. Yoga, Mat Pilates and Yoga Rehab Therapy at Upper Thomson, Singapore.', 'Healthtinity：用心指导，陪您一起进步。新加坡 Upper Thomson 的瑜伽、垫上普拉提与瑜伽康复疗法。'),
     type: og.type || 'website',
   };
   const langSwitch = (cls = '') => `<div class="lang${cls}" role="group" aria-label="Language / 语言">
