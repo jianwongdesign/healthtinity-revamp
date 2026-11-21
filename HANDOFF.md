@@ -1,5 +1,16 @@
 # Healthtinity Hostinger staging
 
+## Homepage hero class labels — 21 November 2026
+
+- Hero photo reel and yellow scrolling strip now use only the five main options:
+  Yoga, Mat Pilates, Therapy & Stretch, Tone & Sculpt and Private 1:1, in EN/ZH.
+  Removed the extra Yoga Rehab, Hot Yoga and Osteopathy-informed category labels.
+- Photo cards link directly to their corresponding class introduction pages.
+  Repeated cards/strip labels remain solely for the existing seamless animation.
+- Checked both languages at 390/820/1440px; five unique categories, images loaded,
+  and no page overflow. Existing hero layout and introductory copy are preserved.
+- Backup: `/home/u146877548/healthtinity-backups/before-hero-five-41R52B/staging.tar.gz`.
+
 ## Academy page — 21 November 2026
 
 - Added Academy immediately after Contact Us in desktop/mobile navigation and in

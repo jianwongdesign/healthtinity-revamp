@@ -92,11 +92,11 @@ function home() {
   const membershipsRecurring = L.membershipsRecurring();
   // Class photos for the hero reel. Repeated so the loop is wide enough on large screens.
   const reelBase = [
-    ['pilates', t('Mat Pilates', '垫上普拉提'), 'class-pilates.jpg', t('A Mat Pilates class doing single-leg lifts while a coach gives a cue', '垫上普拉提课，导师正在指导单腿抬举')],
-    ['therapy', t('Therapy &amp; Stretch', '理疗伸展'), 'hero.jpg', t('A therapy and stretch class easing into a knee hug', '理疗伸展课学员抱膝放松')],
     ['yoga', t('Yoga', '瑜伽'), 'class-yoga.jpg', t('A small group yoga class holding warrior two', '小班瑜伽课正在练习战士二式')],
-    ['therapy', t('Yoga Rehab', '瑜伽康复'), 'hero-coach.jpg', t('A coach guiding a seated side stretch', '导师指导坐姿侧伸展')],
-    ['sculpt', t('Tone &amp; Sculpt', '紧致塑形'), 'class-sculpt.jpg', t('A Tone and Sculpt class squatting with light dumbbells', '紧致塑形课学员手持轻哑铃深蹲')],
+    ['mat-pilates', t('Mat Pilates', '垫上普拉提'), 'class-pilates.jpg', t('A Mat Pilates class doing single-leg lifts while a coach gives a cue', '垫上普拉提课，导师正在指导单腿抬举')],
+    ['therapy-stretch', t('Therapy &amp; Stretch', '理疗伸展'), 'hero.jpg', t('A therapy and stretch class easing into a knee hug', '理疗伸展课学员抱膝放松')],
+    ['tone-sculpt', t('Tone &amp; Sculpt', '紧致塑形'), 'class-sculpt.jpg', t('A Tone and Sculpt class squatting with light dumbbells', '紧致塑形课学员手持轻哑铃深蹲')],
+    ['private-1-to-1', t('Private 1:1', '私人一对一'), 'hero-coach.jpg', t('A coach guiding a seated side stretch', '导师指导坐姿侧伸展')],
   ];
   const reel = [...reelBase, ...reelBase];
   // Headline split into words (EN) or phrases (ZH) for the staggered rise
@@ -133,7 +133,7 @@ function home() {
     </div>
     <div class="reel">
       <div class="reel__track">
-        ${[...reel, ...reel].map(([c, label, img, alt], i) => { const dup = i >= reelBase.length; return `<a class="reel__card" href="${r}timetable/?c=${c}"${dup ? ' aria-hidden="true" tabindex="-1"' : ''}><img src="${A}assets/img/hero-reel/${img}" alt="${dup ? '' : alt}" width="480" height="640"${i < 3 ? ' fetchpriority="high"' : ''}><span class="reel__name">${label}</span></a>`; }).join('')}
+        ${[...reel, ...reel].map(([c, label, img, alt], i) => { const dup = i >= reelBase.length; return `<a class="reel__card" href="${r}classes/${c}/"${dup ? ' aria-hidden="true" tabindex="-1"' : ''}><img src="${A}assets/img/hero-reel/${img}" alt="${dup ? '' : alt}" width="480" height="640"${i < 3 ? ' fetchpriority="high"' : ''}><span class="reel__name">${label}</span></a>`; }).join('')}
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@ function home() {
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    ${Array(2).fill(t(['Yoga', 'Mat Pilates', 'Yoga Rehab Therapy', 'Therapy &amp; Stretch', 'Hot Yoga', 'Tone &amp; Sculpt', 'Private 1:1', 'Osteopathy-informed'], ['瑜伽', '垫上普拉提', '瑜伽康复疗法', '理疗伸展', '热瑜伽', '紧致塑形', '私人一对一', '整骨医学理念']).map((x) => `<span>${x}</span><i></i>`).join('')).join('')}
+    ${Array(4).fill(reelBase.map(([, label]) => `<span>${label}</span><i></i>`).join('')).join('')}
   </div>
 </div>
 
