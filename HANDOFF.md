@@ -2,7 +2,7 @@
 
 ## Academy page — 21 November 2026
 
-- Added Academy immediately after Classes in desktop/mobile navigation and in
+- Added Academy immediately after Contact Us in desktop/mobile navigation and in
   the footer. English `/academy/` and Chinese `/zh/academy/` introduce yoga
   instructor training with a clear course-details-coming-soon state.
 - Client content is pending. `src/academy.mjs` owns the page and records the

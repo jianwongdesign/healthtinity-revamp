@@ -154,7 +154,6 @@ export function layout({ path = '', title, description, body, active = '', schem
             ${classPages.map(c => `<a href="${r}classes/${c.slug}/"${path === `classes/${c.slug}/` ? ' aria-current="page"' : ''}>${esc(classLabel(c))}</a>`).join('')}
           </div>
         </div>
-        <a href="${r}academy/"${a('academy')}>${t('Academy', '学院')}</a>
         <a href="${r}team/"${a('team')}>${t('Team', '团队')}</a>
         <div class="dropdown">
           <button class="dropdown__btn${active === 'pricing' ? ' is-active' : ''}" aria-expanded="false" data-dropdown>${t('Pricing', '价格')} ${icon.chev}</button>
@@ -166,6 +165,7 @@ export function layout({ path = '', title, description, body, active = '', schem
         </div>
         <a href="${r}timetable/"${a('timetable')}>${t('Schedule', '课表')}</a>
         <a href="${r}contact-us/"${a('contact')}>${t('Contact Us', '联系我们')}</a>
+        <a href="${r}academy/"${a('academy')}>${t('Academy', '学院')}</a>
       </nav>
       <div class="nav__cta">
         ${langSwitch()}
@@ -182,12 +182,12 @@ export function layout({ path = '', title, description, body, active = '', schem
         <summary>${t('Classes', '课程')}</summary>
         <div>${classPages.map(c => `<a href="${r}classes/${c.slug}/"${path === `classes/${c.slug}/` ? ' aria-current="page"' : ''}>${esc(classLabel(c))}</a>`).join('')}</div>
       </details>
-      <a href="${r}academy/"${a('academy')}>${t('Academy', '学院')}</a>
       <a href="${r}team/">${t('Team', '团队')}</a>
       <a href="${r}package/">${t('Packages', '课程配套')}</a>
       <a href="${r}membership/">${t('Memberships', '会员')}</a>
       <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
       <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
+      <a href="${r}academy/"${a('academy')}>${t('Academy', '学院')}</a>
       <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
       <a class="btn btn--primary" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
     </div>
@@ -216,9 +216,9 @@ ${ctaBand(r)}
       <div>
         <h4>${t('Studio', '工作室')}</h4>
         <a href="${r}about-us/">${t('About Us', '关于我们')}</a>
-        <a href="${r}academy/">${t('Academy', '学院')}</a>
         <a href="${r}team/">${t('Our team', '我们的团队')}</a>
         <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
+        <a href="${r}academy/">${t('Academy', '学院')}</a>
       </div>
       <div>
         <h4>${t('Classes', '课程')}</h4>
