@@ -152,7 +152,7 @@ svg.fill { fill: currentColor; stroke: none; }
 .mobile-classes > div { display: grid; padding-left: 16px; padding-bottom: 8px; }
 .mobile-classes a[aria-current] { color: var(--blue-deep); background: var(--sky); border-radius: 8px; }
 .dropdown { position: relative; }
-.dropdown__btn { background: none; border: 0; font: inherit; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; padding: 0; }
+.dropdown__btn { background: none; border: 0; line-height: inherit; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; padding: 0; }
 .dropdown__btn.is-active { color: var(--blue-deep); }
 .dropdown__btn svg { width: 16px; height: 16px; transition: transform .25s; }
 .dropdown__menu {

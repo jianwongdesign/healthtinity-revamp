@@ -1,5 +1,13 @@
 # Healthtinity Hostinger staging
 
+## Consistent navigation weight — 21 November 2026
+
+- Removed the dropdown button's `font: inherit` reset, which was overriding
+  Classes/Pricing typography. All seven main labels now use the same 700 weight
+  and display font. Retained inherited line height for alignment.
+- EN/ZH verified at 1180/1280/1440px with no header overlap or page overflow.
+- Backup: `/home/u146877548/healthtinity-backups/before-nav-weight-pWkgmZ/staging.tar.gz`.
+
 ## Chinese homepage wording — 21 November 2026
 
 - Replaced the literal hero headline with “用心指导，陪您一起进步。” and
