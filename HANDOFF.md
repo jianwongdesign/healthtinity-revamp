@@ -1,5 +1,7 @@
 # Healthtinity Hostinger staging
 
+Junior review: see [the complete change register and verification checklist](JUNIOR-VERIFICATION-CHECKLIST.md), reconciled with the two handwritten meeting notes on 22 November 2026. It distinguishes implemented staging work, outstanding original requests and launch gates.
+
 ## Corporate Wellness pricing — 22 November 2026
 
 - Added EN/ZH `/corporate-wellness/` under Pricing, with mobile/footer links and

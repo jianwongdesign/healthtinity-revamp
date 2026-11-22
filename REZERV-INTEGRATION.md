@@ -1,5 +1,42 @@
 # Rezerv booking integration — 21 November 2026
 
+## Booking domain preparation — 22 November 2026
+
+- Further diagnosis after the user reported the booking error: an SNI TLS
+  handshake for `book.healthtinity.com` returns a Let's Encrypt certificate whose
+  only SAN is `mygym.rezeve.com` (valid 30 September–29 December 2026). The
+  certificate is for the wrong hostname, rather than expired. In contrast,
+  `www.healthtinity.com` presents its matching certificate and returns HTTP 200.
+  Rezerv admin still shows `www` as primary and `book` Connected as secondary.
+  No certificate-management control is exposed on that Domains page. Rezerv
+  needs to provision/attach the matching certificate; pending provisioning
+  versus a configuration fault is not yet established. No DNS changes needed
+  based on these checks, and no provider support message has been sent.
+- Follow-up after the user saved Wix DNS: both Wix authoritative servers and
+  Cloudflare/Google resolvers return `book.healthtinity.com CNAME shops.rezerv.co.`.
+  Retried verification in Rezerv; the domain now shows **Connected**.
+- Verification automatically promoted `book.healthtinity.com` to primary. HTTPS
+  still failed hostname validation (curl error 60), so restored the original
+  `www.healthtinity.com` primary and verified that state after a page reload.
+  The new booking domain remains Connected as a secondary domain. The current
+  `www` site responds HTTP 200 with valid TLS. Do not change booking links or
+  switch production until the new hostname has a valid certificate and is tested.
+- The points below record the earlier preparation steps, before DNS was saved.
+
+- Added `book.healthtinity.com` through **Online Store > Domains > Connect
+  Existing Domain** in the user's Rezerv account. Read-back shows **Not Connected**.
+- Existing `www.healthtinity.com` remains the connected primary domain;
+  `healthtinity.com` remains connected. Primary-domain redirection is unchanged.
+- The connection check gives the required CNAME destination `shops.rezerv.co.`.
+  Its generic Name column says `www`; for the requested booking subdomain in
+  Wix's `healthtinity.com` zone, add host `book`, not a replacement for `www`.
+- DNS authority verified as `ns7.wixdns.net` / `ns6.wixdns.net`. The existing
+  `www` CNAME points to `shops.rezerv.co`; no `book` CNAME was present at check.
+- Opened `https://manage.wix.com/account/domains` in Chrome; Wix requires login.
+  Awaiting user login or self-service DNS addition. No DNS record changed.
+- After DNS propagation, retry Rezerv verification and inspect TLS/redirects.
+  Do not switch the primary domain or deploy a new `BOOKING_URL` until tested.
+
 ## Published staging
 
 - English: https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/book/
