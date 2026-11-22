@@ -161,6 +161,7 @@ export function layout({ path = '', title, description, body, active = '', schem
             <a href="${r}package/"><strong>${t('Packages', '课程配套')}</strong><span>${t('Class packs &amp; Starter Pack', '课程配套与体验配套')}</span></a>
             <a href="${r}membership/"><strong>${t('Memberships', '会员')}</strong><span>${t('Unlimited group classes', '团体课无限上')}</span></a>
             <a href="${r}package/#topup"><strong>${t('Top Up &amp; Flow', '储值随心练')}</strong><span>${t('Wallet credits with bonus', '钱包储值送额度')}</span></a>
+            <a href="${r}corporate-wellness/"><strong>${t('Corporate Wellness', '企业健康活动')}</strong><span>${t('Yoga for your team', '团队瑜伽活动')}</span></a>
           </div>
         </div>
         <a href="${r}timetable/"${a('timetable')}>${t('Schedule', '课表')}</a>
@@ -185,6 +186,7 @@ export function layout({ path = '', title, description, body, active = '', schem
       <a href="${r}team/">${t('Team', '团队')}</a>
       <a href="${r}package/">${t('Packages', '课程配套')}</a>
       <a href="${r}membership/">${t('Memberships', '会员')}</a>
+      <a href="${r}corporate-wellness/">${t('Corporate Wellness', '企业健康活动')}</a>
       <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
       <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
       <a href="${r}academy/"${a('academy')}>${t('Academy', '学院')}</a>
@@ -226,6 +228,7 @@ ${ctaBand(r)}
         <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
         <a href="${r}package/">${t('Packages', '课程配套')}</a>
         <a href="${r}membership/">${t('Memberships', '会员')}</a>
+        <a href="${r}corporate-wellness/">${t('Corporate Wellness', '企业健康活动')}</a>
         <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
       </div>
       <div>

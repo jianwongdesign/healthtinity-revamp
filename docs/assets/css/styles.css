@@ -439,6 +439,17 @@ a.card { display: block; color: var(--navy); }
 @media (min-width: 1180px) { .pricing--4 { grid-template-columns: repeat(4, 1fr); } }
 
 .topup { margin-top: 28px; border-radius: var(--r-lg); padding: 32px 26px; background: var(--navy); color: #fff; display: grid; gap: 24px; align-items: center; }
+.corporate-wellness { display: grid; gap: 24px; }
+.corporate-wellness__intro > :last-child { margin-bottom: 0; }
+.corporate-wellness__plans { grid-template-columns: minmax(0, 1fr); }
+.corporate-wellness__plans .btn { margin-top: auto; }
+@media (min-width: 700px) {
+  .corporate-wellness__plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .corporate-wellness { grid-template-columns: minmax(0, .8fr) minmax(0, 2fr); gap: 24px 40px; align-items: start; }
+  .corporate-wellness > .fineprint { grid-column: 2; margin: 0; }
+}
 .topup h3 { color: #fff; font-size: 1.8rem; }
 .topup p { color: #fff; margin: 0; }
 .topup__kicker { font-family: var(--font-display); font-weight: 600; color: var(--sun) !important; margin-bottom: 6px !important; }
@@ -752,6 +763,12 @@ html:not(.js) .today__row:nth-child(n+6) { display: none; }
 }
 
 /* Timetable labels readable on a phone */
+.pricing-tabs { flex-wrap: wrap; }
+@media (max-width: 700px) {
+  .pricing-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .pricing-tabs .tab { white-space: normal; text-align: center; display: flex; align-items: center; justify-content: center; }
+}
+
 .day-tab small { font-size: .84rem; }
 .sched__cat { font-size: .82rem; }
 .sched__flag { font-size: .84rem; }

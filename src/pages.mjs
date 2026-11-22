@@ -568,12 +568,54 @@ ${pageHero({ r, title: t('Unlimited <em>memberships</em>.', '无限上课<em>会
   };
 }
 
+function corporateWellnessPage() {
+  const r = '../';
+  const enquiry = `${r}contact-us/?enquiry=corporate-wellness#enquiry`;
+  return {
+    path: 'corporate-wellness/',
+    active: 'pricing',
+    title: t('Corporate Wellness', '企业健康活动'),
+    description: t('Corporate yoga with Healthtinity. $30 per person with a minimum of 15 participants; from $20 per person for groups of 30 or more. Contact us to plan your session.', 'Healthtinity 企业瑜伽活动：每人 $30，至少 15 人；30 人及以上每人 $20 起。欢迎联系团队安排活动。'),
+    body: `
+${pageHero({ r, title: t('Corporate <em>wellness</em>.', '企业<em>健康活动</em>。'), lead: t('Make time for your team to move together. Bring yoga into your corporate wellness programme with Healthtinity.', '与同事一起动起来。让 Healthtinity 为您的企业健康活动安排瑜伽课程。'), crumbs: [[t('Pricing', '价格')], [t('Corporate Wellness', '企业健康活动')]], extra: pricingTabs('corporate') })}
+<section class="section section--flush">
+  <div class="container corporate-wellness">
+    <div class="corporate-wellness__intro reveal">
+      <h2>${t('Yoga for <em>your team</em>.', '让团队一起<em>练瑜伽</em>。')}</h2>
+      <p>${t('Yoga instruction and instructor transport are included. Share your group size, preferred date and venue with us to arrange your session.', '费用包含瑜伽教学及导师交通。请告诉我们参加人数、希望的日期与地点，方便我们为您安排课程。')}</p>
+      <p class="muted">${t('All prices are in Singapore dollars.', '价格均以新加坡元计算。')}</p>
+    </div>
+    <div class="pricing corporate-wellness__plans">
+      <article class="price reveal">
+        <h3>${t('Team session', '团队瑜伽')}</h3>
+        <p class="price__sub">${t('Standard rate', '标准价格')}</p>
+        <div class="price__amt"><sup>S$</sup>30<small>${t('/ person', '／人')}</small></div>
+        <p class="price__meta">${t('Minimum 15 participants', '至少 15 人参加')}</p>
+        <ul><li>${t('Yoga instruction included', '包含瑜伽教学')}</li><li>${t('Instructor transport included', '包含导师交通')}</li></ul>
+        <a class="btn btn--primary" href="${enquiry}">${t('Enquire about a session', '咨询团队活动')} ${icon.arrow}</a>
+      </article>
+      <article class="price price--hot reveal">
+        <h3>${t('Larger groups', '大型团体')}</h3>
+        <p class="price__sub">${t('From', '每人起价')}</p>
+        <div class="price__amt"><sup>S$</sup>20<small>${t('/ person', '／人')}</small></div>
+        <p class="price__meta">${t('30 participants or more', '30 人及以上')}</p>
+        <ul><li>${t('Yoga instruction included', '包含瑜伽教学')}</li><li>${t('Instructor transport included', '包含导师交通')}</li></ul>
+        <a class="btn btn--light" href="${enquiry}">${t('Request a group quote', '咨询团体报价')} ${icon.arrow}</a>
+      </article>
+    </div>
+    <p class="fineprint">${t('Contact us to confirm availability, session duration and the quote for your group.', '请联系我们，确认可预约时间、课程时长及团体报价。')}</p>
+  </div>
+</section>`,
+  };
+}
+
 const pricingTabs = (active) => `
-<div class="tabs" role="tablist">
+<nav class="tabs pricing-tabs" aria-label="${t('Pricing options', '价格方案')}">
   <a href="../package/" class="tab${active === 'package' ? ' is-active' : ''}">${t('Packages', '课程配套')}</a>
   <a href="../membership/" class="tab${active === 'membership' ? ' is-active' : ''}">${t('Memberships', '会员')}</a>
   <a href="../package/#topup" class="tab">${t('Top Up &amp; Flow', '储值随心练')}</a>
-</div>`;
+  <a href="../corporate-wellness/" class="tab${active === 'corporate' ? ' is-active' : ''}"${active === 'corporate' ? ' aria-current="page"' : ''}>${t('Corporate Wellness', '企业健康活动')}</a>
+</nav>`;
 
 const faqSection = (r, items) => `
 <section class="section section--sand">
@@ -650,8 +692,8 @@ ${faqSection(r, [faqs[0], faqs[1], faqs[2]])}`,
 function contact() {
   const r = '../';
   const subjects = t(
-    ['General', 'Group classes', 'Yoga Rehab Therapy', 'Private 1:1 sessions', 'Packages &amp; memberships', 'My account / booking'],
-    ['一般咨询', '团体课', '瑜伽康复疗法', '私人一对一课程', '配套与会员', '我的账户／预约'],
+    ['General', 'Group classes', 'Yoga Rehab Therapy', 'Private 1:1 sessions', 'Packages &amp; memberships', 'Corporate Wellness', 'My account / booking'],
+    ['一般咨询', '团体课', '瑜伽康复疗法', '私人一对一课程', '配套与会员', '企业健康活动', '我的账户／预约'],
   );
   return {
     path: 'contact-us/',
@@ -855,6 +897,7 @@ export function allPages() {
     ...L.team().map(teamMember),
     packagePage(),
     membershipPage(),
+    corporateWellnessPage(),
     timetable(),
     contact(),
     { path: 'location/', redirect: '../contact-us/#visit' },

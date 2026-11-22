@@ -116,6 +116,16 @@
   // ---- Contact form → WhatsApp or email (no backend needed)
   const form = $('[data-contact-form]');
   if (form) {
+    if (new URLSearchParams(location.search).get('enquiry') === 'corporate-wellness') {
+      const subject = form.elements.namedItem('subject');
+      const value = zh ? '企业健康活动' : 'Corporate Wellness';
+      if ([...subject.options].some(option => option.value === value)) {
+        subject.value = value;
+        form.elements.namedItem('message').placeholder = zh
+          ? '请提供公司名称、参加人数、希望的日期、地点及课程时长。'
+          : 'Please share your company name, group size, preferred date, venue and session duration.';
+      }
+    }
     $$('[data-course-enquiry]').forEach(link => link.addEventListener('click', () => {
       form.elements.namedItem('subject').value = link.dataset.courseEnquiry;
       form.elements.namedItem('name').focus({ preventScroll: true });

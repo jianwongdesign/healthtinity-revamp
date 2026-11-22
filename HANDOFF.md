@@ -1,5 +1,20 @@
 # Healthtinity Hostinger staging
 
+## Corporate Wellness pricing — 22 November 2026
+
+- Added EN/ZH `/corporate-wellness/` under Pricing, with mobile/footer links and
+  a fourth pricing navigation option. The supplied handwritten note gives $30
+  per person, minimum 15 participants, and from $20 per person for 30 or more.
+  Copy includes yoga instruction and instructor transport; duration and group
+  quote are confirmed by enquiry, with no invented session length or tax terms.
+- Both cards link to Contact Us with Corporate Wellness preselected and a prompt
+  for company name, group size, date, venue and duration. No enquiry was sent.
+- Built 77 pages. Checked EN/ZH pricing at 320/390/820/1440px with no horizontal
+  text overflow; visually inspected desktop and phone. Verified public Hostinger
+  EN/ZH pages return 200 and enquiry preselection works after scripts load.
+- Backup: `/home/u146877548/healthtinity-backups/before-corporate-wellness-VDixs3/staging.tar.gz`.
+- Published to Hostinger `/staging/`; production DNS and Rezerv are unchanged.
+
 ## Live Rezerv booking widgets — 21 November 2026
 
 - Added EN/ZH `/book/` with official live timetable, packages and memberships.
