@@ -15,6 +15,8 @@ export const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export const icon = {
+  apple: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.77 3.08.83 1.18-.24 2.31-.96 3.57-.87 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01ZM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25Z"/></svg>',
+  googlePlay: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 2.7v18.6L12.3 12 3 2.7Zm1.3-1L15.6 8.2l-2.4 2.4-8.9-8.9Zm12.5 7.2 3.5 2c.9.5.9 1.7 0 2.2l-3.5 2-3.1-3.1 3.1-3.1ZM15.6 15.8 4.3 22.3l8.9-8.9 2.4 2.4Z"/></svg>',
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   pin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
   phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>',
@@ -240,8 +242,8 @@ ${ctaBand(r)}
         <a href="${site.phoneHref}">${site.phone}</a>
         <a href="mailto:${site.email}">${site.email}</a>
         <div class="apps">
-          <a href="${site.apps.ios}" target="_blank" rel="noopener">App Store</a>
-          <a href="${site.apps.android}" target="_blank" rel="noopener">Google Play</a>
+          <a href="${site.apps.ios}" target="_blank" rel="noopener">${icon.apple}<span>App Store</span></a>
+          <a href="${site.apps.android}" target="_blank" rel="noopener">${icon.googlePlay}<span>Google Play</span></a>
         </div>
       </div>
     </div>

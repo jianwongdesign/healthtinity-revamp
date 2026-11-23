@@ -717,7 +717,8 @@ a.info-card:hover { color: var(--navy); background: var(--sun-soft); }
 .footer__about .brand { margin-bottom: 14px; }
 .footer__addr { margin: 0 0 8px; }
 .apps { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-.apps a { background: var(--navy); color: #fff; padding: 9px 16px; border-radius: 999px; font-family: var(--font-display); font-size: .88rem; font-weight: 600; }
+.apps a { display: inline-flex; align-items: center; gap: 7px; background: var(--navy); color: #fff; padding: 9px 12px; border-radius: 999px; font-family: var(--font-display); font-size: .88rem; font-weight: 600; white-space: nowrap; }
+.apps a svg { width: 18px; height: 18px; flex: none; fill: currentColor; stroke: none; }
 .apps a:hover { background: var(--blue-deep); color: #fff; }
 .footer__base { margin-top: 32px; padding-top: 24px; border-top: 2px dashed rgba(15,43,70,.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--navy-soft); font-size: .88rem; }
 .footer__base a { color: var(--navy-soft); }

@@ -1,5 +1,13 @@
 # Healthtinity Hostinger staging
 
+## App download button icons — 24 November 2026
+
+- Added white Apple and Google Play SVG icons beside the footer button labels
+  across EN/ZH pages. Preserved the existing HT Life app destinations. Icons are
+  decorative for accessibility; visible text supplies the link name.
+- Checked 320/390/820/1180/1440px, no horizontal overflow; visually reviewed icons.
+- Backup: `/home/u146877548/healthtinity-backups/before-store-icons-7tboYZ/staging.tar.gz`.
+
 ## Compact footer and live booking verification — 24 November 2026
 
 - Reduced the Classes footer column to five class categories. Moved booking and
