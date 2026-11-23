@@ -221,17 +221,20 @@ ${ctaBand(r)}
         <a href="${r}team/">${t('Our team', '我们的团队')}</a>
         <a href="${r}contact-us/">${t('Contact us', '联系我们')}</a>
         <a href="${r}academy/">${t('Academy', '学院')}</a>
+        <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
       </div>
       <div>
         <h4>${t('Classes', '课程')}</h4>
         ${classPages.map(c => `<a href="${r}classes/${c.slug}/">${esc(classLabel(c))}</a>`).join('')}
-        <a href="${r}timetable/">${t('Group class schedule', '团体课课表')}</a>
+      </div>
+      <div class="footer__pricing">
+        <h4>${t('Booking & pricing', '预约与价格')}</h4>
+        <a href="${r}book/">${t('Live class schedule', '实时课表')}</a>
         <a href="${r}package/">${t('Packages', '课程配套')}</a>
         <a href="${r}membership/">${t('Memberships', '会员')}</a>
         <a href="${r}corporate-wellness/">${t('Corporate Wellness', '企业健康活动')}</a>
-        <a href="${r}faqs/">${t('FAQ', '常见问题')}</a>
       </div>
-      <div>
+      <div class="footer__visit">
         <h4>${t('Visit', '到访')}</h4>
         <p class="footer__addr">${site.address.join('<br>')}</p>
         <a href="${site.phoneHref}">${site.phone}</a>

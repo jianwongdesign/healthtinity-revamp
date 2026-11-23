@@ -696,8 +696,21 @@ a.info-card:hover { color: var(--navy); background: var(--sun-soft); }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--sky); padding: 48px 0 24px; font-size: .96rem; margin-top: 24px; }
-.footer__grid { display: grid; gap: 36px; }
-@media (min-width: 800px) { .footer__grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } }
+.footer__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.footer__about, .footer__visit, .footer__pricing { grid-column: 1 / -1; }
+.footer__pricing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+.footer__pricing h4 { grid-column: 1 / -1; }
+.footer__visit > a { overflow-wrap: anywhere; }
+@media (min-width: 700px) {
+  .footer__grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 28px; }
+  .footer__about, .footer__pricing { grid-column: auto; }
+  .footer__pricing { display: block; }
+  .footer__visit { grid-column: span 2; }
+}
+@media (min-width: 1180px) {
+  .footer__grid { grid-template-columns: 1.45fr .8fr 1fr 1.1fr 1.35fr; }
+  .footer__visit { grid-column: auto; }
+}
 .footer h4 { font-size: 1.05rem; font-weight: 700; margin: 6px 0 14px; }
 .footer__grid > div > a:not(.brand) { display: block; color: var(--navy); padding: 4px 0; }
 .footer__grid > div > a:not(.brand):hover { color: var(--blue-deep); text-decoration: underline; text-underline-offset: 3px; }

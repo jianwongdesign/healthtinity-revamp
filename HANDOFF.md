@@ -1,5 +1,20 @@
 # Healthtinity Hostinger staging
 
+## Compact footer and live booking verification — 24 November 2026
+
+- Reduced the Classes footer column to five class categories. Moved booking and
+  pricing links into a separate group and FAQ into Studio. The footer schedule
+  link now opens the live booking timetable. Desktop uses five balanced columns;
+  mobile uses paired groups. Applied across English and Chinese pages.
+- Checked 320/390/820/1180/1440px in both languages without text/page overflow;
+  visually reviewed the desktop footer (about 368px tall at 1440px).
+- Verified the public header Book a class link opens `/book/?view=timetable`
+  and the official Rezerv widget shows 24 November's seven classes and remaining
+  places matching the user's screenshot. This is live provider content; the
+  separate `/timetable/` page remains a static weekly overview. No authenticated
+  booking or payment was completed.
+- Backup: `/home/u146877548/healthtinity-backups/before-footer-KGIr2A/staging.tar.gz`.
+
 Junior review: see [the complete change register and verification checklist](JUNIOR-VERIFICATION-CHECKLIST.md), reconciled with the two handwritten meeting notes on 22 November 2026. It distinguishes implemented staging work, outstanding original requests and launch gates.
 
 ## Corporate Wellness pricing — 22 November 2026
