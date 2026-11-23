@@ -1,5 +1,23 @@
 # Healthtinity Hostinger staging
 
+## Mobile cards, actions and class heroes — 24 November 2026
+
+- Homepage Classes and Pricing now use horizontal snap-scrolling cards below
+  700px, with a next-card preview, previous/next buttons and position count.
+  No autoplay; reduced-motion preference respected. Desktop grids remain.
+- Mobile visit actions are equal-width Directions and Call us buttons on one
+  row. Download buttons now sit beside Visit details in the mobile footer.
+- All five EN/ZH class heroes use compact copy spacing, 46px action buttons on
+  one row, a shorter View schedule label and a shallower 16:9 image on phones.
+  Private 1:1 retains its single full-width enquiry button. Copy is not truncated.
+- Added bottom safe-area spacing for the floating WhatsApp button/footer links.
+- Checked home and five class pages in both languages at 320/390/820/1440px:
+  48 layouts with no page/text overflow or stacked paired mobile hero buttons.
+  Tested both carousels through their final cards; reviewed mobile class cards,
+  footer, visit actions and Yoga hero visually. Physical iPhone Safari remains
+  for junior verification.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-layout-jxNTpw/staging.tar.gz`.
+
 ## App download button icons — 24 November 2026
 
 - Added white Apple and Google Play SVG icons beside the footer button labels

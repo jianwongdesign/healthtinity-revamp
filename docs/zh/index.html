@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=2c08b6c7">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=ae0c9a78">
   <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"HealthClub","name":"Healthtinity","url":"https://healthtinity.com","telephone":"+65 8282 9515","email":"ask\u0040healthtinity\u002ecom","foundingDate":"2019","address":{"@type":"PostalAddress","streetAddress":"246J Upper Thomson Road","addressLocality":"Singapore","postalCode":"574370","addressCountry":"SG"},"sameAs":["https://www.instagram.com/healthtinity/","https://www.facebook.com/healthtinity","https://www.tiktok.com/@healthtinity"]}</script>
 </head>
@@ -214,7 +214,7 @@
       </div>
       <a class="arrow-link" href="timetable/">查看每周课表 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="tiles">
+    <div class="tiles mobile-carousel" id="home-class-cards" data-mobile-carousel tabindex="0" role="region" aria-label="浏览课程类别">
       <a class="tile reveal" href="classes/yoga/">
         <div class="tile__img"><img src="../assets/img/class-yoga.jpg" alt="小班瑜伽课正在练习战士二式" loading="lazy" width="1200" height="900"></div>
         <div class="tile__body"><h3>瑜伽 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3><p>哈他、流瑜伽、阿斯汤加、瑜伽轮、阴瑜伽与修复，以及热瑜伽与温热流瑜伽。</p></div>
@@ -229,6 +229,10 @@
         <div class="tile__body"><h3>紧致塑形 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3><p>低冲击、高能量的塑形训练，融合芭蕾式力量练习。</p></div>
       </a>
     </div>
+    <div class="mobile-carousel-controls" data-carousel-controls="home-class-cards">
+  <span>左右滑动浏览 <span data-carousel-count>1 / 4</span></span>
+  <div><button type="button" data-carousel-prev aria-controls="home-class-cards" aria-label="上一张" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button type="button" data-carousel-next aria-controls="home-class-cards" aria-label="下一张"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+</div>
     <div class="private reveal">
       <div><h3>希望获得一对一指导？</h3><p>根据您的身体状况与目标，安排专属的一对一训练或理疗。</p></div>
       <a class="btn btn--ghost" href="classes/private-1-to-1/">了解私人一对一</a>
@@ -242,7 +246,7 @@
       <h2>选择适合您的课程配套。</h2>
       <a class="arrow-link" href="package/">比较所有方案 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="pricing">
+    <div class="pricing mobile-carousel" id="home-price-cards" data-mobile-carousel tabindex="0" role="region" aria-label="浏览价格方案">
       
 <article class="price reveal">
   <span class="ribbon">新会员</span>
@@ -286,6 +290,10 @@
   <a class="btn btn--ghost btn--block" href="book/?view=memberships">查看会员方案</a>
 </article>
     </div>
+    <div class="mobile-carousel-controls" data-carousel-controls="home-price-cards">
+  <span>左右滑动浏览 <span data-carousel-count>1 / 3</span></span>
+  <div><button type="button" data-carousel-prev aria-controls="home-price-cards" aria-label="上一张" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button type="button" data-carousel-next aria-controls="home-price-cards" aria-label="下一张"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+</div>
     
 <div class="topup reveal" id="topup">
   <div>
@@ -335,8 +343,8 @@
           <li><span>🚆</span>步行 1 分钟即可抵达 Upper Thomson 地铁站（3 号出口）</li><li><span>🚌</span>附近有巴士 52、130、132、162、163、165、166、167、410G、855 及 980 号</li><li><span>🚗</span>Upper Thomson Road 沿路设有免费路边停车位（视空位而定）</li>
         </ul>
         <div class="actions">
-          <a class="btn btn--light" href="https://www.google.com/maps/dir/?api=1&amp;destination=246J+Upper+Thomson+Road+Singapore+574370" target="_blank" rel="noopener">获取路线</a>
-          <a class="btn btn--outline-light" href="tel:+6582829515">+65 8282 9515</a>
+          <a class="btn btn--light" href="https://www.google.com/maps/dir/?api=1&amp;destination=246J+Upper+Thomson+Road+Singapore+574370" target="_blank" rel="noopener"><span class="desktop-label">获取路线</span><span class="mobile-label">获取路线</span></a>
+          <a class="btn btn--outline-light" href="tel:+6582829515" aria-label="致电 +65 8282 9515"><span class="desktop-label">+65 8282 9515</span><span class="mobile-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> 致电我们</span></a>
         </div>
       </div>
       <div class="visit__map"><iframe title="Healthtinity 地图，246J Upper Thomson Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed&amp;hl=zh-CN"></iframe></div>
@@ -382,13 +390,18 @@
         <a href="corporate-wellness/">企业健康活动</a>
       </div>
       <div class="footer__visit">
+        <div class="footer__contact">
         <h4>到访</h4>
         <p class="footer__addr">246J Upper Thomson Road<br>Singapore 574370</p>
         <a href="tel:+6582829515">+65 8282 9515</a>
         <a href="mailto:&#97;&#115;&#107;&#64;&#104;&#101;&#97;&#108;&#116;&#104;&#116;&#105;&#110;&#105;&#116;&#121;&#46;&#99;&#111;&#109;">&#97;&#115;&#107;&#64;&#104;&#101;&#97;&#108;&#116;&#104;&#116;&#105;&#110;&#105;&#116;&#121;&#46;&#99;&#111;&#109;</a>
+        </div>
+        <div class="footer__downloads">
+        <h4>下载应用</h4>
         <div class="apps">
           <a href="https://apps.apple.com/sg/app/ht-life/id6797768622" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.77 3.08.83 1.18-.24 2.31-.96 3.57-.87 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01ZM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25Z"/></svg><span>App Store</span></a>
           <a href="https://play.google.com/store/apps/details?id=com.rezerv.branded.healthtinity" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 2.7v18.6L12.3 12 3 2.7Zm1.3-1L15.6 8.2l-2.4 2.4-8.9-8.9Zm12.5 7.2 3.5 2c.9.5.9 1.7 0 2.2l-3.5 2-3.1-3.1 3.1-3.1ZM15.6 15.8 4.3 22.3l8.9-8.9 2.4 2.4Z"/></svg><span>Google Play</span></a>
+        </div>
         </div>
       </div>
     </div>
@@ -402,7 +415,7 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg><span>联系我们</span>
   </a>
 
-  <script src="../assets/js/main.js?v=0d00d71c" defer></script>
+  <script src="../assets/js/main.js?v=6eb61665" defer></script>
 
 
   <script src="../assets/js/promotions.js?v=22bc4f61" defer></script>

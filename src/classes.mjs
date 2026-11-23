@@ -25,7 +25,7 @@ export function classPage(c) {
       <h1>${esc(title)}</h1>
       <p class="lead" data-class-intro>${esc(intro)}</p>
       <div class="actions">
-        <a class="btn btn--sun" href="${c.category === 'private' ? enquiry : schedule}">${t(c.category === 'private' ? 'Ask about Private 1:1' : 'View class schedule', c.category === 'private' ? '咨询私人一对一' : '查看课程时间')} ${icon.arrow}</a>
+        <a class="btn btn--sun" href="${c.category === 'private' ? enquiry : schedule}"><span class="desktop-label">${t(c.category === 'private' ? 'Ask about Private 1:1' : 'View class schedule', c.category === 'private' ? '咨询私人一对一' : '查看课程时间')}</span><span class="mobile-label">${t(c.category === 'private' ? 'Enquire about Private 1:1' : 'View schedule', c.category === 'private' ? '咨询私人一对一' : '查看课表')}</span>${icon.arrow}</a>
         ${c.category === 'private' ? '' : `<a class="btn btn--outline-light" href="${enquiry}">${t('Help me choose', '帮我选择课程')}</a>`}
       </div>
     </div>

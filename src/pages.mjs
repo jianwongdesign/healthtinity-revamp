@@ -15,6 +15,10 @@ const zaobaoLogo = readFileSync(new URL('./assets/img/press/zaobao.svg', import.
 
 const site = siteEn; // links, phone, address: same in both languages
 const money = (n) => n.toLocaleString('en-SG');
+const mobileCarouselControls = (id, count) => `<div class="mobile-carousel-controls" data-carousel-controls="${id}">
+  <span>${t('Swipe to explore', '左右滑动浏览')} <span data-carousel-count>1 / ${count}</span></span>
+  <div><button type="button" data-carousel-prev aria-controls="${id}" aria-label="${t('Previous card', '上一张')}" disabled>${icon.arrow}</button><button type="button" data-carousel-next aria-controls="${id}" aria-label="${t('Next card', '下一张')}">${icon.arrow}</button></div>
+</div>`;
 const avatar = (m, r, cls = '') =>
   m.photo
     ? `<img class="${cls}" src="${ar(r)}assets/img/team/${m.photo}" alt="${esc(m.name)}" loading="lazy" width="560" height="560">`
@@ -206,12 +210,13 @@ function home() {
       </div>
       <a class="arrow-link" href="${r}timetable/">${t('View the weekly schedule', '查看每周课表')} ${icon.arrow}</a>
     </div>
-    <div class="tiles">
+    <div class="tiles mobile-carousel" id="home-class-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Explore class categories', '浏览课程类别')}">
       ${classTypes().map(([c, title, d, img, alt]) => `<a class="tile reveal" href="${r}classes/${classPages.find(item => item.category === c).slug}/">
         <div class="tile__img"><img src="${A}assets/img/${img}" alt="${alt}" loading="lazy" width="1200" height="900">${c === 'therapy' ? `<span class="tag">${t('Most loved', '最受欢迎')}</span>` : ''}</div>
         <div class="tile__body"><h3>${title} ${icon.arrow}</h3><p>${d}</p></div>
       </a>`).join('')}
     </div>
+    ${mobileCarouselControls('home-class-cards', 4)}
     <div class="private reveal">
       <div><h3>${t('Prefer one-to-one?', '希望获得一对一指导？')}</h3><p>${t('Private coaching and therapy built around your body and goals.', '根据您的身体状况与目标，安排专属的一对一训练或理疗。')}</p></div>
       <a class="btn btn--ghost" href="${r}classes/private-1-to-1/">${t('Explore Private 1:1', '了解私人一对一')}</a>
@@ -225,11 +230,12 @@ function home() {
       <h2>${t('Flexible ways to flow.', '选择适合您的课程配套。')}</h2>
       <a class="arrow-link" href="${r}package/">${t('Compare all options', '比较所有方案')} ${icon.arrow}</a>
     </div>
-    <div class="pricing">
+    <div class="pricing mobile-carousel" id="home-price-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Explore pricing options', '浏览价格方案')}">
       ${priceCard(packages[0], site.links.packages, t('Get started', '立即开始'))}
       ${priceCard(packages[3], site.links.packages, t('Choose pack', '选择配套'))}
       ${priceCard({ ...membershipsRecurring[2], featured: false, badge: null }, site.links.memberships, t('See memberships', '查看会员方案'))}
     </div>
+    ${mobileCarouselControls('home-price-cards', 3)}
     ${topupBlock()}
   </div>
 </section>
@@ -272,8 +278,8 @@ const visitBlock = (r, withMap = true) => `
           ${getting().map(([e, x]) => `<li><span>${e}</span>${esc(x)}</li>`).join('')}
         </ul>
         <div class="actions">
-          <a class="btn btn--light" href="${directions}" target="_blank" rel="noopener">${t('Get directions', '获取路线')}</a>
-          <a class="btn btn--outline-light" href="${site.phoneHref}">${site.phone}</a>
+          <a class="btn btn--light" href="${directions}" target="_blank" rel="noopener"><span class="desktop-label">${t('Get directions', '获取路线')}</span><span class="mobile-label">${t('Directions', '获取路线')}</span></a>
+          <a class="btn btn--outline-light" href="${site.phoneHref}" aria-label="${t('Call', '致电')} ${site.phone}"><span class="desktop-label">${site.phone}</span><span class="mobile-label">${icon.phone} ${t('Call us', '致电我们')}</span></a>
         </div>
       </div>
       ${withMap ? `<div class="visit__map"><iframe title="${t('Map of Healthtinity, 246J Upper Thomson Road', 'Healthtinity 地图，246J Upper Thomson Road')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=246J+Upper+Thomson+Road+Singapore+574370&amp;output=embed${isZh() ? '&amp;hl=zh-CN' : ''}"></iframe></div>` : ''}

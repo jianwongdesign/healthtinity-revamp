@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November mobile update: verify homepage class/pricing cards swipe sideways with arrows and a position count; Visit actions share one row; footer Download sits beside Visit; and all five class heroes have compact images/copy with paired buttons on one row (Private 1:1 has one button). App Store/Google Play buttons now include icons. Recheck on an actual iPhone as well as desktop.
+
 24 November update: footer shortened into Studio, Classes (five links), Booking & pricing, and Visit groups beside the brand. The footer's Live class schedule link opens the Rezerv booking page. Recheck this responsive layout during review. The public Book a class button was also rechecked: it loads the live Rezerv timetable, including today's classes and remaining spaces; the separate Schedule page is still a static weekly overview.
 
 Record each result as **Pass**, **Fail**, **Blocked** or **Not applicable**, with the page URL, language, screen size and screenshot or explanation. “Implemented” below means built in staging, not final client approval or production launch.

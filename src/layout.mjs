@@ -237,13 +237,18 @@ ${ctaBand(r)}
         <a href="${r}corporate-wellness/">${t('Corporate Wellness', '企业健康活动')}</a>
       </div>
       <div class="footer__visit">
+        <div class="footer__contact">
         <h4>${t('Visit', '到访')}</h4>
         <p class="footer__addr">${site.address.join('<br>')}</p>
         <a href="${site.phoneHref}">${site.phone}</a>
         <a href="mailto:${site.email}">${site.email}</a>
+        </div>
+        <div class="footer__downloads">
+        <h4>${t('Download', '下载应用')}</h4>
         <div class="apps">
           <a href="${site.apps.ios}" target="_blank" rel="noopener">${icon.apple}<span>App Store</span></a>
           <a href="${site.apps.android}" target="_blank" rel="noopener">${icon.googlePlay}<span>Google Play</span></a>
+        </div>
         </div>
       </div>
     </div>

@@ -4,6 +4,34 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  // Compact, user-controlled mobile card rows; desktop keeps its existing grid.
+  $$('[data-mobile-carousel]').forEach(track => {
+    const controls = $(`[data-carousel-controls="${track.id}"]`);
+    if (!controls) return;
+    const cards = [...track.children];
+    const prev = $('[data-carousel-prev]', controls);
+    const next = $('[data-carousel-next]', controls);
+    const step = () => cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
+    const update = () => {
+      const end = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= end - 2;
+      const index = end > 0 && next.disabled ? cards.length - 1 : Math.round(track.scrollLeft / step());
+      $('[data-carousel-count]', controls).textContent = `${Math.min(cards.length, index + 1)} / ${cards.length}`;
+    };
+    const move = direction => track.scrollBy({ left: direction * step(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    prev.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', update, { passive: true });
+    track.addEventListener('keydown', event => {
+      if (event.target === track && ['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+        event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+    new ResizeObserver(update).observe(track);
+    update();
+  });
+
   // Send generic booking CTAs (including WordPress promotions) to the live widget.
   // Preserve deep links and links with checkout/query details exactly as supplied.
   const bookingOrigins = new Set(['https://healthtinity.com', 'https://www.healthtinity.com']);
