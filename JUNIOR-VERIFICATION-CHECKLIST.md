@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November profile buttons: all instructor profiles, including Dr Kai, use equal-width Book a class / Private 1:1 buttons on one mobile row. Verify EN/ZH, booking destinations and instructor-specific WhatsApp enquiry text. Desktop labels remain unchanged.
+
 24 November Academy card sizing: mobile course pairs now share the tallest card height and align their enquiry buttons. Verify the longer 300-hour text and expanded course outlines remain fully visible in EN/ZH.
 
 24 November Academy redesign / text-width audit: review the paired desktop yoga course cards and matching Reiki cards, fee/duration panels, expandable outlines and enquiry links. Mobile still swipes. Shared headings and introductions now use their available column width; verify EN/ZH at mobile, tablet and desktop sizes. Automated layout checks covered all 77 pages at three widths.

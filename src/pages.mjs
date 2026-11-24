@@ -473,7 +473,7 @@ function teamMember(m) {
         <p class="profile__skills"><strong>${t('Skilled in', '专长')}</strong> ${esc(m.skills)}</p>
         <div class="actions">
           <a class="btn btn--primary" href="${site.links.schedule}">${t('Book a class', '预约课程')}</a>
-          <a class="btn btn--ghost" href="${wa(t(`Hi Healthtinity! I'd like to enquire about a private session with ${m.name}.`, `您好 Healthtinity！我想咨询与 ${m.name} 的私人课程。`))}" target="_blank" rel="noopener">${t('Enquire about 1:1', '咨询一对一课程')}</a>
+          <a class="btn btn--ghost" href="${wa(t(`Hi Healthtinity! I'd like to enquire about a private session with ${m.name}.`, `您好 Healthtinity！我想咨询与 ${m.name} 的私人课程。`))}" target="_blank" rel="noopener" aria-label="${t('Enquire about 1:1', '咨询一对一课程')}"><span class="desktop-label">${t('Enquire about 1:1', '咨询一对一课程')}</span><span class="mobile-label">${t('Private 1:1', '私人课程')}</span></a>
         </div>
       </div>
     </div>

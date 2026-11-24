@@ -1,5 +1,17 @@
 # Healthtinity Hostinger staging
 
+## Standard mobile instructor-profile actions — 24 November 2026
+
+- All 16 instructor profiles reuse the shared mobile action sizing: two equal
+  columns, 8px gap, minimum 44px height and single-line labels. Mobile labels are
+  Book a class / Private 1:1 (预约课程 / 私人课程); full desktop labels retained.
+- Floating WhatsApp is hidden on mobile profiles to avoid covering these actions;
+  the Private 1:1 button still opens a personalised WhatsApp enquiry.
+- Checked all profiles in EN/ZH at 320/390/699/820/1440px (160 layouts), with no
+  wrapped/overflowing mobile buttons. Published and verified Dr Kai EN/ZH at
+  320px, including booking and personalised enquiry destinations. Desktop unchanged.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-profile-buttons-RvgNHU/staging.tar.gz`.
+
 ## Equal mobile Academy card heights — 24 November 2026
 
 - Mobile Academy tracks now stretch cards to the tallest content in each row.

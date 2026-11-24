@@ -1189,13 +1189,14 @@ body[data-booking-active] .wa-fab { display: none; }
 
 /* One shared mobile hero standard for all inner-page introductions. */
 @media (max-width: 699px) {
+  body:has(.profile__copy) .wa-fab { display: none; }
   .page-hero--standard > .container { padding: 20px 16px; }
   .page-hero--standard .crumbs { font-size: .82rem; gap: 6px; margin-bottom: 12px; }
   .page-hero--standard h1 { font-size: clamp(1.75rem, 7vw, 2rem); line-height: 1.15; margin-bottom: 12px; }
   .page-hero--standard .lead { font-size: 1rem; line-height: 1.5; }
-  .page-hero--standard .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 18px; }
-  .page-hero--standard .actions .btn { min-width: 0; min-height: 44px; padding: 10px 6px; font-size: .86rem; white-space: nowrap; }
-  .page-hero--standard .actions .btn:only-child { grid-column: 1 / -1; }
+  .page-hero--standard .actions, .profile__copy .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 18px; }
+  .page-hero--standard .actions .btn, .profile__copy .actions .btn { min-width: 0; min-height: 44px; padding: 10px 6px; font-size: .86rem; white-space: nowrap; }
+  .page-hero--standard .actions .btn:only-child, .profile__copy .actions .btn:only-child { grid-column: 1 / -1; }
 }
 
 /* Mobile FAQ stays in document flow; Academy courses share the swipe pattern. */
