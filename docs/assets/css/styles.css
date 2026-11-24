@@ -1033,3 +1033,45 @@ body[data-booking-active] .wa-fab { display: none; }
   .class-hero__image { min-height: 0; height: auto; max-height: 240px; aspect-ratio: 16 / 9; object-fit: cover; }
 }
 @media (prefers-reduced-motion: reduce) { .mobile-carousel { scroll-behavior: auto; } }
+
+/* A single class detail panel replaces the long enhanced accordion list. */
+.class-directory .class-details { align-items: start; }
+.class-details__intro .lead { margin-bottom: 0; }
+.class-browser { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 12px 30px -26px rgba(15,43,70,.35); }
+.class-browser__chooser { padding: 22px 24px; background: var(--sky); }
+.class-browser__heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.class-browser__heading label { font-weight: 600; font-size: .9rem; }
+.class-browser__total { color: var(--navy-soft); font-size: .8rem; white-space: nowrap; }
+.class-browser select { display: block; width: 100%; min-width: 0; min-height: 48px; padding: 10px 38px 10px 14px; border: 1px solid var(--blue-panel); border-radius: 12px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5 7 5 5 5-5' fill='none' stroke='%23007EA1' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") right 12px center / 18px no-repeat; appearance: none; color: var(--navy); font: 600 1rem/1.4 var(--font-body); cursor: pointer; }
+.class-browser__panel { padding: 24px 24px 0; }
+.class-browser__panel h3 { font-size: clamp(1.35rem, 2.3vw, 1.75rem); line-height: 1.25; margin: 0 0 14px; }
+.class-browser__description { white-space: pre-line; margin: 0; color: var(--navy-soft); }
+.class-browser__panel .class-type__meta { gap: 12px; margin-bottom: 16px; }
+.class-browser__panel .class-type__meta > div { background: var(--sky); border-radius: 10px; padding: 8px 12px; }
+.class-browser__actions { padding: 20px 24px 24px; }
+.class-browser__actions .btn { min-height: 44px; padding: 11px 20px; font-size: .94rem; }
+.class-browser__navigation { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding: 10px 16px; }
+.class-browser__navigation button { min-height: 44px; padding: 8px; border: 0; background: transparent; color: var(--blue-text); font: 600 .9rem/1.3 var(--font-body); cursor: pointer; }
+.class-browser__navigation button:disabled { opacity: .35; cursor: default; }
+.class-browser__navigation > span { color: var(--navy-soft); font-size: .86rem; font-variant-numeric: tabular-nums; }
+.class-browser > p { margin: 24px 24px 0; }
+.class-browser [hidden] { display: none; }
+@media (max-width: 699px) {
+  .class-nav { flex-wrap: nowrap; overflow-x: auto; padding-block: 12px; gap: 6px; scrollbar-width: thin; }
+  .class-nav a { flex: none; white-space: nowrap; font-size: .88rem; padding: 10px 14px; }
+  .class-directory { padding-block: 32px; }
+  .class-details { gap: 20px; }
+  .class-details__intro h2 { font-size: 1.75rem; line-height: 1.2; margin-bottom: 10px; }
+  .class-details__intro .lead { font-size: 1rem; line-height: 1.5; }
+  [data-class-expect-section] { margin-top: 20px; }
+  .class-browser__chooser { padding: 16px; }
+  .class-browser__panel { padding: 20px 16px 0; }
+  .class-browser__description { font-size: .96rem; line-height: 1.55; }
+  .class-browser__actions { padding: 16px 16px 20px; }
+  .class-browser__actions .btn { width: 100%; }
+  .class-browser__navigation { padding: 8px; }
+}
+@media (max-width: 699px) {
+  /* Class pages have enquiry buttons in the hero and detail card. */
+  body[data-classes-active] .wa-fab { display: none; }
+}

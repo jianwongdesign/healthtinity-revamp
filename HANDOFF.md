@@ -1,5 +1,26 @@
 # Healthtinity Hostinger staging
 
+## Compact class-type selector — 24 November 2026
+
+- Replaced the long class-type accordion display with a labelled dropdown and
+  one detail card, plus Previous/Next buttons and a position count. Applied to
+  all five categories in English and Chinese; the no-JavaScript accordion
+  remains available as a fallback.
+- Shortened the section introduction. Mobile category links scroll horizontally.
+  Details preserve client descriptions, levels and durations from WordPress.
+  The enquiry link includes the selected type; no new course facts were invented.
+- Mobile class pages hide the floating WhatsApp button to avoid covering selector
+  controls; hero and detail-card enquiry links remain. Desktop retains the button.
+- Checked 40 local layouts (five categories, both languages, 320/390/820/1440px)
+  without horizontal page/text overflow. Tested selection, Previous/Next,
+  keyboard activation of buttons, no-JS fallback and fixture-fed content/meta.
+  Visually reviewed mobile English/Chinese and desktop. Native iPhone picker
+  behavior and physical-device review remain for the junior.
+- After upload, all ten public class pages returned 200; verified their live
+  WordPress types, selection and contextual enquiry URLs at 390px.
+- Backup: `/home/u146877548/healthtinity-backups/before-class-selector-4Lpy1K/staging.tar.gz`.
+- Published only to Hostinger `/staging/`; production routing is unchanged.
+
 ## Mobile cards, actions and class heroes — 24 November 2026
 
 - Homepage Classes and Pricing now use horizontal snap-scrolling cards below

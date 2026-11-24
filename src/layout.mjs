@@ -132,7 +132,7 @@ export function layout({ path = '', title, description, body, active = '', schem
   <script>document.documentElement.classList.add('js')</script>
   ${schema}
 </head>
-<body data-booking-page="${r}book/" data-booking-origin="${Buffer.from(BOOK).toString('base64')}"${active === 'book' ? ' data-booking-active="true"' : ''}>
+<body data-booking-page="${r}book/" data-booking-origin="${Buffer.from(BOOK).toString('base64')}"${active === 'book' ? ' data-booking-active="true"' : ''}${active === 'classes' ? ' data-classes-active="true"' : ''}>
   <a class="skip" href="#main">${t('Skip to content', '跳至内容')}</a>
 
   <div class="announce">
