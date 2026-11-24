@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November Contact Us update: check the compact mobile form, full-width fields, side-by-side WhatsApp/Email buttons and no floating chat overlap. Desktop is unchanged; actual message delivery still needs an authorised client test.
+
 24 November follow-up: Corporate Wellness rates also swipe sideways on phones. Check Schedule’s compact hero, single-row actions, non-overlapping day/category controls, readable rows and all filters. Language buttons now have 44px tap targets. Desktop remains unchanged.
 
 24 November pricing update: Packages and both membership groups now scroll sideways on mobile with smaller cards, arrows and counts. Check all cards and purchase links, the compact pricing hero, single-row scrollable menu, and unwrapped header brand. Desktop retains its grid.

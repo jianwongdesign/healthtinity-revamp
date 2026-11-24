@@ -1,5 +1,18 @@
 # Healthtinity Hostinger staging
 
+## Mobile Contact Us form — 24 November 2026
+
+- Short mobile form heading, readable full-width fields, tighter spacing and
+  equal WhatsApp/Email submit buttons on one row below 700px. Inputs remain
+  16px; buttons are 46px high. Desktop copy and form layout are unchanged.
+- Removed the redundant floating chat button on mobile Contact Us so it does
+  not cover form fields/actions. WhatsApp remains in the contact card and form.
+- Checked EN/ZH at 320/375/390/640/699/700/820/1440px (16 layouts), fields inside
+  the form, no page or button overflow, mobile buttons aligned. Required-field
+  validation and Corporate Wellness subject preselection remain intact. No
+  message was submitted. Visually reviewed mobile form and checked public upload.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-contact-VEznFv/staging.tar.gz`.
+
 ## Corporate cards, Schedule and language controls — 24 November 2026
 
 - Corporate Wellness now uses the same compact mobile card carousel as Packages

@@ -730,7 +730,7 @@ ${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>
       </div>
     </div>
     <form id="enquiry" class="form reveal" data-contact-form data-wa="${site.whatsapp}" data-email="${site.email}">
-      <h2>${t('What can we help you with?', '有什么可以帮您？')}</h2>
+      <h2><span class="desktop-label">${t('What can we help you with?', '有什么可以帮您？')}</span><span class="mobile-label">${t('Send an enquiry', '发送咨询')}</span></h2>
       <div class="form__row">
         <label>${t('Name', '姓名')}<input name="name" required autocomplete="name"></label>
         <label>${t('Email address', '电邮地址')}<input name="email" type="email" required autocomplete="email"></label>
@@ -745,8 +745,8 @@ ${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>
       </div>
       <label>${t('Description', '详情')}<textarea name="message" rows="5" required placeholder="${t("Tell us a little about what you're looking for…", '请简单告诉我们您的需求……')}"></textarea></label>
       <div class="form__actions">
-        <button class="btn btn--primary" type="submit" data-via="wa">${icon.wa} ${t('Send via WhatsApp', '通过 WhatsApp 发送')}</button>
-        <button class="btn btn--ghost" type="submit" data-via="email">${t('Send via email', '通过电邮发送')}</button>
+        <button class="btn btn--primary" type="submit" data-via="wa" aria-label="${t('Send via WhatsApp', '通过 WhatsApp 发送')}">${icon.wa}<span class="desktop-label">${t('Send via WhatsApp', '通过 WhatsApp 发送')}</span><span class="mobile-label">WhatsApp</span></button>
+        <button class="btn btn--ghost" type="submit" data-via="email" aria-label="${t('Send via email', '通过电邮发送')}"><span class="desktop-label">${t('Send via email', '通过电邮发送')}</span><span class="mobile-label">${t('Email', '电邮发送')}</span></button>
       </div>
       <p class="fineprint">${t(`By contacting us you agree to our <a href="${r}terms/private-policy/">Privacy Policy</a>.`, `联系我们即表示您同意我们的<a href="${r}terms/private-policy/">隐私政策</a>。`)}</p>
     </form>
