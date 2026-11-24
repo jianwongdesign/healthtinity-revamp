@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November footer alignment: mobile Visit / Download now match the equal columns above. Check Download aligns with Classes, heading baselines match, and both store buttons have aligned icons and labels in EN/ZH.
+
 24 November profile buttons: all instructor profiles, including Dr Kai, use equal-width Book a class / Private 1:1 buttons on one mobile row. Verify EN/ZH, booking destinations and instructor-specific WhatsApp enquiry text. Desktop labels remain unchanged.
 
 24 November Academy card sizing: mobile course pairs now share the tallest card height and align their enquiry buttons. Verify the longer 300-hour text and expanded course outlines remain fully visible in EN/ZH.

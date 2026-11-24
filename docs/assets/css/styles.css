@@ -1020,12 +1020,13 @@ body[data-booking-active] .wa-fab { display: none; }
   .visit__copy { padding: 28px 20px; }
   .visit__copy .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
   .visit__copy .actions .btn { padding: 12px 8px; min-height: 46px; font-size: .9rem; line-height: 1.25; }
-  .footer__visit { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(108px, 1fr); gap: 18px; align-items: start; }
+  .footer__visit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
   .footer__contact { font-size: .86rem; }
   .footer__contact > a { padding: 8px 0; }
   .footer__downloads h4 { display: block; }
   .footer__downloads .apps { display: grid; gap: 10px; margin-top: 0; }
-  .footer__downloads .apps a { justify-content: center; gap: 6px; padding: 10px 8px; font-size: .8rem; min-height: 44px; }
+  .footer__downloads { min-width: 0; }
+  .footer__downloads .apps a { display: grid; grid-template-columns: 16px minmax(0, 1fr); align-items: center; gap: 8px; padding: 10px 12px; font-size: .8rem; min-height: 44px; }
   .footer__downloads .apps svg { width: 16px; height: 16px; }
   .footer__base { padding-bottom: calc(54px + env(safe-area-inset-bottom, 0px)); }
   .wa-fab { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }

@@ -1,5 +1,15 @@
 # Healthtinity Hostinger staging
 
+## Mobile footer Download alignment — 24 November 2026
+
+- Visit / Download now use equal columns and the same 24px gap as Studio / Classes
+  and the pricing links above. Download aligns to the Classes column; Visit and
+  Download headings share a baseline. Store buttons have equal sizes and aligned
+  icon/text columns (44px minimum height). Desktop/tablet rules unchanged.
+- Checked EN/ZH at 320/390/699/820/1440px: no button, label or page overflow.
+  Published and verified public staging in both languages at 390px.
+- Backup: `/home/u146877548/healthtinity-backups/before-footer-download-align-bqrSgn/staging.tar.gz`.
+
 ## Standard mobile instructor-profile actions — 24 November 2026
 
 - All 16 instructor profiles reuse the shared mobile action sizing: two equal
