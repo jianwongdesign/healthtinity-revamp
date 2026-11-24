@@ -1,4 +1,4 @@
-import { pageHero, icon, esc } from './layout.mjs';
+import { pageHero, icon, esc, contactFormActions } from './layout.mjs';
 import { t, ar } from './i18n.mjs';
 import { site } from './data.mjs';
 
@@ -79,7 +79,7 @@ ${pageHero({ r, title: t('Deepen your practice. Learn to teach.', '深化练习�
     <label>${t('Mobile number (optional)', '手机号码（选填）')}<input name="mobile" type="tel" autocomplete="tel" placeholder="+65"></label>
     <label>${t('Course of interest', '感兴趣的课程')}<select name="subject" required><option value="">${t('Select a course', '请选择课程')}</option>${all.map(c=>`<option value="${esc(c.title)}">${c.title}${c.style ? ' — '+c.style : ''}</option>`).join('')}<option>${t('Academy — help me choose', '学院课程 — 请帮我选择')}</option></select></label>
     <label>${t('Your experience & questions', '您的经验与问题')}<textarea name="message" rows="5" required placeholder="${t('Share your practice or teaching experience, and what you would like to know.', '请简单介绍您的练习或教学经验，以及想了解的课程信息。')}"></textarea></label>
-    <div class="form__actions"><button class="btn btn--primary" type="submit" data-via="wa">${icon.wa} ${t('Send via WhatsApp', '通过 WhatsApp 发送')}</button><button class="btn btn--ghost" type="submit" data-via="email">${t('Send via email', '通过电邮发送')}</button></div>
+    ${contactFormActions()}
     <p class="fineprint">${t('Your enquiry opens in WhatsApp or your email app for you to send.', '填写后，将打开 WhatsApp 或您的电邮应用，由您确认发送。')}</p>
     <p class="fineprint"><a href="${r}terms/private-policy/">${t('Privacy Policy', '隐私政策')}</a></p>
   </form>

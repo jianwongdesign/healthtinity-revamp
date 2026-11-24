@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November form standardisation: Academy now shares the Contact Us mobile form layout and button renderer. Review both languages and course preselection; desktop is unchanged.
+
 24 November Contact Us update: check the compact mobile form, full-width fields, side-by-side WhatsApp/Email buttons and no floating chat overlap. Desktop is unchanged; actual message delivery still needs an authorised client test.
 
 24 November follow-up: Corporate Wellness rates also swipe sideways on phones. Check Schedule’s compact hero, single-row actions, non-overlapping day/category controls, readable rows and all filters. Language buttons now have 44px tap targets. Desktop remains unchanged.

@@ -290,3 +290,9 @@ ${promotionsApi ? `  <script src="${A}assets/js/promotions.js?v=${ver.promos}" d
   return part.replaceAll(site.email, protectedEmail);
 }).join('');
 }
+
+/** Consistent enquiry actions for Contact Us and Academy. */
+export const contactFormActions = () => `<div class="form__actions">
+        <button class="btn btn--primary" type="submit" data-via="wa" aria-label="${t('Send via WhatsApp', '通过 WhatsApp 发送')}">${icon.wa}<span class="desktop-label">${t('Send via WhatsApp', '通过 WhatsApp 发送')}</span><span class="mobile-label">WhatsApp</span></button>
+        <button class="btn btn--ghost" type="submit" data-via="email" aria-label="${t('Send via email', '通过电邮发送')}"><span class="desktop-label">${t('Send via email', '通过电邮发送')}</span><span class="mobile-label">${t('Email', '电邮发送')}</span></button>
+      </div>`;

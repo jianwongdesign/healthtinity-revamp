@@ -1,5 +1,17 @@
 # Healthtinity Hostinger staging
 
+## Shared mobile enquiry form standard — 24 November 2026
+
+- Contact Us and Academy now use the same mobile form sizing/spacing and a
+  shared action-button renderer. Short labels keep WhatsApp and Email on one
+  row; full accessible names and desktop labels remain. Mobile fields stay
+  full width with 16px input text. Desktop form presentation is unchanged.
+- Checked both forms in EN/ZH at 320/375/390/640/699/700/820/1440px (32 layouts):
+  no field/page/button overflow and paired mobile buttons. Academy course
+  preselection and required-field validation remain intact; no enquiry sent.
+- Backup: `/home/u146877548/healthtinity-backups/before-shared-mobile-forms-l9Lf2O/staging.tar.gz`.
+- Published to staging and verified both language versions of Academy.
+
 ## Mobile Contact Us form — 24 November 2026
 
 - Short mobile form heading, readable full-width fields, tighter spacing and

@@ -1160,21 +1160,21 @@ body[data-booking-active] .wa-fab { display: none; }
 }
 
 
-/* Contact form: readable full-width fields and paired mobile send actions. */
+/* Shared enquiry forms: full-width fields and paired mobile send actions. */
 @media (max-width: 699px) {
-  #enquiry[data-contact-form] { min-width: 0; padding: 20px 16px; gap: 14px; border-radius: 22px; scroll-margin-top: 90px; }
-  #enquiry h2 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 4px; }
-  #enquiry .form__row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  #enquiry label { min-width: 0; font-size: .875rem; gap: 5px; }
-  #enquiry input, #enquiry select, #enquiry textarea { max-width: 100%; font-size: 16px; padding: 10px 12px; border-radius: 12px; }
-  #enquiry input, #enquiry select { min-height: 48px; }
-  #enquiry textarea { height: 120px; min-height: 120px; resize: vertical; }
-  #enquiry .form__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  #enquiry .form__actions .btn { min-width: 0; min-height: 46px; padding: 10px 6px; font-size: .875rem; white-space: nowrap; gap: 6px; }
-  #enquiry .form__actions svg { width: 18px; height: 18px; flex: none; }
-  #enquiry .fineprint { font-size: .78rem; line-height: 1.5; }
+  .form[data-contact-form] { min-width: 0; padding: 20px 16px; gap: 14px; border-radius: 22px; scroll-margin-top: 90px; }
+  .form[data-contact-form] h2 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 4px; }
+  .form[data-contact-form] .form__row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .form[data-contact-form] label { min-width: 0; font-size: .875rem; gap: 5px; }
+  .form[data-contact-form] input, .form[data-contact-form] select, .form[data-contact-form] textarea { max-width: 100%; font-size: 16px; padding: 10px 12px; border-radius: 12px; }
+  .form[data-contact-form] input, .form[data-contact-form] select { min-height: 48px; }
+  .form[data-contact-form] textarea { height: 120px; min-height: 120px; resize: vertical; }
+  .form[data-contact-form] .form__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .form[data-contact-form] .form__actions .btn { min-width: 0; min-height: 46px; padding: 10px 6px; font-size: .875rem; white-space: nowrap; gap: 6px; }
+  .form[data-contact-form] .form__actions svg { width: 18px; height: 18px; flex: none; }
+  .form[data-contact-form] .fineprint { font-size: .78rem; line-height: 1.5; }
 }
 @media (max-width: 699px) {
-  /* Contact Us already provides WhatsApp in its contact cards and form. */
+  /* Enquiry pages already provide WhatsApp in their contact cards and forms. */
   body:has([data-contact-form]) .wa-fab { display: none; }
 }

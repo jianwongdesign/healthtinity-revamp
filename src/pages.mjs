@@ -1,6 +1,6 @@
 import { site as siteEn, wa, topups, schedule, classCategory } from './data.mjs';
 import { terms, privacy } from './legal.mjs';
-import { esc, icon, initials, pageHero } from './layout.mjs';
+import { esc, icon, initials, pageHero, contactFormActions } from './layout.mjs';
 import { t, ar, isZh, L, className } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { classPages, classPage } from './classes.mjs';
@@ -744,10 +744,7 @@ ${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>
         </label>
       </div>
       <label>${t('Description', '详情')}<textarea name="message" rows="5" required placeholder="${t("Tell us a little about what you're looking for…", '请简单告诉我们您的需求……')}"></textarea></label>
-      <div class="form__actions">
-        <button class="btn btn--primary" type="submit" data-via="wa" aria-label="${t('Send via WhatsApp', '通过 WhatsApp 发送')}">${icon.wa}<span class="desktop-label">${t('Send via WhatsApp', '通过 WhatsApp 发送')}</span><span class="mobile-label">WhatsApp</span></button>
-        <button class="btn btn--ghost" type="submit" data-via="email" aria-label="${t('Send via email', '通过电邮发送')}"><span class="desktop-label">${t('Send via email', '通过电邮发送')}</span><span class="mobile-label">${t('Email', '电邮发送')}</span></button>
-      </div>
+      ${contactFormActions()}
       <p class="fineprint">${t(`By contacting us you agree to our <a href="${r}terms/private-policy/">Privacy Policy</a>.`, `联系我们即表示您同意我们的<a href="${r}terms/private-policy/">隐私政策</a>。`)}</p>
     </form>
   </div>

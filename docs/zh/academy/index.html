@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=72add324">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=22e50157">
   <script>document.documentElement.classList.add('js')</script>
   
 </head>
@@ -153,7 +153,10 @@
     <label>手机号码（选填）<input name="mobile" type="tel" autocomplete="tel" placeholder="+65"></label>
     <label>感兴趣的课程<select name="subject" required><option value="">请选择课程</option><option value="200 小时瑜伽导师培训">200 小时瑜伽导师培训 — 哈他瑜伽与流瑜伽</option><option value="300 小时瑜伽导师培训">300 小时瑜伽导师培训 — 多风格进阶培训</option><option value="灵气一级">灵气一级</option><option value="灵气二级">灵气二级</option><option>学院课程 — 请帮我选择</option></select></label>
     <label>您的经验与问题<textarea name="message" rows="5" required placeholder="请简单介绍您的练习或教学经验，以及想了解的课程信息。"></textarea></label>
-    <div class="form__actions"><button class="btn btn--primary" type="submit" data-via="wa"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg> 通过 WhatsApp 发送</button><button class="btn btn--ghost" type="submit" data-via="email">通过电邮发送</button></div>
+    <div class="form__actions">
+        <button class="btn btn--primary" type="submit" data-via="wa" aria-label="通过 WhatsApp 发送"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg><span class="desktop-label">通过 WhatsApp 发送</span><span class="mobile-label">WhatsApp</span></button>
+        <button class="btn btn--ghost" type="submit" data-via="email" aria-label="通过电邮发送"><span class="desktop-label">通过电邮发送</span><span class="mobile-label">电邮发送</span></button>
+      </div>
     <p class="fineprint">填写后，将打开 WhatsApp 或您的电邮应用，由您确认发送。</p>
     <p class="fineprint"><a href="../terms/private-policy/">隐私政策</a></p>
   </form>
