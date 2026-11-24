@@ -4,6 +4,16 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  // The desktop home hero fills the viewport left by the actual header and strip.
+  if ($('.hero')) {
+    const headerParts = [$('.announce'), $('[data-nav]')].filter(Boolean);
+    const sizeHero = () => document.documentElement.style.setProperty('--top-h',
+      `${headerParts.reduce((height, part) => height + part.getBoundingClientRect().height, 0)}px`);
+    const headerObserver = new ResizeObserver(sizeHero);
+    headerParts.forEach(part => headerObserver.observe(part));
+    sizeHero();
+  }
+
   // Keep the current pricing page visible in the mobile scrolling menu.
   $$('.pricing-tabs').forEach(nav => {
     const active = $('.is-active', nav);

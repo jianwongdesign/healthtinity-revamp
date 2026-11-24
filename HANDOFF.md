@@ -1,5 +1,17 @@
 # Healthtinity Hostinger staging
 
+## Restored desktop home first-screen height — 24 November 2026
+
+- Removed the 960px hero cap and 600px minimum that prevented viewport fitting.
+  The desktop hero uses 100svh minus the measured announcement/navigation height
+  and yellow strip. A ResizeObserver updates the measured header when it resizes.
+- Short desktop windows use tighter spacing/type; reel uses remaining space.
+  Mobile content-driven hero sizing is unchanged.
+- EN/ZH checked at 1895x1300, 1920x1080, 1440x900, 1280x720, 1024x600 and 390x844.
+  Desktop yellow strip bottom equals viewport height; no content/reel overlap or
+  horizontal overflow. Public staging verified at 1300px and after resizing to 720px.
+- Backup: `/home/u146877548/healthtinity-backups/before-home-viewport-height-ucTxLl/staging.tar.gz`.
+
 ## Mobile footer Download alignment — 24 November 2026
 
 - Visit / Download now use equal columns and the same 24px gap as Studio / Classes

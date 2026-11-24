@@ -248,15 +248,24 @@ svg.fill { fill: currentColor; stroke: none; }
 @media (min-width: 960px) {
   .hero__panel {
     padding: clamp(28px, 5svh, 64px) 0 clamp(18px, 3svh, 32px); gap: clamp(20px, 3svh, 36px);
-    height: calc(100svh - var(--top-h) - var(--strip-h)); min-height: 600px; max-height: 960px;
+    height: calc(100svh - var(--top-h) - var(--strip-h)); min-height: 0;
   }
   .hero h1 { font-size: min(clamp(3rem, 5.2vw, 5.2rem), 7.6svh); margin-top: min(20px, 2.2svh); }
   .hero__lead { font-size: max(1rem, min(1.2rem, 2.3svh)); max-width: none; }
   .hero .actions { margin-top: min(28px, 3svh); }
   /* Reel takes whatever height the words leave, so the cards never get clipped */
-  .reel { flex: 1 1 0; min-height: 170px; display: flex; padding: 14px 0 10px; }
+  .reel { flex: 1 1 0; min-height: 0; display: flex; padding: 14px 0 10px; }
   .reel__track { height: 100%; align-items: center; }
   .reel__card { height: min(calc(100% - 14px), 300px); }
+}
+
+/* Keep the first-screen composition usable on shorter desktop windows. */
+@media (min-width: 960px) and (max-height: 740px) {
+  .hero__panel { padding: 16px 0 12px; gap: 14px; }
+  .hero h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-top: 12px; }
+  .hero__lead { font-size: 1rem; }
+  .hero .actions { margin-top: 14px; }
+  .hero .btn { padding: 10px 20px; min-height: 44px; }
 }
 
 /* Sunny class strip at the foot of the first screen */
