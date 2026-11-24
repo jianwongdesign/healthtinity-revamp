@@ -594,7 +594,8 @@ ${pageHero({ r, title: t('Corporate <em>wellness</em>.', '企业<em>健康活动
       <p>${t('Yoga instruction and instructor transport are included. Share your group size, preferred date and venue with us to arrange your session.', '费用包含瑜伽教学及导师交通。请告诉我们参加人数、希望的日期与地点，方便我们为您安排课程。')}</p>
       <p class="muted">${t('All prices are in Singapore dollars.', '价格均以新加坡元计算。')}</p>
     </div>
-    <div class="pricing corporate-wellness__plans">
+    <div class="corporate-wellness__offers">
+    <div class="pricing corporate-wellness__plans mobile-carousel" id="corporate-price-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Browse corporate wellness rates', '浏览企业健康活动价格')}">
       <article class="price reveal">
         <h3>${t('Team session', '团队瑜伽')}</h3>
         <p class="price__sub">${t('Standard rate', '标准价格')}</p>
@@ -611,6 +612,8 @@ ${pageHero({ r, title: t('Corporate <em>wellness</em>.', '企业<em>健康活动
         <ul><li>${t('Yoga instruction included', '包含瑜伽教学')}</li><li>${t('Instructor transport included', '包含导师交通')}</li></ul>
         <a class="btn btn--light" href="${enquiry}">${t('Request a group quote', '咨询团体报价')} ${icon.arrow}</a>
       </article>
+    </div>
+    ${mobileCarouselControls('corporate-price-cards', 2)}
     </div>
     <p class="fineprint">${t('Contact us to confirm availability, session duration and the quote for your group.', '请联系我们，确认可预约时间、课程时长及团体报价。')}</p>
   </div>
@@ -656,7 +659,7 @@ function timetable() {
     title: t('Group Class Schedule', '团体课课表'),
     description: t(`Weekly Yoga, Mat Pilates and Therapy class schedule at Healthtinity, Upper Thomson. ${total} classes a week.`, `Healthtinity（Upper Thomson）每周瑜伽、垫上普拉提与理疗课表，每周 ${total} 堂课。`),
     body: `
-${pageHero({ r, title: t('This week at <em>the studio</em>.', '本周<em>课表</em>。'), lead: t(`${total} classes a week across Yoga, Mat Pilates, Therapy &amp; Stretch and Tone &amp; Sculpt. Bookings open 7 days ahead and close 1 hour before class.`, `每周 ${total} 堂课，涵盖瑜伽、垫上普拉提、理疗伸展与紧致塑形。预约于 7 天前开放，课程开始前 1 小时截止。`), crumbs: [[t('Schedule', '课表')]], extra: `<div class="actions"><a class="btn btn--primary" href="${site.links.schedule}">${t('Book on live schedule', '在线预约')}</a><a class="btn btn--ghost" href="${site.apps.ios}" target="_blank" rel="noopener">${t('Get the HT Life app', '下载 HT Life 应用程序')}</a></div>` })}
+${pageHero({ r, title: t('This week at <em>the studio</em>.', '本周<em>课表</em>。'), lead: t(`${total} classes a week across Yoga, Mat Pilates, Therapy &amp; Stretch and Tone &amp; Sculpt. Bookings open 7 days ahead and close 1 hour before class.`, `每周 ${total} 堂课，涵盖瑜伽、垫上普拉提、理疗伸展与紧致塑形。预约于 7 天前开放，课程开始前 1 小时截止。`), crumbs: [[t('Schedule', '课表')]], extra: `<div class="actions schedule-actions"><a class="btn btn--primary" href="${site.links.schedule}"><span class="desktop-label">${t('Book on live schedule', '在线预约')}</span><span class="mobile-label">${t('Book a class', '在线预约')}</span></a><a class="btn btn--ghost" href="${site.apps.ios}" target="_blank" rel="noopener"><span class="desktop-label">${t('Get the HT Life app', '下载 HT Life 应用程序')}</span><span class="mobile-label">${t('Get the app', '下载应用')}</span></a></div>` })}
 <section class="section section--flush">
   <div class="container">
     <div class="sched-controls">

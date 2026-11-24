@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=88ef9f0b">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=7284aaa7">
   <script>document.documentElement.classList.add('js')</script>
   
 </head>
@@ -134,7 +134,8 @@
       <p>费用包含瑜伽教学及导师交通。请告诉我们参加人数、希望的日期与地点，方便我们为您安排课程。</p>
       <p class="muted">价格均以新加坡元计算。</p>
     </div>
-    <div class="pricing corporate-wellness__plans">
+    <div class="corporate-wellness__offers">
+    <div class="pricing corporate-wellness__plans mobile-carousel" id="corporate-price-cards" data-mobile-carousel tabindex="0" role="region" aria-label="浏览企业健康活动价格">
       <article class="price reveal">
         <h3>团队瑜伽</h3>
         <p class="price__sub">标准价格</p>
@@ -151,6 +152,11 @@
         <ul><li>包含瑜伽教学</li><li>包含导师交通</li></ul>
         <a class="btn btn--light" href="../contact-us/?enquiry=corporate-wellness#enquiry">咨询团体报价 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
+    </div>
+    <div class="mobile-carousel-controls" data-carousel-controls="corporate-price-cards">
+  <span>左右滑动浏览 <span data-carousel-count>1 / 2</span></span>
+  <div><button type="button" data-carousel-prev aria-controls="corporate-price-cards" aria-label="上一张" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button type="button" data-carousel-next aria-controls="corporate-price-cards" aria-label="下一张"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+</div>
     </div>
     <p class="fineprint">请联系我们，确认可预约时间、课程时长及团体报价。</p>
   </div>

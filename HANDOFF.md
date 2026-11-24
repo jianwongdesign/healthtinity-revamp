@@ -1,5 +1,24 @@
 # Healthtinity Hostinger staging
 
+## Corporate cards, Schedule and language controls — 24 November 2026
+
+- Corporate Wellness now uses the same compact mobile card carousel as Packages
+  and Memberships. Both supplied prices/inclusions and enquiry links are retained.
+  Desktop still shows two cards side by side.
+- Schedule mobile hero is smaller, with Book a class / Get the app on one row.
+  Day counts no longer wrap; day/category controls scroll horizontally and are
+  no longer sticky on phones, avoiding overlap with the hero. Class rows put time
+  and booking on one row, with class/instructor details below at full width.
+- Language buttons now have 44x44px targets; adjusted the narrowest header brand
+  to fit without wrapping. Desktop header and schedule styling are retained.
+- Checked both pages in EN/ZH at 320/359/390/430/699/700/820/1440px (32 layouts),
+  no horizontal page overflow. Exercised all seven days and five category filters,
+  plus Corporate Wellness next-card navigation/count and desktop two-column layout.
+  Visually reviewed mobile Schedule and Corporate cards; public upload verified.
+- Schedule remains a typical weekly overview; Book links still open the live
+  Rezerv booking page. This is layout work, not a change to booking data.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-schedule-0c882w/staging.tar.gz`.
+
 ## Compact mobile packages and memberships — 24 November 2026
 
 - Package cards and both upfront/recurring membership groups now use horizontal

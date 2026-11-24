@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=88ef9f0b">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=7284aaa7">
   <script>document.documentElement.classList.add('js')</script>
   
 </head>
@@ -134,7 +134,8 @@
       <p>Yoga instruction and instructor transport are included. Share your group size, preferred date and venue with us to arrange your session.</p>
       <p class="muted">All prices are in Singapore dollars.</p>
     </div>
-    <div class="pricing corporate-wellness__plans">
+    <div class="corporate-wellness__offers">
+    <div class="pricing corporate-wellness__plans mobile-carousel" id="corporate-price-cards" data-mobile-carousel tabindex="0" role="region" aria-label="Browse corporate wellness rates">
       <article class="price reveal">
         <h3>Team session</h3>
         <p class="price__sub">Standard rate</p>
@@ -151,6 +152,11 @@
         <ul><li>Yoga instruction included</li><li>Instructor transport included</li></ul>
         <a class="btn btn--light" href="../contact-us/?enquiry=corporate-wellness#enquiry">Request a group quote <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
+    </div>
+    <div class="mobile-carousel-controls" data-carousel-controls="corporate-price-cards">
+  <span>Swipe to explore <span data-carousel-count>1 / 2</span></span>
+  <div><button type="button" data-carousel-prev aria-controls="corporate-price-cards" aria-label="Previous card" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button type="button" data-carousel-next aria-controls="corporate-price-cards" aria-label="Next card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+</div>
     </div>
     <p class="fineprint">Contact us to confirm availability, session duration and the quote for your group.</p>
   </div>

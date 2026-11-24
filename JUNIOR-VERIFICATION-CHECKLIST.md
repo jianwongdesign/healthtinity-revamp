@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November follow-up: Corporate Wellness rates also swipe sideways on phones. Check Schedule’s compact hero, single-row actions, non-overlapping day/category controls, readable rows and all filters. Language buttons now have 44px tap targets. Desktop remains unchanged.
+
 24 November pricing update: Packages and both membership groups now scroll sideways on mobile with smaller cards, arrows and counts. Check all cards and purchase links, the compact pricing hero, single-row scrollable menu, and unwrapped header brand. Desktop retains its grid.
 
 24 November class-directory update: all five EN/ZH class pages use a dropdown and one detail card with Previous/Next controls on mobile only. At 700px and above, the original desktop accordion, introduction and team enquiry link are restored. Verify every type, saved WordPress descriptions/level/duration, and the selected name in the enquiry link. Check the native picker on a real iPhone; mobile category navigation scrolls sideways. Floating WhatsApp is hidden on mobile class pages so it cannot cover these controls; enquiry links remain in the hero and card.

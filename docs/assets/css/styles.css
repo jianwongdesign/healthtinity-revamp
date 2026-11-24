@@ -441,6 +441,7 @@ a.card { display: block; color: var(--navy); }
 .topup { margin-top: 28px; border-radius: var(--r-lg); padding: 32px 26px; background: var(--navy); color: #fff; display: grid; gap: 24px; align-items: center; }
 .corporate-wellness { display: grid; gap: 24px; }
 .corporate-wellness__intro > :last-child { margin-bottom: 0; }
+.corporate-wellness__offers { min-width: 0; }
 .corporate-wellness__plans { grid-template-columns: minmax(0, 1fr); }
 .corporate-wellness__plans .btn { margin-top: auto; }
 @media (min-width: 700px) {
@@ -1120,4 +1121,40 @@ body[data-booking-active] .wa-fab { display: none; }
   .nav__toggle { width: 42px; min-height: 44px; margin-left: 0; }
   .lang--bar { padding: 2px; }
   .lang--bar a { min-width: 36px; min-height: 40px; padding-inline: 6px; font-size: .8rem; }
+}
+
+
+/* Mobile schedule: compact hero, unobstructed controls and readable class rows. */
+@media (max-width: 699px) {
+  .page-hero:has(.schedule-actions) > .container { padding: 20px 16px; }
+  .page-hero:has(.schedule-actions) .crumbs { font-size: .82rem; gap: 6px; margin-bottom: 12px; }
+  .page-hero:has(.schedule-actions) h1 { font-size: clamp(1.75rem, 7vw, 2rem); line-height: 1.15; margin-bottom: 12px; }
+  .page-hero:has(.schedule-actions) .lead { font-size: 1rem; line-height: 1.5; }
+  .page-hero .schedule-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 18px; }
+  .schedule-actions .btn { min-height: 44px; padding: 10px 8px; font-size: .86rem; white-space: nowrap; }
+  .sched-controls { position: static; padding: 12px 0; margin-bottom: 0; }
+  .day-tabs { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78px; gap: 8px; padding-bottom: 8px; scrollbar-width: thin; }
+  .day-tab { padding: 9px 6px; }
+  .day-tab span { font-size: .95rem; }
+  .day-tab small { display: block; white-space: nowrap; font-size: .75rem; line-height: 1.4; margin-top: 3px; }
+  .sched-controls .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; margin-top: 6px; scrollbar-width: thin; }
+  .sched-controls .chip { flex: none; white-space: nowrap; min-height: 44px; font-size: .82rem; padding: 8px 12px; }
+  .day__title { font-size: 1.4rem; margin: 12px 0; }
+  .sched__row { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 14px; border-radius: 18px; }
+  .sched__time { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .sched__time strong { font-size: 1.1rem; }
+  .sched__time span { font-size: .78rem; }
+  .sched__info { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+  .sched__info h3 { font-size: 1rem; line-height: 1.35; }
+  .sched__info p { font-size: .85rem; line-height: 1.4; }
+  .sched__row .btn { grid-column: 2; grid-row: 1; min-height: 44px; padding: 8px 16px; font-size: .85rem; }
+  .sched__cat, .sched__flag { font-size: .75rem; }
+  .lang--bar { padding: 3px; }
+  .lang--bar a { min-width: 44px; min-height: 44px; padding-inline: 8px; font-size: .875rem; }
+  .nav__toggle { width: 44px; height: 44px; }
+}
+@media (max-width: 359px) {
+  .nav__inner { gap: 6px; }
+  .nav .brand { font-size: .9rem; gap: 4px; }
+  .nav .brand img { width: 26px; }
 }
