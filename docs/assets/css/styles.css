@@ -1191,3 +1191,29 @@ body[data-booking-active] .wa-fab { display: none; }
   .page-hero--standard .actions .btn { min-width: 0; min-height: 44px; padding: 10px 6px; font-size: .86rem; white-space: nowrap; }
   .page-hero--standard .actions .btn:only-child { grid-column: 1 / -1; }
 }
+
+/* Mobile FAQ stays in document flow; Academy courses share the swipe pattern. */
+@media (max-width: 699px) {
+  .faq-layout { gap: 24px; }
+  body:has(.faq-layout) .wa-fab { display: none; }
+  .faq-layout > * { min-width: 0; }
+  .faq-layout .faq-questions { order: -1; }
+  .faq-layout .aside-card--sticky { position: static; }
+  .faq-layout .aside-card { padding: 20px 16px; border-radius: 20px; }
+  .faq-layout .aside-card p { font-size: 1rem; line-height: 1.5; }
+  .faq-layout .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .faq-layout .actions .btn { min-width: 0; min-height: 44px; padding: 10px 6px; font-size: .82rem; white-space: nowrap; }
+  .faq-layout .actions svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .academy-courses.mobile-carousel, .academy-workshops.mobile-carousel { grid-auto-columns: min(88%, 340px); gap: 12px; align-items: start; margin-bottom: 0; }
+  .academy-courses .academy-course, .academy-workshops article { display: block; padding: 16px; border: 1px solid var(--line); border-radius: 20px; background: #fff; }
+  .academy-workshops article + article { padding-top: 16px; }
+  .academy-course__image { aspect-ratio: 16 / 10; border-radius: 12px; margin-bottom: 16px; }
+  .academy-course h3, .academy-workshops h3 { font-size: 1.2rem; line-height: 1.3; }
+  .academy-course p, .academy-workshops p { font-size: .9rem; line-height: 1.5; }
+  .academy-facts { gap: 12px 20px; margin: 16px 0; }
+  .academy-facts dt { font-size: .8rem; }
+  .academy-facts dd { font-size: 1.2rem; }
+  .academy-outline summary { font-size: .9rem; padding-block: 12px; }
+  .academy-courses .btn, .academy-workshops .btn { width: 100%; min-height: 44px; padding: 10px 6px; font-size: .82rem; white-space: nowrap; }
+  #teacher-training, #reiki-workshops { scroll-margin-top: 90px; }
+}

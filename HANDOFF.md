@@ -1,5 +1,20 @@
 # Healthtinity Hostinger staging
 
+## Mobile FAQ and Academy courses — 24 November 2026
+
+- FAQ questions now precede the help panel below 700px. Help panel uses normal
+  document flow and paired compact WhatsApp / Contact form buttons. Mobile
+  floating chat is hidden on this page; the help panel retains direct contact.
+- Academy yoga training and Reiki workshops each use horizontal swipe cards,
+  arrows, keyboard navigation and counters on mobile. Course outlines and enquiry
+  preselection remain functional. Desktop course layouts are preserved.
+- Checked EN/ZH at 320/390/699/700/820/1440px: no page/card overflow, paired FAQ
+  actions fit, seven questions remain accessible. Tested both carousels forwards
+  and backwards, course outline expansion and enquiry preselection without sending.
+- Published to Hostinger staging and checked public EN/ZH at 320/390/1440px.
+  Desktop layouts remain unchanged; physical iPhone Safari testing is still pending.
+- Backup: `/home/u146877548/healthtinity-backups/before-faq-academy-mobile-i4f1A3/staging.tar.gz`.
+
 ## Shared mobile page-hero standard — 24 November 2026
 
 - Academy now matches the compact mobile pricing/schedule hero: 20x16px padding,

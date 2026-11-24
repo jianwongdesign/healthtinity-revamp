@@ -1,6 +1,6 @@
 import { site as siteEn, wa, topups, schedule, classCategory } from './data.mjs';
 import { terms, privacy } from './legal.mjs';
-import { esc, icon, initials, pageHero, contactFormActions } from './layout.mjs';
+import { esc, icon, initials, pageHero, contactFormActions, mobileCarouselControls } from './layout.mjs';
 import { t, ar, isZh, L, className } from './i18n.mjs';
 import { readFileSync } from 'node:fs';
 import { classPages, classPage } from './classes.mjs';
@@ -15,10 +15,6 @@ const zaobaoLogo = readFileSync(new URL('./assets/img/press/zaobao.svg', import.
 
 const site = siteEn; // links, phone, address: same in both languages
 const money = (n) => n.toLocaleString('en-SG');
-const mobileCarouselControls = (id, count) => `<div class="mobile-carousel-controls" data-carousel-controls="${id}">
-  <span>${t('Swipe to explore', '左右滑动浏览')} <span data-carousel-count>1 / ${count}</span></span>
-  <div><button type="button" data-carousel-prev aria-controls="${id}" aria-label="${t('Previous card', '上一张')}" disabled>${icon.arrow}</button><button type="button" data-carousel-next aria-controls="${id}" aria-label="${t('Next card', '下一张')}">${icon.arrow}</button></div>
-</div>`;
 const avatar = (m, r, cls = '') =>
   m.photo
     ? `<img class="${cls}" src="${ar(r)}assets/img/team/${m.photo}" alt="${esc(m.name)}" loading="lazy" width="560" height="560">`
@@ -815,18 +811,18 @@ function faqPage() {
     body: `
 ${pageHero({ r, title: t('Frequently asked <em>questions</em>.', '常见<em>问题</em>。'), lead: t("Everything you need to know before your first class. Can't find your answer? We're a WhatsApp away.", '第一次上课前，您可能想了解这些。找不到答案？欢迎通过 WhatsApp 咨询我们。'), crumbs: [[t('FAQ', '常见问题')]] })}
 <section class="section section--flush">
-  <div class="container split split--faq">
-    <div class="reveal">
+  <div class="container split split--faq faq-layout">
+    <div class="reveal faq-help">
       <div class="aside-card aside-card--sticky">
         <h3>${t('Still have questions?', '还有疑问？')}</h3>
         <p class="muted">${t('Our team is happy to help you choose the right class or programme.', '我们的团队很乐意帮您选择合适的课程或方案。')}</p>
         <div class="actions actions--stack">
-          <a class="btn btn--primary btn--block" href="${site.whatsapp}" target="_blank" rel="noopener">${icon.wa} ${t('WhatsApp us', 'WhatsApp 咨询')}</a>
+          <a class="btn btn--primary btn--block" href="${site.whatsapp}" target="_blank" rel="noopener">${icon.wa} <span class="desktop-label">${t('WhatsApp us', 'WhatsApp 咨询')}</span><span class="mobile-label">WhatsApp</span></a>
           <a class="btn btn--ghost btn--block" href="${r}contact-us/">${t('Contact form', '联系表格')}</a>
         </div>
       </div>
     </div>
-    <div class="reveal">${faqList(faqs)}</div>
+    <div class="reveal faq-questions">${faqList(faqs)}</div>
   </div>
 </section>
 `,

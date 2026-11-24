@@ -1,4 +1,4 @@
-import { pageHero, icon, esc, contactFormActions } from './layout.mjs';
+import { pageHero, icon, esc, contactFormActions, mobileCarouselControls } from './layout.mjs';
 import { t, ar } from './i18n.mjs';
 import { site } from './data.mjs';
 
@@ -56,6 +56,7 @@ ${pageHero({ r, title: t('Deepen your practice. Learn to teach.', '深化练习�
 <section class="section section--flush" id="teacher-training">
   <div class="container">
     <div class="section__head"><h2>${t('Yoga teacher training', '瑜伽导师培训')}</h2><p class="lead">${t('Choose a foundation in Hatha and Vinyasa, or build on your experience with multi-style training.', '从哈他与流瑜伽的基础培训开始，或通过多风格课程深化现有的练习与教学经验。')}</p><p class="academy-note">${t('Fees and durations below are from our previous course listings. Contact us to confirm current fees, course arrangements and the next intake.', '以下学费与课时安排来自以往课程资料。最新费用、课程安排及下一期开课日期，请联系我们确认。')}</p></div>
+    <div class="academy-courses mobile-carousel" id="academy-yoga-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Yoga teacher training courses', '瑜伽导师培训课程')}">
     ${yoga.map(c => `<article class="academy-course" id="${c.id}">
       <img class="academy-course__image" src="${ar(r)}assets/img/academy/${c.image}" alt="${esc(c.title + ' — ' + c.style)}" width="1000" height="740" loading="lazy">
       <div class="academy-course__content"><h3>${c.title}</h3><p class="academy-course__style">${c.style}</p><p>${c.intro}</p>${facts(c)}
@@ -63,12 +64,15 @@ ${pageHero({ r, title: t('Deepen your practice. Learn to teach.', '深化练习�
         <div class="actions">${enquire(c)}</div>
       </div>
     </article>`).join('')}
+    </div>
+    ${mobileCarouselControls('academy-yoga-cards', yoga.length)}
     <p class="academy-trainer">${t('Yoga training in the original programme is led by Kai.', '原瑜伽培训课程由 Kai 带领。')} <a class="arrow-link" href="${r}team/kai/">${t('Meet Dr Kai', '认识 Dr Kai')} ${icon.arrow}</a></p>
   </div>
 </section>
 <section class="section section--sand" id="reiki-workshops"><div class="container">
   <div class="section__head"><h2>${t('Reiki workshops', '灵气工作坊')}</h2><p class="lead">${t('Explore the foundations and traditional practices of Reiki through two levels of study.', '通过两个级别的学习，了解灵气的基础与传统练习方法。')}</p></div>
-  <div class="academy-workshops">${reiki.map(c=>`<article id="${c.id}"><h3>${c.title}</h3><p>${c.intro}</p>${facts(c)}<p>${c.entry}</p>${enquire(c)}</article>`).join('')}</div>
+  <div class="academy-workshops mobile-carousel" id="academy-reiki-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Reiki workshops', '灵气工作坊')}">${reiki.map(c=>`<article id="${c.id}"><h3>${c.title}</h3><p>${c.intro}</p>${facts(c)}<p>${c.entry}</p>${enquire(c)}</article>`).join('')}</div>
+  ${mobileCarouselControls('academy-reiki-cards', reiki.length)}
   <p class="fineprint">${t('Workshop fees, duration, instructor and entry requirements will be confirmed for the next intake.', '下一期工作坊的学费、课时、导师及入学要求将另行确认。')}</p>
 </div></section>
 <section class="section" id="academy-enquiry"><div class="container contact">
