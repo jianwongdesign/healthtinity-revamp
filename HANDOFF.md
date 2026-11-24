@@ -1,5 +1,23 @@
 # Healthtinity Hostinger staging
 
+## Academy card redesign and text-width audit — 24 November 2026
+
+- Removed artificial text-width caps from shared section introductions, headings,
+  home hero copy, CTA copy, promotion text and class descriptions. Text now wraps
+  naturally at its available column width instead of balancing short lines.
+  Address and legal contact line breaks remain intentional.
+- Academy yoga courses now use two matching desktop cards with wide images,
+  style labels, fee/duration panels, expandable outlines and aligned enquiry
+  buttons. Reiki workshops use matching card styling. Mobile horizontal swiping,
+  arrows, counters and enquiry preselection remain functional.
+- Audited all 77 generated pages at 390/820/1440px (231 layouts): no page overflow,
+  clipped visible heading/paragraph text or remaining artificial text-width caps.
+  Academy also checked at 320/699/700px in EN/ZH, including course selection and
+  outline expansion. Narrow-screen facts fit without clipping.
+- Backup: `/home/u146877548/healthtinity-backups/before-academy-cards-widths-xpn96L/staging.tar.gz`.
+- Published to Hostinger staging and verified Academy EN/ZH at 320/390/820/1440px.
+  Physical iPhone testing remains pending. Historical course fee caveats retained.
+
 ## Mobile FAQ and Academy courses — 24 November 2026
 
 - FAQ questions now precede the help panel below 700px. Help panel uses normal

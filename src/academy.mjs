@@ -59,7 +59,7 @@ ${pageHero({ r, title: t('Deepen your practice. Learn to teach.', '深化练习�
     <div class="academy-courses mobile-carousel" id="academy-yoga-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Yoga teacher training courses', '瑜伽导师培训课程')}">
     ${yoga.map(c => `<article class="academy-course" id="${c.id}">
       <img class="academy-course__image" src="${ar(r)}assets/img/academy/${c.image}" alt="${esc(c.title + ' — ' + c.style)}" width="1000" height="740" loading="lazy">
-      <div class="academy-course__content"><h3>${c.title}</h3><p class="academy-course__style">${c.style}</p><p>${c.intro}</p>${facts(c)}
+      <div class="academy-course__content"><h3>${c.title}</h3><p class="academy-course__style">${c.style}</p><p class="academy-course__intro">${c.intro}</p>${facts(c)}
         <details class="academy-outline"><summary>${t('View the course outline', '查看课程大纲')}</summary><div>${c.modules.map(([title, text])=>`<h4>${title}</h4><p>${text}</p>`).join('')}<h4>${t('Assessment', '评估方式')}</h4><p>${c.assessment}</p></div></details>
         <div class="actions">${enquire(c)}</div>
       </div>
@@ -71,7 +71,7 @@ ${pageHero({ r, title: t('Deepen your practice. Learn to teach.', '深化练习�
 </section>
 <section class="section section--sand" id="reiki-workshops"><div class="container">
   <div class="section__head"><h2>${t('Reiki workshops', '灵气工作坊')}</h2><p class="lead">${t('Explore the foundations and traditional practices of Reiki through two levels of study.', '通过两个级别的学习，了解灵气的基础与传统练习方法。')}</p></div>
-  <div class="academy-workshops mobile-carousel" id="academy-reiki-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Reiki workshops', '灵气工作坊')}">${reiki.map(c=>`<article id="${c.id}"><h3>${c.title}</h3><p>${c.intro}</p>${facts(c)}<p>${c.entry}</p>${enquire(c)}</article>`).join('')}</div>
+  <div class="academy-workshops mobile-carousel" id="academy-reiki-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Reiki workshops', '灵气工作坊')}">${reiki.map(c=>`<article id="${c.id}"><h3>${c.title}</h3><p class="academy-course__intro">${c.intro}</p>${facts(c)}<p>${c.entry}</p>${enquire(c)}</article>`).join('')}</div>
   ${mobileCarouselControls('academy-reiki-cards', reiki.length)}
   <p class="fineprint">${t('Workshop fees, duration, instructor and entry requirements will be confirmed for the next intake.', '下一期工作坊的学费、课时、导师及入学要求将另行确认。')}</p>
 </div></section>
