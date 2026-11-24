@@ -137,7 +137,8 @@ export function layout({ path = '', title, description, body, active = '', schem
 
   <div class="announce">
     <div class="container announce__inner">
-      <span><strong>${t('New:', '新推出：')}</strong> ${t('Top Up &amp; Flow. Top up $90, get $10 bonus credit.', '储值随心练：储值 $90，额外获赠 $10。')}</span>
+      <span class="desktop-label"><strong>${t('New:', '新推出：')}</strong> ${t('Top Up &amp; Flow. Top up $90, get $10 bonus credit.', '储值随心练：储值 $90，额外获赠 $10。')}</span>
+      <span class="mobile-label"><strong>${t('New:', '新：')}</strong> ${t('Top up $90, get $10 bonus.', '储值 $90，赠送 $10。')}</span>
       <a href="${r}package/#topup">${t('Learn more', '了解更多')} →</a>
     </div>
   </div>

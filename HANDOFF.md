@@ -1,5 +1,15 @@
 # Healthtinity Hostinger staging
 
+## Single-row mobile announcement — 24 November 2026
+
+- Mobile promotion copy shortened to “New: Top up $90, get $10 bonus.” with
+  Learn more on the same row. Chinese copy is likewise compact. The offer and
+  destination remain the same; desktop keeps its full wording.
+- Below 700px, the bar uses 13px text and a 44px-high link target. Checked EN/ZH
+  at 320/375/390/430/699/700/1440px: one row, no page overflow. Visually reviewed
+  the 320px bar and verified the uploaded staging result.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-announcement-R0b345/staging.tar.gz`.
+
 ## Desktop class directory restored — 24 November 2026
 
 - Per user feedback, restored the original desktop/tablet accordion, introduction

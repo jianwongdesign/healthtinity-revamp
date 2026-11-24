@@ -1078,3 +1078,11 @@ body[data-booking-active] .wa-fab { display: none; }
   /* Class pages have enquiry buttons in the hero and detail card. */
   body[data-classes-active] .wa-fab { display: none; }
 }
+
+/* Keep the mobile promotion and its link together without shrinking desktop copy. */
+@media (max-width: 699px) {
+  .announce { font-size: .8125rem; }
+  .announce__inner { flex-wrap: nowrap; gap: 10px; min-height: 44px; padding-block: 0; align-items: center; }
+  .announce__inner > .mobile-label { white-space: nowrap; gap: 4px; }
+  .announce__inner > a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; margin: 0; white-space: nowrap; }
+}
