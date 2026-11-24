@@ -14,6 +14,20 @@
     sizeHero();
   }
 
+  // Keep the Academy intro alongside its form, with its bottom reachable on short screens.
+  const enquiryIntro = $('.academy-enquiry__intro');
+  if (enquiryIntro) {
+    const nav = $('[data-nav]');
+    const sizeEnquiry = () => enquiryIntro.style.setProperty('--enquiry-sticky-top',
+      `${Math.min((nav?.getBoundingClientRect().height || 80) + 16,
+        innerHeight - enquiryIntro.getBoundingClientRect().height - 16)}px`);
+    const enquiryObserver = new ResizeObserver(sizeEnquiry);
+    enquiryObserver.observe(enquiryIntro);
+    if (nav) enquiryObserver.observe(nav);
+    window.addEventListener('resize', sizeEnquiry, { passive: true });
+    sizeEnquiry();
+  }
+
   // Keep the current pricing page visible in the mobile scrolling menu.
   $$('.pricing-tabs').forEach(nav => {
     const active = $('.is-active', nav);

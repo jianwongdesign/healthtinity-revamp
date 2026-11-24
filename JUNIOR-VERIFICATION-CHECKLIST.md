@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November promotion spacing / Academy enquiry: check the more compact yellow promotion and reduced surrounding whitespace. On desktop, Academy’s left introduction follows scrolling then stops at the form bottom; tablet/mobile stay in normal order. Verify EN/ZH, shorter browser windows and physical iPhone; mobile promotion actions remain two equal buttons.
+
 24 November home hero height: desktop header + hero + yellow class strip now fill one viewport, including taller screens. Check English/Chinese and window resizing; mobile hero behaviour is unchanged.
 
 24 November footer alignment: mobile Visit / Download now match the equal columns above. Check Download aligns with Classes, heading baselines match, and both store buttons have aligned icons and labels in EN/ZH.

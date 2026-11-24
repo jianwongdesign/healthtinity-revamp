@@ -1,5 +1,22 @@
 # Healthtinity Hostinger staging
 
+## Compact promotion spacing and sticky Academy intro — 24 November 2026
+
+- Reduced shared promotion spacing and preceding section bottom padding when the
+  promotion is visible. Single desktop text promotions use a 24px copy/action gap,
+  content-sized action column and tighter card padding; popup layout is unchanged.
+- At 1440px, booking-page gap above the card fell from 108px to 44px, card height
+  from 302px to 220px, and gap below from 68px to 60px. Mobile retains two equal
+  action columns, single-line short labels and 46px minimum button height.
+- Academy enquiry intro follows desktop scroll (960px+), stops at the form bottom,
+  and adapts its sticky offset to the navigation and available viewport height.
+  Scoped body overflow uses clip so it does not create a false scroll container.
+  Tablet/mobile remain in normal document flow; form behaviour is unchanged.
+- Checked EN/ZH at 320/390/820/1024/1440px, including desktop mid-scroll and release.
+  Public staging verified EN/ZH at 1440/390px: no horizontal or button overflow.
+  No enquiries submitted. Physical iPhone Safari check remains for junior review.
+- Backup: `/home/u146877548/healthtinity-backups/before-promo-spacing-sticky-nQZzZ7/staging.tar.gz`.
+
 ## Home hero text wrapping exception — 24 November 2026
 
 - At user request, restored balanced wrapping only for home hero headline and

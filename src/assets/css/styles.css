@@ -663,6 +663,10 @@ details.zh summary { cursor: pointer; font-family: var(--font-display); font-wei
 /* ---------- Contact ---------- */
 .contact { display: grid; gap: 40px; }
 @media (min-width: 960px) { .contact { grid-template-columns: .9fr 1.1fr; gap: 32px; align-items: start; } }
+@media (min-width: 960px) {
+  body:has(.academy-enquiry__intro) { overflow-x: clip; }
+  .academy-enquiry__intro { position: sticky; top: var(--enquiry-sticky-top, 100px); align-self: start; }
+}
 .contact__cards { display: grid; gap: 10px; }
 .info-card { display: flex; gap: 16px; align-items: center; background: var(--sky); border-radius: var(--r); padding: 16px 20px; color: var(--navy); transition: background .2s; }
 a.info-card:hover { color: var(--navy); background: var(--sun-soft); }
@@ -896,7 +900,10 @@ html:lang(zh-Hans) .marquee__track { letter-spacing: .04em; }
 
 /* WordPress-managed promotions: shared page placement and accessible modal. */
 .promotions[hidden] { display: none; }
-.promotions { padding: 32px 0; }
+.promotions { padding: 16px 0 24px; }
+.section:has(+ .promotions:not([hidden])) { padding-bottom: 24px; }
+.promotions .promo-card__copy { padding: clamp(24px, 2.2vw, 32px); }
+.promotions .promo-card__summary { margin-bottom: 0; }
 .promo-carousel { min-width: 0; }
 .promo-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--blue-panel) transparent; padding: 4px 0 12px; }
 .promo-track:focus-visible { outline: 3px solid var(--blue-panel); outline-offset: 6px; border-radius: var(--r); }
@@ -934,9 +941,9 @@ html:lang(zh-Hans) .marquee__track { letter-spacing: .04em; }
   .promotions .promo-carousel--multiple .promo-card { flex-basis: 83%; }
 }
 @media (min-width: 1100px) {
-  .promotions .promo-carousel:not(.promo-carousel--multiple) .promo-card:not(.promo-card--image) .promo-card__copy { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, 1fr); column-gap: 48px; }
+  .promotions .promo-carousel:not(.promo-carousel--multiple) .promo-card:not(.promo-card--image) .promo-card__copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; }
   .promotions .promo-carousel:not(.promo-carousel--multiple) .promo-card:not(.promo-card--image) .promo-card__copy > :not(.promo-card__actions) { grid-column: 1; }
-  .promotions .promo-carousel:not(.promo-carousel--multiple) .promo-card:not(.promo-card--image) .promo-card__actions { grid-column: 2; grid-row: 1 / 4; align-self: center; justify-self: end; margin: 0; }
+  .promotions .promo-carousel:not(.promo-carousel--multiple) .promo-card:not(.promo-card--image) .promo-card__actions { grid-column: 2; grid-row: 1 / 4; align-self: center; justify-self: start; margin: 0; flex-wrap: nowrap; }
 }
 @media (max-width: 759px) {
   .promo-track { gap: 14px; }
