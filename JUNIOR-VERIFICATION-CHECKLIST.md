@@ -1,5 +1,7 @@
 # Healthtinity change register and junior verification checklist
 
+**Latest gate: HOLD migration.** Read the [24 November readiness audit](reports/MIGRATION-READINESS-2026-11-24.md) first. It supersedes earlier booking readiness observations and provides current blockers, evidence and owners.
+
 Prepared 22 November 2026 from the project implementation, handover records, conversation and the two supplied handwritten meeting notes. Website build reference: `219aff8`.
 
 The redesigned site is on Hostinger staging. The main domain still serves the existing Rezerv site. The website changes have not been lost. This checklist records implementation status; every junior verification box is intentionally unchecked.

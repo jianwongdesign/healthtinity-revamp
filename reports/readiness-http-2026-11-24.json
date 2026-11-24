@@ -1,0 +1,534 @@
+{
+  "pages_checked": 77,
+  "page_errors": [],
+  "issues": [],
+  "missing_anchors": [],
+  "assets_checked": 37,
+  "asset_errors": [],
+  "external_links": [
+    "https://apps.apple.com/sg/app/ht-life/id6797768622",
+    "https://play.google.com/store/apps/details?id=com.rezerv.branded.healthtinity",
+    "https://wa.me/6582829515",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E5%9E%AB%E4%B8%8A%E6%99%AE%E6%8B%89%E6%8F%90%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E7%90%86%E7%96%97%E4%BC%B8%E5%B1%95%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E7%91%9C%E4%BC%BD%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E7%A7%81%E4%BA%BA%E4%B8%80%E5%AF%B9%E4%B8%80%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E7%B4%A7%E8%87%B4%E5%A1%91%E5%BD%A2%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Angie%20Choo%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Ariel%20Swee%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Ben%20Ting%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Daniel%20Ding%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Dr%20Kai%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Hasita%20J%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Jaclyn%20Lim%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Jade%20Lim%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Mary%20Low%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Pei%20Qing%20Yeo%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Pin%20Yi%20Chiang%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Sam%20Chen%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Stacey%20Wong%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Xenia%20Na%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Zenn%20Lim%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%8E%20Zi%20Wei%20Ng%20%E7%9A%84%E7%A7%81%E4%BA%BA%E8%AF%BE%E7%A8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E8%AF%BE%E7%A8%8B%E9%A2%84%E7%BA%A6%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%E6%88%91%E6%83%B3%E9%A6%96%E6%AC%A1%E6%8A%A5%E5%90%8D%E4%B8%8A%E8%AF%BE%EF%BC%8C%E8%AF%B7%E9%97%AE%E5%93%AA%E4%BA%9B%E8%AF%BE%E7%A8%8B%E9%80%82%E5%90%88%E6%88%91%EF%BC%9F",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%F0%9F%91%8B%20%E6%88%91%E5%9C%A8%E7%BD%91%E7%AB%99%E4%B8%8A%E7%9C%8B%E5%88%B0%E5%82%A8%E5%80%BC%E9%9A%8F%E5%BF%83%E7%BB%83%EF%BC%88Top%20Up%20%26%20Flow%EF%BC%89%E4%BC%98%E6%83%A0%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%20HT%20%E9%92%B1%E5%8C%85%E5%82%A8%E5%80%BC%E7%9A%84%E8%AF%A6%E6%83%85%E3%80%82",
+    "https://wa.me/6582829515?text=%E6%82%A8%E5%A5%BD%20Healthtinity%EF%BC%81%F0%9F%91%8B%20%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E4%B8%80%E4%B8%8B%E3%80%82",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20%F0%9F%91%8B%20I%20have%20a%20question.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20%F0%9F%91%8B%20I%20saw%20the%20Top%20Up%20%26%20Flow%20offer%20on%20your%20website%20and%20would%20like%20to%20find%20out%20more%20about%20the%20HT%20Wallet%20Top%20Up%20options",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I%20need%20help%20with%20booking.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Angie%20Choo.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Ariel%20Swee.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Ben%20Ting.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Daniel%20Ding.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Dr%20Kai.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Hasita%20J.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Jaclyn%20Lim.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Jade%20Lim.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Mary%20Low.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Pei%20Qing%20Yeo.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Pin%20Yi%20Chiang.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Sam%20Chen.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Stacey%20Wong.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Xenia%20Na.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Zenn%20Lim.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20enquire%20about%20a%20private%20session%20with%20Zi%20Wei%20Ng.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20find%20out%20more%20about%20Mat%20Pilates.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20find%20out%20more%20about%20Private%201%3A1.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20find%20out%20more%20about%20Therapy%20%26%20Stretch.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20find%20out%20more%20about%20Tone%20%26%20Sculpt.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'd%20like%20to%20find%20out%20more%20about%20Yoga.",
+    "https://wa.me/6582829515?text=Hi%20Healthtinity!%20I'm%20new%20and%20would%20like%20to%20find%20out%20which%20class%20suits%20me.",
+    "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/membership",
+    "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/package",
+    "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/timetable",
+    "https://www.facebook.com/healthtinity",
+    "https://www.google.com/maps/dir/?api=1&destination=246J+Upper+Thomson+Road+Singapore+574370",
+    "https://www.instagram.com/healthtinity/",
+    "https://www.tiktok.com/@healthtinity"
+  ],
+  "pages": [
+    {
+      "path": "index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "404.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/404.html",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "about-us/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/about-us/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "location/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/location/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "blog/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/blog/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "academy/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/academy/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "faqs/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/faqs/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "corporate-wellness/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/corporate-wellness/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "book/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/book/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "contact-us/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/contact-us/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "package/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/package/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "membership/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/membership/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "timetable/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/timetable/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/jade-lim/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/jade-lim/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/hasita-j/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/hasita-j/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/jaclyn-lim/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/jaclyn-lim/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/mary-low/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/mary-low/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/ariel-swee/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/ariel-swee/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/pin-yi-chiang/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/pin-yi-chiang/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/angie-choo/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/angie-choo/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/stacey-wong/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/stacey-wong/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/ben-ting/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/ben-ting/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/kai/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/kai/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/xenia-na/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/xenia-na/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/zi-wei-ng/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/zi-wei-ng/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/pei-qing-yeo/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/pei-qing-yeo/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/daniel-ding/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/daniel-ding/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/sam-chen/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/sam-chen/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "team/zenn-lim/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/team/zenn-lim/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/about-us/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/about-us/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/location/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/location/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/blog/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/blog/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/academy/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/academy/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/faqs/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/faqs/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/corporate-wellness/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/corporate-wellness/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/book/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/book/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/contact-us/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/contact-us/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/package/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/package/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/membership/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/membership/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/timetable/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/timetable/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/jade-lim/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/jade-lim/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/hasita-j/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/hasita-j/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/jaclyn-lim/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/jaclyn-lim/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/mary-low/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/mary-low/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/ariel-swee/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/ariel-swee/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/pin-yi-chiang/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/pin-yi-chiang/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/angie-choo/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/angie-choo/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/stacey-wong/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/stacey-wong/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/ben-ting/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/ben-ting/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/kai/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/kai/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/xenia-na/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/xenia-na/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/zi-wei-ng/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/zi-wei-ng/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/pei-qing-yeo/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/pei-qing-yeo/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/daniel-ding/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/daniel-ding/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/sam-chen/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/sam-chen/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/team/zenn-lim/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/team/zenn-lim/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/blog/yoga-pilates-in-singapore-without-the-big-package-commitment/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/blog/yoga-pilates-in-singapore-without-the-big-package-commitment/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/terms/private-policy/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/terms/private-policy/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/terms/terms-and-conditions/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/terms/terms-and-conditions/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/classes/yoga/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/classes/yoga/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/classes/tone-sculpt/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/classes/tone-sculpt/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/classes/mat-pilates/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/classes/mat-pilates/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/classes/private-1-to-1/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/classes/private-1-to-1/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "zh/classes/therapy-stretch/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/zh/classes/therapy-stretch/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/blog/yoga-for-better-sleep-in-singapore-healthtinity-featured-in-lianhe-zaobao/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "blog/yoga-pilates-in-singapore-without-the-big-package-commitment/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/blog/yoga-pilates-in-singapore-without-the-big-package-commitment/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "terms/private-policy/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/terms/private-policy/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "terms/terms-and-conditions/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/terms/terms-and-conditions/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "classes/yoga/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/classes/yoga/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "classes/tone-sculpt/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/classes/tone-sculpt/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "classes/mat-pilates/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/classes/mat-pilates/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "classes/private-1-to-1/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/classes/private-1-to-1/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "classes/therapy-stretch/index.html",
+      "url": "https://welcome-lightsteelblue-mosquito-41.hostingersite.com/staging/classes/therapy-stretch/",
+      "status": 200,
+      "robots_header": "noindex, nofollow, noarchive"
+    }
+  ]
+}

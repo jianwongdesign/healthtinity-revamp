@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-24",
+  "source_commit": "ea112ff",
+  "content_routes": 74,
+  "viewports": [
+    320,
+    820,
+    1440
+  ],
+  "checks": 222,
+  "issues": [],
+  "scope": [
+    "document horizontal overflow",
+    "visible .btn overflow",
+    "completed broken images",
+    "page JavaScript errors"
+  ],
+  "limitations": [
+    "Chromium only, not physical iPhone Safari",
+    "third-party booking iframe blocked in broad layout sweep and tested separately",
+    "not a pixel-by-pixel visual sign-off"
+  ]
+}

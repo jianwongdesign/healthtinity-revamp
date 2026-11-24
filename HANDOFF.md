@@ -1,5 +1,15 @@
 # Healthtinity Hostinger staging
 
+## Pre-migration audit — 24 November 2026
+
+- **Hold migration.** See [readiness report](reports/MIGRATION-READINESS-2026-11-24.md).
+- 77 public routes and 222 responsive geometry checks passed. Fresh checks still
+  find invalid booking-subdomain TLS, package Buy Now handoffs landing at the old
+  homepage, missing S$60 offer in the public widget, and 28 blank class details.
+- Root remains the default WP theme; production/editable-pricing/SEO work is pending.
+  Report includes current pricing/schedule differences and junior verification order.
+- Audit only: no deployment, DNS change, customer login, message or transaction.
+
 ## Compact promotion spacing and sticky Academy intro — 24 November 2026
 
 - Reduced shared promotion spacing and preceding section bottom padding when the

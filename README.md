@@ -1,5 +1,7 @@
 # Healthtinity: Website Revamp
 
+**Migration status (24 Nov 2026): HOLD.** See [current readiness audit](reports/MIGRATION-READINESS-2026-11-24.md). Older descriptions below are historical and are not evidence of working checkout or production readiness.
+
 A full redesign of [healthtinity.com](https://healthtinity.com), Singapore's first boutique Yoga, Pilates & Rehab Therapy studio at Upper Thomson.
 
 **GitHub preview:** https://jianwongdesign.github.io/healthtinity-revamp/
