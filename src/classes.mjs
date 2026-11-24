@@ -37,8 +37,15 @@ export function classPage(c) {
   <section class="section class-directory">
     <div class="container class-details">
       <div class="class-details__intro">
+        <div class="class-directory__desktop">
+        <h2>${t(c.category === 'private' ? 'A session that starts with you.' : 'Find your kind of movement.', c.category === 'private' ? '从您的需求出发。' : '找到适合您的练习。')}</h2>
+        <p class="lead">${t(c.category === 'private' ? 'Explore our one-to-one options. Tell us your goals and our team can help you choose.' : 'Explore the different class types below. Not sure where to start? Ask our team for guidance.', c.category === 'private' ? '了解一对一课程选项。告诉我们您的目标，让团队协助您选择。' : '了解以下不同类型的课程。不知道从哪里开始？欢迎向我们的团队咨询。')}</p>
+        <a class="arrow-link" href="${enquiry}">${t('Talk to our team', '咨询我们的团队')} ${icon.arrow}</a>
+        </div>
+        <div class="class-directory__mobile">
         <h2>${t(c.category === 'private' ? 'Your one-to-one options.' : 'Find your class.', c.category === 'private' ? '选择一对一课程。' : '找到适合您的课程。')}</h2>
         <p class="lead">${t('Choose a type to explore. Our team can help you find the right fit.', '选择课程类型，了解更多。我们也可以协助您选择。')}</p>
+        </div>
         <div data-class-expect-section hidden><h3>${t('What to expect', '课程体验')}</h3><p data-class-expect></p></div>
       </div>
       <div class="class-types" data-class-types data-class-enquiry="${esc(enquiry)}">

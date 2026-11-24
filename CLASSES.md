@@ -16,8 +16,9 @@ types without descriptions show a short invitation to contact the studio. No
 unconfirmed level or duration has been inserted. The 28 starting types come from
 existing schedule names and private-session offerings; verify them before launch.
 
-Visitors choose a type from the compact dropdown, or use Previous/Next, to view
-one detail card at a time. The enquiry button includes the selected type name.
+On mobile, visitors choose a type from the compact dropdown, or use Previous/Next,
+to view one detail card at a time. Desktop and tablet (700px and above) retain
+the original expandable class-type list. The enquiry button includes the selected type name.
 Type ordering follows the WordPress editor. With JavaScript disabled the built
 class names remain available as expandable rows.
 

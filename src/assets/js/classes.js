@@ -84,8 +84,10 @@
   previous.addEventListener('click', () => { selected = Math.max(0, selected - 1); show(); });
   next.addEventListener('click', () => { selected = Math.min(types.length - 1, selected + 1); show(); });
   const initial = [...list.querySelectorAll('details')].map(details => ({ name: details.querySelector('summary').textContent, description: details.querySelector('p').textContent }));
-  list.classList.add('class-browser');
-  list.replaceChildren(chooser, panel, empty, actions, navigation);
+  const browser = make('div', '', 'class-browser');
+  browser.append(chooser, panel, empty, actions, navigation);
+  list.after(browser);
+  list.classList.add('class-types--enhanced');
   render(initial);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
@@ -106,6 +108,25 @@
         image.src = url.href; image.alt = data.image.alt || '';
       }
     }
+    const fragment = document.createDocumentFragment();
+    for (const type of data.types) {
+      if (!type || typeof type.name !== 'string' || !type.name.trim()) continue;
+      const details = make('details', '', 'class-type');
+      details.append(make('summary', type.name));
+      const body = make('div', '', 'class-type__body');
+      if (type.level || type.duration) {
+        const metadata = make('dl', '', 'class-type__meta');
+        for (const [name, value] of [[zh ? '程度' : 'Level', type.level], [zh ? '时长' : 'Duration', type.duration]]) {
+          if (!value) continue;
+          const group = make('div'); group.append(make('dt', name), make('dd', value)); metadata.append(group);
+        }
+        body.append(metadata);
+      }
+      body.append(make('p', type.description || fallback));
+      details.append(body); fragment.append(details);
+    }
+    if (!fragment.childElementCount) fragment.append(make('p', empty.textContent));
+    list.replaceChildren(fragment);
     render(data.types);
   }).catch(() => { /* Keep the built introduction and class names on failure. */ }).finally(() => clearTimeout(timeout));
 })();

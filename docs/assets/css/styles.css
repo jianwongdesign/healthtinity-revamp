@@ -1034,9 +1034,8 @@ body[data-booking-active] .wa-fab { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .mobile-carousel { scroll-behavior: auto; } }
 
-/* A single class detail panel replaces the long enhanced accordion list. */
-.class-directory .class-details { align-items: start; }
-.class-details__intro .lead { margin-bottom: 0; }
+/* Preserve desktop accordions; compact class browsing is mobile-only. */
+.class-directory__mobile, .class-browser { display: none; }
 .class-browser { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 12px 30px -26px rgba(15,43,70,.35); }
 .class-browser__chooser { padding: 22px 24px; background: var(--sky); }
 .class-browser__heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
@@ -1060,6 +1059,10 @@ body[data-booking-active] .wa-fab { display: none; }
   .class-nav { flex-wrap: nowrap; overflow-x: auto; padding-block: 12px; gap: 6px; scrollbar-width: thin; }
   .class-nav a { flex: none; white-space: nowrap; font-size: .88rem; padding: 10px 14px; }
   .class-directory { padding-block: 32px; }
+  .class-directory__desktop, .class-types--enhanced { display: none; }
+  .class-directory__mobile, .class-browser { display: block; }
+  .class-directory .class-details { align-items: start; }
+  .class-details__intro .lead { margin-bottom: 0; }
   .class-details { gap: 20px; }
   .class-details__intro h2 { font-size: 1.75rem; line-height: 1.2; margin-bottom: 10px; }
   .class-details__intro .lead { font-size: 1rem; line-height: 1.5; }

@@ -1,5 +1,16 @@
 # Healthtinity Hostinger staging
 
+## Desktop class directory restored — 24 November 2026
+
+- Per user feedback, restored the original desktop/tablet accordion, introduction
+  and team enquiry link at 700px and above. The compact selector is mobile-only.
+  Both views receive the same saved WordPress content; resizing swaps views
+  without a reload. All five EN/ZH category pages are covered.
+- Checked 50 local layouts at 390/699/700/820/1440px, including selection and
+  opening accordion rows, with no horizontal page overflow. Visually reviewed
+  the restored desktop design. Public staging checked after upload.
+- Backup: `/home/u146877548/healthtinity-backups/before-desktop-restore-YANHtl/staging.tar.gz`.
+
 ## Compact class-type selector — 24 November 2026
 
 - Replaced the long class-type accordion display with a labelled dropdown and
