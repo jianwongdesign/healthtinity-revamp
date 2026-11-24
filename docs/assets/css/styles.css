@@ -190,9 +190,9 @@ svg.fill { fill: currentColor; stroke: none; }
   position: relative; text-align: center;
 }
 .hero__copy { display: flex; flex-direction: column; align-items: center; padding: 0 22px; }
-.hero h1 { color: var(--navy); margin: 18px 0 .3em; max-width: none; font-size: clamp(2.7rem, 9vw, 5.6rem); }
+.hero h1 { color: var(--navy); margin: 18px 0 .3em; max-width: 16ch; text-wrap: balance; font-size: clamp(2.7rem, 9vw, 5.6rem); }
 .hero__word { display: inline-block; }
-.hero__lead { font-size: 1.1rem; color: var(--navy); max-width: none; margin: 0; text-wrap: wrap; }
+.hero__lead { font-size: 1.1rem; color: var(--navy); max-width: 46ch; margin: 0; text-wrap: balance; }
 .hero .actions { margin-top: 26px; justify-content: center; }
 .wa-link { display: inline-flex; align-items: center; gap: 10px; color: var(--navy); font-family: var(--font-display); font-weight: 600; padding: 6px 2px; border-bottom: 2px solid rgba(15,43,70,.35); }
 .wa-link svg { width: 22px; height: 22px; }
@@ -251,7 +251,7 @@ svg.fill { fill: currentColor; stroke: none; }
     height: calc(100svh - var(--top-h) - var(--strip-h)); min-height: 0;
   }
   .hero h1 { font-size: min(clamp(3rem, 5.2vw, 5.2rem), 7.6svh); margin-top: min(20px, 2.2svh); }
-  .hero__lead { font-size: max(1rem, min(1.2rem, 2.3svh)); max-width: none; }
+  .hero__lead { font-size: max(1rem, min(1.2rem, 2.3svh)); max-width: 58ch; }
   .hero .actions { margin-top: min(28px, 3svh); }
   /* Reel takes whatever height the words leave, so the cards never get clipped */
   .reel { flex: 1 1 0; min-height: 0; display: flex; padding: 14px 0 10px; }
@@ -857,7 +857,7 @@ img { -webkit-user-drag: none; }
 }
 html:lang(zh-Hans) h1, html:lang(zh-Hans) h2, html:lang(zh-Hans) h3, html:lang(zh-Hans) h4 { letter-spacing: 0; line-height: 1.22; }
 html:lang(zh-Hans) body { line-height: 1.75; }
-html:lang(zh-Hans) .hero h1 { max-width: none; }
+html:lang(zh-Hans) .hero h1 { max-width: 12em; }
 html:lang(zh-Hans) .reel__name { font-family: var(--font-display); font-size: 1rem; font-weight: 600; padding: 3px 9px 4px; }
 html:lang(zh-Hans) .marquee__track { letter-spacing: .04em; }
 .legal__note { background: var(--sun-soft); border-radius: var(--r-sm); padding: 14px 18px; font-size: .95rem; }

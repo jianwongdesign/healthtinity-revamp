@@ -1,5 +1,15 @@
 # Healthtinity Hostinger staging
 
+## Home hero text wrapping exception — 24 November 2026
+
+- At user request, restored balanced wrapping only for home hero headline and
+  description (16ch title, 46ch lead / 58ch desktop; Chinese title 12em).
+  Site-wide natural wrapping and full-screen desktop hero height remain intact.
+- Checked EN/ZH at 1895x1300, 1440x900, 1280x720, 1024x600 and 390x844.
+  No hero-copy/reel overlap or horizontal overflow. Public staging confirms
+  wrapped hero copy, natural wrapping elsewhere and strip bottom at viewport edge.
+- Backup: `/home/u146877548/healthtinity-backups/before-home-hero-wrap-KLMpAX/staging.tar.gz`.
+
 ## Restored desktop home first-screen height — 24 November 2026
 
 - Removed the 960px hero cap and 600px minimum that prevented viewport fitting.
