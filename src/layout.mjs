@@ -57,8 +57,8 @@ export const ctaBand = (r) => {
         <p>${t('Download the HT Life app, grab the New Members Starter Pack and get <strong>$22 credit</strong> in your Healthtinity Wallet to use on your next purchase or a drop-in class.', '下载 HT Life 应用程序，购买新会员体验配套，即可获得 <strong>$22 额度</strong>存入 Healthtinity 钱包，可用于下次购买或单堂课程。')}</p>
       </div>
       <div class="cta-band__actions">
-        <a class="btn btn--light" href="${site.links.packages}">${t('Get the Starter Pack', '购买体验配套')}</a>
-        <a class="btn btn--outline-light" href="${r}timetable/">${t('View schedule', '查看课表')}</a>
+        <a class="btn btn--light" href="${site.links.packages}"><span class="desktop-label">${t('Get the Starter Pack', '购买体验配套')}</span><span class="mobile-label">${t('Starter Pack', '体验配套')}</span></a>
+        <a class="btn btn--outline-light" href="${r}timetable/"><span class="desktop-label">${t('View schedule', '查看课表')}</span><span class="mobile-label">${t('Schedule', '查看课表')}</span></a>
       </div>
     </div>
   </div>

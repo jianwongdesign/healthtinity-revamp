@@ -1,5 +1,17 @@
 # Healthtinity Hostinger staging
 
+## Paired mobile promotion actions — 24 November 2026
+
+- Shared promotion banners and popups use two equal button columns below 700px;
+  a single action stays full-width. Starter Pack and Schedule have short mobile
+  labels, with full desktop/accessibility labels retained. Static CTA fallback
+  uses the same pattern. Booking destinations and promotion content are unchanged.
+- Checked live-feed content against the local build in EN/ZH at 320/390/699/820/
+  1440px: banner and popup actions align, 46px tap heights, no button overflow.
+  Verified public staging after upload. Client-defined future long labels may
+  wrap safely; the current Starter Pack buttons fit on one line.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-promo-actions-lzwhog/staging.tar.gz`.
+
 ## Shared mobile enquiry form standard — 24 November 2026
 
 - Contact Us and Academy now use the same mobile form sizing/spacing and a

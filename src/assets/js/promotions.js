@@ -59,6 +59,15 @@
     for (const [label, url, secondary] of [[promo.button, bookingUrl(promo, 'url'), false], [promo.secondaryButton, bookingUrl(promo, 'secondaryUrl'), true]]) {
       if (!label || !safeUrl(url)) continue;
       const link = el('a', 'btn ' + (secondary ? 'promo-card__secondary' : 'promo-card__primary'), label);
+      const mobileLabel = {
+        'Get the Starter Pack': 'Starter Pack',
+        'View schedule': 'Schedule',
+        '购买体验配套': '体验配套',
+      }[label];
+      if (mobileLabel) {
+        link.setAttribute('aria-label', label);
+        link.replaceChildren(el('span', 'desktop-label', label), el('span', 'mobile-label', mobileLabel));
+      }
       link.href = safeUrl(url); actions.append(link);
     }
     if (actions.children.length) copy.append(actions);

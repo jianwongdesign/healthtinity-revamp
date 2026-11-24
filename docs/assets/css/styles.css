@@ -1178,3 +1178,12 @@ body[data-booking-active] .wa-fab { display: none; }
   /* Enquiry pages already provide WhatsApp in their contact cards and forms. */
   body:has([data-contact-form]) .wa-fab { display: none; }
 }
+
+
+/* Paired promotion actions, matching the compact mobile action rows. */
+@media (max-width: 699px) {
+  .promo-card__actions, .cta-band__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .promo-card__actions .btn, .cta-band__actions .btn { min-width: 0; min-height: 46px; padding: 10px 6px; font-size: .84rem; line-height: 1.25; }
+  .promo-card__actions .mobile-label, .cta-band__actions .mobile-label { white-space: nowrap; }
+  .promo-card__actions .btn:only-child, .cta-band__actions .btn:only-child { grid-column: 1 / -1; }
+}
