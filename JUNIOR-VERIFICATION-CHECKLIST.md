@@ -6,6 +6,8 @@ The redesigned site is on Hostinger staging. The main domain still serves the ex
 
 Reviewer: ____________________  Review date: ____________________
 
+24 November hero standardisation: Academy now uses the same compact mobile hero as Pricing/Schedule, with View courses and Next intake side by side. The shared standard also covers Contact Us, Team, About Us and other standard inner-page heroes. Recheck these in EN/ZH; desktop is unchanged.
+
 24 November form standardisation: Academy now shares the Contact Us mobile form layout and button renderer. Review both languages and course preselection; desktop is unchanged.
 
 24 November Contact Us update: check the compact mobile form, full-width fields, side-by-side WhatsApp/Email buttons and no floating chat overlap. Desktop is unchanged; actual message delivery still needs an authorised client test.

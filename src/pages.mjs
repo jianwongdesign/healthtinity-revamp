@@ -717,7 +717,7 @@ function contact() {
     title: t('Contact Us', '联系我们'),
     description: t('Contact Healthtinity: WhatsApp +65 8282 9515, email ask@healthtinity.com, or visit us at 246J Upper Thomson Road, Singapore 574370.', '联系 Healthtinity：WhatsApp +65 8282 9515，电邮 ask@healthtinity.com，或亲临 246J Upper Thomson Road, Singapore 574370。'),
     body: `
-${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>服务</em>。'), lead: t('Questions about classes or planning a visit? Contact our team, send an enquiry or find your way to our Upper Thomson studio.', '对课程有疑问，或计划来访？联系我们、发送咨询，或查看前往 Upper Thomson 工作室的路线。'), crumbs: [[t('Contact us', '联系我们')]], extra: `<div class="actions"><a class="btn btn--primary" href="#enquiry">${t('Send an enquiry', '发送咨询')}</a><a class="btn btn--ghost" href="#visit">${t('Map & directions', '地图与路线')}</a></div>` })}
+${pageHero({ r, title: t("We're here to <em>help</em>.", '我们随时为您<em>服务</em>。'), lead: t('Questions about classes or planning a visit? Contact our team, send an enquiry or find your way to our Upper Thomson studio.', '对课程有疑问，或计划来访？联系我们、发送咨询，或查看前往 Upper Thomson 工作室的路线。'), crumbs: [[t('Contact us', '联系我们')]], extra: `<div class="actions"><a class="btn btn--primary" href="#enquiry"><span class="desktop-label">${t('Send an enquiry', '发送咨询')}</span><span class="mobile-label">${t('Enquire', '发送咨询')}</span></a><a class="btn btn--ghost" href="#visit"><span class="desktop-label">${t('Map & directions', '地图与路线')}</span><span class="mobile-label">${t('Directions', '地图路线')}</span></a></div>` })}
 <section class="section section--flush">
   <div class="container contact">
     <div class="contact__cards">

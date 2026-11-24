@@ -1,5 +1,20 @@
 # Healthtinity Hostinger staging
 
+## Shared mobile page-hero standard — 24 November 2026
+
+- Academy now matches the compact mobile pricing/schedule hero: 20x16px padding,
+  28–32px heading, 16px body copy and paired 44px actions. Mobile labels are
+  View courses / Next intake; desktop retains its full labels and appearance.
+- Added a shared class in pageHero() and consolidated the mobile sizing rule for
+  all standard inner-page heroes, including Contact Us, Team, About Us, FAQ,
+  articles index, booking and legal pages. Custom article/profile/class/home
+  heroes retain their own layouts. Contact Us uses Enquire / Directions on phones.
+- Checked 12 page types in EN/ZH at 320/390/699/820/1440px (120 layouts), plus
+  booking in both languages at 320px. No page or action overflow; paired mobile
+  actions align. Visually reviewed Academy and verified its enquiry anchor.
+- Backup: `/home/u146877548/healthtinity-backups/before-shared-mobile-heroes-V4v8Dz/staging.tar.gz`.
+- Published and verified Academy EN/ZH on Hostinger staging.
+
 ## Paired mobile promotion actions — 24 November 2026
 
 - Shared promotion banners and popups use two equal button columns below 700px;

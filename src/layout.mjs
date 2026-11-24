@@ -34,7 +34,7 @@ export const initials = (name) => name.replace(/^Dr\s+/, '').split(/\s+/).map((w
 
 /** Page header band used on every inner page */
 export const pageHero = ({ eyebrow, title, lead, crumbs = [], r, extra = '' }) => `
-<section class="page-hero">
+<section class="page-hero page-hero--standard">
   <div class="container">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="${r || './'}">${t('Home', '首页')}</a>${crumbs.map(([label, href]) => ` <span>/</span> ${href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`}`).join('')}
