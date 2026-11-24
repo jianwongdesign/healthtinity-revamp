@@ -1,5 +1,15 @@
 # Healthtinity Hostinger staging
 
+## Equal mobile Academy card heights — 24 November 2026
+
+- Mobile Academy tracks now stretch cards to the tallest content in each row.
+  The 200-hour and 300-hour courses have equal widths/heights and aligned enquiry
+  buttons; longer text and expanded outlines grow both containers without clipping.
+  The same rule applies to the Reiki pair. No fixed content height or truncation.
+- Verified EN/ZH at 320/390/699/820/1440px, outlines closed and expanded, plus
+  public staging at 390px. Desktop behaviour is unchanged.
+- Backup: `/home/u146877548/healthtinity-backups/before-equal-course-cards-r6tz2X/staging.tar.gz`.
+
 ## Academy card redesign and text-width audit — 24 November 2026
 
 - Removed artificial text-width caps from shared section introductions, headings,
