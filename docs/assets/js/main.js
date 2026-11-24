@@ -4,6 +4,21 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  // Keep the current pricing page visible in the mobile scrolling menu.
+  $$('.pricing-tabs').forEach(nav => {
+    const active = $('.is-active', nav);
+    if (!active) return;
+    active.setAttribute('aria-current', 'page');
+    const position = () => {
+      if (!matchMedia('(max-width: 699px)').matches) return;
+      const item = active.getBoundingClientRect();
+      const box = nav.getBoundingClientRect();
+      nav.scrollLeft += item.left - box.left - (box.width - item.width) / 2;
+    };
+    new ResizeObserver(position).observe(nav);
+    document.fonts.ready.then(position);
+  });
+
   // Compact, user-controlled mobile card rows; desktop keeps its existing grid.
   $$('[data-mobile-carousel]').forEach(track => {
     const controls = $(`[data-carousel-controls="${track.id}"]`);

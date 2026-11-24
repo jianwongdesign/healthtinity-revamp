@@ -525,9 +525,10 @@ function packagePage() {
 ${pageHero({ r, title: t('Class <em>packages</em>.', '课程<em>配套</em>。'), lead: t('Practise at your own pace. Larger packs come with bonus classes, and many are shareable with family and friends.', '按自己的节奏练习。较大的配套附赠更多课程，而且多数可与家人朋友共享。'), crumbs: [[t('Pricing', '价格')], [t('Packages', '课程配套')]], extra: pricingTabs('package') })}
 <section class="section section--flush">
   <div class="container">
-    <div class="pricing pricing--packs">
+    <div class="pricing pricing--packs mobile-carousel" id="package-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Browse class packages', '浏览课程配套')}">
       ${L.packages().map((p) => priceCard(p, site.links.packages)).join('')}
     </div>
+    ${mobileCarouselControls('package-cards', L.packages().length)}
     ${topupBlock()}
     <div class="compare reveal">
       <h2>${t('Which option is right for <em>me</em>?', '哪个方案<em>适合我</em>？')}</h2>
@@ -560,13 +561,15 @@ ${pageHero({ r, title: t('Unlimited <em>memberships</em>.', '无限上课<em>会
 <section class="section section--flush">
   <div class="container">
     <div class="group-head reveal"><h2>${t('Upfront payment', '一次性付款')}</h2><p class="muted">${t('Pay once, practise unlimited.', '付款一次，无限练习。')}</p></div>
-    <div class="pricing pricing--2">
+    <div class="pricing pricing--2 mobile-carousel" id="membership-upfront-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Browse upfront memberships', '浏览一次性付款会员方案')}">
       ${L.membershipsUpfront().map((p) => priceCard(p, site.links.memberships)).join('')}
     </div>
+    ${mobileCarouselControls('membership-upfront-cards', L.membershipsUpfront().length)}
     <div class="group-head reveal"><h2>${t('Recurring membership', '自动续费会员')}</h2><p class="muted">${t('Auto-renewing. The longer the commitment, the lower the monthly rate.', '自动续费。承诺期越长，月费越低。')}</p></div>
-    <div class="pricing pricing--4">
+    <div class="pricing pricing--4 mobile-carousel" id="membership-recurring-cards" data-mobile-carousel tabindex="0" role="region" aria-label="${t('Browse recurring memberships', '浏览自动续费会员方案')}">
       ${L.membershipsRecurring().map((p) => priceCard(p, site.links.memberships)).join('')}
     </div>
+    ${mobileCarouselControls('membership-recurring-cards', L.membershipsRecurring().length)}
     <p class="fineprint reveal">${t(`Recurring memberships renew automatically at the billing interval shown. A S$350 cancellation fee applies before the minimum commitment ends. See our <a href="${r}terms/terms-and-conditions/">Terms &amp; Conditions</a>.`, `自动续费会员将按所示的计费周期自动续费。在最低承诺期结束前取消，须缴付 S$350 手续费。详情请参阅<a href="${r}terms/terms-and-conditions/">条款与细则</a>。`)}</p>
   </div>
 </section>

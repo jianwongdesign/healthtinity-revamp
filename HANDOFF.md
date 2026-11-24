@@ -1,5 +1,22 @@
 # Healthtinity Hostinger staging
 
+## Compact mobile packages and memberships — 24 November 2026
+
+- Package cards and both upfront/recurring membership groups now use horizontal
+  snap-scrolling rows below 700px, with next-card previews, arrows and counts.
+  Homepage pricing cards also share the smaller type, spacing and buttons.
+  All pricing, validity, cancellation notes and purchase destinations are retained.
+- Pricing heroes are smaller on phones. Pricing navigation uses separate pills in
+  one scrollable row; the current page is kept visible. Desktop layout is preserved.
+- Fixed the mobile header brand wrapping by fitting the logo, name, language switch
+  and menu within narrow phone widths.
+- Checked home, Packages, Memberships and Corporate Wellness in EN/ZH at
+  320/390/699/700/820/1440px (48 layouts): no page overflow, mobile tabs stay on one
+  row, cards scroll on narrow phones. Verified final-card access/counts for all
+  five packages and both membership groups. Visually reviewed hero and cards.
+- Backup: `/home/u146877548/healthtinity-backups/before-mobile-pricing-DS1sPF/staging.tar.gz`.
+- Uploaded to Hostinger staging; no production routing or Rezerv data changes.
+
 ## Single-row mobile announcement — 24 November 2026
 
 - Mobile promotion copy shortened to “New: Top up $90, get $10 bonus.” with
